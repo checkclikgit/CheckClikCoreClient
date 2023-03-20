@@ -1,0 +1,193 @@
+﻿.m-login.m-login--1 .m-login__wrapper {
+    overflow: hidden;
+    padding: 10% 2rem 1rem 2rem;
+}
+.m-link:hover {
+    color: #e9867f;
+}
+.m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control.m-login__form-input--last {
+    border-bottom: 1px solid #ebedf2
+}
+.new-logo{
+    width: 150px;
+}
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__form .m-form__group .form-control{
+    border-radius: 0
+}
+.new-btn {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-radius: 100px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 60px !important;
+    font-size: 12px;
+    -webkit-transition: box-shadow .2s ease,border .2s ease;
+    transition: box-shadow .2s ease,border .2s ease;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+.new-btn:active {
+    box-shadow: 0 1px 4px rgba(0,0,0,.2) !important
+}
+.new-btn:hover, .new-btn:focus{
+    box-shadow: 0 1px 4px rgba(0,0,0,.2) !important
+}
+.login-txt {
+    color: #434C5F;
+    font-family: 'Open Sans', sans-serif;
+}
+.m-radio, .m-checkbox {
+    color: #262627;
+}
+.sign-in-top-right{
+    float: right
+}
+.m-login.m-login--1.m-login--signin .m-login__forget-password{
+    display: block
+}
+.m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+    border: 1px solid #D4D9E2;
+    border-radius: 3px;
+    padding: 15px;
+    font-size: 14px;
+    color: #596377;
+    outline: 0;
+    -webkit-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+}
+.m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control:focus {
+    border-color: #8C96A9;
+}
+.small-button {
+    display: inline-block;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #C6CCD7;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 10px;
+    color: #596377;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 12px;
+    padding: 0 28px;
+    height: 36px;
+    line-height: 36px;
+    text-decoration: none;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.small-button:active {
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+.small-button:focus, .small-button:hover {
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 3px 12px 0 rgba(0,0,0,.25);
+    background-color: #e78179;
+    border: 1px solid #e78179;
+    color: #fff;
+}
+.m-link.small-button:after {
+    border: none
+}
+.m-login.m-login--1 .m-login__account .m-login__account-msg{
+    font-size: 12px;
+}
+.m-form .m-form__group .form-control-label, .m-form .m-form__group .col-form-label, .m-form .m-form__group > label{
+    margin-top: 10px;
+}
+.m-login.m-login--1 .m-login__wrapper .m-login__head{
+    margin-top: 0
+}
+.m-login.m-login--1 .m-login__wrapper .m-login__form{
+    margin-top: 2rem
+}
+.form-control{
+    font-family: 'Open Sans', sans-serif !important
+}
+.input-group-addon {
+    padding: 0.65rem 1.25rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #495057;
+    text-align: center;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+.input-group-addon, .input-group-btn {
+    white-space: nowrap;
+}
+.input-group .form-control:not(:first-child), .input-group-addon:not(:first-child), .input-group-btn:not(:first-child) > .btn, .input-group-btn:not(:first-child) > .btn-group > .btn, .input-group-btn:not(:first-child) > .dropdown-toggle, .input-group-btn:not(:last-child) > .btn:not(:first-child), .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+.input-group-addon, .input-group-btn, .input-group .form-control {
+    display: flex;
+    align-items: center;
+}
+.input-group .form-control {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+}
+.input-group .input-group-addon {
+    color: #575962;
+    border-color: #ebedf2;
+    background-color: #f4f5f8; 
+}
+.input-group .input-group-addon > i {
+    color: #a4a2bb; 
+}
+.input-group .input-group-addon {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+.input-group-addon:not(:last-child) {
+    border-right: 0;
+}
+.input-group .form-control:not(:last-child), .input-group-addon:not(:last-child), .input-group-btn:not(:last-child) > .btn, .input-group-btn:not(:last-child) > .btn-group > .btn, .input-group-btn:not(:last-child) > .dropdown-toggle, .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+@media (min-width: 993px){
+    .m-grid__item.m-grid__item--fluid.m-grid.m-grid--center.m-grid--hor.m-grid__item--order-tablet-and-mobile-1.m-login__content {
+        position: fixed;
+        height: 100%;
+        left: 0;
+        width: 460px;
+        top:0;
+        overflow: hidden;
+        width: 460px;
+    }
+    .m-grid__item.m-grid__item--order-tablet-and-mobile-2.m-login__aside{
+        margin-left: 460px;
+    }
+    .login__logo{
+        position: absolute;
+        top: 35px;
+        left: 35px;
+    }
+    .login__logo a img{
+        width: 50px;
+        border-radius: 5px;
+    }
+    .m-login.m-login--1 .m-login__aside{
+        width: calc(100% - 460px);
+    }
+    .m-login__account{
+        text-align: right !important
+    }
+}

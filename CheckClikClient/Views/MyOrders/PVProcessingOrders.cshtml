@@ -1,0 +1,264 @@
+﻿@model Customer.Models.MyOrdersDTO
+@{
+    var url = Model.UrlPath;
+    var a = "";
+}
+<div class="pending-items mb-5">
+    @if (Model.UsersProcessingOrdersList != null)
+    {
+        foreach (var item in Model.UsersProcessingOrdersList)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="bullet pull-left">Pending</h4>
+                    <h4 class="pull-right">Order No: <span class="red-color">#@item.InvoiceNo</span></h4>
+                </div>
+            </div>
+            <div class="pending-item-box">
+                <div class="row d-flex">
+                    <div class="col-sm-11 col-xs-10">   
+                        @*@{var item2 = item.Items.FirstOrDefault();}*@
+                        @foreach (var item2 in item.Items)
+                        {
+                            <div class="row item-box">
+                                <div class="col-sm-3 col-xs-4">
+                                    @*<img src="@ViewBag.ProductImages/@item2.Image" width="100%">*@
+                                    <img src="@url@item2.Image" width="100%">
+                                </div>
+                                <div class="col-sm-9 col-xs-8">
+                                    <h3>@item2.NameEn</h3>
+                                </div>
+                            </div>
+                            <hr class="nomargin">
+                        }
+                        <hr class="nomargin">
+                    </div>
+                    @*<div class="col-sm-1 col-xs-2">
+                            <a href="@Url.Action("OrderDetailsID", "MyOrders", new { orderid = item.OrderId, type = 2 })">
+                                <i class="fas fa-caret-right"></i>
+                            </a>
+                        </div>*@
+                    <div class="col-sm-1 col-xs-2">
+                        <a href="#" onclick="OrderDetails(@item.OrderId,2)">
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!--PICK UP-->
+
+                <div class="row bs-wizard pt-5" style="border-bottom:0;">
+                    @{ int l = 0;
+                        foreach (var item3 in item.TrackingDetails)
+                        {
+                            switch (item3.Id)
+                            {
+                                case 2:
+                                case 5:
+                                    if (l == 0)
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                        l++;
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        if (l == 0)
+                        {
+                            <div class="col-xs-3 bs-wizard-step disabled">
+                                <div class="progress"><div class="progress-bar"></div></div>
+                                <a href="#" class="bs-wizard-dot"></a>
+                                <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                            </div>
+                        }
+                        l = 0;
+                        foreach (var item3 in item.TrackingDetails)
+                        {
+                            switch (item3.Id)
+                            {
+                                case 7:
+                                    if (item.OrderType == 1 || item.OrderType == 2 || item.OrderType == 3)
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">READY</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                    }
+                                    l++;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                        }
+                        if (l == 0)
+                        {
+                            <div class="col-xs-3 bs-wizard-step disabled">
+                                <div class="progress"><div class="progress-bar"></div></div>
+                                <a href="#" class="bs-wizard-dot"></a>
+                                <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                            </div>
+                        }
+                        if (item.OrderType == 1)
+                        {
+                            l = 0;
+                            foreach (var item3 in item.TrackingDetails)
+                            {
+                                switch (item3.Id)
+                                {
+                                    case 11:
+                                        <div class="col-xs-3 bs-wizard-step disabled">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                        l++;
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                            }
+                            if (l == 0)
+                            {
+                                <div class="col-xs-3 bs-wizard-step disabled">
+                                    <div class="progress"><div class="progress-bar"></div></div>
+                                    <a href="#" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                </div>
+                            }
+                        }
+                        else if (item.OrderType == 2 || item.OrderType == 3) //Order Type Delivery and Shipping
+                        {
+                            //Dispatched
+                            l = 0;
+                            foreach (var item3 in item.TrackingDetails)
+                            {
+                                switch (item3.Id)
+                                {
+                                    case 9:
+                                    case 10:
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                        l++;
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                            }
+                            if (l == 0)
+                            {
+                                <div class="col-xs-3 bs-wizard-step disabled">
+                                    <div class="progress"><div class="progress-bar"></div></div>
+                                    <a href="#" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                </div>
+                            }
+                            //Delivered
+                            l = 0;
+                            foreach (var item3 in item.TrackingDetails)
+                            {
+                                switch (item3.Id)
+                                {
+                                    case 11:
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                        </div>
+                                        l++;
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                            }
+                            if (l == 0)
+                            {
+                                <div class="col-xs-3 bs-wizard-step disabled">
+                                    <div class="progress"><div class="progress-bar"></div></div>
+                                    <a href="#" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                </div>
+                            }
+
+                        }
+                    }
+                </div>
+                @if (item.OrderStatus == 18)
+                {
+                    <div class="row item-box text-center">
+                        <h4>Your order has been Re-Scheduled for <b>@item.ReScheduleDate.ToString("MMM dd, yyyy")</b></h4>
+                        <h4>Would you like to confirm your order with new date?</h4>
+
+                        <button type="button" id="partial-accept" onclick="fnRescheduleAccept(@item.OrderId)" class="btn btn-default">YES</button>
+                        <button type="button" id="partial-reject" onclick="fnRescheduleReject(@item.OrderId)" class="btn btn-default">NO</button>
+                    </div>
+                }
+                @*<div class="row item-box">
+                        <div class="col-sm-12 text-center">
+                            <button type="button" class="btn">CANCELLATION</button>
+                            <button type="button" class="btn btn-default">CONFIRM PAYMENT</button>
+                        </div>
+                    </div>*@
+                <!--END PICKUP-->
+            </div>
+        }
+    }
+</div>
+<div class="" id="dvprocesspaging">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo-process" class="pagination">
+                <!-- <a href="#">&lt;</a> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnToPagesCountForProcessPagination" value="@Model.pagingNumber" />
+<input type="hidden" id="hdnPageNumberProcess_twbs" value="@Model.PageNumber" />
+    <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+    <script src="~/jquery.twbsPagination.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        //var sortid = $('#hdnSortId').val();
+        var sortid = 1;//$('#hdnSortId').val();
+        var pNo = $('#hdnPageNumberProcess_twbs').val() == "" || $('#hdnPageNumberProcess_twbs').val() == "0" ? "1" : $('#hdnPageNumberProcess_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo-process').twbsPagination({
+            totalPages: $('#hdnToPagesCountForProcessPagination').val(),
+            visiblePages: 5,
+            startPage: i,
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetAjaxCallProcessOrders(page, sortid);
+            }
+        });
+    });
+    </script>

@@ -1,0 +1,620 @@
+﻿@model Customer.Models.MyOrdersDTO
+
+@if (Model.Type == 2)
+{
+    <div class="pending-items mb-5">
+        @if (Model.UsersProcessingOrdersList != null)
+        {
+            foreach (var item in Model.UsersProcessingOrdersList)
+            {
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="bullet pull-left">Processing</h4>
+                            <h4 class="pull-right">Order No: #<span class="red-color">@item.InvoiceNo</span></h4>
+                        </div>
+                    </div>
+                    <div class="pending-item-box">
+                        <div class="row d-flex">
+                            <div class="col-sm-11 col-xs-10">
+                                @*@{var item2 = item.Items.FirstOrDefault();}*@
+                                @foreach (var item2 in item.Items)
+                                {
+                                    <div class="row item-box">
+                                        <div class="col-sm-3 col-xs-4">
+                                            <img src="@ViewBag.ProductImages/@item2.Image" width="100%">
+                                        </div>
+                                        <div class="col-sm-9 col-xs-8">
+                                            <h3>@item2.NameEn</h3>
+                                        </div>
+                                    </div>
+                                    <hr class="nomargin">
+                                }
+                                <hr class="nomargin">
+                            </div>
+                            @*<div class="col-sm-1 col-xs-2">
+                                    <a href="@Url.Action("OrderDetailsID", "MyOrders", new { orderid = item.OrderId, type = 2 })">
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                </div>*@
+                            <div class="col-sm-1 col-xs-2">
+                                <a href="#" onclick="OrderDetails(@item.OrderId,2)">
+                                    <i class="fas fa-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--PICK UP-->
+
+                        <div class="row bs-wizard pt-5" style="border-bottom:0;">
+                            @{ int l = 0;
+                                foreach (var item3 in item.TrackingDetails)
+                                {
+                                    switch (item3.Id)
+                                    {
+                                        case 2:
+                                        case 5:
+                                            <div class="col-xs-3 bs-wizard-step complete">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
+                                            l++;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                if (l == 0)
+                                {
+                                    <div class="col-xs-3 bs-wizard-step disabled">
+                                        <div class="progress"><div class="progress-bar"></div></div>
+                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                                    </div>
+                                }
+                                l = 0;
+                                foreach (var item3 in item.TrackingDetails)
+                                {
+                                    switch (item3.Id)
+                                    {
+                                        case 7:
+                                            if (item.OrderType == 1 || item.OrderType == 2 || item.OrderType == 3)
+                                            {
+                                                <div class="col-xs-3 bs-wizard-step complete">
+                                                    <div class="progress"><div class="progress-bar"></div></div>
+                                                    <a href="#" class="bs-wizard-dot"></a>
+                                                    <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                                                    <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-xs-3 bs-wizard-step complete">
+                                                    <div class="progress"><div class="progress-bar"></div></div>
+                                                    <a href="#" class="bs-wizard-dot"></a>
+                                                    <div class="bs-wizard-info text-center grey-color">READY</div>
+                                                    <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                            }
+                                            l++;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                }
+                                if (l == 0)
+                                {
+                                    <div class="col-xs-3 bs-wizard-step disabled">
+                                        <div class="progress"><div class="progress-bar"></div></div>
+                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                                    </div>
+                                }
+                                if (item.OrderType == 1)
+                                {
+                                    l = 0;
+                                    foreach (var item3 in item.TrackingDetails)
+                                    {
+                                        switch (item3.Id)
+                                        {
+                                            case 11:
+                                                <div class="col-xs-3 bs-wizard-step disabled">
+                                                    <div class="progress"><div class="progress-bar"></div></div>
+                                                    <a href="#" class="bs-wizard-dot"></a>
+                                                    <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                                    <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                                l++;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                    }
+                                    if (l == 0)
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step disabled">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                        </div>
+                                    }
+                                }
+                                else if (item.OrderType == 2 || item.OrderType == 3) //Order Type Delivery and Shipping
+                                {
+                                    //Dispatched
+                                    l = 0;
+                                    foreach (var item3 in item.TrackingDetails)
+                                    {
+                                        switch (item3.Id)
+                                        {
+                                            case 9:
+                                            case 10:
+                                                <div class="col-xs-3 bs-wizard-step complete">
+                                                    <div class="progress"><div class="progress-bar"></div></div>
+                                                    <a href="#" class="bs-wizard-dot"></a>
+                                                    <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                                    <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                                l++;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                    }
+                                    if (l == 0)
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step disabled">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                        </div>
+                                    }
+                                    //Delivered
+                                    l = 0;
+                                    foreach (var item3 in item.TrackingDetails)
+                                    {
+                                        switch (item3.Id)
+                                        {
+                                            case 11:
+                                                <div class="col-xs-3 bs-wizard-step complete">
+                                                    <div class="progress"><div class="progress-bar"></div></div>
+                                                    <a href="#" class="bs-wizard-dot"></a>
+                                                    <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                                    <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                                </div>
+                                                l++;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                    }
+                                    if (l == 0)
+                                    {
+                                        <div class="col-xs-3 bs-wizard-step disabled">
+                                            <div class="progress"><div class="progress-bar"></div></div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                        </div>
+                                    }
+
+                                }
+                            }
+                        </div>
+                        @if (item.OrderStatus == 18)
+                        {
+                            <div class="row item-box text-center">
+                                <h4>Your order has been Re-Scheduled for <b>@item.ReScheduleDate.ToString("MMM dd, yyyy")</b></h4>
+                                <h4>Would you like to confirm your order with new date?</h4>
+
+                                <button type="button" id="partial-accept" onclick="fnRescheduleAccept(@item.OrderId)" class="btn btn-default">YES</button>
+                                <button type="button" id="partial-reject" onclick="fnRescheduleReject(@item.OrderId)" class="btn btn-default">NO</button>
+                            </div>
+                        }
+                        @*<div class="row item-box">
+                                <div class="col-sm-12 text-center">
+                                    <button type="button" class="btn">CANCELLATION</button>
+                                    <button type="button" class="btn btn-default">CONFIRM PAYMENT</button>
+                                </div>
+                            </div>*@
+                        <!--END PICKUP-->
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+@if (Model.Type == 3)
+{
+    <div class="pending-items">
+        @*<div class="pending-item-box mb-2">*@
+
+        @if (Model.UsersProcessingOrdersList != null)
+        {
+            var sr = 0;
+            foreach (var item in Model.UsersProcessingOrdersList)
+            {
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="bullet pull-left">@item.OrderStatusEn</h4>
+                            <h4 class="grey-color pull-right">@item.OrderId @item.OrderTrackingDate.ToString("MMM dd, yyyy")</h4>
+                        </div>
+                    </div>
+                    <div class="pending-item-box mb-2">
+                        <div class="row d-flex">
+                            <div class="col-sm-11 col-xs-10">
+
+                                @foreach (var item2 in item.Items)
+                                {
+                                    <div class="row item-box">
+                                        <div class="col-sm-3 col-xs-4">
+                                            <img src="@ViewBag.ProductImages/@item2.Image" width="100%">
+                                        </div>
+                                        <div class="col-sm-9 col-xs-8">
+                                            <h3 class="grey-color">@item2.NameEn</h3>
+                                            @if (item.OrderStatus == 11)
+                                            {
+                                                if (item2.StatusIdText != "" && item.OrderType == 1)
+                                                {
+                                                    <h4><small class="text-danger">Return Order Status: @item2.StatusIdText</small></h4>
+                                                }
+
+                                                <button type="button" class="btn rate-btn btn-default pull-right" onclick="fnGetCount(@sr)" data-toggle="modal" data-target="#RatingModal">Rate</button>
+                                                <input type="hidden" id="hdn-orderid-@sr" value="@item.OrderId" />
+                                                <input type="hidden" id="hdn-ordertype-@sr" value="@item.OrderType" />
+                                                <input type="hidden" id="hdn-skuid-@sr" value="@item2.SKUId" />
+                                                <input type="hidden" id="hdn-branchid-@sr" value="@item.BranchId" />
+                                                <input type="hidden" id="hdn-countNo" />
+                                                sr = sr + 1;
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <hr class="nomargin">
+
+                                }
+                                <hr class="nomargin" />
+                            </div>
+                            @*<div class="col-sm-1 col-xs-2">
+                                    <a href="@Url.Action("OrderDetailsID", "MyOrders", new { orderid = item.OrderId, type = 3 })">
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                </div>*@
+                            <div class="col-sm-1 col-xs-2">
+                                <a href="#" onclick="OrderDetails(@item.OrderId,3)">
+                                    <i class="fas fa-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+        @*<div class="pending-item-box mb-2">
+                <div class="row d-flex">
+                    <div class="col-sm-11 col-xs-10">
+                        <div class="row item-box">
+                            <div class="col-sm-3 col-xs-4">
+                                <img src="~/web-assets/images/pending-order1.jpg" width="100%">
+                            </div>
+                            <div class="col-sm-9 col-xs-8">
+                                <h3 class="grey-color">Designer Saree</h3>
+                                <h4><strong>Canceled</strong></h4>
+                                <h4 class="grey-color">12 June 2018</h4>
+                            </div>
+                        </div>
+                        <hr class="nomargin">
+                    </div>
+                    <div class="col-sm-1 col-xs-2">
+                        <a href="">
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>*@
+        @*<div class="pending-item-box mb-2">
+                <div class="row d-flex">
+                    <div class="col-sm-11 col-xs-10">
+                        <div class="row item-box">
+                            <div class="col-sm-3 col-xs-4">
+                                <img src="~/web-assets/images/pending-order1.jpg" width="100%">
+                            </div>
+                            <div class="col-sm-9 col-xs-8 rating-display">
+                                <h3 class="grey-color">Designer Saree</h3>
+                                <h4><strong>Rejected</strong></h4>
+                                <h4 class="grey-color">12 June 2018</h4>
+
+                                <div class='rating-stars pull-right'>
+                                    <ul class="mb-0">
+                                        @for (int i = 0; i < 3; i++)
+                                        {
+                                            <li class="selected"><i class='fa fa-star fa-fw'></i></li>
+                                        }
+                                        @for (int i = 0; i < 2; i++)
+                                        {
+                                            <li><i class='fa fa-star fa-fw'></i></li>
+                                        }
+
+
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr class="nomargin">
+                    </div>
+                    <div class="col-sm-1 col-xs-2">
+                        <a href="">
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>*@
+        @*<div class="pending-item-box mb-2">
+                <div class="row d-flex">
+                    <div class="col-sm-11 col-xs-10">
+                        <div class="row item-box">
+                            <div class="col-sm-3 col-xs-4">
+                                <img src="~/web-assets/images/pending-order1.jpg" width="100%">
+                            </div>
+                            <div class="col-sm-9 col-xs-8">
+                                <h3 class="grey-color">Designer Saree</h3>
+                                <h4><strong>Completed</strong></h4>
+                                <h4 class="grey-color pull-left">12 June 2018</h4>
+                                <button type="button" class="btn btn-sm btn-default pull-right" data-toggle="modal" data-target="#myModal">Rate</button>
+                            </div>
+                        </div>
+                        <hr class="nomargin">
+                    </div>
+                    <div class="col-sm-1 col-xs-2">
+                        <a href="">
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="modal fade" id="RatingModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content rating-model">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class='text-center'>
+                        <h2>Rating</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <section class='rating-widget'>
+                            <!-- Rating Stars Box -->
+                            <div class='rating-stars text-center'>
+                                <ul id='stars'>
+                                    <li class='star' title='Poor' data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Fair' data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Good' data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Excellent' data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='WOW!!!' data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class='success-box' style="display: none;">
+                                <div class='clearfix'></div>
+                                <img alt='tick image' width='32' src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MjYuNjY3IDQyNi42NjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQyNi42NjcgNDI2LjY2NzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiM2QUMyNTk7IiBkPSJNMjEzLjMzMywwQzk1LjUxOCwwLDAsOTUuNTE0LDAsMjEzLjMzM3M5NS41MTgsMjEzLjMzMywyMTMuMzMzLDIxMy4zMzMgIGMxMTcuODI4LDAsMjEzLjMzMy05NS41MTQsMjEzLjMzMy0yMTMuMzMzUzMzMS4xNTcsMCwyMTMuMzMzLDB6IE0xNzQuMTk5LDMyMi45MThsLTkzLjkzNS05My45MzFsMzEuMzA5LTMxLjMwOWw2Mi42MjYsNjIuNjIyICBsMTQwLjg5NC0xNDAuODk4bDMxLjMwOSwzMS4zMDlMMTc0LjE5OSwzMjIuOTE4eiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K' />
+                                <div class='text-message'><h4></h4></div>
+                                <div class='clearfix'></div>
+                            </div>
+                        </section>
+                        <div class="form-group">
+                            <label>Enter Your Comments here</label>
+                            <textarea rows="3" id="txtComments" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" id="btnSubmitReview" class="btn btn-default text-center">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+
+        function fnRescheduleAccept(orderid)
+        {
+            // debugger;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RescheduleAccept")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    swal({
+                        title: "Accepted",
+                        text: "Reschedule order accepted successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    })
+                        .then((value) => {
+                            window.location.href = "/MyOrders";
+                        });
+                    GetAjaxCallProcessOrders(1, 1);
+                },
+                error: function (ex) {
+                    alert('Something went wrong try after sometime.');
+                }
+            });
+        }
+
+    function fnRescheduleReject(orderid)
+        {
+            // debugger;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RescheduleReject")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    swal({
+                        title: "Rejected",
+                        text: "Reschedule order cancelled successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    })
+                        .then((value) => {
+                            window.location.href = "/MyOrders";
+                        });
+                },
+                error: function (ex) {
+                    alert('Something went wrong try after sometime.');
+                }
+            });
+    }
+
+
+
+    $(document).ready(function () {
+
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function () {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function (e) {
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                }
+                else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function () {
+            $(this).parent().children('li.star').each(function (e) {
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function () {
+            $(".success-box").show();
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            if (ratingValue == 2) {
+                msg = "Fair! You rated this " + ratingValue + " stars.";
+            }
+            else if (ratingValue == 3) {
+                msg = "Good! You rated this " + ratingValue + " stars.";
+            }
+            else if (ratingValue == 4) {
+                msg = "Excellent! You rated this " + ratingValue + " stars.";
+            }
+            else if (ratingValue == 5) {
+                msg = "Wow! You rated this " + ratingValue + " stars.";
+            }
+            else {
+                msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+            }
+            responseMessage(msg);
+        });
+    });
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<h4>" + msg + "</h4>");
+    }
+
+    function fnGetCount(srcount) {
+        $('#hdn-countNo').val(srcount);
+    }
+
+    $('#btnSubmitReview').click(function () {
+        // debugger
+        var sno = $('#hdn-countNo').val();
+        var skuid = $('#hdn-skuid-' + sno).val();
+        var branchid = $('#hdn-branchid-' + sno).val();
+        var rating = parseInt($('#stars li.selected').last().data('value'), 10);
+        var comments = $('#txtComments').val();
+        var orderid = $('#hdn-orderid-' + sno).val();
+        var ordertype = $('#hdn-ordertype-' + sno).val();
+
+         $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UserReview")',
+             dataType: 'json',
+             data: { SKUId: skuid, Rating: rating, Comments: comments, BranchId: branchid, OrderID: orderid, OrderType: ordertype },
+                success: function (data) {
+                    // debugger
+                    var status = data;
+                    if (status) {
+                        swal({
+                            title: "Success",
+                            text: "Rating done successfully !",
+                            icon: "success",
+
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        })
+                            .then((value) => {
+                                window.location.href = "@Url.Action("MyOrders")";
+                            });
+                    }
+                    else {
+                        swal({
+                            text: "Something went wrong !",
+                            icon: "error",
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        })
+                    }
+                },
+                error: function (ex) {
+                    alert('Something went wrong !');
+                }
+            });
+    });
+
+</script>

@@ -1,0 +1,566 @@
+﻿@model Customer.Models.MyOrdersDTO
+
+@section Styles{
+    <style>
+        .panel-heading .accordion-toggle:after {
+            font-family: 'Glyphicons Halflings';
+            content: "\e114";
+            float: right;
+            color: grey;
+        }
+
+        .panel-heading .accordion-toggle.collapsed:after {
+            content: "\e080";
+        }
+
+        .return-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        .swal-overlay {
+            z-index: 11000;
+        }
+    </style>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    }
+
+    <div class="tab-pending box-details" id="orderdetails_pv">
+
+        <a href="#" onclick="closedetailsPV(@Model.Type)" class="round-btn order-detail-close pull-right mb-2">X</a>
+
+        @if (Model.UsersPendingOrdersList != null)
+        {
+            foreach (var item in Model.UsersPendingOrdersList)
+            {
+
+
+                <div class="row head">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 col-xs-6  text-center">
+                        <h3><strong>@item.StoreNameEn</strong></h3>
+                    </div>
+                    <div class="col-sm-4 text-right"> 
+                        @if (Model.Type == 3)
+                        {
+                            @*<a href="@Url.Action("InvoiceDetails", "myorders", new { InvoiceNo = item.InvoiceNo })" target="_blank" class="round-btn order-detail-close radius-5 pull-right">View Invoice</a>*@
+                        <a href="/myorders/InvoiceDetails?InvoiceNo=@item.InvoiceNo" target="_blank" class="round-btn order-detail-close radius-5 pull-right">View Invoice</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="item-pending-details pt-3">
+                    <img class="store-img" src="@item.ApiURL/Uploads/Stores/@item.BranchLogoImage" style="width:110px;height:110px;">
+                    <div class="full-item-details pl-0">
+                        <h3 class="pb-5 black-color"><strong>Order Details</strong></h3>
+                        <div class="row">
+                            <div class="col-sm-5"><h4 class="grey-color">Order No</h4></div>
+                            <div class="col-sm-7"><h4 class="grey-color">: #@item.InvoiceNo </h4></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5"><h4 class="grey-color">Placed on</h4></div>
+                            <div class="col-sm-7"><h4 class="grey-color">: @item.OrderDate.ToString("MMM dd, yyyy")</h4></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5"><h4 class="grey-color">Scheduled on</h4></div>
+                            <div class="col-sm-7"><h4 class="grey-color">: @item.ExpectingDelivery.ToString("MMM dd, yyyy")</h4></div>
+                        </div>
+                        @{
+                            var orderstatus = new int[] { 3, 11, 13, 16 };
+                            var History = "";
+                            switch (item.OrderStatus)
+                            {
+                                case 3:
+                                    History = "Rejected on";
+                                    break;
+                                case 11:
+                                    History = "Delivered on";
+                                    break;
+
+                                case 13:
+                                    History = "Accept Return";
+                                    break;
+                                case 16:
+                                    History = "Cancelled on";
+                                    break;
+                                default:
+                                    History = "";
+                                    break;
+                            }
+                        }
+
+
+
+                        @if (item.OrderType != 3 && item.OrderStatus >= 2)
+                        {
+
+                            <div class="row">
+                                <div class="col-sm-5"><h4 class="grey-color">Time Slot</h4></div>
+                                <div class="col-sm-7"><h4 class="grey-color">: @item.TimeSlot</h4></div>
+                            </div>
+                        }
+                        @if (item.OrderStatus >= 2 && item.OrderType == 3)
+                        {
+                            <div class="row">
+                                <div class="col-sm-5"><h4 class="grey-color">Online Tracking no</h4></div>
+                                <div class="col-sm-7"><h4 class="grey-color">: @(item.awbNo != null && item.awbNo != "" ? item.awbNo + " at SMSA" : "awbNo not generated") </h4></div>
+                            </div>
+                        }
+                        @if (item.OrderStatus == 3 || item.OrderStatus == 11 || item.OrderStatus == 16 || item.OrderStatus == 13)
+                        {
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4 class="grey-color">
+                                        @History
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7"><h4 class="grey-color">: @item.DeliveredDate.ToString("MMM dd, yyyy HH:mm tt")</h4></div>
+                            </div>
+                        }
+
+                        
+
+                        <div class="row pt-5 pb-5">
+                            <div class="col-sm-5"><h4 class="black-color">Delivery Option</h4></div>
+                            @{
+                                var orderType = "";
+                                switch (item.OrderType)
+                                {
+                                    case 1:
+                                        orderType = "Pick Up";
+                                        break;
+                                    case 2:
+                                        orderType = "Delivery";
+                                        break;
+
+                                    case 3:
+                                        orderType = "Shipping";
+                                        break;
+                                    case 4:
+                                        orderType = "Home Service";
+                                        break;
+                                    case 5:
+                                        orderType = "Store Service";
+                                        break;
+                                    default:
+                                        orderType = "";
+                                        break;
+                                }
+                            }
+                            <div class="col-sm-7"><h4 class="black-color">: @orderType</h4></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5"><h4 class="black-color">Order Total</h4></div>
+                            <div class="col-sm-7"><h4 class="nomargin">: SAR @item.GrandTotal (@(item.OrderType == 1 || item.OrderType == 2 || item.OrderType == 3 ? item.ItemsCount == 1 ? item.ItemsCount + " item)" : item.ItemsCount + " items)" : item.ItemsCount + " service)")</h4></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="full-item-details pl-0">
+                        <h4 class="pb-5 black-color"><strong>Payment Info</strong></h4>
+                        @{
+                            var paymentMode = "";
+                            switch (item.PaymentMode)
+                            {
+                                case "CC":
+                                    paymentMode = "Credit Card";
+                                    break;
+                                case "MADA" :
+                                    paymentMode = "MADA Card";
+                                    break;
+                                case "APAY":
+                                    paymentMode = "Apple Pay";
+                                    break;
+                                case "COD":
+                                    paymentMode = "Cash On Delivery";
+                                    break;
+                                default:
+                                    paymentMode = "";
+                                    break;
+                            }
+                        }
+                        @{
+                            var paymentType = "";
+                            switch (item.PaymentType)
+                            {
+                                case "PayNow":
+                                    paymentType = "Pay Now";
+                                    break;
+                                case "PayLater":
+                                    paymentType = "Pay Later";
+                                    break;
+                                case "Instant":
+                                    paymentType = "Instant";
+                                    break;
+                                case "COD":
+                                    paymentType = "COD";
+                                    break;
+                                default:
+                                    paymentType = "";
+                                    break;
+                            }
+                        }
+                    <h4 class="grey-color">
+                        @paymentMode (@paymentType)
+
+                        @if (item.OrderStatus == 15)
+                        {  <text> - Cancel Request Sent to Vendor, Wait for approval!</text> }
+
+                    </h4>
+                    </div>
+                    <hr>
+                    <div class="full-item-details pl-0">
+                        <div class="row">
+                            <div class="col-sm-5"><h4 class="black-color"><strong>Delivery Address </strong></h4></div>
+                            <div class="col-sm-7"><h4 class="Address">: @item.Address</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row pt-5">
+                        @foreach (var item2 in item.Items)
+                        {
+                            if (item2.IsAccepted == true)
+                            {
+                                <div class="col-sm-6">
+                                    <div class="item-box">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-xs-4 fwidth">
+                                            <img src="@Model.UrlPath/@item2.Image" width="100%">
+                                            </div>
+                                            <div class="col-sm-8 col-xs-8 fwidth">
+                                                <h4 class="black-color">@item2.NameEn</h4>
+
+                                                <h4>Qty: @item2.Qty @(item.OrderType == 4 || item.OrderType == 5 ? item2.CountingMeasureEn + " by " + item2.ServiceProviderName : "Items")</h4>
+                                                <h4 class="black-color">Total: <strong>SAR @item2.GrandTotal.ToString("N2")</strong></h4>
+
+                                                @if (item2.NotReturnable == false && (item.OrderType != 4 || item.OrderType != 5))
+                                                {
+                                                    if (item2.IsReturnRequest == true)
+                                                    {
+                                                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#ReturndetailsModal_@item2.OrderItemId">Return Order Details</a>
+
+                                                        <div class="modal fade" id="ReturndetailsModal_@item2.OrderItemId" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content rating-model">
+                                                                    <button type="button" class="close p-2" data-dismiss="modal">&times;</button>
+                                                                    <div class="panel-group py-3" id="accordion_@item2.OrderItemId">
+                                                                        @{
+                                                                            int d = 0;
+                                                                            foreach (var item_rr in item2.ReturnRequest)
+                                                                            {
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        <h4 class="panel-title">
+                                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_@item_rr.ReturnId">
+                                                                                                @item_rr.invoice <small>(@item_rr.RequestDate)</small>
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                    <div id="collapse_@item_rr.ReturnId" class="panel-collapse collapse @(d == 0 ? "in" : "out")">
+                                                                                        <div class="panel-body">
+                                                                                            <div class="row mb-3 clearfix">
+                                                                                                <div class="col-md-6">
+                                                                                                    <label>Requested Date</label>
+                                                                                                    <h4>@item_rr.RequestDate</h4>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label>Invoice Number</label>
+                                                                                                    <h4>@item_rr.invoice</h4>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row mb-3 clearfix">
+                                                                                                <div class="col-md-6">
+                                                                                                    <label>Quantity</label>
+                                                                                                    <h4>@item_rr.Qty</h4>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label>Status</label>
+                                                                                                    <h4 class="text-danger text-uppercase">
+                                                                                                        @item_rr.StatusIdText
+                                                                                                    </h4>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row mb-3 clearfix">
+                                                                                                <div class="col-md-6 return-images">
+                                                                                                    <label>Images</label><br />
+                                                                                                    @foreach (var item_images in item_rr.ItemImage)
+                                                                                                    {
+                                                                                                        <img src="@Model.UrlPath@item_images.Image" />
+                                                                                                    }
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label>Return Type</label>
+                                                                                                    <p>@item_rr.ReturnTypeText</p>
+                                                                                                    
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                d = d + 1;
+                                                                            }
+                                                                        }
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-default">Not Returnable</a>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        @if (item.OrderStatus == 11 && (item.OrderType == 1 || item.OrderType == 2 || item.OrderType == 3))
+                                        {
+                                            // Commented temporary
+                                            if ((item2.ReturnDays >= item2.RemainingDays) && item2.NotReturnable == false && item2.ReturnRequestStatus != 1)
+                                            // if (item2.RemainingDays > 0 && item2.NotReturnable == false && item2.ReturnRequestStatus != 1)
+                                            //if ((item2.ReturnDays <= 50) && item2.NotReturnable == false && item2.ReturnRequestStatus != 1)
+                                            {
+                                                <hr />
+                                                <div class="return-item">
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-12 col-xs-12 fwidth576">
+                                                            <h4 class="pull-left mr-3"> Return Qty: </h4>&ensp;
+                                                            <input type="button" value="-" class="btn btn-default subs pull-left" onclick="MinusQty(@item2.OrderItemId)">
+                                                            <input id="txtval_@item2.OrderItemId" type="text" value="1" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" disabled>
+                                                            <input type="button" value="+" class="btn btn-default adds pull-left" onclick="PlusQty(@item2.OrderItemId)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="mr-3 pull-left">Upload Product Images</h4>
+                                                            <div class="pull-left">
+                                                                <input type="file" id="productimages_@item2.OrderItemId" multiple="multiple" class="filecount pull-left" accept="image/*">
+                                                            </div>
+                                                            <a id="btnuploadPI_@item2.OrderItemId" onclick="UploadImages(@item2.OrderItemId,@item.OrderId)" class="btn btn-primary">Upload</a>
+                                                            <i id="spn_@item2.OrderItemId" class="fa fa-spinner fa-spin" style=" color: gray; display:none;">
+                                                            </i>
+                                                            <i id="tck_@item2.OrderItemId" class="fa fa-check" aria-hidden="true" style="color: gray; display:none;">
+                                                            </i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" id="hdnquanty_@item2.OrderItemId" value="@item2.RemainingQnty" />
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <div class="row cart-pricing pt-5">
+                        <div class="col-sm-6">
+                            <h4><strong>Remarks</strong></h4>
+                            <textarea rows="5" class="form-control" readonly>@item.Comments</textarea>
+                            @{
+                                switch (item.OrderStatus)
+                                {
+                                    case 1:  //New
+                                        <button type="button" onclick="showCancelModel(@item.OrderId,@item.OrderType,@item.OrderStatus,@item.awbNo)" class="btn btn-default">Cancel</button>
+                                        break;
+
+                                    case 5:  //UserPartialAccept
+                                         <button type="button" onclick="showCancelModel(@item.OrderId,@item.OrderType,@item.OrderStatus,@item.awbNo)" class="btn btn-default">Cancel</button>
+                                        break;
+
+                                    case 2:  //Accepted
+                                    case 7:  //Packed
+                                    case 8:  //RecipientAllowted
+                                    case 9:  //OrderPicked showCancelModel
+                                    case 10: //Dispatched
+                                        
+                                        if (item.OrderType != 3)
+                                        {
+                                            <button type="button" onclick="showCancelModel(@item.OrderId,@item.OrderType,@item.OrderStatus,@item.awbNo)" class="btn btn-default">Cancel</button>
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        </div>
+                        <div class="col-md-offset-1 col-sm-5 table-responsive">
+                            <h4 class="text-center"><strong>PRICE DETAILS</strong></h4><hr>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>SAR @item.AcceptedTotal.ToString("N2")</td>
+                                    </tr>
+
+                                    @if (item.OrderType == 3 && item.PaymentType == "COD" && item.PaymentMode == "COD")
+                                    {
+                                        <tr>
+                                            <td>COD Charges: </td>
+                                            <td>SAR @item.ShipmentCODFee.ToString("N2")</td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>Discount</td>
+                                        <td>SAR @item.AcceptedDiscountAmount.ToString("N2")</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VAT (@item.VatPercentage.ToString("N0")%) : </td>
+                                        <td>SAR @item.VAT.ToString("N2")</td>
+                                    </tr>
+                                    @if (item.OrderType == 2 || item.OrderType == 4 || item.OrderType == 3)
+                                    {
+                                        <tr>
+                                            <td>@(item.OrderType == 3 ? "Shipment" : "Delivery") Charges : </td>
+                                            <td>SAR @item.AcceptedDeliveryFee.ToString("N2")</td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>NET TOTAL</td>
+                                        <td>SAR @item.AcceptedGrandTotal.ToString("N2")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    @if (item.OrderStatus == 11 && (item.OrderType != 4 && item.OrderType != 5))
+                    {
+                        var validCount = 0;
+                        foreach (var item2 in item.Items)
+                        {
+                            if (item2.ReturnDays >= item2.RemainingDays && item2.NotReturnable == false && item2.ReturnRequestStatus != 1)
+                            {
+                                validCount = validCount + 1;
+                            }
+                        }
+                        if (validCount > 0)
+                        {
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    @if (item.PaymentMode == "COD")
+                                    {
+                                        <a class="btn return-btn" data-toggle="modal" data-target="#myModal">Return</a>
+                                    }
+                                    else
+                                    {
+                                        <a onclick="ReturnRequest('@item.PaymentMode')" class="btn return-btn">Return</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
+    </div>
+
+
+
+    <div id="Cancel_Modal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Are you sure want to cancel an Order ?</h4>
+
+                </div>
+                <div class="modal-body text-center">
+                    <button type="button" onclick="fnCancelOrder()" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <script type="text/javascript" src="~/web-assets/js/bootstrap-filestyle.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".confirm").click(function () {
+            window.location.href = "/MyOrders/index";
+            });
+        });
+        $('.filecount').filestyle({
+            input: false,
+            buttonName: 'btn-default',
+            iconName: 'fas fa-image'
+    });
+
+    var orderid2;
+    var ordertype2;
+    var orderstatus2;
+    var AwbNo2 = "";
+
+    function showCancelModel(orderid, ordertype, orderstatus, AwbNo) {
+        $("#Cancel_Modal").modal("show");
+        orderid2 = orderid;
+        ordertype2 = ordertype;
+        orderstatus2 = orderstatus;
+        AwbNo2 = AwbNo;
+    }
+
+        //function fnCancelOrder(orderid,ordertype,orderstatus,AwbNo)
+    function fnCancelOrder()
+    {
+        // debugger;
+        $("#Cancel_Modal").modal("hide");
+        $("#loader").show();
+         
+
+            $.ajax({
+                type: 'POST',
+                url: '/MyOrders/CancelOrder',
+                dataType: 'json',
+                //data: { orderId: orderid, OrderType: ordertype,OrderStatus: orderstatus, awbNo: AwbNo },
+                data: { orderId: orderid2, OrderType: ordertype2, OrderStatus: orderstatus2, awbNo: AwbNo2 },
+                success: function (data) {
+                    $("#loader").hide();
+                    if (data.Status) {
+                        swal({
+                            title: "Cancel Order",
+                            text: data.Message,
+                            icon: "success",
+                            type: 'warning',
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        })
+
+
+                    window.location.href = "/MyOrders/index";
+                    }
+                    else {
+                        swal({
+                            title: "Cancel Order",
+                            text: data.Message,
+                            icon: "error",
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        })
+                       
+                    }
+                },
+                error: function (ex) {
+                    $("#loader").hide();
+                    swal({
+                            title: "Cancel Order",
+                            text: "Something went wrong, try after sometime !",
+                            icon: "error",
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        }).then((value) =>{
+
+                    window.location.href = "/MyOrders/index";
+                        });
+                }
+            });
+        }
+    </script>

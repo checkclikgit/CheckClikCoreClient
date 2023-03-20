@@ -1,0 +1,176 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CheckClikClient
+build_property.RootNamespace = CheckClikClient
+build_property.ProjectDir = C:\Users\This pc\source\repos\checkclikgit\CheckClikCoreClient\CheckClikClient\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\This pc\source\repos\checkclikgit\CheckClikCoreClient\CheckClikClient
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/CustomerProducts/ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Home/NIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/OrderDetailsPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcT3JkZXJEZXRhaWxzUFYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/ProcessingOrdersPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUHJvY2Vzc2luZ09yZGVyc1BWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVHistoryOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZIaXN0b3J5T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVPendingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZQZW5kaW5nT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVProcessingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZQcm9jZXNzaW5nT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/IndexNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleE5lc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/PVBranchTimings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVkJyYW5jaFRpbWluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/PVProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVlByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/PVSideCategoryAndSubCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Product/_SearchResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Search/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Search/NIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXE5JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResultsStore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResultsStoreNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmVOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNewStore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/IndexNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleE5lc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/ManageAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/SignUpNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXBOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/User/_PVOffers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUFZPZmZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-cu00n5ocnz
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXcgLSBDb3B5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-96b66btm6a
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-s3ngt62fsr
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-svd3mdkhfw
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-6fu2j94ey3
+
+[C:/Users/This pc/source/repos/checkclikgit/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_StoreDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-jbemnad9j2

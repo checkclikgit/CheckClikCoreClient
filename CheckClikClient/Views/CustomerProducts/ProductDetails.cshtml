@@ -1,0 +1,1003 @@
+﻿@model Customer.Models.ProductDetailsDTO
+
+@{
+    ViewBag.Title = "Search Results | CheckClik MarketPlace";
+    Layout = "~/Views/Shared/_LayoutNew_ProductDetails.cshtml";
+
+    string ProductNameEn = Model.ProductNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    ProductNameEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(ProductNameEn.ToLower());
+    var imgmeta = Model.ProductDetailsLst.Count() > 0 ? Model.ProductDetailsLst.Where(x => x.ProductInventoryId == Model.ProductInventoryId).Distinct().FirstOrDefault().JImages.Select(x => x.Image).First() : "";
+
+
+    var brac = (Customer.Models.BaseViewModel)ViewBag.BranchModel;
+    var obj = new Customer.Models.StoreDTO();
+    obj.StoreEn = brac.StoreNameEn;
+    obj.BranchId = brac.Id;
+    obj.StoreId = brac.StoreId.ToString();
+
+    var itemtemp = Model.ProductDetailsLst.Where(x => x.ProductInventoryId == Model.ProductInventoryId).FirstOrDefault();
+    if (itemtemp == null)
+    {
+        itemtemp = new Customer.Models.ProductDetailsDTO();
+    }
+    var maincat = new CheckClickClient.Models.MainCategoryDTO();
+    maincat.NameEn = itemtemp.MainCatEn;
+    maincat.Id = itemtemp.MainCatId;
+    maincat.BranchId = brac.Id;
+    var subcat = new CheckClickClient.Models.MainCategoryDTO();
+    subcat.NameEn = itemtemp.SubCatEn;
+    subcat.Id = itemtemp.SubCatId;
+    subcat.BranchId = brac.Id;
+
+
+    string MainCategory = maincat.NameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    MainCategory = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(MainCategory.ToLower());
+
+    string SubCategory = subcat.NameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    SubCategory = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(SubCategory.ToLower());
+
+    string StoreName = obj.StoreEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    StoreName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(StoreName.ToLower());
+
+    string BranchEn = brac.BranchNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    BranchEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BranchEn.ToLower());
+
+    string Product = Model.ProductNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    Product = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Product.ToLower());
+
+}
+<title>Buy @Product at @BranchEn - @StoreName</title>
+
+<div class="page-header breadcrumb-wrap">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>@StoreName</a>
+            <span></span> <a href="#">@MainCategory</a> <span></span> @SubCategory<span></span> @ProductNameEn
+        </div>
+    </div>
+</div>@if (Model.ProductDetailsLst != null)
+{
+    var item = Model.ProductDetailsLst.Where(x => x.ProductInventoryId == Model.ProductInventoryId).Distinct().FirstOrDefault();
+    {
+        <div class="container mb-30">
+            <div class="row">
+                <div class="col-xl-11 col-lg-12 m-auto">
+                    <div class="row flex-row-reverse">
+                        <div class="col-xl-12">
+                            <div class="product-detail accordion-detail">
+                                <div class="row mb-50 mt-30">
+                                    <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
+                                        <div class="detail-gallery">
+                                            <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+
+
+                                            <!-- MAIN SLIDES -->
+                                            <div class="product-image-slider">
+                                                <figure class="border-radius-10">
+                                                    <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                </figure>
+                                                <figure class="border-radius-10">
+                                                    <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                </figure>
+                                                <figure class="border-radius-10">
+                                                    <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                </figure>
+                                                <figure class="border-radius-10">
+                                                    <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                </figure>
+                                                <figure class="border-radius-10">
+                                                    <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                </figure>
+                                                @{
+                                                    if (item != null)
+                                                    {
+                                                        foreach (var item1 in item.JImages.Distinct())
+                                                        {
+                                                                    <figure class="border-radius-10">
+                                                                        <img src="@Model.UrlPath@item1.Image" alt="product image" />
+                                                                    </figure>
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                            <!-- THUMBNAILS -->
+                                            <div class="slider-nav-thumbnails">
+                                                <div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                                <div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                                <div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                                <div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                                <div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                                @{
+                                                    if (item != null)
+                                                    {
+                                                        foreach (var item1 in item.JImages.Distinct())
+                                                        {
+                                                                    <div><img src="@Model.UrlPath@item1.Image" alt="product image" height="164" width="164" /></div>
+                                                        }
+                                                    }
+                                                }
+                                                @*<div><img src="/nest/imgs/shop/product-16-2.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/product-16-1.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/thumbnail-5.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/thumbnail-6.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/thumbnail-7.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/thumbnail-8.jpg" alt="product image" /></div>
+                                        <div><img src="/nest/imgs/shop/thumbnail-9.jpg" alt="product image" /></div>*@
+                                            </div>
+
+                                        </div>
+                                        <!-- End Gallery -->
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="detail-info pr-30 pl-30">
+                                            @if (item.StockQuantity <= item.ReservedQuantity)
+                                            {
+                                                if (item.LowStockActivity == 1)
+                                                {
+                                                //Disable buy Button
+                                                    <span class="stock-status out-stock"> UnAvailable </span>
+                                                }
+                                                else if (item.LowStockActivity == 2)
+                                                {
+
+                                                    <span class="stock-status out-stock"> UnAvailable </span>
+                                                }
+                                                else if (item.LowStockActivity == 3)
+                                                {
+
+                                                    <span class="stock-status out-stock"> Out of Stock </span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="stock-status in-stock"> In Stock </span>
+                                            }
+                                            <h2 class="title-detail">@item.ProductNameEn</h2>
+                                            <h4><strong>@item.ProductCountingNo @item.CountingNameEn</strong></h4>
+                                            <div class="product-detail-rating">
+                                                <div class="product-rate-cover text-end">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: @(item.AvgUserReviews * 20)%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> (@(item.UserReviews == 0 ? "No Reviews" : item.UserReviews == 1 ? item.UserReviews.ToString() + " Review" : item.UserReviews.ToString() + " Review"))</span>
+                                                </div>
+                                            </div>
+                                            @if (item.IsVatApplicable == true)
+                                            {
+                                                <h4><strong>VAT Exclusive</strong></h4>
+                                            }
+                                            @if (item.NotReturnable == true)
+                                            { 
+                                                <h4><strong>Not Returnable</strong></h4>
+                                            }
+                                            
+                                            <div class="clearfix product-price-cover">
+                                                <div class="product-price primary-color float-left">
+                                                    <span class="current-price text-brand">SAR <span id="spnPrice">@item.Price.ToString("N2")</span></span>
+                                                    @if (@item.Price != @item.SellingPrice)
+                                                    { 
+                                                        <span>
+                                                            @{
+                                                                decimal percentOff = (decimal)(( (@item.SellingPrice - @item.Price ) / @item.SellingPrice) * 100)  ;
+
+                                                            }
+                                                            <span class="save-price font-md color3 ml-15">@percentOff% Off</span>
+                                                            <span class="old-price font-md ml-15">SAR @item.SellingPrice.ToString("N2")</span>
+                                                        </span>
+                                                    }
+                                                    @Html.HiddenFor(Model => item.Price, new { Id = "hdnPrice" })
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="short-desc mb-30" hidden>
+                                                <p class="font-lg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi.</p>
+                                            </div>
+                                            <div class="attr-detail attr-size mb-30" hidden>
+                                                <strong class="mr-10">Size / Weight: </strong>
+                                                <ul class="list-filter size-filter font-small">
+                                                    <li><a href="#">50g</a></li>
+                                                    <li class="active"><a href="#">60g</a></li>
+                                                    <li><a href="#">80g</a></li>
+                                                    <li><a href="#">100g</a></li>
+                                                    <li><a href="#">150g</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="detail-extralink mb-50">
+                                                <div class="detail-qty border radius">
+                                                    <a href="#" class="qty-down"><i class="fi-rs-angle-small-down subs"></i></a>
+                                                    @if (item.CartQuantity > 0)
+                                                    {
+                                                        
+                                                    <span class="qty-val" id="txtval">@item.CartQuantity</span>
+                                                        @*<input type="text" id="txtval" value="@item.CartQuantity" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" />*@
+                                                    }
+                                                    else
+                                                    {
+                                                    <span class="qty-val" id="txtval">@item.MinCartQty</span>
+                                                        @*<input type="text" id="txtval" value="@item.MinCartQty" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" />*@
+                                                    }
+                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up adds"></i></a>
+                                                </div>
+                                               
+                                                <div class="product-extra-link2">
+                                                    @*<button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>*@
+                                                     @if (item.CartQuantity > 0)
+                                                    {
+                                                        <a id="btnGoToCart" class="button button-add-to-cart" href="@Url.Action("CartPreview", "Cart")">GO TO CART</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button id="btnGoToCart" class="button button-add-to-cart" href="@Url.Action("CartPreview", "Cart")" style="display:none;">GO TO CART</button>
+                                         
+                                                        if (item.StockQuantity <= item.ReservedQuantity)
+                                                        {
+                                                            if (item.LowStockActivity == 1)
+                                                            {
+                                                                //Disable buy Button
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                            }
+                                                            else if (item.LowStockActivity == 2)
+                                                            {
+                                                                //UnPublished
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                            }
+                                                            else if (item.LowStockActivity == 3)
+                                                            {
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <button id="btnAddtoCart" class="button button-add-to-cart" onclick="AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems)"><i class="fi-rs-shopping-cart"></i>ADD TO CART</button>
+                                                        }
+                                                    }
+                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#"><i class="fi-rs-heart"></i></a> 
+                                                </div>
+                                                
+                                             <input type="hidden" id="hdnMin" value="@item.MinCartQty" />
+
+                                            @if (item.AvailableQuantity >= item.MaxCartQty)
+                                            {
+                                                <input type="hidden" id="hdnMax" value="@item.MaxCartQty" />
+                                            }
+                                            else
+                                            {
+                                                <input type="hidden" id="hdnMax" value="@item.AvailableQuantity" />
+                                            }
+                                            </div>
+                                            <div class="font-xs">
+                                                <ul class="mr-50 float-start">
+                                                    <div class="mobile-social-icon">
+                                                        
+                                                    <h6><strong>Share:</strong></h6>
+                                                    <a href="#" data-js="facebook-share" class="fab fa-facebook-f"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt=""></a>
+                                                    <a href="#" data-js="twitter-share" class="fab fa-twitter"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt=""></a>
+                                                    
+                                                    </div>
+                                                    
+                                                </ul> 
+                                            </div>
+                                        </div>
+                                        <!-- Detail Info -->
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="tab-style3">
+                                        <ul class="nav nav-tabs text-uppercase">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                            </li>  
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (@item.JReviews.Count())</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content shop_info_tab entry-main-content">
+                                            <div class="tab-pane fade show active" id="Description">
+                                                @item.DescriptionEn
+                                            </div>  
+                                            <div class="tab-pane fade" id="Reviews">
+                                                <!--Comments-->
+                                                <div class="comments-area">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <h4 class="mb-30"><strong>@item.JReviews.Count() reviews for @item.ProductNameEn</strong></h4>
+                                                            <div class="comment-list">
+
+                                                                @if (@item.JReviews.Count() > 0)
+                                                                { 
+                                                                        @foreach (var reviewLst in item.JReviews)
+                                                                        {  
+                                                                            <div class="single-comment justify-content-between d-flex mb-30">
+                                                                                <div class="user justify-content-between d-flex">
+                                                                                    <div class="thumb text-center">
+                                                                                        <img src="/nest/imgs/blog/author-6.png" alt="" />
+                                                                                        <a href="#" class="font-heading text-brand">@reviewLst.DisplayName</a>
+                                                                                    </div>
+                                                                                    <div class="desc">
+                                                                                        <div class="d-flex justify-content-between mb-10">
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <span class="font-xs text-muted">@reviewLst.ReviewDate.ToString("MMM dd yyyy") </span>
+                                                                                            </div>
+                                                                                            <div class="product-rate d-inline-block">
+                                                                                                @{
+                                                                                                    int ratingLine = @reviewLst.Rating * 20;
+                                                                                                }
+                                                                                                <div class="product-rating" style="width: @ratingLine%"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p class="mb-10">@reviewLst.Comments</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div> 
+                                                                        }  
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="text-center">
+                                                                        <img src="~/web-assets/images/no-review.png" width="70%" />
+                                                                    </div>
+                                                                } 
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <h4 class="mb-30">Customer reviews</h4>
+                                                            <div class="d-flex mb-30">
+                                                                <div class="product-rate d-inline-block mr-15">
+                                                                    <div class="product-rating" style="width: @(item.AvgUserReviews * 20)%"></div>
+                                                                </div>
+                                                                <h6>@(item.AvgUserReviews) out of 5</h6>
+                                                            </div>
+                                                            <div class="progress">
+                                                                <span>5 star</span>
+                                                                <div class="progress-bar" role="progressbar" style="width: @(item.AvgUserReviews * 20)%" aria-valuenow="@(item.AvgUserReviews * 20)" aria-valuemin="0" aria-valuemax="100">@(item.AvgUserReviews * 20)%</div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-60">
+                                    <div class="col-12">
+                                        <h2 class="section-title style-1 mb-30">Related products</h2>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row related-products">
+                                            @if (item.JRelatedProducts.Count() > 0)
+                                            {
+                                                foreach (var relatedLst in item.JRelatedProducts)
+                                                {
+                                                    var StoreNameEn = TempData["StoreName"].ToString(); 
+                                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                                        <div class="product-cart-wrap hover-up">
+                                                            <div class="product-img-action-wrap">
+                                                                <div class="product-img product-img-zoom">
+                                                                    <a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">
+                                                                        <img class="default-img" src="@Model.UrlPath@relatedLst.Image" alt="" />
+                                                                        <img class="hover-img" src="@Model.UrlPath@relatedLst.Image" alt="" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-action-1">
+                                                                    <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                                    <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                                                </div>
+                                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                                    <span class="hot">Hot</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-content-wrap">
+                                                                <h2><a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">@relatedLst.ProductNameEn</a></h2>
+                                                                <div class="rating-result" title="90%">
+                                                                    <span> </span>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <span>SAR @item.SellingPrice.ToString("N2") </span>
+                                                                    <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                     
+                                                    @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 fwidth">
+                                                        <div class="thumbnail">
+                                                            <a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)">
+                                                                <img src="@Model.UrlPath@relatedLst.Image" width="100%">
+                                                            </a>
+                                                            <div class="product-list-cart">
+                                                                <i class="far fa-heart"></i><br>
+                                                                <i class="fas fa-shopping-cart"></i>
+                                                            </div>
+                                                            <a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)">
+
+                                                                <div class="caption">
+                                                                    <h4>@relatedLst.ProductNameEn</h4>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                                                            <del>SAR @item.SellingPrice.ToString("N2")</del>
+                                                                            <h4 class="pull-left">SAR @item.Price.ToString("N2")</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>*@
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <p class="text text-danger">Not Available</p>
+                                            }
+                                             
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+<script>
+    
+        $(document).ready(function () {
+             
+            /* 1. Visualizing things on Hover - See next part for action on click */
+            $('#stars li').on('mouseover', function () {
+                var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+                // Now highlight all the stars that's not after the current hovered star
+                $(this).parent().children('li.star').each(function (e) {
+                    if (e < onStar) {
+                        $(this).addClass('hover');
+                    }
+                    else {
+                        $(this).removeClass('hover');
+                    }
+                });
+
+            }).on('mouseout', function () {
+                $(this).parent().children('li.star').each(function (e) {
+                    $(this).removeClass('hover');
+                });
+            });
+
+
+            /* 2. Action to perform on click */
+            $('#stars li').on('click', function () {
+                $(".success-box").show();
+                var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+                var stars = $(this).parent().children('li.star');
+
+                for (i = 0; i < stars.length; i++) {
+                    $(stars[i]).removeClass('selected');
+                }
+
+                for (i = 0; i < onStar; i++) {
+                    $(stars[i]).addClass('selected');
+                }
+
+                // JUST RESPONSE (Not needed)
+                var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+                var msg = "";
+                if (ratingValue == 2) {
+                    msg = "Fair! You rated this " + ratingValue + " stars.";
+                }
+                else if (ratingValue == 3) {
+                    msg = "Good! You rated this " + ratingValue + " stars.";
+                }
+                else if (ratingValue == 4) {
+                    msg = "Excellent! You rated this " + ratingValue + " stars.";
+                }
+                else if (ratingValue == 5) {
+                    msg = "Wow! You rated this " + ratingValue + " stars.";
+                }
+                else {
+                    msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+                }
+                $('#hdnRatingValue').val(ratingValue);
+                responseMessage(msg);
+            });
+            // debugger;
+            //var rdurl = $(location).attr("href");
+            //var a = rdurl.split('?');
+            //var AutoAdd = getUrlParameter('qty');
+            //console.log(AutoAdd);
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('qty');
+            console.log(myParam);
+
+            if (parseInt(myParam) > 0) {
+                $('#txtval').val(myParam);
+                AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems);
+            }
+            @*if (a.length == 2) {
+                var spl = a[1].split('/');
+                var qty = spl[1].split('=');
+                console.log(qty[1]);
+                $('#txtval').val(qty[1]);
+                AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems);
+            }*@
+        });
+        function AddReview(val,ordid) {
+
+            var review = $('#txtReview').val();
+            var ratingval = $('#hdnRatingValue').val();
+            var ProductSkuId = val;
+            var OrderId = ordid;
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("AddReview", "CustomerProducts")',
+                datatype: "json",
+                data: { Review: review, RatingValue: ratingval, ProductSkuId: ProductSkuId, OrderId: OrderId },
+                traditional: true,
+                success: function (data) {
+                    var v = data.success;
+                    if (v == true) {
+                        location.reload();
+                    }
+                    else {
+                        window.location.href = v;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            });
+        }
+        function UserLogin() {
+            // debugger
+            var MobileEmailId = $('#MobileEmailId').val();
+            var Password = $('#Password').val();
+            var a = 0; b = 0;
+
+            if (isNaN(MobileEmailId)) {
+                a = 1;
+            }
+            else if (!isNaN(MobileEmailId)) {
+
+                if (MobileEmailId.length != 9) {
+                    $('#logMobNoErr').html('Mobile Number Must be 9 Digit.').addClass("text-danger");
+                    a = 1;
+                }
+                else
+                    a = 0;
+            }
+            if (!validateEmail(MobileEmailId)) {
+                b = 1;
+            }
+            else if (validateEmail(MobileEmailId)) {
+                b = 0;
+            }
+            else {
+                if (isNaN(MobileEmailId)) {
+                    $('#logMobNoErr').html('Invalid Email.').addClass("text-danger");
+                }
+                else
+                    b = 1;
+            }
+            if (a == 1 && b == 1) {
+                if (MobileEmailId == '')
+                    $('#logMobNoErr').html('Mobile/EmailId Required').addClass("text-danger");
+                else
+                    $('#logMobNoErr').html('Invalid Mobile/EmailId').addClass("text-danger");
+                return;
+            }
+            else if (a == 0) {
+                MobileEmailId = "+966" + MobileEmailId;
+
+            }
+            else if (b == 0) {
+            }
+
+
+            if (MobileEmailId == '' || Password == '') {
+
+                if (MobileEmailId == '') {
+                    $('#logMobNoErr').html('Mobile/EmailId Required').addClass("text-danger");
+                }
+                else {
+                    $('#logMobNoErr').html('');
+                }
+                if (Password == '') {
+                    $('#PasswordErr').html('Password Required').addClass("text-danger");
+                }
+                else {
+                    $('#PasswordErr').html('');
+                }
+                return;
+            }
+            var userDetails = { 'LoginName': MobileEmailId, 'Password': Password }
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("UserLoginValidation", "CustomerProducts")',
+                datatype: "json",
+                data: { UserData: userDetails },
+                success: function (data) {
+                    var v = data.Status;
+                    if (v == true) {
+                        $('#btnAddtoCart').hide();
+                        $('#btnGoToCart').show();
+                        location.reload();
+                    }
+                    else {
+                        window.location.href = v;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            });
+        }
+        function validateEmail($email) {
+            var emailReg = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return emailReg.test($email);
+        }
+
+
+        function AddToCart(val, id, branchid, cartbranchid,cartitems) {
+
+            var quantity = $('#txtval').val();
+            var productinventoryid = id;
+            if (val == 1) {
+
+                if (cartitems == 1) {
+                    var trimurl = $(location).attr("href").split('?');
+                    var urls = trimurl[0];
+                    if (branchid != cartbranchid) {
+
+                        swal({
+                            title: "Replace Cart Items?",
+                            text: "Your Cart Contains Items From Another Store. Do you want to discard the selection and add Items",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-danger",
+                            confirmButtonText: "Yes!",
+                            closeOnConfirm: false
+                        },
+                            function () {
+                                $.ajax({
+                                    async: false,
+                                    type: "post",
+                                    url: '@Url.Action("AddToCartProduct", "CustomerProducts")',
+                                    datatype: "json",
+                                    data: { quantity: quantity, productInventoryId: productinventoryid },
+                                    traditional: true,
+                                    success: function (data) {
+                                        var v = data.success;
+                                        if (v == true) {
+                                            $('#btnAddtoCart').hide();
+                                            $('#btnGoToCart').show();
+                                            //location.reload();
+
+                                            console.log(urls);
+                                            window.location.href = urls;
+                                        }
+                                        else {
+                                            window.location.href = v;
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        return false;
+                                    }
+                                })
+                            });
+                    }
+                    else {
+                        $.ajax({
+                            async: false,
+                            type: "post",
+                            url: '@Url.Action("AddToCartProduct", "CustomerProducts")',
+                            datatype: "json",
+                            data: { quantity: quantity, productInventoryId: productinventoryid },
+                            traditional: true,
+                            success: function (data) {
+                                var v = data.success;
+                                if (v == true) {
+                                    $('#btnAddtoCart').hide();
+                                    $('#btnGoToCart').show();
+                                    //location.reload();
+                                    console.log(urls);
+                                    window.location.href = urls;
+                                }
+                                else {
+                                    window.location.href = v;
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                return false;
+                            }
+                        });
+                    }
+                }
+                else {
+                    $.ajax({
+                        async: false,
+                        type: "post",
+                        url: '@Url.Action("AddToCartProduct", "CustomerProducts")',
+                        datatype: "json",
+                        data: { quantity: quantity, productInventoryId: productinventoryid },
+                        traditional: true,
+                        success: function (data) {
+                            var v = data.success;
+                            if (v == true) {
+                                $('#btnAddtoCart').hide();
+                                $('#btnGoToCart').show();
+                                location.reload();
+                            }
+                            else {
+                                window.location.href = v;
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            return false;
+                        }
+                    });
+                }
+            }
+            else {
+                //$('#modalLoginForm').modal('toggle');
+                $.ajax({
+                    //async: false,
+                    type: "get",
+                    url: '@Url.Action("islogin", "base")',
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        if (data == true) {
+                            location.reload();
+                        }
+                        else {
+                            var url = $(location).attr("href").split('?');
+                            url = url + "?qty=" + quantity +"&rdct=1";
+                            var redirection = '@Url.Action("index","user" , new { returnurl = "_url_" })';
+                            var red2 = redirection.replace("_url_", url);
+                            window.location.href = red2;
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        return false;
+                    }
+                });
+            }
+        }
+
+        $('#txtval').keyup(function () {
+            // debugger;
+                    var dInput = this.value;
+                    console.log(dInput);
+                    var min = $('#hdnMin').val();
+                    var max = $('#hdnMax').val();
+                    if (parseInt(min) > parseInt(dInput)) {
+                        $('#txtval').val(min);
+                    }
+                    else if (parseInt(dInput) >= parseInt(max)) {
+                        $('#txtval').val(max);
+                    }
+                    else {
+                        $('#txtval').val(dInput);
+                    }
+                });
+
+        $('.variant_1 li a').on('click', function () {
+            //$('#variant_1').html(+'<span id="spn_1">' + $(this).html() + '</span><span class="caret"></span>');
+
+            $('#spn_1').html($(this).html());
+
+            var tlt = $('#hdnTotalVariantOptions').val();
+            var variants = [];
+            for (var i = 1; i <= tlt; i++) {
+                var val = $('#spn_' + i).html();
+                if (i == 1) {
+                    variants.push($(this).html());
+                }
+                else {
+                    variants.push(val);
+                }
+            }
+
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("VariantProduct", "CustomerProducts")',
+                datatype: "json",
+                data: { variants: variants },
+                traditional: true,
+                success: function (data) {
+                    var currenturl = $(location).attr("href")
+                    var a = currenturl.split("p/")[0];
+                    var ur = a.concat('p/', data.Url);
+                    window.location.href = ur;
+                    //window.location.href = data.Url;
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            })
+
+        })
+        $('.variant_2 li a').on('click', function () {
+            //$('#variant_2').html(+'<span id="spn_2">' + $(this).html() + '</span><span class="caret"></span>');
+            $('#spn_2').html($(this).html());
+
+            var tlt = $('#hdnTotalVariantOptions').val();
+            var variants = [];
+            for (var i = 1; i <= tlt; i++) {
+                var val = $('#spn_' + i).html();
+                if (i == 2) {
+                    variants.push($(this).html());
+                }
+                else {
+                    variants.push(val);
+                }
+            }
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("VariantProduct", "CustomerProducts")',
+                datatype: "json",
+                data: { variants: variants },
+                traditional: true,
+                success: function (data) {
+                    // debugger;
+                    var currenturl = $(location).attr("href")
+                    var a = currenturl.split("p/")[0];
+                    var ur = a.concat('p/', data.Url);
+                    window.location.href = ur;
+                    //window.location.href = data.Url;
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            })
+        })
+        $('.variant_3 li a').on('click', function () {
+            //$('#variant_3').html(+'<span id="spn_3">' + $(this).html() + '</span><span class="caret"></span>');
+            $('#spn_3').html($(this).html());
+
+
+            var tlt = $('#hdnTotalVariantOptions').val();
+            var variants = [];
+            for (var i = 1; i <= tlt; i++) {
+                var val = $('#spn_' + i).html();
+                if (i == 3) {
+                    variants.push($(this).html());
+                }
+                else {
+                    variants.push(val);
+                }
+            }
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("VariantProduct", "CustomerProducts")',
+                datatype: "json",
+                data: { variants: variants },
+                traditional: true,
+                success: function (data) {
+                    var currenturl = $(location).attr("href")
+                    var a = currenturl.split("p/")[0];
+                    var ur = a.concat('p/', data.Url);
+                    window.location.href = ur;
+                    //window.location.href = data.Url;
+
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            })
+        })
+
+        $('.adds').click(function add() {
+            var _qty = $(this).parent().children(".noOfQty");
+
+            var min = $('#hdnMin').val();
+            var max = $('#hdnMax').val();
+            var act = $('#txtval').val();
+            if (min <= act && max > act) {
+                var $rooms = $(_qty);
+                var a = $rooms.val();
+
+                a++;
+                $(".subs").prop("disabled", !a);
+                $rooms.val(a);
+            }
+
+        });
+        $(".subs").prop("disabled", !$(".noOfQty").val());
+
+        $('.subs').click(function subst() {
+
+                    var _qty = $(this).parent().children(".noOfQty");
+
+                    var min = $('#hdnMin').val();
+                    var max = $('#hdnMax').val();
+                    var act = $('#txtval').val();
+                    if (min < act && max >= act) {
+
+                var $rooms = $(_qty);
+                var b = $rooms.val();
+                if (b >= 1) {
+                    b--;
+                    $rooms.val(b);
+                }
+                else {
+                    $(".subs").prop("disabled", true);
+                }
+            }
+        });
+
+        // Change image on thumbnail hover.
+        var thumbs = $(".icon-images").find("img");
+        thumbs.hover(function () {
+            $(".ithumbnail").removeClass("active-op");
+            $(this).addClass("active-op");
+            var src = $(this).attr("src");
+            var dp = $(".display-img");
+            dp.attr("src", src);
+        });
+
+        function AddFavoriteItem(item,subcat) {
+            //var id = $('#hdnsubcategoryid').val();
+            // debugger;
+            if ($("#favicon").hasClass("red-color")) {
+                // debugger;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddDeleteFavorite")',
+                    datatype: "json",
+                    data: { Type: 3, StatusId: 1, ItemId: item, SubCategoryId: subcat },
+                    success: function (data) {
+                        // debugger;
+                        if (data.success == "true") {
+                            // debugger
+                            $('#favicon').removeClass("red-color");
+                        }
+                        else {
+                            var url = $(location).attr("href");
+                            url = url + '&Item=' + item;
+                            var redirection = '@Url.Action("Index","User" , new { returnurl = "_url_" })';
+                            var red2 = redirection.replace("_url_", url);
+                            window.location.href = red2;
+                        }
+                    },
+                    onerror: function (data) {
+                        // debugger
+                        $('.loader').hide();
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddDeleteFavorite")',
+                    datatype: "json",
+                    data: { Type: 2, StatusId: 1, ItemId: item, SubCategoryId: subcat },
+                    success: function (data) {
+                        // debugger;
+                        if (data.success == "true") {
+                            // debugger
+                            $('#favicon').addClass("red-color");
+                        }
+                        else {
+                            //location.reload();
+                            var url = $(location).attr("href");
+                            var redirection = '@Url.Action("Index","User" , new { returnurl = "_url_" })';
+                            var red2 = redirection.replace("_url_", url);
+                            window.location.href = red2;
+                        }
+                    },
+                    onerror: function (data) {
+                        // debugger
+                        //$('.loader').hide();
+                    }
+                });
+            }
+        }
+</script>

@@ -1,0 +1,129 @@
+﻿@model Customer.Models.MyOrdersDTO
+@{
+    var url = Model.UrlPath;
+}
+<div class="pending-items">
+
+    @if (Model.UsersPendingOrdersList != null)
+    {
+        foreach (var item in Model.UsersPendingOrdersList)
+        {
+    <div class="mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="bullet pull-left">Pending</h4>
+                <h4 class="pull-right">Order No: <span class="red-color">#@item.InvoiceNo</span></h4>
+            </div>
+        </div>
+        <div class="pending-item-box">
+            <div class="row d-flex">
+                <div class="col-sm-11 col-xs-10">
+                    @foreach (var item2 in item.Items)
+                    {
+                        <div class="row item-box">
+                            <div class="col-sm-3 col-xs-4">
+                                @*<img src="@ViewBag.ProductImages/@item2.Image" width="100%">*@
+                                <img src="@url@item2.Image" width="100%">
+                            </div>
+                            <div class="col-sm-9 col-xs-8">
+                                @if (item.OrderStatus == 4)
+                                {
+                                    if (item2.IsAccepted == false)
+                                    {
+                                        <div class="reject-msg">
+                                            <span id="reject-msg-@item2.OrderItemId" class="round-btn pull-right" onclick="fnRejectmsg(@item2.OrderItemId)">?</span>
+                                            <div id="reason-msg-@item2.OrderItemId" class="reason-msg">
+                                                <button type="button" id="cancel-reject-msg-@item2.OrderItemId" class="close" onclick="fnHideReject(@item2.OrderItemId)">&times;</button>
+                                                <p>@item2.Reason</p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <h3>@item2.NameEn</h3>
+                                <h4>Qty: @item2.Qty Items</h4>
+                                @if (item.OrderStatus == 4)
+                                {
+                                    if (item2.IsAccepted == false)
+                                    {
+
+                                        <h4 class="pull-right"><i class="fas fa-times round-btn reject"></i> Rejected </h4>
+                                    }
+                                    else
+                                    {
+                                        <h4 class="pull-right"><i class="fas fa-check round-btn"></i> Accepted </h4>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <hr class="nomargin">
+                    }
+                    <hr class="nomargin">
+                </div>
+                <div class="col-sm-1 col-xs-2">
+                    <a href="#" onclick="OrderDetails(@item.OrderId,1)">
+                        <i class="fas fa-caret-right"></i>
+                    </a>
+                </div>
+            </div>
+            @if (item.OrderStatus == 1)
+            {
+                <div class="row item-box">
+                    <h4 class="text-center">Your order is yet to be accepted by the vendor.</h4>
+                </div>
+            }
+            else
+            {
+                <div class="row item-box text-center">
+                    <h4>@item.RejectedItemsCount out of @item.ItemsCount items have been rejected</h4>
+                    @*<h4>Would you like to confirm your order with Cash on Delivery?</h4>*@
+                    <h4>Would you like to confirm your order?</h4>
+
+                    <button type="button" id="partial-accept" onclick="fnPartialAccept(@item.OrderId)" class="btn btn-default">YES</button>
+                    <button type="button" id="partial-reject" onclick="fnPartialReject(@item.OrderId)" class="btn btn-default">NO</button>
+                </div>
+            }
+        </div>
+    </div>
+        }
+    }
+</div>
+<div class="" id="dvpendingpaging">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo-pending" class="pagination">
+                <!-- <a href="#">&lt;</a> -->
+                @*<a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&gt;</a>*@
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnToPagesCountForPendingPagination" value="@Model.pagingNumber" />
+<input type="hidden" id="hdnPageNumberPending_twbs" value="@Model.PageNumber" />
+    <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+    <script src="~/jquery.twbsPagination.js"></script>
+    <script type="text/javascript">
+    $(function () {
+
+        //var sortid = $('#hdnSortId').val();
+        var sortid = 1;//$('#hdnSortId').val();
+        //var pNo = $('#hdnPageNumberPending_twbs').val() == "" ? "1" : $('#hdnPageNumberPending_twbs').val();
+        var pNo = $('#hdnPageNumberPending_twbs').val() == "" || $('#hdnPageNumberPending_twbs').val() == "0" ? "1" : $('#hdnPageNumberPending_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo-pending').twbsPagination({
+            totalPages: $('#hdnToPagesCountForPendingPagination').val(),
+            visiblePages: 5,
+            startPage: i,   
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetAjaxCallPendingOrders(page, sortid);
+            }
+        });
+    });
+    </script>

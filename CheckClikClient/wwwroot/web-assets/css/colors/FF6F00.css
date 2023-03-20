@@ -1,0 +1,45 @@
+/*a {
+    color: #FF6F00;
+    background-color: #FF6F00;
+}*/
+
+.store-categories-banner.main-menu .badge,
+.store-sub-categories-banner.main-menu .badge,
+.search__bar.input-group .input-group-btn .btn,
+.btn-danger,
+.form-wrapper .button-panel .button,
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.sub-header .text-right a .badge-default {
+    background-color: #FF6F00 !important;
+}
+
+.search__bar.input-group .input-group-btn .btn,
+.search__bar.input-group .form-control:focus,
+.btn-danger {
+    border-color: #FF6F00 !important;
+}
+
+#msform input:focus, #msform textarea:focus {
+    border: 1px solid #FF6F00 !important;
+}
+
+.product-detail-tabs .nav-tabs > li.active > a,
+.myorder-tabs .nav-tabs > li.active > a,
+.wishlist-tabs .nav-tabs > li.active > a {
+    border-bottom: 2px solid #FF6F00 !important;
+}
+
+/*.breadcrumb .breadcrumb-item i,*/
+.Product-cart-list .cart-pricing .table tr:last-child,
+.item-pending-details .cart-pricing .table tr:last-child,
+.user-menu ul li a i,
+.user-details .form-wrapper a small,
+/*.stores-banner .breadcrumb-item i,
+.store-products-details .breadcrumb-item i,*/
+.product-details .social-icons a:hover,
+.rating-model .rating-stars ul > li.star.hover > i.fa,
+.rating-model .rating-stars ul > li.star.selected > i.fa,
+.rating-display .rating-stars ul li.selected i.fa,
+.sub-header .left i {
+    color: #FF6F00 !important;
+}
