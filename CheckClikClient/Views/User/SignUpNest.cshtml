@@ -319,6 +319,20 @@
                                                         <input type="password" id="passConf" name="passConf" class="form-control pb_height-50 reverse" autocomplete="off" required="required" placeholder="Confirm Password" />
                                                         <span id='ConpswrdErr' class="text-danger"></span>
                                                     </div>
+                                                    <div class="custome-radio">
+                                                        <input class="form-check-input" onchange="CRNShowHide()" type="radio" value="1" name="CustomerType" id="exampleRadios3" checked="">
+                                                        <label class="form-check-label" for="exampleRadios3">Business to customer</label>
+                                                    </div>
+                                                    <div class="custome-radio">
+                                                        <input class="form-check-input" onchange="CRNShowHide()" value="2" type="radio" name="CustomerType" id="exampleRadios4">
+                                                        <label class="form-check-label" for="exampleRadios4">Business to business</label>
+                                                    </div>
+                                                    <div class="form-group" id="crn">
+                                                        <label class="text-bold-600" for="exampleInputEmail1">CRN <small>(Company registration number)</small></label>
+                                                        <input type="text" id="crnNumber" required="required" maxlength="50" name="CRN" class="form-control pb_height-50 reverse" placeholder="Please enter CRN number" autocomplete="off" />
+                                                        <span id='crnErr' class="text-danger"></span>
+                                                    </div>
+                                                    
                                                     <button type="button" class="btn btn-primary glow w-100 position-relative" onclick="submitSign()">Sign Up<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
                                                 </div>
                                                 <div role="tabpanel" class="tab-pane" id="step2">
@@ -534,6 +548,18 @@
     </div>
 
     <script>
+        $(document).ready(function(){
+            CRNShowHide();
+        })
+        function CRNShowHide() {
+            var customerType=$('input[name="CustomerType"]:checked').val();
+            if(customerType==1){
+                $("#crn").hide();
+            }
+            else{
+                $("#crn").show();
+            }
+            }
         function chars(e) {
              var key = document.all ? key = e.keyCode : key = e.which;
              return ((key > 64 && key < 91) || (key > 96 && key < 123));
@@ -577,6 +603,13 @@
                 $('#lnameErr').html('Last Name Required').addClass("text-danger");
                 // return;
             }
+            if ($("#crnNumber").val() == '' && $('input[name="CustomerType"]:checked').val()==2) {
+                $('#crnErr').html('CRN Required').addClass("text-danger");
+                // return;
+            }
+            if ($("#crnNumber").val() != '') {
+                $('#crnErr').html('');
+            }
             if ($("#lnam").val() != '') {
                 $('#lnameErr').html('');
             }
@@ -615,6 +648,11 @@
                     $('#ConpswrdErr').html('');
             }
             if (pl != 0 || cpl != 0 || valemail != 0) {
+                $('#step2').hide();
+                $('#step1').show();
+                return false;
+            }
+            if ($("#crnNumber").val() == '' && $('input[name="CustomerType"]:checked').val() == 2) {
                 $('#step2').hide();
                 $('#step1').show();
                 return false;
@@ -768,11 +806,12 @@
             var lastName = $("#lnam").val();
             var EmailId = $("#eml").val();
             var Password = $("#pswd").val();
+            var CRN = $("#crnNumber").val();
             $('#otpError').html("");
             $('#step2').hide();
             $('#step3').show();
 
-            var userDetails = { 'FirstName': firstName, 'LastName': lastName, 'EmailId': EmailId, 'MobileNo': mobileNo, 'OtpCode': otpno, 'Password': Password };
+            var userDetails = { 'FirstName': firstName, 'LastName': lastName, 'EmailId': EmailId, 'MobileNo': mobileNo, 'OtpCode': otpno, 'Password': Password,'CRN':CRN };
             var stringData = JSON.stringify(userDetails)
 
             $.ajax({
