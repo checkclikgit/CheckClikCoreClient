@@ -12,6 +12,7 @@ namespace Customer.Models
 		public long UserId { get; set; } = 0;
         public bool IsLogin{ get; set; }
         public string UserName { get; set; }
+        public string? CRN { get; set; }
         public int CartBranchId { get; set; }
         public int CartItems { get; set; }
         public string UserProfile { get; set; }

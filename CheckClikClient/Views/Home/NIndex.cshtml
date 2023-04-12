@@ -8,6 +8,9 @@
     background-color: #29A56C !important;
     border-radius: 10px;
 }
+.header-info{
+    margin-left:2em;
+}
 </style>
 
 
@@ -16,7 +19,7 @@
     <div class="container mb-30">
         <div class="archive-header-2 text-center pt-90 pb-60">
             <h1 class="display-2 mb-50">
-                <img id="logo" style="right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+                <img id="logo" style="right: 150px;bottom: 20px;" src="~/Images/checkclikwithoutlogo.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
             </h1>
             <div class="row">
                 <div class="col-lg-5 mx-auto">
@@ -28,6 +31,7 @@
                             </form>
                             
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -57,15 +61,15 @@ else
             <h1 class="display-2 mb-50">
                 @if (Model == null)
                 {
-                    <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+                    <img id="logo" style="right: 150px;bottom: 20px;width:40%" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
                 }
                 else if (!string.IsNullOrEmpty(Model.ImagePath))
                 {
-                    <img id="logo" style="    right: 150px;bottom: 20px;" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" height="100" />
+                    <img id="logo" style="right: 150px;bottom: 20px;width:40%" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" height="100" />
                 }
                 else
                 {
-                    <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+                    <img id="logo" style="right: 150px;bottom: 20px; width:40%" src="~/Images/checkclikwithoutlogo.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
                 }
             </h1>
             <div class="row">

@@ -6,12 +6,12 @@
     @*<title>CheckClik - Multipurpose eCommerce HTML Template</title>*@
     <title>@ViewBag.Title </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content>
-    <meta property="og:type" content>
-    <meta property="og:url" content>
-    <meta property="og:image" content>
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="fonts/favicon.svg">
     <!-- Template CSS -->
@@ -50,6 +50,15 @@
         .header-style-1 .header-middle-ptb-1 {
             padding: 10px 0;
         }
+        html,body{
+    height: 100%;
+    overflow-y:hidden;
+}
+.download-app{
+
+    justify-content:center;
+    margin:10px !important;
+}
     </style>
 </head>
     @{ 
@@ -276,7 +285,7 @@
                                                             new { @id = "select-district", @class = "select form-control", @data_live_search = "true" }) 
                                                         </div>
                                                         <div class="form-group text-center mb-0">
-                                                            <button type="button" class="btn btn-default btn-sm" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 0px 0px 18px 25px !important;" onclick="fnupdatecitydistrict();">Filter</button>
+                                                            <button type="button" class="btn btn-link btn-sm" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 0px 0px 18px 25px !important;" onclick="fnupdatecitydistrict();">Filter</button>
                                                         </div>
                                                 </div>  
                                             </div>
@@ -426,7 +435,7 @@
                                             <a href="#">
                                                 <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
                                             </a>
-                                            <a href="@Url.Action("IndexNest", "User")"><span class="lable ml-0">Login</span></a>
+                                            <a href="@Url.Action("IndexNest", "User")"><span class="lable">Login</span></a>
                                         } 
                                 </div>
                             </div>
@@ -623,22 +632,22 @@
     <main class="main">
         @RenderBody()
     </main>
-    <footer class="main">
+    <footer class="main fixed-bottom">
         
-        <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+        @*<div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
             <div class="row align-items-center">
                 <div class="col-12 mb-30">
                     <div class="footer-bottom"></div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
-                    @*<a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
-                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>*@
+                    <a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
+                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
                     <div class="footer-link-widget widget-install-app col">
-                        @*<h4 class="widget-title">Install App</h4>
-                        <p class="wow fadeIn animated">From App Store or Google Play</p>*@
+                        <h4 class="widget-title">Install App</h4>
+                        <p class="wow fadeIn animated">From App Store or Google Play</p>
                         <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
                         
                         <div class=" download-app">
@@ -658,8 +667,58 @@
                     </div>
                 </div>
             </div>
+        </div>*@
+        <section class="section-padding footer-mid">
+            <div class="container justify-content-center text-center pt-15 pb-20">
+                <div class="row">
+                    <div class="footer-link-widget widget-install-app col">
+                       @* <h4 class="widget-title">Install App</h4>
+                        <p class="wow fadeIn animated">From App Store or Google Play</p>
+                        <div class="download-app">
+                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
+                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
+                        </div>*@
+                        <p class="mb-20">Secured Payment Gateways</p>
+                        <img class="wow fadeIn animated" src="/nest/imgs/theme/payment-method.png" alt="" />
+                        @*<div class="download-app">
+                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
+                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container pb-30 mt-auto">
+            <div class="row align-items-center">
+                <div class="col-12 mb-30">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+                </div>
+                <div class="col-xl-4 col-lg-6 justify-content-center text-center d-none d-xl-block">
+                        <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
+                    <div class="header-info text-center">
+                        <ul>
+                            <li><a href="page-about.htlm">Sell with Us</a></li>
+                            <li><a href="page-account.html">Terms & Conditions</a></li>
+                            <li><a href="shop-wishlist.html">Terms for Sale</a></li>
+                            <li><a href="shop-order.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                    <div class="mobile-social-icon">
+                        <h6>Follow Us</h6>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                    </div>
+                    <p class="font-sm">Up to 15% discount on your first subscribe</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </footer>@*
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -669,7 +728,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
     <input type="hidden" name="hdnnmlat" id="hdnidlat" />
 
     <input type="hidden" name="hdnnmlong" id="hdnidlong" />

@@ -232,6 +232,7 @@ namespace CheckClikClient.Controllers
                                             ss.UserId = user.Id;
                                             ss.UserName = user.FirstName;
                                             ss.IsLogin = true;
+                                            ss.CRN = user.CRN;
                                             //ss.UserProfile = Profileurl + user.ProfilePhoto;
                                             ss.UserProfile = user.ProfilePhoto == "" || user.ProfilePhoto == null ? Profileurl + "user.png" : Profileurl + user.ProfilePhoto;
                                             ss.UserChatId = user.UserChatId;

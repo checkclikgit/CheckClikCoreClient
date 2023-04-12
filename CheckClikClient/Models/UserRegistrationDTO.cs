@@ -24,6 +24,7 @@ namespace CheckClickClient.Models
         public string ProfilePhoto { get; set; }
         public int FlagId { get; set; }
         public string UserChatId { get; set; }
+        public string? CRN { get; set; }
         public JArray JGroupChatId { get; set; }
     }
     public class CustomerRegistrationDTO
