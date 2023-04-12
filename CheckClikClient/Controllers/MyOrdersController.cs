@@ -136,6 +136,69 @@ namespace Customer.Controllers
                 }
             }
         }
+        public async Task<ActionResult> IndexNest(Int64 Id = 0)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                bool status = false;
+                _commonHeader.setHeaders(client);
+                try
+                {
+                    UserHistoryByBranchTypeUserOrderIdDTO objNew = new UserHistoryByBranchTypeUserOrderIdDTO();
+                    MyOrdersDTO obj = new MyOrdersDTO();
+                    SessionDTO login = AppUtils.UserLogin;
+                    if (login == null)
+                    {
+                        return RedirectToAction("Index", "User"); // later call login form
+                    }
+                    else
+                    {
+                        obj.Id = login.UserId;
+                        objNew.Id = login.UserId;
+                        TempData.Remove("ReturnItems_DataTable_" + login.UserId);
+                    }
+                    //obj.Id = 13;
+                    obj.Type = 1;
+                    objNew.Type = 1;
+
+                    HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CustomerRegistrationAPI/UserHistoryOrdersByBranchTypeUserOrderId", objNew);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                        var apiRes = JObject.Parse(responseData);
+                        var a = apiRes.SelectToken("Data").ToString();
+                        //var b = JArray.Parse(a);
+                        //var c = b.SelectToken("Result").ToString();
+
+
+                        status = Convert.ToBoolean(apiRes.SelectToken("Status").ToString());
+                        var lstUserPendingOrders = JsonConvert.DeserializeObject<List<MyOrdersDTO>>(a);
+                        if (lstUserPendingOrders != null)
+                        {
+                            //if (lstUserPendingOrders.Count != 0)
+                            //{
+                            //    obj.UsersPendingOrdersList = lstUserPendingOrders;                               
+                            //}
+                            //else
+                            //    obj.UsersPendingOrdersList = null;
+
+                            //TempData["TempPendingOrderList"] = lstUserPendingOrders;
+                            //TempData["TempProcessingOrderList"] = null;
+                            //TempData["TempHistoryOrderList"] = null;
+                        }
+                    }
+                    obj.OrderId = Id;
+                    return View(obj);
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogDTO err = new ErrorLogDTO();
+                    //AssignValuesToDTO.AssingDToValues(err, ex, "UserList/IndexGet", "India Standard Time.");
+                    _errorHandler.WriteError(err, ex.Message);
+                    return RedirectToAction("Error");
+                }
+            }
+        }
 
         public async Task<List<MyOrdersDTO>> GetOrderDetailsAsync(long orderid, int type)
         {

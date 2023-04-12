@@ -24,7 +24,8 @@ namespace Customer.Models
         public DateTime? EndDate { get; set; }
         public int CountryId { get; set; }
         public string Country { get; set; }
-        public string[] RegionId { get; set; }
+        //public string[] RegionId { get; set; }
+        public string RegionId { get; set; }
         public string RegionIds { get; set; }
         public bool IsUptoApplicable { get; set; }
         public int WeekNo { get; set; }

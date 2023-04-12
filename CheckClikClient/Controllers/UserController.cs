@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using CheckClickClient.Models;
 using SearchLibrary.Models;
+using System.Collections.Generic;
 
 namespace CheckClikClient.Controllers
 {
@@ -661,6 +662,54 @@ namespace CheckClikClient.Controllers
             }
             return View(user);
         }
+        public async Task<ActionResult> MyProfileNest()
+        {
+            CustomerRegistrationDTO user = new CustomerRegistrationDTO();
+            if (AppUtils.UserLogin != null)
+            {
+                SessionDTO objs = AppUtils.UserLogin;
+                if (objs.IsLogin == false)
+                    return RedirectToAction("index", "user");
+                user.FlagId = 1;
+                user.Id = Convert.ToInt64(objs.UserId);
+                using (HttpClient client = new HttpClient())
+                {
+                    _commonHeader.setHeaders(client);
+                    try
+                    {
+                        HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CustomerRegistrationAPI/NewViewProfile", user);
+                        if (responseMessage.IsSuccessStatusCode)
+                        {
+                            var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                            var response = JObject.Parse(responseData);
+                            bool Status = Convert.ToBoolean(response.SelectToken("Status"));
+                            var Message = Convert.ToString(response.SelectToken("Message"));
+                            var Data = response.SelectToken("Data");
+                            user = JsonConvert.DeserializeObject<CustomerRegistrationDTO>(Data.ToString());
+                            if (user.ProfilePhoto != null)
+                            {
+                                TempData["ProfilePhoto"] = user.ProfilePhoto;
+                                // user.ProfilePhoto = Profileurl + user.ProfilePhoto;
+                                user.ProfilePhoto = user.ProfilePhoto == "" || user.ProfilePhoto == null ? Profileurl + "user.png" : Profileurl + user.ProfilePhoto;
+                                user.MobileNo = user.MobileNo.Substring(4);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //ErrorLogDTO err = new ErrorLogDTO();
+                        //  AssignValuesToDTO.AssingDToValues(err, ex, "Vendor/BranchesController/SaveBranchDescription", "India Standard Time.");
+                        //ErrorHandler.WriteError(err, ex.Message);
+                    }
+
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
@@ -736,7 +785,7 @@ namespace CheckClikClient.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                return RedirectToAction("ManageAddress");
+                return RedirectToAction("ManageAddressNest");
             }
             else
             {
@@ -787,7 +836,7 @@ namespace CheckClikClient.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                return RedirectToAction("ManageAddress");
+                return RedirectToAction("ManageAddressNest");
             }
 
         }
@@ -849,6 +898,15 @@ namespace CheckClikClient.Controllers
                                               NameEn = gcs.Key.NameEn,
                                               Id = gcs.Key.Id
                                           }).ToList();
+
+                        List<OffersCDTO> lstOffersDto = new List<OffersCDTO>();
+                        for (int i = 0; i <= 2; i++)
+                        {
+                            OffersCDTO offersCDTO = new OffersCDTO();
+                            offersCDTO.NameEn = "This is a test offer"; 
+                            lstOffersDto.Add(offersCDTO);
+                        }
+                        obj.ListOffers = lstOffersDto;
                     }
                     else
                     {
@@ -857,7 +915,8 @@ namespace CheckClikClient.Controllers
                     }
                 }
                 //return PartialView("_PVOffers", obj);
-                var result = await _viewRenderService.RenderToStringAsync("User/_PVOffers", obj);
+                obj.ApiURL = _options.apiurl;
+                var result = await _viewRenderService.RenderToStringAsync("User/_PVOffersNest", obj);
                 return Json(new { result = result });
             }
             catch (Exception ex)
@@ -1019,6 +1078,144 @@ namespace CheckClikClient.Controllers
             return View(user);
         }
 
+
+        public async Task<ActionResult> ManageAddressNest()
+        {
+            CustomerManageAddressDTO user = new CustomerManageAddressDTO();
+            if (AppUtils.UserLogin != null)
+            {
+
+                var userLogin = (Customer.Models.SessionDTO)AppUtils.UserLogin;
+                if (userLogin.IsLogin == false)
+                {
+                    return RedirectToAction("index");
+                }
+
+                SessionDTO objs = (SessionDTO)AppUtils.UserLogin;
+                user.FlagId = 1;
+                user.Id = Convert.ToInt64(0);
+                user.UserId = Convert.ToInt64(objs.UserId);
+                using (HttpClient client = new HttpClient())
+                {
+                    _commonHeader.setHeaders(client);
+                    try
+                    {
+                        HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CustomerAPI/NewGetCustomerAddress", user);
+                        if (responseMessage.IsSuccessStatusCode)
+                        {
+                            var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                            var response = JObject.Parse(responseData);
+                            bool Status = Convert.ToBoolean(response.SelectToken("Status"));
+                            var Message = Convert.ToString(response.SelectToken("Message"));
+                            var Data = response.SelectToken("Data");
+                            IEnumerable<CustomerManageAddressDTO> objbids = new List<CustomerManageAddressDTO>();
+                            if (Data != null)
+                            {
+                                user.ListOfCustomerAddress = JsonConvert.DeserializeObject<List<CustomerManageAddressDTO>>(Data.ToString());
+                                objbids = user.ListOfCustomerAddress;
+                            }
+
+                            List<CountryDTO> getCountryList = new List<CountryDTO>();
+                            CountryDTO obj = new CountryDTO();
+                            obj.Id = 0;
+                            HttpResponseMessage responseMessageCountry = await client.PostAsJsonAsync("api/CountryAPI/NewGetCountryDetails", obj);
+                            if (responseMessageCountry.IsSuccessStatusCode)
+                            {
+                                var responseDataCountry = responseMessageCountry.Content.ReadAsStringAsync().Result;
+                                var DataCountry = JsonConvert.DeserializeObject<List<CountryDTO>>(responseDataCountry);
+                                getCountryList = DataCountry;
+                            }
+                            if (getCountryList != null)
+                            {
+                                user.CountryList = getCountryList;
+                            }
+
+                            CitysDTO objCity = new CitysDTO();
+                            obj.Id = 0;
+                            List<CitysDTO> getCityList = new List<CitysDTO>();
+
+                            HttpResponseMessage responseMessageCity = await client.PostAsJsonAsync("api/CityAPI/NewGetCityDetails", obj);
+                            if (responseMessageCity.IsSuccessStatusCode)
+                            {
+                                var responseDataCity = responseMessageCity.Content.ReadAsStringAsync().Result;
+                                var DataCity = JsonConvert.DeserializeObject<List<CitysDTO>>(responseDataCity);
+                                getCityList = DataCity;
+                            }
+                            if (getCityList != null)
+                            {
+                                user.CityList = getCityList;
+                            }
+                            if (TempData["EditAddress"] != null)
+                            {
+                                user = JsonConvert.DeserializeObject<CustomerManageAddressDTO>(TempData["EditAddress"].ToString());// (CustomerManageAddressDTO)ViewBag.EditAddress;
+                                user.Update = true;
+                                ViewBag.optradio = user.AddressType;
+                                if (getCountryList != null)
+                                {
+                                    user.CountryList = getCountryList;
+                                }
+                                if (getCityList != null)
+                                {
+                                    user.CityList = getCityList;
+                                }
+                                user.ListOfCustomerAddress = objbids;
+                            }
+                            else
+                            {
+                                user.Create = true;
+                            }
+                        }
+                        else
+                        {
+                            user.Create = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+                using (HttpClient client = new HttpClient())
+                {
+                    _commonHeader.setHeaders(client);
+                    try
+                    {
+                        HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CustomerRegistrationAPI/NewViewProfile", new CustomerManageAddressDTO() { Id = Convert.ToInt64(objs.UserId) });
+                        if (responseMessage.IsSuccessStatusCode)
+                        {
+                            var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                            var response = JObject.Parse(responseData);
+                            bool Status = Convert.ToBoolean(response.SelectToken("Status"));
+                            var Message = Convert.ToString(response.SelectToken("Message"));
+                            var Data = response.SelectToken("Data");
+                            var _resUser = JsonConvert.DeserializeObject<CustomerManageAddressDTO>(Data.ToString());
+                            if (_resUser.ProfilePhoto != null)
+                            {
+                                user.FirstName = _resUser.FirstName;
+                                user.LastName = _resUser.LastName;
+                                user.EmailId = _resUser.EmailId;
+                                user.Address = _resUser.Address;
+
+                                TempData["ProfilePhoto"] = _resUser.ProfilePhoto;
+                                user.ProfilePhoto = _resUser.ProfilePhoto == "" || _resUser.ProfilePhoto == null ? Profileurl + "user.png" : Profileurl + _resUser.ProfilePhoto;
+                                user.MobileNo = _resUser.MobileNo.Substring(4);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> ManageAddress(CustomerManageAddressDTO user, string optradio, string submit)
@@ -1130,7 +1327,7 @@ namespace CheckClikClient.Controllers
                         //ErrorLogDTO err = new ErrorLogDTO();
                         //  AssignValuesToDTO.AssingDToValues(err, ex, "Vendor/BranchesController/SaveBranchDescription", "India Standard Time.");
                         //ErrorHandler.WriteError(err, ex.Message);
-                        return RedirectToAction("manageaddress", "user");
+                        return RedirectToAction("manageaddressNest", "user");
                     }
 
                 }
@@ -1141,7 +1338,7 @@ namespace CheckClikClient.Controllers
             }
             user.FlagId = 2;
             TempData["EditAddress"] = JsonConvert.SerializeObject(user);
-            return RedirectToAction("ManageAddress","User");
+            return RedirectToAction("ManageAddressNest","User");
         }
 
 
@@ -1182,7 +1379,7 @@ namespace CheckClikClient.Controllers
             {
                 return RedirectToAction("index");
             }
-            return RedirectToAction("ManageAddress");
+            return RedirectToAction("ManageAddressNest");
         }
 
 
@@ -1198,6 +1395,20 @@ namespace CheckClikClient.Controllers
             if (userLogin.IsLogin == false)
             {
                 return RedirectToAction("index");
+            }
+            return View();
+        }
+        [HttpGet]
+        public async Task<ActionResult> ChangePasswordNest()
+        {
+            if (AppUtils.UserLogin == null)
+            {
+                return RedirectToAction("NIndex");
+            }
+            var userLogin = (Customer.Models.SessionDTO)AppUtils.UserLogin;
+            if (userLogin.IsLogin == false)
+            {
+                return RedirectToAction("NIndex");
             }
             return View();
         }

@@ -349,6 +349,62 @@ namespace CheckClickClient
             }
             set { Current.Session.SetString(SessionKeyConstants.Product_Details_Lst, JsonConvert.SerializeObject(value)); }
         }
+        public static BillingAddressDTO BillingAddr
+        {
+            get
+            {
+                var billingAddressString = Current.Session.GetString(SessionKeyConstants.Billing_Address);
+                BillingAddressDTO productDetails = new BillingAddressDTO();
+                if (billingAddressString != null)
+                {
+                    productDetails = JsonConvert.DeserializeObject<BillingAddressDTO>(billingAddressString);
+                }
+                return productDetails;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Billing_Address, JsonConvert.SerializeObject(value)); }
+        }
+        public static HyperpayCheckoutRequestDTO PayObj
+        {
+            get
+            {
+                var HyperpayCheckoutRequestString = Current.Session.GetString(SessionKeyConstants.Pay_Obj);
+                HyperpayCheckoutRequestDTO HyperpayCheckoutRequestDTO = new HyperpayCheckoutRequestDTO();
+                if (HyperpayCheckoutRequestString != null)
+                {
+                    HyperpayCheckoutRequestDTO = JsonConvert.DeserializeObject<HyperpayCheckoutRequestDTO>(HyperpayCheckoutRequestString);
+                }
+                return HyperpayCheckoutRequestDTO;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Pay_Obj, JsonConvert.SerializeObject(value)); }
+        }
+        public static string Trans_Id
+        {
+            get
+            {
+                var Trans_IdString = Current.Session.GetString(SessionKeyConstants.Trans_Id);
+                string Trans_IdDTO = "";
+                if (Trans_IdString != null)
+                {
+                    Trans_IdDTO = JsonConvert.DeserializeObject<string>(Trans_IdString);
+                }
+                return Trans_IdDTO;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Trans_Id, JsonConvert.SerializeObject(value)); }
+        }
+        public static string transactionId
+        {
+            get
+            {
+                var transactionIdString = Current.Session.GetString(SessionKeyConstants.Transaction_Id);
+                string TransIdDTO = "";
+                if (transactionIdString != null)
+                {
+                    TransIdDTO = JsonConvert.DeserializeObject<string>(transactionIdString);
+                }
+                return TransIdDTO;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Trans_Id, JsonConvert.SerializeObject(value)); }
+        }
 
     }
 }

@@ -1,0 +1,999 @@
+﻿@model Customer.Models.MyOrdersDTO
+@{
+    ViewBag.Title = "CHECKCLIK | My Orders";
+    Layout = "~/Views/Shared/_LayoutNew_Profile.cshtml";
+}
+
+<meta http-equiv="refresh" content="600">
+
+    <style>
+        .reject-msg {
+            position: relative;
+        }
+
+            .reject-msg span {
+                cursor: pointer;
+            }
+
+        .reason-msg {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            z-index: 6;
+            background-color: rgb(181, 0, 0);
+            color: #fff;
+            padding: 10px;
+        }
+
+        #reason-msg button {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        #loader {
+            background-color: rgba(255, 255, 255, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            display: flex;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+        }
+
+        svg {
+            width: 100px;
+            height: 100px;
+        }
+
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            background-color: #fff;
+            opacity: 1;
+        }
+
+        .side-nav-ug .cart-list .cart-item .btn-danger, .Product-cart-list .cart-update .btn-danger, .Product-cart-list .cart-pricing a {
+            background-color: #7F7F7F;
+            color: #fff;
+            margin-top: 15px;
+        }
+    </style>
+    <style>
+        .user-img, .user-menu, .user-details {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            -webkit-box-shadow: 0 0 10px #ccc;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+            .user-img img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .user-img .image-upload > input {
+                display: none;
+            }
+
+            .user-menu ul li a {
+                display: block;
+                font-size: 15px;
+                padding: 10px 0 0;
+                font-weight: 500
+            }
+
+                .user-menu ul li a:hover {
+                    color: #d06e67
+                }
+
+                .user-menu ul li a i {
+                    width: 30px;
+                    color: #666666;
+                }
+
+            .user-menu hr {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .user-details .form-wrapper {
+                max-width: none;
+                margin: inherit;
+                box-shadow: none;
+                background: #fff;
+            }
+
+                .user-details .form-wrapper a small {
+                    font-size: 14px;
+                    color: #666666;
+                }
+
+                .user-details .form-wrapper input {
+                    background: #fff;
+                }
+
+        /*.user-details .form-wrapper .button-panel .button {
+                            height: 45px;
+                        }*/
+    </style>
+
+    <style>
+        .tab-style3 .nav-tabs li.nav-item a { 
+            padding: 13px 51px !important; 
+        }
+        .banner-left-icon {
+            position: relative;
+            background: #F4F6FA;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+        .page-item{
+        padding: 0px 1px;
+        }
+        /*.page-item .page-link {
+    border: 0 !important;
+    padding: 0 10px !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+    border-radius: 40px !important;
+    color: #7E7E7E !important;
+    line-height: 40px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-family: "Quicksand", sans-serif !important;
+    font-size: 16px !important;
+    background-color: #F2F3F4 !important;
+}*/
+.page-item.active .page-link {
+    border: 0 !important;
+    padding: 0 10px !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+    border-radius: 40px !important;
+    color: #7E7E7E !important;
+    line-height: 40px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-family: "Quicksand", sans-serif !important;
+    font-size: 16px !important;
+    background-color: #F2F3F4 !important;
+}
+.pagination {
+    display: flex !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+}
+.pagination-area .page-item.active .page-link, .pagination-area .page-item:hover .page-link {
+    color: #fff !important;
+    background: #3BB77E !important;
+}
+.pagination-area .page-item {
+    margin: 0 5px !important;
+}
+
+     .invoice-header {
+        border-bottom: 1px solid #ececec;
+    }
+
+    .invoice .invoice-header {
+        padding: 20px 50px;
+        border-radius: 10px 10px 0 0;
+        
+    }
+
+    .invoice .invoice-top {
+        padding: 31px 0px 0px 100px;
+        font-size: 15px;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 10px;
+    }
+        .invoice .invoice-center {
+        padding: 0 20px 40px;
+    }
+        .invoice .invoice-bottom {
+        padding: 0 20px 25px;
+    }
+        .invoice {
+        padding: 50px 0;
+        background: #fff;
+    }
+    </style>
+    @{
+    var user = CheckClickClient.AppUtils.UserLogin;
+}
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Fill Bank Details</h4>
+                <small class="red-color">( This popup for Cash payment only )</small>
+            </div>
+            <div class="modal-body text-center">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        @* Replace bank name to bank list *@
+                        <input type="text" id="txtbankname" class="form-control" autocomplete="off" placeholder="Enter Bank Name" name="bankname" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtname" class="form-control" autocomplete="off" placeholder="Enter A/C Holder Name" name="acname" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        @* Replace accont number to Address line *@
+                        <input type="text" id="txtaccountnumber" class="form-control" autocomplete="off" placeholder="Enter Account No" name="acno" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtibanno" class="form-control" autocomplete="off" placeholder="IBAN" name="iban" maxlength="50">
+                    </div>
+                    <a class="btn btn-default" onclick="ReturnRequest('COD')">Submit</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-content pt-50 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="dashboard-menu">
+                                    <ul class="nav flex-column" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="dashboard-tab"  href="/user/MyProfileNest" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>My Orders</a>
+                                </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="track-orders-tab"  href="~/wishlist"  aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Wishlist</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="address-tab"  href="~/user/manageAddressNest"  aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Manage Account</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="account-detail-tab"  href="~/user/changePasswordNest" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Change Password</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("logout", "user")"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="tab-content account dashboard-content pl-50"> 
+                                      
+                                    <div class="product-info">
+                                                        <div class="tab-style3">
+                                                            <ul class="nav nav-tabs text-uppercase">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" id="pending-tab" data-bs-toggle="tab" href="#pending">Pending</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="Additional-info-tab" onclick="GetAjaxCallProcessOrders(1,1)"  data-bs-toggle="tab" href="#processing">Processing</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="history-tab" onclick="GetAjaxCallHistoryOrders(1,1)" data-bs-toggle="tab" href="#history">History</a>
+                                                                </li> 
+                                                            </ul>
+                                                            <div class="tab-content shop_info_tab entry-main-content">
+                                                                <div class="tab-pane fade show active" id="pending">
+                                                  
+                                                                </div>
+                                                                <div class="tab-pane fade" id="processing">
+                                                                     <div id="tbl_ProcessingOrder_div"></div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="history">
+                                                                     <div id="tbl_HistoryOrder_div"></div> <!--Partial view-->
+                                                                </div> 
+                                                                <div id="pending_orderdetails" style="display:none;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
+
+
+
+
+
+<section class="profile" hidden>
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-sm-4">
+                <div class="same-block-height">
+                    <div class="user-img">
+                        <div class="image-upload">
+                            <label for="file-input">
+                                @if (user.UserProfile != null)
+                                {
+                                    <img id="imgProfile" src="@user.UserProfile" />
+                                }
+                                else
+                                {
+                                    <img id="imgProfile" src="~/web-assets/images/user-profile.png" />
+                                }
+
+                            </label>
+                            <input id="file-input" type="file" name="ProfilePic" value="Choose file" accept="image/*" onchange="loadFile(event)" />
+
+                            <span class="pl-8 ">@user.UserName</span>
+                        </div>
+                    </div>
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="~/user/myProfile"><i class="fas fa-user"></i> Profile</a></li>
+                            <hr />
+                            <li><a href="~/myorders"><i class="fas fa-box-open"></i> My Orders</a></li>
+                            <hr />
+                            <li><a href="~/wishlist"><i class="fas fa-heart"></i> Wishlist</a></li>
+                            <hr />
+                            <li><a href="~/user/manageAddress"><i class="fas fa-address-book"></i> Manage Account</a></li>
+                            <hr />
+                            <li><a href="~/user/changePassword"><i class="fas fa-sync-alt"></i> Change Password</a></li>
+                            <hr />
+                            @*<li><a href="~/user/chat"><i class="fa fa-comments" aria-hidden="true"></i> Chat</a></li>
+                            <hr />*@
+                            <li><a href="@Url.Action("logout", "user")"><i class="fas fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 user-details">
+
+
+
+
+
+                @*<section class="myorder-tabs mb-5">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <ul class="nav nav-tabs text-center">
+                                    <li class="active"><a href="#pending" data-toggle="tab">PENDING</a></li>
+                                    <li><a href="#processing" onclick="GetAjaxCallProcessOrders(1,1)" data-toggle="tab">PROCESSING</a></li>
+                                    <li><a href="#history" onclick="GetAjaxCallHistoryOrders(1,1)" data-toggle="tab">HISTORY</a></li>
+
+                                </ul>
+                                <div class="tab-content pt-3">
+
+                                    <div class="tab-pane box-items tab-pending active" id="pending">
+                                    </div>
+                                    <div class="tab-pane box-items tab-pending" id="processing">
+                                        <div id="tbl_ProcessingOrder_div"></div> <!--Partial view-->
+                                    </div>
+                                    <div class="tab-pane box-items tab-pending" id="history">
+                                        <div id="tbl_HistoryOrder_div"></div> <!--Partial view-->
+                                    </div>
+
+                                    <div id="pending_orderdetails" style="display:none;">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>*@
+
+
+            </div>
+        </div>
+    </div>
+</section>
+@*<input type="hidden" id="hdnFinalJson" />*@
+
+      
+
+    <script src="~/web-assets/js/sweetalert.js"></script>
+    <script src="~/web-assets/js/slick.js"></script>
+    @*<script type="text/javascript" src="~/web-assets/js/bootstrap-filestyle.min.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            GetAjaxCallPendingOrders(1, 1);
+            if ('@Model.OrderId' != 0)
+                NotificationOrderDetails('@Model.OrderId');
+        });
+
+        function ReturnRequest(payment) {
+            // debugger
+            var incr = 0;
+            var fileData = new FormData();
+            var bank_name = $('#txtbankname').val();
+            var account_number = $('#txtaccountnumber').val();
+            var account_name = $('#txtname').val();
+            var iban_number = $('#txtibanno').val();
+            if (payment == 'COD') {
+                if (bank_name != "") {
+                    fileData.append('BankBIC', bank_name);
+                }
+                else {
+                    incr = 1;
+                    $('#txtbankname').focus();
+                    return false;
+                }
+
+                if (account_name != "") {
+                    fileData.append('AccountName', account_name);
+                }
+                else {
+                    incr = 1;
+                    $('#txtname').focus();
+                    return false;
+                }
+
+                if (account_number != "") {
+                    fileData.append('AccountNumber', account_number);
+                }
+                else {
+                    incr = 1;
+                    $('#txtaccountnumber').focus();
+                    return false;
+                }
+
+
+
+                if (iban_number != "") {
+                    fileData.append('IbanNumber', iban_number);
+                }
+                else {
+                    incr = 1;
+                    $('#txtibanno').focus();
+                    return false;
+                }
+            }
+
+            if (incr == 0) {
+                fileData.append('Payment', payment);
+
+                $("#myModal").modal('hide');
+                $("#loader").show();
+                $.ajax({
+                    url: '@Url.Action("ReturnOrderRequest")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (data) {
+                        $("#loader").hide();
+                        if (data == true) {
+                            location.reload();
+                        }
+                        else {
+                            if (data == false) {
+                                swal('Something went wrong, Try after sometime.');
+                            }
+                            else {
+                                swal('Something went wrong, Try after sometime.');
+                            }
+                        }
+                    },
+                    error: function (ex) {
+                        $("#loader").hide();
+                        swal('Unable to upload file.');
+                    }
+                });
+            }
+        }
+
+        function UploadImages(id, orderid) {
+
+            // debugger
+            var Qty = parseInt($('#txtval_' + id).val());
+            var OrderItemId = id;
+            var OrderId = orderid;
+
+            var Images_json = [];
+
+            var incr = 0;
+            var fileData = new FormData();
+            var fileid = 'productimages_' + id;
+            var inp = document.getElementById(fileid);
+            if (inp.files.length != 0) {
+                var cnt = inp.files.length;
+                if (cnt > 4) {
+                    incr = 1;
+                    alert('Max Images are 4')
+                    return false;
+                }
+
+                $('#spn_' + id).show();
+                var fileUpload = $("#productimages_" + id).get(0);
+                var files = fileUpload.files;
+                //var contentType = fileUpload.files.item(0).type;
+                var name = fileUpload.files.item(0).name;
+                for (var j = 0; j < files.length; j++) {
+                    //var contentType = fileUpload.files[j].type;
+                    var contentType = fileUpload.files.item(j).type;
+                    var mn = 'productimages.' + id + j + contentType + ',';
+                    fileData.append(files[j].name, files[j]);
+                    var f_name = files[j].name;
+                    fileData.append('contentType', contentType);
+
+                    //var filePath = files[j].value;
+                    //var allowedExtensions = /(\.jpg|\.jpeg|\.png|\image.jpg|\image.jpeg|\image.png|)$/i;
+                    //if (!allowedExtensions.exec("." + contentType)) {
+                    //    alert('Please upload file having extensions .jpeg/.jpg/.png/.pdf only.');
+                    //    //inp.value = '';
+                    //    //return false;
+                    //}
+                }
+
+
+                fileData.append('Qty', Qty);
+                fileData.append('OrderItemId', OrderItemId);
+                fileData.append('OrderId', OrderId);
+            }
+            else {
+                incr = 1;
+            }
+
+            if (incr == 0) {
+
+
+
+                var qnty = parseInt($('#hdnquanty_' + id).val());
+                var userqnty = parseInt($('#txtval_' + id).val());
+                if (qnty >= userqnty && userqnty != 0) {
+
+                    $.ajax({
+                        url: '@Url.Action("AddReferencedocument")',
+                        dataType: "json",
+                        type: "POST",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (data) {
+                            $('#spn_' + id).hide();
+                            $('#tck_' + id).show();
+                            $('#btnuploadPI_' + id).text('Uploaded');
+
+                            $('#hdnFinalJson').val(data);
+                            console.log(data);
+                        },
+                        error: function (ex) {
+                            swal('Failed to upload file.' + ex);
+                        }
+                    });
+                }
+                else {
+                    alert('Invalid Quantity');
+                }
+            }
+            else {
+                alert('Please Upload the Product Images');
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        $('#loader').hide();
+
+        $(document).ready(function () {
+            $('.customer-logos').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 1367,
+                    settings: {
+                        slidesToShow: 5
+                    }
+                }, {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }]
+            });
+        });
+
+        function PlusQty(id) {
+
+            var min = 1;
+            var max = $('#hdnquanty_' + id).val();
+            var act = $('#txtval_' + id).val();
+
+            if (min <= act && max > act) {
+                var a = parseInt(act);
+                a++;
+                $('#txtval_' + id).val(a);
+
+            }
+        }
+
+        function MinusQty(id) {
+
+            var min = 1;
+            var max = $('#hdnquanty_' + id).val();
+            var act = $('#txtval_' + id).val();
+
+            if (min < act && max >= act) {
+
+                var a = parseInt(act);
+                if (a >= 1) {
+                    a--;
+                }
+
+                $('#txtval_' + id).val(a);
+            }
+        }
+
+        function OrderDetails(orderid, type) {
+            $('#loader').show();
+            $('#pending_orderdetails').show();
+            var paramOrderDetails = JSON.stringify({ orderid: parseInt(orderid), type: parseInt(type) });
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("OrderDetails", "MyOrders")',
+                data: { orderid: orderid, type: type },
+                success: function (data) {
+                    if (data != "") {
+                        $('#pending_orderdetails').html('');
+                        $('#pending_orderdetails').html(data.result);
+                        //$('#pending_orderdetails').show();
+                        if (type == 1) {
+                            $('#pending').removeClass('active');
+                        }
+                        else if (type == 2) {
+                            $('#processing').removeClass('active');
+                        }
+                        else if (type == 3) {
+                            $('#history').removeClass('active');
+                        }
+                        $('#loader').hide();
+                    }
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function NotificationOrderDetails(orderid) {
+            $('#loader').show();
+            $('#pending_orderdetails').show();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("OrderConfirmed", "MyOrders")',
+                data: { id: orderid },
+                success: function (data) {
+                    if (data != "") {
+                        $('#pending_orderdetails').html('');
+                        $('#pending_orderdetails').html(data);
+                        $('#loader').hide();
+                        $('#pending').removeClass('active');
+                        $('#processing').removeClass('active');
+                        $('#history').removeClass('active');
+                    }
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function closedetailsPV(type) {
+            $('#pending_orderdetails').hide();
+            if (type == 1) {
+                $('#pending').addClass('active');
+            }
+            else if (type == 2) {
+                $('#processing').addClass('active');
+            }
+            else if (type == 3) {
+                $('#history').addClass('active');
+            }
+        }
+
+        function fnRejectmsg(id) {
+
+            $("#reason-msg-" + id).show();
+        }
+
+        function fnHideReject(id) {
+            $("#reason-msg-" + id).hide();
+        }
+
+        function fnPartialAccept(orderid) {
+            $('#loader').show();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PartialAccept")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    $('#loader').hide();
+                    swal({
+                        title: "Accept Partial Order!",
+                        text: "Partial order accepted successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    }).then((value) => {
+                        window.location.href = '@Url.Action("index","MyOrders")';
+                    });
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                    alert('Something went wrong, try after sometime!');
+                }
+            });
+        }
+
+        function fnPartialReject(orderid) {
+            $('#loader').show();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PartialReject")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    $('#loader').hide();
+                    swal({
+                        title: "Cancel Partial Order!",
+                        text: "Partial order cancelled successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    }).then((value) => {
+                        //window.location.href = "/MyOrders";
+                        window.location.href = '@Url.Action("index","MyOrders")';
+                    });
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                    alert('Something went wrong, try after sometime!');
+                }
+            });
+        }
+
+        function GetAjaxCallUserOrders(type) {
+            $('#loader').show();
+            var type = type;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ProcessingOrdersPV")',
+
+                //dataType: 'json',
+                data: { Type: type },
+                success: function (data) {
+                    if (data != "" && type == 2) {
+                        $('#tbl_ProcessingOrder_div').html('');
+                        $('#tbl_ProcessingOrder_div').html(data);
+                    }
+                    if (data != "" && type == 3) {
+                        $('#tbl_HistoryOrder_div').html('');
+                        $('#tbl_HistoryOrder_div').html(data);
+                    }
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function GetAjaxCallPendingOrders(page, sort) {
+            $('#pending_orderdetails').html('');
+            $('#loader').show();
+            var type = type;
+            //var param = JSON.stringify({ pageNumber: parseInt(page), sortId: parseInt(sort) });
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PVPendingOrderlist")',
+                 
+                //data: {model : param},
+                data: { pageNumber: parseInt(page), sortId: parseInt(sort) },
+                success: function (data) {
+                    $('#loader').hide();
+                    if (data != "") {
+                        $('#pending').html('');
+                        $('#pending').html(data.result);
+                    }
+                    //if (data != "" && type == 3) {
+                    //    $('#tbl_HistoryOrder_div').html('');
+                    //    $('#tbl_HistoryOrder_div').html(data);
+                    //}
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function GetAjaxCallProcessOrders(page, sort) {
+            $('#pending_orderdetails').html('');
+            $('#loader').show();
+            var type = type;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PVProcessingOrderlist")',
+
+                //dataType: 'json',
+                data: { pageNumber: page, SortId: sort },
+                success: function (data) {
+                    $('#loader').hide();
+                    if (data != "") {
+                        $('#tbl_ProcessingOrder_div').html('');
+                        $('#tbl_ProcessingOrder_div').html(data.result);
+                    }
+                    //if (data != "" && type == 3) {
+                    //    $('#tbl_HistoryOrder_div').html('');
+                    //    $('#tbl_HistoryOrder_div').html(data);
+                    //}
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function GetAjaxCallHistoryOrders(page, sort) {
+            $('#pending_orderdetails').html('');
+            $('#loader').show();
+            var type = type;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PVHistoryOrderlist")',
+
+                //dataType: 'json',
+                data: { pageNumber: page, SortId: sort },
+                success: function (data) {
+                    if (data != "") {
+                        $('#tbl_HistoryOrder_div').html('');
+                        $('#tbl_HistoryOrder_div').html(data.result);
+                    }
+                    //if (data != "" && type == 3) {
+                    //    $('#tbl_HistoryOrder_div').html('');
+                    //    $('#tbl_HistoryOrder_div').html(data);
+                    //}
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript">
+
+        function fnRescheduleAccept(orderid) {
+            $('#loader').show();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RescheduleAccept")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    $('#loader').hide();
+                    swal({
+                        title: "Accepted",
+                        text: "Reschedule order accepted successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    }).then((value) => {
+                        window.location.href = "@Url.Action("index","myorders")";
+                    });
+                    GetAjaxCallProcessOrders(1, 1);
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                    alert('Something went wrong, try after sometime!');
+                }
+            });
+        }
+        function fnRescheduleReject(orderid) {
+            $('#loader').show();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RescheduleReject")',
+                dataType: 'json',
+                data: { orderId: orderid },
+                success: function (data) {
+                    $('#loader').hide();
+                    swal({
+                        title: "Rejected!",
+                        text: "Reschedule order cancelled successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    }).then((value) => {
+                        window.location.href = "@Url.Action("index","myorders")";
+                    });
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                    alert('Something went wrong, try after sometime!');
+                }
+            });
+        }
+        function blockchars(e) {
+            var key = document.all ? key = e.keyCode : key = e.which;
+            return ((key > 64 && key < 91) || (key > 96 && key < 123) || key == 8 || key == 32 || (key >= 48 && key <= 57));
+        }
+        function blockcharsGeo(e) {
+            var key = document.all ? key = e.keyCode : key = e.which;
+            return ((key > 64 && key < 91) || (key > 96 && key < 123) || key == 8 || key == 32 || (key >= 48 && key <= 57) || key == 46 || key == 45);
+        }
+        function blockcharsnp(e) {
+            var key = document.all ? key = e.keyCode : key = e.which;
+            return ((key > 64 && key < 91) || (key > 96 && key < 123) || key == 8 || (key >= 48 && key <= 57));
+        }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if ((charCode < 47 || charCode > 57))
+                return false;
+            return true;
+        }
+
+
+
+
+    </script>
+
+
+

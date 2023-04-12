@@ -33,6 +33,10 @@
         public const string Search_Result = "__searchResult";
         public const string Branch_List = "__branchlist";
         public const string Product_Details_Lst = "__productDetailsLst";
+        public const string Billing_Address = "__billingAddress";
+        public const string Trans_Id = "__transId";
+        public const string Pay_Obj = "__payObj";
+        public const string Transaction_Id = "__transactionId";
 
         public const string AUTHENTICATE_RESPONSE = "__authenticateresponse";
 

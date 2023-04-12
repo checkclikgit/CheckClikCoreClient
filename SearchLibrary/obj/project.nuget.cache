@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tjFaYL/8Hp5r7WjoVBxuUzSkPAQaJyP5pTL0AhP3oF5glBNW6yjwwqnGqYVlTYY6pKgPfGcnybsdIZUzAEdTcA==",
+  "dgSpecHash": "QJWpyXZyeWwze3/wrBgjFKWfb77FLePALY0AIbru5V7EiFDqqTb4+zELPt0mTyabNzcdIS+2pyDlIiRQk600TA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj",
+  "projectFilePath": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This pc\\.nuget\\packages\\commonservicelocator\\2.0.6\\commonservicelocator.2.0.6.nupkg.sha512",
     "C:\\Users\\This pc\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",

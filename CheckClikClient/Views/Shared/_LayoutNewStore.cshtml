@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html class="no-js" lang="en"> 
 @using CheckClickClient;
+@inject IConfiguration Configuration;
 <head>
     <meta charset="utf-8">
     @*<title>CheckClik - Multipurpose eCommerce HTML Template</title>*@
@@ -55,7 +56,8 @@
     @{ 
         IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
         Customer.Models.CartDTO url = new Customer.Models.CartDTO();
-        url.UrlPath = ViewBag.UrlPath;
+        //url.UrlPath = ViewBag.UrlPath;
+        url.UrlPath = Configuration["apiurl"]+""+Configuration["UploadLocation"]+""+"/Products/";
 
         Decimal totalVatL = 0;
         Decimal totalAmtL = 0;
@@ -348,39 +350,40 @@
                                     </a>
                                     <a href="shop-cart.html"><span class="lable">Cart</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                        <ul>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Nest" src="/nest/imgs/shop/thumbnail-3.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                    <h4><span>1 × </span>$800.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Nest" src="/nest/imgs/shop/thumbnail-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                    <h4><span>1 × </span>$3200.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                        
+                                        @foreach (var item in cartlst)
+                                        {
+                                            <ul>
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="shop-product-right.html"><img alt="Nest" src="@url.UrlPath@item.Image"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="shop-product-right.html">@item.ProductNameEn</a></h4>
+                                                        <h4><span>@item.CartQuantity × </span> <i id="lblpriceL1_@item.CartId">@item.Price.ToString("N2")</i> = @((item.CartQuantity * @item.Price).ToString("N2"))</h4>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#" onclick="removeL1(@item.CartId)"><i class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li> 
+                                            </ul>
+                                             
+                                            @if (item.CartStatus == true)
+                                            {
+                                                    totalAmtL = totalAmtL + item.TotalItemPrice;
+                                                    totalVatL = totalVatL + item.TotalVatAmount ;
+                                            }
+                                        }
+
+                                         
+                                        
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
-                                                <h4>Total <span>$4000.00</span></h4>
+                                                <h4>Total <span>SAR @(totalAmtL.ToString("N2"))</span></h4>
                                             </div>
                                             <div class="shopping-cart-button">
-                                                <a href="shop-cart.html" class="outline">View cart</a>
-                                                <a href="shop-checkout.html">Checkout</a>
+                                                <a href="/Cart/Cartpreview" class="outline">View cart</a>
+                                                <a href="/Cart/Checkout">Checkout</a>
                                             </div>
                                         </div>
                                     </div>

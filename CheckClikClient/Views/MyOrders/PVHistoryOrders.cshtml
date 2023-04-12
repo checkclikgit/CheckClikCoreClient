@@ -10,7 +10,63 @@
         var sr = 0;
         foreach (var item in Model.UsersProcessingOrdersList)
         {
-            <div class="mb-3">
+            <div class="banner-text mt-2">
+                <div class="row">
+                    <div class="col-sm-11 col-md-11 col-lg-11">
+                        @if(@item.OrderStatusEn == "Rejected")
+                        {
+                            <h5 class="icon-box-title">Order No(<span style="color:#cc5656">@item.OrderStatusEn</span>): #@item.InvoiceNo #@item.OrderTrackingDate.ToString("MMM dd, yyyy")</h5>
+                        }
+                        else{
+                            <h5 class="icon-box-title">Order No(@item.OrderStatusEn): #@item.InvoiceNo #@item.OrderTrackingDate.ToString("MMM dd, yyyy")</h5>
+                        }
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <a href="#" onclick="OrderDetails(@item.OrderId,3)">
+                            <i class="fi-rs-sign-out ml-15"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item2 in item.Items)
+            {
+                <div class="">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated animated" style="visibility: visible;">
+                        <div class="banner-icon" style="max-width: 100px !important;">
+                            <img src="@url@item2.Image" alt="" style="border-radius:10px;">
+                        </div>
+                        <div class="banner-text">
+                            <div class="row">
+                                <div class="col-sm-11 col-md-11 col-lg-11">
+                                    <h3 class="icon-box-title">@item2.NameEn</h3>
+                                    @if (item.OrderStatus == 11)
+                                    {
+                                        if (item2.StatusIdText != "" && item.OrderType == 1)
+                                        {
+                                            <h4><small class="text-danger">Return Order Status: @item2.StatusIdText</small></h4>
+                                        }
+
+                                        <button type="button" class="btn rate-btn btn-default pull-right" onclick="fnGetCount(@sr)" data-toggle="modal" data-target="#RatingModal">Rate</button>
+                                        <input type="hidden" id="hdn-orderid-@sr" value="@item.OrderId" />
+                                        <input type="hidden" id="hdn-ordertype-@sr" value="@item.OrderType" />
+                                        <input type="hidden" id="hdn-skuid-@sr" value="@item2.SKUId" />
+                                        <input type="hidden" id="hdn-branchid-@sr" value="@item.BranchId" />
+                                        <input type="hidden" id="hdn-countNo" />
+                                        sr = sr + 1;
+                                    }
+                                </div>
+                                @*<div class="col-sm-1 col-md-1 col-lg-1">
+                                    <a href="#" onclick="OrderDetails(@item.OrderId,1)">
+                                        <i class="fi-rs-sign-out ml-15"></i>
+                                    </a>
+                                </div>*@
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="mb-3" hidden>
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="bullet pull-left">@item.OrderStatusEn</h4>
@@ -121,15 +177,15 @@
 <div class="" id="dvhistorypaging">
     <div class="row">
         <div class="col-md-12 text-center">
-            <ul id="pagination-demo-history" class="pagination">
+            <ul id="pagination-demo-history" class="pagination mt-2">
                 <!-- <a href="#">&lt;</a> -->
                 @*<a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&gt;</a>*@
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&gt;</a>*@
             </ul>
         </div>
     </div>
@@ -144,7 +200,7 @@
     $(function () {
         //var sortid = $('#hdnSortId').val();
         var sortid = 1;//$('#hdnSortId').val();
-        var pNo = $('#hdnPageNumberHistory_twbs').val() == "" || $('#hdnPageNumberHistory_twbs').val() == "0"  ? "1" : $('#hdnPageNumberHistory_twbs').val();
+        var pNo = $('#hdnPageNumberHistory_twbs').val() == "" || $('#hdnPageNumberHistory_twbs').val() == "0" ? "1" : $('#hdnPageNumberHistory_twbs').val();
         var i = parseInt(pNo);
         $('#pagination-demo-history').twbsPagination({
             totalPages: $('#hdnToPagesCountForHistoryPagination').val(),
@@ -308,14 +364,14 @@
       $(document).ready(function () {
 
         /* 1. Visualizing things on Hover - See next part for action on click */
-        
+
 
 
         /* 2. Action to perform on click */
-        
+
     });
 
-    
+
 
     $('#btnSubmitReview').click(function () {
         // debugger

@@ -341,7 +341,8 @@ namespace CheckClikClient.Controllers
                 _commonHeader.setHeaders(client);
                 try
                 {
-                    MyOrdersDTO obj = new MyOrdersDTO();
+                    //MyOrdersDTO obj = new MyOrdersDTO();
+                    FavoriteDTO obj = new FavoriteDTO();
                     SessionDTO login = AppUtils.UserLogin;
                     //SessionDTO login = (SessionDTO)Session["UserLogin"];
                     if (login != null && login.UserId != 0)
@@ -360,7 +361,9 @@ namespace CheckClikClient.Controllers
                         return Json(new { success = status });
                     }
 
-                    HttpResponseMessage responseMessageViewDocuments = await client.PostAsJsonAsync("api/OrdersAPI/NewAddGetDeleteUserFavorite", obj);
+                    //HttpResponseMessage responseMessageViewDocuments = await client.PostAsJsonAsync("api/OrdersAPI/NewAddGetDeleteUserFavorite", obj);
+                    //kamrul
+                    HttpResponseMessage responseMessageViewDocuments = await client.PostAsJsonAsync("api/OrdersAPI/NewAddGetDeleteUserFavoriteNew", obj);
                     if (responseMessageViewDocuments.IsSuccessStatusCode)
                     {
                         var responseData = responseMessageViewDocuments.Content.ReadAsStringAsync().Result;
@@ -670,6 +673,13 @@ namespace CheckClikClient.Controllers
 
                     var lstMainCategories = JsonConvert.DeserializeObject<List<MainCategoryDTO>>(cattoken);
                     var lstSubCategories = JsonConvert.DeserializeObject<List<SubCategoryDTO>>(subCattoken);
+                    //try {
+                    //    var lstBanners1 = JsonConvert.DeserializeObject<List<BannersDTO>>(Advtoken);
+                    //}
+                    //catch (Exception ex)
+                    //{ 
+                    
+                    //}
                     var lstBanners = JsonConvert.DeserializeObject<List<BannersDTO>>(Advtoken);
 
                     branchDTO.listCategory = lstMainCategories;
@@ -691,6 +701,55 @@ namespace CheckClikClient.Controllers
                     String suppGrp = AppUtils.SupportGroupId.ToString();
                 }
             }
+        }
+
+        public async  Task<List<CountryDTO>> getListOfCountry(CountryDTO obj)
+        {
+            List<CountryDTO> CountryList = new List<CountryDTO>();
+            using (HttpClient client = new HttpClient())
+            {
+                _commonHeader.setHeaders(client);
+                try
+                {
+                    // obj.Id = 0;
+                    HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CountryAPI/NewGetCountryDetails", obj);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                        var Data = JsonConvert.DeserializeObject<List<CountryDTO>>(responseData);
+                        CountryList = Data;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return CountryList;
+        }
+
+        public async Task<List<CitysDTO>> getListOfCity(CitysDTO obj)
+        {
+            List<CitysDTO> CitysList = new List<CitysDTO>();
+            using (HttpClient client = new HttpClient())
+            {
+                _commonHeader.setHeaders(client);
+                try
+                {
+                    // obj.Id = 0;
+                    HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CityAPI/NewGetCityDetails", obj);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                        var Data = JsonConvert.DeserializeObject<List<CitysDTO>>(responseData);
+                        CitysList = Data;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return CitysList;
         }
     }
 }

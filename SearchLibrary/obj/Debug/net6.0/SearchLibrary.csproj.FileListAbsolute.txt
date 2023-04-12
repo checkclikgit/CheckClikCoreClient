@@ -1,0 +1,12 @@
+D:\CheckClik\CheckClikClient\SearchLibrary\bin\Debug\net6.0\SearchLibrary.deps.json
+D:\CheckClik\CheckClikClient\SearchLibrary\bin\Debug\net6.0\SearchLibrary.dll
+D:\CheckClik\CheckClikClient\SearchLibrary\bin\Debug\net6.0\SearchLibrary.pdb
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.csproj.AssemblyReference.cache
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.AssemblyInfoInputs.cache
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.AssemblyInfo.cs
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.csproj.CoreCompileInputs.cache
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.dll
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\refint\SearchLibrary.dll
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\SearchLibrary.pdb
+D:\CheckClik\CheckClikClient\SearchLibrary\obj\Debug\net6.0\ref\SearchLibrary.dll

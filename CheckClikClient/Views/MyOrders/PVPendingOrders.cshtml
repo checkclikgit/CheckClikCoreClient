@@ -8,7 +8,56 @@
     {
         foreach (var item in Model.UsersPendingOrdersList)
         {
-    <div class="mb-4">
+            @foreach (var item2 in item.Items)
+            {
+                <div class="">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated animated" style="visibility: visible;">
+                            <div class="banner-icon" style="max-width: 100px !important;">
+                                <img src="@url@item2.Image" alt="" style="border-radius:10px;">
+                            </div>
+                            <div class="banner-text">
+                                <div class="row">
+                                <div class="col-sm-11 col-md-11 col-lg-11"> 
+                                <h3 class="icon-box-title">Order No(Pending): #@item.InvoiceNo</h3> 
+                                </div>
+                                <div class="col-sm-1 col-md-1 col-lg-1">
+                                    <a href="#" onclick="OrderDetails(@item.OrderId,1)">
+                                        <i class="fi-rs-sign-out ml-15"></i>
+                                    </a>
+                                </div>
+                                </div>
+                                @if (item.OrderStatus == 4)
+                                {
+                                    if (item2.IsAccepted == false)
+                                    {
+                                        <div class="reject-msg">
+                                            <span id="reject-msg-@item2.OrderItemId" class="round-btn pull-right" onclick="fnRejectmsg(@item2.OrderItemId)">?</span>
+                                            <div id="reason-msg-@item2.OrderItemId" class="reason-msg">
+                                                <button type="button" id="cancel-reject-msg-@item2.OrderItemId" class="close" onclick="fnHideReject(@item2.OrderItemId)">&times;</button>
+                                                <p>@item2.Reason</p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <h3>@item2.NameEn</h3>
+                                <h4>Qty: @item2.Qty Items</h4>
+                                @if (item.OrderStatus == 4)
+                                {
+                                    if (item2.IsAccepted == false)
+                                    {
+
+                                        <h5 class="pull-right mt-1"><span class="stock-status out-stock"> Rejected </span> </h5>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="pull-right  mt-1"><span class="stock-status in-stock"> Accepted </span>  </h5>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+             }
+    <div class="mb-4" hidden>
         <div class="row">
             <div class="col-md-12">
                 <h4 class="bullet pull-left">Pending</h4>
@@ -74,8 +123,7 @@
             else
             {
                 <div class="row item-box text-center">
-                    <h4>@item.RejectedItemsCount out of @item.ItemsCount items have been rejected</h4>
-                    @*<h4>Would you like to confirm your order with Cash on Delivery?</h4>*@
+                    <h4>@item.RejectedItemsCount out of @item.ItemsCount items have been rejected</h4> 
                     <h4>Would you like to confirm your order?</h4>
 
                     <button type="button" id="partial-accept" onclick="fnPartialAccept(@item.OrderId)" class="btn btn-default">YES</button>
@@ -87,18 +135,10 @@
         }
     }
 </div>
-<div class="" id="dvpendingpaging">
+<div class="mt-2" id="dvpendingpaging">
     <div class="row">
         <div class="col-md-12 text-center">
-            <ul id="pagination-demo-pending" class="pagination">
-                <!-- <a href="#">&lt;</a> -->
-                @*<a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&gt;</a>*@
+            <ul id="pagination-demo-pending" class="pagination"> 
             </ul>
         </div>
     </div>
@@ -109,10 +149,8 @@
     <script src="~/jquery.twbsPagination.js"></script>
     <script type="text/javascript">
     $(function () {
-
-        //var sortid = $('#hdnSortId').val();
-        var sortid = 1;//$('#hdnSortId').val();
-        //var pNo = $('#hdnPageNumberPending_twbs').val() == "" ? "1" : $('#hdnPageNumberPending_twbs').val();
+         
+        var sortid = 1;//$('#hdnSortId').val(); 
         var pNo = $('#hdnPageNumberPending_twbs').val() == "" || $('#hdnPageNumberPending_twbs').val() == "0" ? "1" : $('#hdnPageNumberPending_twbs').val();
         var i = parseInt(pNo);
         $('#pagination-demo-pending').twbsPagination({

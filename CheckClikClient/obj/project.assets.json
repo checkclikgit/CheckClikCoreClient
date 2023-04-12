@@ -10122,11 +10122,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj",
+      "projectUniqueName": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
       "projectName": "CheckClikClient",
-      "projectPath": "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj",
+      "projectPath": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
       "packagesPath": "C:\\Users\\This pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\CheckClikClient\\obj\\",
+      "outputPath": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\This pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10143,8 +10143,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj": {
-              "projectPath": "C:\\Users\\This pc\\source\\repos\\checkclikgit\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj"
+            "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
+              "projectPath": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj"
             }
           }
         }

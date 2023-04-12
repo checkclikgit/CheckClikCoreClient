@@ -1,5 +1,11 @@
 ﻿@model Customer.Models.ProductDetailsDTO
-
+<head>
+    <style>
+        .red-color{
+        color: #ff1d1d;
+        }
+    </style>
+</head>
 @{
     ViewBag.Title = "Search Results | CheckClik MarketPlace";
     Layout = "~/Views/Shared/_LayoutNew_ProductDetails.cshtml";
@@ -93,9 +99,9 @@
                                                     {
                                                         foreach (var item1 in item.JImages.Distinct())
                                                         {
-                                                                    <figure class="border-radius-10">
-                                                                        <img src="@Model.UrlPath@item1.Image" alt="product image" />
-                                                                    </figure>
+                                                                                    <figure class="border-radius-10">
+                                                                                        <img src="@Model.UrlPath@item1.Image" alt="product image" />
+                                                                                    </figure>
                                                         }
                                                     }
                                                 }
@@ -112,7 +118,7 @@
                                                     {
                                                         foreach (var item1 in item.JImages.Distinct())
                                                         {
-                                                                    <div><img src="@Model.UrlPath@item1.Image" alt="product image" height="164" width="164" /></div>
+                                                                                    <div><img src="@Model.UrlPath@item1.Image" alt="product image" height="164" width="164" /></div>
                                                         }
                                                     }
                                                 }
@@ -203,27 +209,27 @@
                                                 </ul>
                                             </div>
                                             <div class="detail-extralink mb-50">
-                                                <div class="detail-qty border radius">
+                                                <div class="detail-qty border radius" style="padding: 0px 0px !important;">
                                                     <a href="#" class="qty-down"><i class="fi-rs-angle-small-down subs"></i></a>
                                                     @if (item.CartQuantity > 0)
                                                     {
                                                         
-                                                    <span class="qty-val" id="txtval">@item.CartQuantity</span>
-                                                        @*<input type="text" id="txtval" value="@item.CartQuantity" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" />*@
+                                                    @*<span class="qty-val" id="txtval">@item.CartQuantity</span>*@
+                                                        <input type="text" id="txtval" value="@item.CartQuantity" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" style="border: 1px solid #fff;" />
                                                     }
                                                     else
                                                     {
-                                                    <span class="qty-val" id="txtval">@item.MinCartQty</span>
-                                                        @*<input type="text" id="txtval" value="@item.MinCartQty" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" />*@
+                                                    @*<span class="qty-val" id="txtval">@item.MinCartQty</span>*@
+                                                        <input type="text" id="txtval" value="@item.MinCartQty" class="onlyNumber form-control pull-left noOfQty" style="border: 1px solid #fff;" name="noOfRoom" />
                                                     }
-                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up adds"></i></a>
+                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up addsn"></i></a>
                                                 </div>
                                                
                                                 <div class="product-extra-link2">
                                                     @*<button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>*@
                                                      @if (item.CartQuantity > 0)
                                                     {
-                                                        <a id="btnGoToCart" class="button button-add-to-cart" href="@Url.Action("CartPreview", "Cart")">GO TO CART</a>
+                                                        <button id="btnGoToCart" class="button button-add-to-cart" href="@Url.Action("CartPreview", "Cart")">GO TO CART</button>
                                                     }
                                                     else
                                                     {
@@ -248,10 +254,36 @@
                                                         }
                                                         else
                                                         {
-                                                            <button id="btnAddtoCart" class="button button-add-to-cart" onclick="AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems)"><i class="fi-rs-shopping-cart"></i>ADD TO CART</button>
+                                                            <button id="btnAddtoCart" class="button button-add-to-cart" onclick="AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems)">ADD TO CART</button>
                                                         }
                                                     }
-                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#"><i class="fi-rs-heart"></i></a> 
+                                                    @{
+                                                int w = 1;
+                                                if (item != null)
+                                                {
+                                                    foreach (var item1 in item.JImages.Distinct())
+                                                    {
+                                                        if (w == 1)
+                                                        {
+                                                                @*<img src="@Model.UrlPath@item1.Image" class="display-img" />*@
+                                                                @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="fa fa-heart"></i> </a>*@
+                                                            if (item.Favorite == true)
+                                                            {
+                                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart red-color"  @*style="color: #ff1d1d;"*@></i></a>
+                                                                    @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart red-color"></i></a>*@
+                                                            }
+                                                            else
+                                                            {
+                                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart"></i></a>
+                                                                    @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart"></i></a>*@
+                                                            }
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+
+                                            }
+                                                    @*<a aria-label="Add To Wishlist" class="action-btn hover-up" href="#"><i class="fi-rs-heart"></i></a> *@
                                                 </div>
                                                 
                                              <input type="hidden" id="hdnMin" value="@item.MinCartQty" />
@@ -447,6 +479,10 @@
     
         $(document).ready(function () {
              
+            $("#btnGoToCart").on("click",function(){
+                window.location.href="/Cart/CartPreview";
+            });
+
             /* 1. Visualizing things on Hover - See next part for action on click */
             $('#stars li').on('mouseover', function () {
                 var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -894,19 +930,20 @@
             })
         })
 
-        $('.adds').click(function add() {
-            var _qty = $(this).parent().children(".noOfQty");
+        $('.addsn').click(function add() {
+            //var _qty = $(".noOfQty");//$(this).parent().children(".noOfQty");
 
             var min = $('#hdnMin').val();
             var max = $('#hdnMax').val();
             var act = $('#txtval').val();
             if (min <= act && max > act) {
-                var $rooms = $(_qty);
-                var a = $rooms.val();
+                @*var $rooms = $(_qty);
+                var a = $rooms.val();*@
+                var a = $(".noOfQty").val();
 
                 a++;
-                $(".subs").prop("disabled", !a);
-                $rooms.val(a);
+                @*$(".subs").prop("disabled", !a);*@
+                $(".noOfQty").val(a);
             }
 
         });

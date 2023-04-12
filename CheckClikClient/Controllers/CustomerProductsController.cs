@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using CheckClickClient;
 using SearchLibrary;
+using Microsoft.AspNetCore.Mvc.Routing;
+using CheckClikClient.Models;
 
 namespace CheckClikClient.Controllers
 {
@@ -210,5 +212,52 @@ namespace CheckClikClient.Controllers
         //        }
         //    }
         //}
+
+        [HttpPost]
+        public async Task<ActionResult> AddToCartProduct(int quantity, long productInventoryId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                _commonHeader.setHeaders(client);
+                try
+                {
+                    var status = false;
+                    //ProductDetailsDTO obj = new ProductDetailsDTO();
+                    //kamrul 
+                    AddToCartDTO obj = new AddToCartDTO();
+
+                    obj.StockQuantity = quantity;
+                    obj.ProductInventoryId = productInventoryId;
+                    SessionDTO login = AppUtils.UserLogin;
+                    obj.StoreId = login.StoreId;
+                    obj.BranchId = login.BranchId;
+                    obj.UserId = login.UserId;
+                    if (login.StoreId == 0)
+                    {
+                        var redirectUrl = "/Home/NIndex";//new UrlHelper(Request.HttpContext).Action("Index", "Home");
+                        return Json(new { status = redirectUrl });
+                    }
+                    // return RedirectToAction("Index", "Home");
+                    obj.OrderType = 1;
+                    HttpResponseMessage responseMessageViewDocuments = await client.PostAsJsonAsync("api/ProductsInfoAPI/NewAddProductstoCartKm", obj);
+                    if (responseMessageViewDocuments.IsSuccessStatusCode)
+                    {
+                        var responseData = responseMessageViewDocuments.Content.ReadAsStringAsync().Result;
+                        var docs = JsonConvert.DeserializeObject<ProductDetailsDTO>(responseData);
+                        //var jtok = docs.Data;
+                        //string jProductListToken = jtok.SelectToken("message").ToString();
+                        if (docs.message == "1")
+                            status = true;
+                        else
+                            status = false;
+                    }
+                    return Json(new { success = status });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new SelectList("", "Value", "Text"));
+                }
+            }
+        }
     }
 }

@@ -29,31 +29,31 @@ namespace CheckClikClient
             _commonHeader = commonHeader;
         }
 
-             
+
         //public static async Task<List<CountryDTO>> getListOfCountry(CountryDTO obj)
         //{
         //    List<CountryDTO> CountryList = new List<CountryDTO>();
         //    using (HttpClient client = new HttpClient())
-        //    {
-        //        private CommonHeader commonHeader= new CommonHeader();
-        //        _commonHeader.setHeaders(client);
+        //    { 
+        //_commonHeader.setHeaders(client);
         //        try
         //        {
         //            // obj.Id = 0;
         //            HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/CountryAPI/NewGetCountryDetails", obj);
         //            if (responseMessage.IsSuccessStatusCode)
         //            {
-        //                var responseData = responseMessage.Content.ReadAsStringAsync().Result; 
+        //                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
         //                var Data = JsonConvert.DeserializeObject<List<CountryDTO>>(responseData);
         //                CountryList = Data; 
         //            }
         //        }
         //        catch (Exception ex)
-        //        { 
+        //        {
         //        }
         //    }
         //    return CountryList;
         //}
+
         //public static async Task<List<CitysDTO>> getListOfCity(CitysDTO obj)
         //{
         //    List<CitysDTO> CitysList = new List<CitysDTO>();
