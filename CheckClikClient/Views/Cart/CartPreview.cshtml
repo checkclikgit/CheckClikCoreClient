@@ -14,6 +14,14 @@
     font-weight: bold;
     border-radius: 3px;
 }
+input.qty-val {
+    border: 0;
+    border-radius: 0;
+    height: 45px !important;
+    padding: 0 !important;
+    text-align: center;
+
+}
 </style>
 @{
     Decimal totalVat = 0;
@@ -88,8 +96,8 @@
                                                 <div class="detail-qty border radius" style="padding: 0px 0px !important;">
                                                     <a href="#" class="qty-down" onclick="MinusQty(@item.CartId)"><i class="fi-rs-angle-small-down"></i></a>
                                                     @*<span class="qty-val">@item.CartQuantity</span>*@
-                                                    <input id="txtval_@item.CartId" type="text" pattern="[0-9]*" value="@item.CartQuantity" class="onlyNumber form-control" name="noOfRoom" disabled style="border: 1px solid #fff;" />
-                                                    <a href="#" onclick="PlusQty(@item.CartId)" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                    <input id="txtval_@item.CartId" type="text" pattern="[0-9]*" value="@item.CartQuantity" class="onlyNumber form-control qty-val" name="noOfRoom" disabled style="border: 1px solid #fff;" />
+                                                    <a href="#" class="qty-up"   onclick="PlusQty(@item.CartId)" ><i class="fi-rs-angle-small-up"></i></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -425,8 +433,8 @@
         var max = $('#hdnMax_' + id).val();
         var act = $('#txtval_' + id).val();
         var price = $('#lblprice_' + id).text();
-
-        if (min < act && max >= act) {
+        if (parseInt(min) < parseInt(act) && parseInt(max) >= parseInt(act)) {
+        //if (min < act && max >= act) {
 
             var a = parseInt(act);
             if (a >= 1) {
@@ -465,8 +473,8 @@
         var max = $('#hdnMax_' + id).val();
         var act = $('#txtval_' + id).val();
         var price = $('#lblprice_' + id).text();
-
-        if (min <= act && max > act) {
+        if (parseInt(min) <= parseInt(act) && parseInt(max) > parseInt(act)) {
+        //if (min <= act && max > act) {
             var a = parseInt(act);
             a++;
             $('#txtval_' + id).val(a);

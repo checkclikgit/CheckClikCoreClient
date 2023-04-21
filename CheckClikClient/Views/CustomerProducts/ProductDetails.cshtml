@@ -4,6 +4,13 @@
         .red-color{
         color: #ff1d1d;
         }
+        input.qty-val {
+    border: 0;
+    border-radius: 0;
+    height: 45px !important;
+    padding: 0 !important;
+    margin-left: 10px;
+}
     </style>
 </head>
 @{
@@ -99,9 +106,9 @@
                                                     {
                                                         foreach (var item1 in item.JImages.Distinct())
                                                         {
-                                                                                    <figure class="border-radius-10">
-                                                                                        <img src="@Model.UrlPath@item1.Image" alt="product image" />
-                                                                                    </figure>
+                                                                                        <figure class="border-radius-10">
+                                                                                            <img src="@Model.UrlPath@item1.Image" alt="product image" />
+                                                                                        </figure>
                                                         }
                                                     }
                                                 }
@@ -118,7 +125,7 @@
                                                     {
                                                         foreach (var item1 in item.JImages.Distinct())
                                                         {
-                                                                                    <div><img src="@Model.UrlPath@item1.Image" alt="product image" height="164" width="164" /></div>
+                                                                                        <div><img src="@Model.UrlPath@item1.Image" alt="product image" height="164" width="164" /></div>
                                                         }
                                                     }
                                                 }
@@ -210,19 +217,23 @@
                                             </div>
                                             <div class="detail-extralink mb-50">
                                                 <div class="detail-qty border radius" style="padding: 0px 0px !important;">
-                                                    <a href="#" class="qty-down"><i class="fi-rs-angle-small-down subs"></i></a>
+                                                    <a href="#" class="qty-down"><i class="fi-rs-angle-small-down subs1"></i></a>
                                                     @if (item.CartQuantity > 0)
                                                     {
                                                         
                                                     @*<span class="qty-val" id="txtval">@item.CartQuantity</span>*@
-                                                        <input type="text" id="txtval" value="@item.CartQuantity" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" style="border: 1px solid #fff;" />
+                                                        <input type="text" id="txtval" value="@item.CartQuantity" class=" form-control pull-left qty-val"  style="border: 1px solid #fff;" />
+                                                        @*<input type="text" id="txtval1" value="@item.CartQuantity" class="onlyNumber form-control pull-left noOfQty" name="noOfRoom" style="border: 1px solid #fff;" />*@
                                                     }
                                                     else
                                                     {
                                                     @*<span class="qty-val" id="txtval">@item.MinCartQty</span>*@
-                                                        <input type="text" id="txtval" value="@item.MinCartQty" class="onlyNumber form-control pull-left noOfQty" style="border: 1px solid #fff;" name="noOfRoom" />
+                                                        <input type="text" id="txtval" value="@item.MinCartQty" class=" form-control pull-left qty-val" style="border: 1px solid #fff;" />
+                                                        @*<input type="text" id="txtval1" value="@item.MinCartQty" class="onlyNumber form-control pull-left noOfQty" style="border: 1px solid #fff;" name="noOfRoom" />*@
                                                     }
-                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up addsn"></i></a>
+
+                                                    @*<input type="hidden" id="txtval2" value="@item.MinCartQty" class="form-control pull-left" style="border: 1px solid #fff;" />*@
+                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up addsn1"></i></a>
                                                 </div>
                                                
                                                 <div class="product-extra-link2">
@@ -265,17 +276,17 @@
                                                     {
                                                         if (w == 1)
                                                         {
-                                                                @*<img src="@Model.UrlPath@item1.Image" class="display-img" />*@
-                                                                @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="fa fa-heart"></i> </a>*@
+                                                                    @*<img src="@Model.UrlPath@item1.Image" class="display-img" />*@
+                                                                    @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="fa fa-heart"></i> </a>*@
                                                             if (item.Favorite == true)
                                                             {
-                                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart red-color"  @*style="color: #ff1d1d;"*@></i></a>
-                                                                    @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart red-color"></i></a>*@
+                                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart red-color"  @*style="color: #ff1d1d;"*@></i></a>
+                                                                        @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart red-color"></i></a>*@
                                                             }
                                                             else
                                                             {
-                                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart"></i></a>
-                                                                    @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart"></i></a>*@
+                                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')"><i id="favicon" class="fi-rs-heart"></i></a>
+                                                                        @*<a onclick="AddFavoriteItem('@item.ProductSkuId','@Model.SubCategoryId')" class="fav"><i id="favicon" class="far fa-heart"></i></a>*@
                                                             }
                                                             break;
                                                         }
@@ -930,39 +941,78 @@
             })
         })
 
-        $('.addsn').click(function add() {
+        @*$('.addsn').click(function add() {
             //var _qty = $(".noOfQty");//$(this).parent().children(".noOfQty");
 
             var min = $('#hdnMin').val();
             var max = $('#hdnMax').val();
             var act = $('#txtval').val();
             if (min <= act && max > act) {
-                @*var $rooms = $(_qty);
-                var a = $rooms.val();*@
+                 
                 var a = $(".noOfQty").val();
 
-                a++;
-                @*$(".subs").prop("disabled", !a);*@
+                a++; 
                 $(".noOfQty").val(a);
             }
 
+        });*@
+
+        $('.addsn1').on("click", function(e) {
+            //var _qty = $(".noOfQty");//$(this).parent().children(".noOfQty");
+            e.preventDefault();
+
+            var min = $('#hdnMin').val();
+            var max = $('#hdnMax').val();
+            var act = $('#txtval').val();
+            if (parseInt(min) <= parseInt(act) && parseInt(max) > parseInt(act)) {
+                @*var $rooms = $(_qty);
+                var a = $rooms.val();*@
+                @*var a = $(".noOfQty").val();*@
+                var a = $("#txtval").val();
+
+                a++;
+                @*$(".subs").prop("disabled", !a);*@
+                @*$(".noOfQty").val(a);*@
+                $("#txtval").val(a);
+                $("#txtval2").val(a);
+            } 
         });
-        $(".subs").prop("disabled", !$(".noOfQty").val());
 
-        $('.subs').click(function subst() {
+        @*$(".subs").prop("disabled", !$(".noOfQty").val());*@
 
-                    var _qty = $(this).parent().children(".noOfQty");
+        $('.subs1').on("click", function(e) {
+            e.preventDefault();
+                    @*var _qty = $(this).parent().children(".noOfQty");
 
                     var min = $('#hdnMin').val();
                     var max = $('#hdnMax').val();
                     var act = $('#txtval').val();
-                    if (min < act && max >= act) {
+                    
+                        if (parseInt(min) <= parseInt(act) && parseInt(max) > parseInt(act)) {
 
                 var $rooms = $(_qty);
                 var b = $rooms.val();
                 if (b >= 1) {
                     b--;
                     $rooms.val(b);
+                }
+                else {
+                    $(".subs").prop("disabled", true);
+                }
+            }*@ 
+                    @*var _qty = $(".noOfQty").val();*@
+                    var _qty = $("#txtval").val();
+
+                    var min = $('#hdnMin').val();
+                    var max = $('#hdnMax').val();
+                    var act = $('#txtval').val(); 
+                        if (parseInt(min) <= parseInt(act) && parseInt(max) > parseInt(act)) {
+                             
+                if (parseInt(_qty) >= 1) { 
+                    _qty = parseInt(_qty) - 1;
+                    @*$(".noOfQty").val(_qty)*@
+                     $("#txtval").val(_qty);
+                    $("#txtval2").val(_qty);
                 }
                 else {
                     $(".subs").prop("disabled", true);
