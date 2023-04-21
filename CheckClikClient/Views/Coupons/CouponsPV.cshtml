@@ -1,0 +1,102 @@
+﻿@model Customer.Models.CouponsDTO
+
+@*@if (Model.LstCoupons != null)
+{
+    foreach (var item in Model.LstCoupons)
+    {
+        <div class="col-md-6 col-sm-12 mb-3">
+
+            <div class="coupon">
+                <div class="row">
+                    <div class="col-xs-4 text-right fwidth">
+                        <img src="@Model.UrlPath/@item.LogoCopy" width="114">
+                    </div>
+                    <div class="col-xs-8 fwidth p-3">
+                        <strong>@item.StoreNameEn</strong>
+                        <h4 class="blue-color">@item.VoucherNameEn</h4>
+                        <h3 class="mt-2">Code : @item.CouponCode</h3>
+                        <p class="grey-color pr-3">Validity @item.EndDate.ToString("dd MMM yyyy")</p>
+                    </div>
+                </div>
+                <div class="half-circle-right"></div>
+                <div class="half-circle-left"></div>
+            </div>
+        </div>
+    }
+}*@
+<div class="row vendor-grid">
+    @if (Model.LstCoupons != null)
+    {
+        foreach (var item in Model.LstCoupons)
+        {
+            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
+                <div class="vendor-wrap mb-40">
+                    <div class="vendor-img-action-wrap">
+                        <div class="vendor-img">
+                            <a href="#">
+                                <img class="default-img" style="height: 130px; border-radius: 10px;" src="@Model.UrlPath/@item.LogoCopy" alt="" />
+                            </a>
+                        </div>
+                        <div class="product-badges product-badges-position product-badges-mrg">
+                            <span class="best">Offer</span>
+                        </div>
+                    </div>
+                    <div class="vendor-content-wrap">
+                        <div class="d-flex justify-content-between align-items-end mb-10">
+                            <div>
+                                <h6 class="mb-5"><a href="#">@item.StoreNameEn</a></h6>
+                                <div class="product-rate-cover">
+                                    <span class="ml-5" style="font-size:16px;"> <strong>@item.VoucherNameEn</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-10">
+                                <span class="font-small total-product">Validity: @item.EndDate.ToString("dd MMM yyyy")</span>
+                            </div>
+                        </div>
+                        <div class="vendor-info mb-10">
+                            <ul class="contact-infor">
+                                <li>
+                                    <img src="assets/imgs/theme/icons/icon-location.svg" alt="" />
+                                    <strong style="font-size:16px;">Code : </strong> 
+                                    <strong>@item.CouponCode</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+</div>
+<input type="hidden" id="hdncount" value="@Model.LstCoupons.Count()" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo" class="pagination">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hdnToPagesCountForPagination" value="@Model.pagingNumber" />
+<input type="hidden" id="hdnPageNumber_twbs" value="@Model.PageNumber" />
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="~/Scripts/jquery.twbsPagination.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var pNo = $('#hdnPageNumber_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo').twbsPagination({
+            totalPages: $('#hdnToPagesCountForPagination').val(),
+            visiblePages: 5,
+            startPage: i,
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetCoupons(page);
+            }
+        });
+    });
+</script>
