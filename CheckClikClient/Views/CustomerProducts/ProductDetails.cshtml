@@ -999,7 +999,7 @@
                         else {
                             var url = $(location).attr("href");
                             url = url + '&Item=' + item;
-                            var redirection = '@Url.Action("Index","User" , new { returnurl = "_url_" })';
+                            var redirection = '@Url.Action("Indexnest","User" , new { returnurl = "_url_" })';
                             var red2 = redirection.replace("_url_", url);
                             window.location.href = red2;
                         }
@@ -1025,7 +1025,7 @@
                         else {
                             //location.reload();
                             var url = $(location).attr("href");
-                            var redirection = '@Url.Action("Index","User" , new { returnurl = "_url_" })';
+                            var redirection = '@Url.Action("Indexnest","User" , new { returnurl = "_url_" })';
                             var red2 = redirection.replace("_url_", url);
                             window.location.href = red2;
                         }
