@@ -377,6 +377,34 @@ namespace CheckClickClient
             }
             set { Current.Session.SetString(SessionKeyConstants.Pay_Obj, JsonConvert.SerializeObject(value)); }
         }
+        public static List<OffersCDTO> ProductOfferList
+        {
+            get
+            {
+                var productOfferListString = Current.Session.GetString(SessionKeyConstants.Product_Offers_List);
+                List<OffersCDTO> lstBranch = new List<OffersCDTO>();
+                if (productOfferListString != null)
+                {
+                    lstBranch = JsonConvert.DeserializeObject<List<OffersCDTO>>(productOfferListString);
+                }
+                return lstBranch;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Product_Offers_List, JsonConvert.SerializeObject(value)); }
+        }
+        public static List<OffersCDTO> ServiceOfferList
+        {
+            get
+            {
+                var serviceOfferListString = Current.Session.GetString(SessionKeyConstants.Service_Offers_List);
+                List<OffersCDTO> lstBranch = new List<OffersCDTO>();
+                if (serviceOfferListString != null)
+                {
+                    lstBranch = JsonConvert.DeserializeObject<List<OffersCDTO>>(serviceOfferListString);
+                }
+                return lstBranch;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Service_Offers_List, JsonConvert.SerializeObject(value)); }
+        }
         public static string Trans_Id
         {
             get

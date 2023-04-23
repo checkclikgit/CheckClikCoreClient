@@ -37,6 +37,8 @@
         public const string Trans_Id = "__transId";
         public const string Pay_Obj = "__payObj";
         public const string Transaction_Id = "__transactionId";
+        public const string Product_Offers_List = "__productofferslist"; 
+        public const string Service_Offers_List = "__serviceofferslist"; 
 
         public const string AUTHENTICATE_RESPONSE = "__authenticateresponse";
 
