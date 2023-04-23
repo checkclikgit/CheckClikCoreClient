@@ -1,12 +1,9 @@
 ﻿@model Customer.Models.OffersDTO
 @inject IConfiguration Configuration;
 @{
-    Layout = null;
-
-} 
-
-
-
+    Layout = null; 
+}
+   
 @if (Model.ProductListOffers != null)
 {
     foreach (var item in Model.ProductListOffers)

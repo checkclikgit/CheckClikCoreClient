@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\WishList\Index.cshtml" />
+    <None Include="Views\WishList\PVProductWishlist.cshtml" />
+    <None Include="Views\WishList\PVServiceWishlist.cshtml" />
+    <None Include="Views\WishList\PVStoreWishlist.cshtml" />
     <None Include="wwwroot\nest\document_files\bootstrap.bundle.min.js" />
     <None Include="wwwroot\nest\document_files\category-1.svg" />
     <None Include="wwwroot\nest\document_files\category-10.svg" />

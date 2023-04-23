@@ -235,6 +235,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUFZPZmZlcnNOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVProductWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZQcm9kdWN0V2lzaGxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVServiceWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTZXJ2aWNlV2lzaGxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVStoreWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTdG9yZVdpc2hsaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

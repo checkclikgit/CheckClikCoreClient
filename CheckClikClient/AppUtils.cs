@@ -405,6 +405,48 @@ namespace CheckClickClient
             }
             set { Current.Session.SetString(SessionKeyConstants.Service_Offers_List, JsonConvert.SerializeObject(value)); }
         }
+        public static List<FavoritesDTO> WishStorelist
+        {
+            get
+            {
+                var wishStoreListString = Current.Session.GetString(SessionKeyConstants.Wish_Store_list);
+                List<FavoritesDTO> lstWishStoreList = new List<FavoritesDTO>();
+                if (wishStoreListString != null)
+                {
+                    lstWishStoreList = JsonConvert.DeserializeObject<List<FavoritesDTO>>(wishStoreListString);
+                }
+                return lstWishStoreList;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Wish_Store_list, JsonConvert.SerializeObject(value)); }
+        }
+        public static List<FavoritesDTO> WishProductlist
+        {
+            get
+            {
+                var wishProductListString = Current.Session.GetString(SessionKeyConstants.Wish_Product_list);
+                List<FavoritesDTO> lstWishProductList = new List<FavoritesDTO>();
+                if (wishProductListString != null)
+                {
+                    lstWishProductList = JsonConvert.DeserializeObject<List<FavoritesDTO>>(wishProductListString);
+                }
+                return lstWishProductList;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Wish_Product_list, JsonConvert.SerializeObject(value)); }
+        } 
+        public static List<FavoritesDTO> WishServicelist
+        {
+            get
+            {
+                var wishServiceListString = Current.Session.GetString(SessionKeyConstants.Wish_Service_list);
+                List<FavoritesDTO> lstWishServiceList = new List<FavoritesDTO>();
+                if (wishServiceListString != null)
+                {
+                    lstWishServiceList = JsonConvert.DeserializeObject<List<FavoritesDTO>>(wishServiceListString);
+                }
+                return lstWishServiceList;
+            }
+            set { Current.Session.SetString(SessionKeyConstants.Wish_Service_list, JsonConvert.SerializeObject(value)); }
+        } 
         public static string Trans_Id
         {
             get
