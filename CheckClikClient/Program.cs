@@ -44,6 +44,6 @@ AppUtils.Configure(((IApplicationBuilder)app).ApplicationServices.GetRequiredSer
 //app.UseMvc();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=NIndex}/{id?}");
 
 app.Run();
