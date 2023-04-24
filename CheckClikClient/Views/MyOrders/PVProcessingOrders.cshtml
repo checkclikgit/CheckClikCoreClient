@@ -8,21 +8,26 @@
     {
         foreach (var item in Model.UsersProcessingOrdersList)
         {
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="bullet pull-left">Pending</h4>
-                    <h4 class="pull-right">Order No: <span class="red-color">#@item.InvoiceNo</span></h4>
+            <div class="banner-text mt-2">
+                <div class="row">
+                    <div class="col-sm-11 col-md-11 col-lg-11"> 
+                        <h5 class="icon-box-title">Order No(<span style="color:#cc5656">Pending</span>): #@item.InvoiceNo </h5> 
+                    </div> 
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <a href="#" onclick="OrderDetails(@item.OrderId,2)">
+                            <i class="fi-rs-sign-out ml-15"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </div> 
+
             <div class="pending-item-box">
-                <div class="row d-flex">
+                @*<div class="row d-flex">
                     <div class="col-sm-11 col-xs-10">   
-                        @*@{var item2 = item.Items.FirstOrDefault();}*@
                         @foreach (var item2 in item.Items)
                         {
                             <div class="row item-box">
-                                <div class="col-sm-3 col-xs-4">
-                                    @*<img src="@ViewBag.ProductImages/@item2.Image" width="100%">*@
+                                <div class="col-sm-3 col-xs-4"> 
                                     <img src="@url@item2.Image" width="100%">
                                 </div>
                                 <div class="col-sm-9 col-xs-8">
@@ -32,19 +37,31 @@
                             <hr class="nomargin">
                         }
                         <hr class="nomargin">
-                    </div>
-                    @*<div class="col-sm-1 col-xs-2">
-                            <a href="@Url.Action("OrderDetailsID", "MyOrders", new { orderid = item.OrderId, type = 2 })">
-                                <i class="fas fa-caret-right"></i>
-                            </a>
-                        </div>*@
+                    </div> 
                     <div class="col-sm-1 col-xs-2">
                         <a href="#" onclick="OrderDetails(@item.OrderId,2)">
                             <i class="fas fa-caret-right"></i>
                         </a>
                     </div>
+                </div>*@
+                @foreach (var item2 in item.Items)
+                        {
+                <div class="">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated animated" style="visibility: visible;">
+                        <div class="banner-icon" style="max-width: 100px !important;">
+                            <img src="@url@item2.Image" alt="" style="border-radius:10px;">
+                        </div>
+                        <div class="banner-text">
+                            <div class="row">
+                                <div class="col-sm-11 col-md-11 col-lg-11">
+                                    <h3 class="icon-box-title">@item2.NameEn</h3> 
+                                </div> 
+                            </div>
+                             
+                        </div>
+                    </div>
                 </div>
-
+                }
                 <!--PICK UP-->
 
                 <div class="row bs-wizard pt-5" style="border-bottom:0;">
@@ -57,12 +74,12 @@
                                 case 5:
                                     if (l == 0)
                                     {
-                                        <div class="col-xs-3 bs-wizard-step complete">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">APPROVED</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step complete" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                         l++;
                                     }
                                     break;
@@ -72,11 +89,11 @@
                         }
                         if (l == 0)
                         {
-                            <div class="col-xs-3 bs-wizard-step disabled">
-                                <div class="progress"><div class="progress-bar"></div></div>
-                                <a href="#" class="bs-wizard-dot"></a>
-                                <div class="bs-wizard-info text-center grey-color">APPROVED</div>
-                            </div>
+                                <div class="col-xs-3 bs-wizard-step disabled">
+                                    <div class="progress"><div class="progress-bar"></div></div>
+                                    <a href="#" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center grey-color">APPROVED</div>
+                                </div>
                         }
                         l = 0;
                         foreach (var item3 in item.TrackingDetails)
@@ -86,21 +103,21 @@
                                 case 7:
                                     if (item.OrderType == 1 || item.OrderType == 2 || item.OrderType == 3)
                                     {
-                                        <div class="col-xs-3 bs-wizard-step complete">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">PACKED</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step complete" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                     }
                                     else
                                     {
-                                        <div class="col-xs-3 bs-wizard-step complete">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">READY</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step complete" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">READY</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                     }
                                     l++;
                                     break;
@@ -111,11 +128,11 @@
                         }
                         if (l == 0)
                         {
-                            <div class="col-xs-3 bs-wizard-step disabled">
-                                <div class="progress"><div class="progress-bar"></div></div>
-                                <a href="#" class="bs-wizard-dot"></a>
-                                <div class="bs-wizard-info text-center grey-color">PACKED</div>
-                            </div>
+                                <div class="col-xs-3 bs-wizard-step disabled" style="width: 25%;">
+                                    <div class="progress"><div class="progress-bar"></div></div>
+                                    <a href="#" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center grey-color">PACKED</div>
+                                </div>
                         }
                         if (item.OrderType == 1)
                         {
@@ -125,12 +142,12 @@
                                 switch (item3.Id)
                                 {
                                     case 11:
-                                        <div class="col-xs-3 bs-wizard-step disabled">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step disabled" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                         l++;
                                         break;
                                     default:
@@ -140,11 +157,11 @@
                             }
                             if (l == 0)
                             {
-                                <div class="col-xs-3 bs-wizard-step disabled">
-                                    <div class="progress"><div class="progress-bar"></div></div>
-                                    <a href="#" class="bs-wizard-dot"></a>
-                                    <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
-                                </div>
+                                    <div class="col-xs-3 bs-wizard-step disabled" style="width: 25%;">
+                                        <div class="progress"><div class="progress-bar"></div></div>
+                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <div class="bs-wizard-info text-center grey-color">PICKED UP</div>
+                                    </div>
                             }
                         }
                         else if (item.OrderType == 2 || item.OrderType == 3) //Order Type Delivery and Shipping
@@ -157,12 +174,12 @@
                                 {
                                     case 9:
                                     case 10:
-                                        <div class="col-xs-3 bs-wizard-step complete">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step complete" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                         l++;
                                         break;
                                     default:
@@ -172,11 +189,11 @@
                             }
                             if (l == 0)
                             {
-                                <div class="col-xs-3 bs-wizard-step disabled">
-                                    <div class="progress"><div class="progress-bar"></div></div>
-                                    <a href="#" class="bs-wizard-dot"></a>
-                                    <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
-                                </div>
+                                    <div class="col-xs-3 bs-wizard-step disabled" style="width: 25%;">
+                                        <div class="progress"><div class="progress-bar"></div></div>
+                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <div class="bs-wizard-info text-center grey-color">DISPATCHED</div>
+                                    </div>
                             }
                             //Delivered
                             l = 0;
@@ -185,12 +202,12 @@
                                 switch (item3.Id)
                                 {
                                     case 11:
-                                        <div class="col-xs-3 bs-wizard-step complete">
-                                            <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
-                                            <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
-                                        </div>
+                                            <div class="col-xs-3 bs-wizard-step complete" style="width: 25%;">
+                                                <div class="progress"><div class="progress-bar"></div></div>
+                                                <a href="#" class="bs-wizard-dot"></a>
+                                                <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                                <div class="bs-wizard-info text-center">@item3.CreatedOn.ToString("MMM dd, yyyy")</div>
+                                            </div>
                                         l++;
                                         break;
                                     default:
@@ -200,11 +217,11 @@
                             }
                             if (l == 0)
                             {
-                                <div class="col-xs-3 bs-wizard-step disabled">
-                                    <div class="progress"><div class="progress-bar"></div></div>
-                                    <a href="#" class="bs-wizard-dot"></a>
-                                    <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
-                                </div>
+                                    <div class="col-xs-3 bs-wizard-step disabled" style="width: 25%;">
+                                        <div class="progress"><div class="progress-bar"></div></div>
+                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <div class="bs-wizard-info text-center grey-color">DELIVERED</div>
+                                    </div>
                             }
 
                         }

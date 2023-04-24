@@ -1,4 +1,5 @@
 ﻿
+using Customer.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,7 +115,7 @@ namespace Customer.Models
             //str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
 
             string Brach = BranchId.ToString();
-            string data = "";//String.Concat(StringUtil.URLEncrypt(NameEn.Replace(" ","-") + '_' + Brach + '_' + InventoryId + '_' + BranchSubCategoryId));
+            string data = String.Concat(StringUtil.URLEncrypt(NameEn.Replace(" ","-") + '_' + Brach + '_' + InventoryId + '_' + BranchSubCategoryId));
             //string phrase = string.Format("{0}-{1}-{2}-{3}", data, ProductSkuId, idss, ProductId, UPCBarcode);
             string phrase = string.Format("{0}", data);
 

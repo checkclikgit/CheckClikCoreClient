@@ -132,12 +132,12 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="#">
                                                 <img class="default-img" src="@Url.Content(strApiURL + "Uploads/Products/" + Model.Results[i].ProductMainImage)" alt="" style="height: 160px;" />
                                                 <img class="hover-img" src="@Url.Content(strApiURL + "Uploads/Products/" + Model.Results[i].ProductMainImage)" alt=""  style="height: 160px;"/>
                                             </a>
                                         </div>
-                                        <div class="product-action-1">
+                                        <div class="product-action-1" hidden>
                                             <a aria-label="Add To Wishlist" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
                                             @*<a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>*@
                                             <a aria-label="View Details" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
@@ -415,21 +415,25 @@
 
                                     <label class="fw-900 mt-15">CREDIT CARD</label> 
                                     <div class="custome-checkbox">
-                                        @Html.CheckBoxFor(model => model.StaticFacets.IsCCPN, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayNow", Name = "ckbPaymentCrPayNow" }) 
+                                        @*Html.CheckBoxFor(model => model.StaticFacets.IsCCPN, new { class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayNow", Name = "ckbPaymentCrPayNow" })*@ 
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentCrPayNow" id="ckbPaymentCrPayNow" checked="@Model.StaticFacets.IsCCPN" value="" /> 
                                         <label class="form-check-label" for="ckbPaymentCrPayNow"><span>Pay Now</span></label>
                                         <br /> 
-                                        @Html.CheckBoxFor(model => model.StaticFacets.IsCCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayLater", Name = "ckbPaymentCrPayLater" }) 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsCCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayLater", Name = "ckbPaymentCrPayLater" }) *@
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentCrPayLater" id="ckbPaymentCrPayLater" checked="@Model.StaticFacets.IsCCPL" value="" /> 
                                         <label class="form-check-label" for="ckbPaymentCrPayLater"><span>Pay Later</span></label>
                                         <br /> 
                                     </div> 
 
                                     <label class="fw-900 mt-15">DEBIT CARD</label> 
                                     <div class="custome-checkbox">
-                                        @Html.CheckBoxFor(model => model.StaticFacets.IsDCPN, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) 
+                                    <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentDrPayNow" id="ckbPaymentDrPayNow" checked="@Model.StaticFacets.IsDCPN" value="" /> 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsDCPN, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) *@
                                         <label class="form-check-label" for="ckbPaymentDrPayNow"><span>Pay Now</span></label>
                                         <br /> 
-                                        @Html.CheckBoxFor(model => model.StaticFacets.IsDCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) 
-                                        <label class="form-check-label" for="ckbPaymentDrPayNow"><span>Pay Later</span></label>
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentDrPayLater" id="ckbPaymentDrPayLater" checked="@Model.StaticFacets.IsDCPL" value="" /> 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsDCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) *@
+                                        <label class="form-check-label" for="ckbPaymentDrPayLater"><span>Pay Later</span></label>
                                         <br /> 
                                     </div> 
                                  
@@ -439,13 +443,16 @@
                                         {
                                             <label class="fw-900 mt-15">DELIVERY</label> 
                                             <div class="custome-checkbox">
-                                                @Html.CheckBoxFor(model => model.StaticFacets.IsPickup, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsPickup", Name = "ckbIsPickup" }) 
+                                            <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsPickup" id="ckbIsPickup" checked="@Model.StaticFacets.IsPickup" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsPickup, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsPickup", Name = "ckbIsPickup" }) *@
                                                 <label class="form-check-label" for="ckbIsPickup"><span>Pickup</span></label>
                                                 <br /> 
-                                                @Html.CheckBoxFor(model => model.StaticFacets.IsDelivery, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsDelivery", Name = "ckbIsDelivery" }) 
+                                                <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsDelivery" id="ckbIsDelivery" checked="@Model.StaticFacets.IsDelivery" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsDelivery, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsDelivery", Name = "ckbIsDelivery" }) *@
                                                 <label class="form-check-label" for="ckbIsDelivery"><span>Delivery</span></label>
                                                 <br /> 
-                                                @Html.CheckBoxFor(model => model.StaticFacets.IsShipping, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsShipping", Name = "ckbIsShipping" }) 
+                                                <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsShipping" id="ckbIsShipping" checked="@Model.StaticFacets.IsShipping" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsShipping, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsShipping", Name = "ckbIsShipping" }) *@
                                                 <label class="form-check-label" for="ckbIsShipping"><span>Shipping</span></label>
                                                 <br /> 
                                             </div> 

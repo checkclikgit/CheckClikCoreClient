@@ -1,4 +1,5 @@
-﻿@model Customer.Models.MyOrdersDTO
+﻿  
+@model Customer.Models.MyOrdersDTO
 @{
     ViewBag.Title = "CHECKCLIK | My Orders";
     Layout = "~/Views/Shared/_LayoutNew_Profile.cshtml";
@@ -214,6 +215,116 @@
         background: #fff;
     }
     </style>
+    <style>
+        .bs-wizard > .bs-wizard-step.complete > .bs-wizard-dot {
+    background-color: #6FAC6B;
+    border: 2px solid #6FAC6B;
+}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: #ccc;
+    border: 2px solid #ccc;
+    top: 24px;
+    left: 50%;
+    margin-top: -18px !important;
+    margin-left: -5px  !important;
+    border-radius: 50%;
+}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {
+}
+
+.bs-wizard > .bs-wizard-step {
+    padding: 0;
+    position: relative;
+}
+.bs-wizard > .bs-wizard-step:first-child.complete > .progress > .progress-bar {
+    width: 100%;
+}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+    width: 50%;
+}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+    width: 100%;
+}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {
+    width: 0px;
+    box-shadow: none;
+    background: #e8e8e8;
+}
+.progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+}
+.bs-wizard > .bs-wizard-step {
+    padding: 0;
+    position: relative;
+}
+.bs-wizard {
+    border-bottom: solid 1px #e0e0e0;
+    padding: 0 0 10px 0;
+}
+
+.bs-wizard {
+    margin-top: 5px;
+    background-color: #fff;
+} 
+.bs-wizard > .bs-wizard-step .bs-wizard-info {
+    color: #333;
+    padding-top: 1em;
+    font-size: 16px;
+}
+.grey-color {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+}
+.bs-wizard > .bs-wizard-step:first-child > .progress {
+    left: 50%;
+    width: 50%;
+}
+.bs-wizard > .bs-wizard-step > .progress {
+    position: relative;
+    border-radius: 0px;
+    height: 8px;
+    box-shadow: none;
+    margin: 20px 0;
+}
+.progress {
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+.bs-wizard > .bs-wizard-step:last-child > .progress {
+    width: 50%;
+}
+
+    </style>
     @{
     var user = CheckClickClient.AppUtils.UserLogin;
 }
@@ -266,7 +377,7 @@
                                     <a class="nav-link active" id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>My Orders</a>
                                 </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="track-orders-tab"  href="~/wishlist"  aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Wishlist</a>
+                                            <a class="nav-link" id="track-orders-tab"  href="/wishlist/index"  aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Wishlist</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="address-tab"  href="~/user/manageAddressNest"  aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Manage Account</a>
@@ -297,6 +408,10 @@
                                                                 </li> 
                                                             </ul>
                                                             <div class="tab-content shop_info_tab entry-main-content">
+                                                                
+                                                                <div id="pending_orderdetails" style="display:none;">
+                                                                </div>
+
                                                                 <div class="tab-pane fade show active" id="pending">
                                                   
                                                                 </div>
@@ -306,8 +421,6 @@
                                                                 <div class="tab-pane fade" id="history">
                                                                      <div id="tbl_HistoryOrder_div"></div> <!--Partial view-->
                                                                 </div> 
-                                                                <div id="pending_orderdetails" style="display:none;">
-                                                                </div>
                                                             </div>
                                                         </div>
                                       </div>

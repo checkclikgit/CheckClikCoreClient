@@ -1,0 +1,118 @@
+﻿@using Customer
+@model Customer.Models.FavoritesDTO
+@inject IConfiguration Configuration;
+
+<div class="row productsbox-height">
+
+    @if (Model.ProductDetailslst.Count() > 0)
+    {
+        <div class="row mt-60">
+            <div class="col-12">
+                <div class="row related-products">
+                    @foreach (var item in Model.ProductDetailslst)
+                    {
+                        <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                            <div class="product-cart-wrap hover-up">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="~/@item.StoreEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@SlugUtil.GenerateSlug(item.Id, item.NameEn.Replace("_", "-"), item.ProductSkuId, item.ProductId, "", item.BranchId)" tabindex="0">
+                                            <img class="default-img hst" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                            <img class="hover-img hst" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        @*<a aria-label="Remove" class="action-btn small hover-up" href="#" onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.BranchId',3)" tabindex="0"><i style="font-size: 19px;" class="fi-rs-trash"></i></a>*@
+                                        <a aria-label="Remove" class="action-btn small hover-up" href="#" onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.ProductSkuId',1)" tabindex="0"><i style="font-size: 19px;" class="fi-rs-trash"></i></a>
+                                    </div>
+                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                        @if (@item.DiscountValue != 0)
+                                        {
+                                            <span class="hot">
+                                                @item.DiscountValue @(item.DiscountType == 1 ? "%OFF" : item.DiscountType == 2 ? "OFF" : "")
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <h2><a href="#" tabindex="0">@item.NameEn</a></h2>
+                                    @*<div class="rating-result" title="90%">
+                            <span> </span>
+                            </div>*@
+                                    <div class="product-price">
+                                        <span>SAR @item.Price.ToString("N2") </span>
+                                        <span class="old-price">SAR @item.SellingPrice.ToString("N2")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+
+    else
+    {
+        <span class="text text-danger">
+            No Product Found
+        </span>
+    }
+</div> 
+<div class="container" id="dvproductpaging">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo-product" class="pagination">
+                <!-- <a href="#">&lt;</a> -->
+                @*<a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&gt;</a>*@
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnToPagesCountForProductPagination" value="@Model.StorepagingNumber" />
+<input type="hidden" id="hdnPageNumberProduct_twbs" value="@Model.StorePageNumber" />
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="~/Scripts/jquery.twbsPagination.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // debugger
+        //var sortid = $('#hdnSortId').val();
+        var sortid = 1;//$('#hdnSortId').val();
+        var pNo = $('#hdnPageNumberProduct_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo-product').twbsPagination({
+            totalPages: $('#hdnToPagesCountForProductPagination').val(),
+            visiblePages: 5,
+            startPage: i,
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetProducts(page, sortid);
+            }
+        });
+    });
+</script>
+<script>
+    var scrolled = 0;
+    $(document).ready(function () {
+        $(".upproduct").on("click", function () {
+            scrolled = scrolled > 0 ? scrolled - 300 : 0;
+            $(".productsbox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+        $(".downproduct").on("click", function () {
+            scrolled = scrolled + 300;
+            $(".productsbox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+    });
+</script>

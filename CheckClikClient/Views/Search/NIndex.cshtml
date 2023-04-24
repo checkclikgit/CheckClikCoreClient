@@ -195,13 +195,13 @@
     function SetSearchTextToHiddenField()
     {
             var searchText = $("#txtSearch").val();
-            if(searchText != "")
-            {
+            //if(searchText != "")
+            //{
                 $("#txtSearchTerm").val(searchText);
                 $("#hdnSearchText").val(searchText);
                 
                 //$("#search").submit();
-            }
+            //}
     }
     function SearchSectionSubmit()
     { 
@@ -229,7 +229,7 @@
         //console.log("GetSearchLocationResults called");
         if ($("#hdnIsLocationSet").val() == "0") {
             //console.log("Location not loaded");
-            alert("nindex227search");
+            //alert("nindex227search");
             vLocationLoadedTimeout = setTimeout(function () { GetSearchLocationResults(); }, 100);
         }
         else {

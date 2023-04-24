@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\CheckClik\CheckClikClient\CheckClikClient
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/B2B/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQjJCXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Cart/CartPreview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDYXJ0UHJldmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -39,6 +43,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxfUFZPcmRlclBheW1lbnRPcHRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Coupons/CouponsPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xDb3Vwb25zUFYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Coupons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/CustomerProducts/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Home/TermsAndConditions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/MyOrders/Index.cshtml]
@@ -83,6 +99,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZQcm9jZXNzaW5nT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/AllCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEFsbENhdGVnb3JpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4LTIwMTktMDItMjhfMTEtMDEtNDMtMTc0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/OfferList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXE9mZmVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/OfferListItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXE9mZmVyTGlzdEl0ZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/PVItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXFBWSXRlbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Offers/PVOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXFBWT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -101,6 +145,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Product/PVSideCategoryAndSubCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Product/_SearchResults - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cyAtIENvcHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Product/_SearchResults.cshtml]
@@ -129,6 +177,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_B2bLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CMmJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNewStore.cshtml]
@@ -187,6 +239,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUFZPZmZlcnNOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVProductWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZQcm9kdWN0V2lzaGxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVServiceWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTZXJ2aWNlV2lzaGxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/WishList/PVStoreWishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTdG9yZVdpc2hsaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -214,6 +282,10 @@ build_metadata.AdditionalFiles.CssScope = b-xd5c2ar3h4
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_CartDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3cg1x1stkz
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_Empty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfRW1wdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-gn57c4cd57
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUGF5bWVudENvbmZpcm0uY3NodG1s
