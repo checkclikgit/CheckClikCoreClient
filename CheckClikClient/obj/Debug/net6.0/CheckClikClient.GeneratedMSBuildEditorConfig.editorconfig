@@ -67,6 +67,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Home/TermsAndConditions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/MyOrders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -278,6 +282,10 @@ build_metadata.AdditionalFiles.CssScope = b-xd5c2ar3h4
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_CartDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3cg1x1stkz
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_Empty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfRW1wdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-gn57c4cd57
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUGF5bWVudENvbmZpcm0uY3NodG1s

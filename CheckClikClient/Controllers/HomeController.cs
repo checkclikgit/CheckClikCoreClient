@@ -71,7 +71,7 @@ namespace CheckClikClient.Controllers
                         }
                     }
                     else
-                    { 
+                    {
                     }
                 }
 
@@ -116,7 +116,7 @@ namespace CheckClikClient.Controllers
                         }
                     }
                     else
-                    { 
+                    {
                     }
                 }
 
@@ -281,6 +281,11 @@ namespace CheckClikClient.Controllers
             return Json(resp.AutocompleteList);
         }
 
+        public IActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
         public async Task<string> GetCityDistricts()
         {
             using (HttpClient client = new HttpClient())
@@ -349,5 +354,7 @@ namespace CheckClikClient.Controllers
                 }
             }
         }
+
+
     }
 }

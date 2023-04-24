@@ -258,3 +258,4 @@ D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\CheckClikClient.ge
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\ref\CheckClikClient.dll
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutNew_PaymentConfirm.cshtml.rz.scp.css
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutNew_Profile.cshtml.rz.scp.css
+D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutNew_Empty.cshtml.rz.scp.css

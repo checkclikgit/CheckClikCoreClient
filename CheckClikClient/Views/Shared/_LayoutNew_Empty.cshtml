@@ -1,0 +1,877 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+@using CheckClickClient;
+@inject IConfiguration Configuration;
+<head>
+    <meta charset="utf-8">
+    @*<title>CheckClik - Multipurpose eCommerce HTML Template</title>*@
+    <title>@ViewBag.Title </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content>
+    <meta property="og:type" content>
+    <meta property="og:url" content>
+    <meta property="og:image" content>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="fonts/favicon.svg">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/nest/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="~/nest/css/main.css">
+
+    @*<script src="~/web-assets/js/jquery.min.js"></script>*@
+    <script src="~/nest/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/nest/js/vendor/jquery-3.6.0.min.js"></script>
+
+    <script src="~/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/nest/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/nest/js/plugins/slick.js"></script>
+    <script src="~/nest/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="~/nest/js/plugins/waypoints.js"></script>
+    <script src="~/nest/js/plugins/wow.js"></script>
+    <script src="~/nest/js/plugins/perfect-scrollbar.js"></script>
+    <script src="~/nest/js/plugins/magnific-popup.js"></script>
+    <script src="~/nest/js/plugins/select2.min.js"></script>
+    <script src="~/nest/js/plugins/counterup.js"></script>
+    <script src="~/nest/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/nest/js/plugins/images-loaded.js"></script>
+    <script src="~/nest/js/plugins/isotope.js"></script>
+    <script src="~/nest/js/plugins/scrollup.js"></script>
+    <script src="~/nest/js/plugins/jquery.vticker-min.js"></script>
+    <script src="~/nest/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="~/nest/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="~/nest/js/main.js"></script>
+    <script src="~/nest/js/shop.js"></script>
+
+    <style>
+        .header-style-1 .main-categori-wrap > a {
+            color: #3BB77E;
+            line-height: 70px;
+            background: #fff;
+            padding: 0 30px;
+            border: 1px solid #3BB77E;
+        }
+        .header-style-1 .main-categori-wrap > a.categories-button-active i {
+            color: #3BB77E;
+            margin-left: 12px;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+        .header-style-1 .main-categori-wrap > a span {
+            color: #3BB77E !important;
+        }
+        .header-style-1 .main-categori-wrap > a:hover {
+            background-color: #e8efec;
+        }
+        .header-style-1 .search-style-2 form {
+             border: 0px solid #BCE3C9; 
+             /*border: 1px solid #fff !important; */
+            border-radius: 4px;
+            max-width: 700px;
+            background-color: #fff;
+        }
+        .header-style-1 .header-middle-ptb-1 {
+            padding: 10px 0;
+        }
+    </style>
+</head> 
+<body> 
+    <!-- Quick view --> 
+    <header class="header-area header-style-1 header-height-2">
+        <div class="mobile-promotion">
+            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
+        </div>
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                     
+                </div>
+            </div>
+        </div>
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block header-bottom header-bottom-bg-color">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1" hidden> 
+                        <a href="/Home/NIndex"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
+                    </div> 
+
+                    <div class="header-right">
+                        <div class="search-style-2"> 
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="mobile-header-logo">
+                    <a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-search search-style-3 mobile-header-border">
+                    <form action="#">
+                        <input type="text" placeholder="Search for items…">
+                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <!-- mobile menu start -->
+                    <nav>
+                        <ul class="mobile-menu font-heading">
+                            <li class="menu-item-has-children">
+                                <a href="index.html">Home</a>
+                                <ul class="dropdown">
+                                    <li><a href="index.html">Home 1</a></li>
+                                    <li><a href="index-2.html">Home 2</a></li>
+                                    <li><a href="index-3.html">Home 3</a></li>
+                                    <li><a href="index-4.html">Home 4</a></li>
+                                    <li><a href="index-5.html">Home 5</a></li>
+                                    <li><a href="index-6.html">Home 6</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-grid-right.html">shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
+                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
+                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
+                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
+                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Single Product</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
+                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
+                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
+                                            <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
+                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Shop Invoice</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
+                                            <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
+                                            <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
+                                            <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
+                                            <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
+                                            <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Vendors</a>
+                                <ul class="dropdown">
+                                    <li><a href="vendors-grid.html">Vendors Grid</a></li>
+                                    <li><a href="vendors-list.html">Vendors List</a></li>
+                                    <li><a href="vendor-details-1.html">Vendor Details 01</a></li>
+                                    <li><a href="vendor-details-2.html">Vendor Details 02</a></li>
+                                    <li><a href="vendor-dashboard.html">Vendor Dashboard</a></li>
+                                    <li><a href="vendor-guide.html">Vendor Guide</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Mega menu</a>
+                                <ul class="dropdown">
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Women's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Dresses</a></li>
+                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
+                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
+                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Men's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Jackets</a></li>
+                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
+                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Technology</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Tablets</a></li>
+                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
+                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="blog-category-fullwidth.html">Blog</a>
+                                <ul class="dropdown">
+                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
+                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
+                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
+                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Single Product Layout</a>
+                                        <ul class="dropdown">
+                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
+                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
+                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="page-about.html">About Us</a></li>
+                                    <li><a href="page-contact.html">Contact</a></li>
+                                    <li><a href="page-account.html">My Account</a></li>
+                                    <li><a href="page-login.html">Login</a></li>
+                                    <li><a href="page-register.html">Register</a></li>
+                                    <li><a href="page-forgot-password.html">Forgot password</a></li>
+                                    <li><a href="page-reset-password.html">Reset password</a></li>
+                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
+                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
+                                    <li><a href="/Home/TermsAndConditions" target="_blank">Terms of Service</a></li>
+                                    <li><a href="page-404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Language</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                <div class="mobile-header-info-wrap">
+                    <div class="single-mobile-header-info">
+                        <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon mb-50">
+                    <h6 class="mb-15">Follow Us</h6>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-pinterest-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-youtube-white.svg" alt></a>
+                </div>
+                <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+            </div>
+        </div>
+    </div>
+    <!--End header-->
+    <main class="main">
+        @RenderBody()
+    </main>
+    <footer class="main">
+        
+        <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+            <div class="row align-items-center">
+                <div class="col-12 mb-30">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+                    @*<a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
+                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>*@
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
+                    <div class="footer-link-widget widget-install-app col">
+                        @*<h4 class="widget-title">Install App</h4>
+                        <p class="wow fadeIn animated">From App Store or Google Play</p>*@
+                        <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
+                        
+                        <div class=" download-app">
+                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
+                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+                    <div class="hotline d-lg-inline-flex mr-30">
+                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
+                    </div>
+                    <div class="hotline d-lg-inline-flex">
+                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+                        <p>1900 - 8888<span>24/7 Support Center</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <img src="/nest/imgs/shop/loading.gif" alt>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="hdnnmlat" id="hdnidlat" />
+
+    <input type="hidden" name="hdnnmlong" id="hdnidlong" />
+
+    <input type="hidden" id="hdncity" />
+
+    <input type="hidden" id="hdndistrict" />
+
+    @*<input type="hidden" id="hdndistrict" value="@Session["DefaultDistrictListData"]" />*@
+
+    <input type="hidden" id="hdnisusrloc" value="0" />
+    <!-- Vendor JS-->
+    @*<script data-cfasync="false" src="~/nest/js/email-decode.min.js"></script>*@
+    @*<script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
+    @*<script src="~/nest/js/jquery-3.6.0.min.js"></script>*@
+    @*
+    <script src="~/web-assets/js/jquery.min.js"></script>
+    <script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
+    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+
+    
+
+
+    
+    <script>
+        var districtArray = [];
+        var cityArray = []; 
+        $(document).ready(function () {
+            cityArray = @Json.Serialize(AppUtils.CityList.ToList());
+            districtArray = @Json.Serialize(AppUtils.DistrictList.ToList());
+            $(".select").select2({ width: "100%" }); 
+            var city = '@AppUtils.SelectedCity.ToString()';
+            var district =  '@AppUtils.SelectedDistrict.ToString()';
+            if ((city == 0 || city == '') && (district == 0 || district == '')) {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition2, showError);
+                }
+            }
+            else if ((city != 0 || city != '') && (district == 0 || district == '')) { 
+                var cities = cityArray;
+                for (var i = 0; i < cities.length; i++) {
+                    if (cities[i].id == city) {
+                        $('#hdnidlat').val(cities[i].latitude);
+                        $('#hdnidlong').val(cities[i].longitude);
+                        $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                        $("#hdnIsLocationSet").val("1");
+                        $("#spncity").text(cities[i].nameEn);
+                        $("#select-district").val(district).trigger('change');
+                        $("#select-city").val(city).trigger('change');
+                        $('.select').select2({ width: "100%" }).trigger('change');
+                        $(document).trigger("my-event-afterLastDocumentReady");
+                    }
+                }
+            }
+            else {
+                $("#select-city").val(city).trigger('change');
+                $("#spncity").text($("#select-city option:selected").text()); 
+                var temp = districtArray;
+                $("#select-district").empty();
+                $('#select-district').append($('<option>', {
+                    value: "0",
+                    text: "All"
+                }));
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].cityId == city) {
+                        $('#select-district').append($('<option>', {
+                            value: temp[i].id,
+                            text: temp[i].nameEn
+                        }))
+                    }
+                }
+                $('.select').select2({ width: "100%" }).trigger('change');
+                $("#select-district").val(district).trigger('change');
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].id == district) {
+                        
+                            $('#hdnidlat').val(temp[i].latitude);
+                        $('#hdnidlong').val(temp[i].longitude);
+                        //console.log(temp[i].Latitude);
+                        $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                        $("#hdnIsLocationSet").val("1");
+                    }
+                }
+                $(document).trigger("my-event-afterLastDocumentReady");
+            }
+            readydropdown();
+            typeAhead();
+            $("#search").submit(function (e) {
+                $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+            });
+            $("#loader").hide();
+             
+        });
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    $("#select-city").val(3);
+                    $("#spncity").text($("#select-city option:selected").text());
+                    //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+                    var temp = "";
+                    $("#select-district").empty();
+                    $('#select-district').append($('<option>', {
+                        value: "0",
+                        text: "All"
+                    }));
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].CityId == 3) {
+                            $('#select-district').append($('<option>', {
+                                value: temp[i].id,
+                                text: temp[i].nameEn
+                            }))
+                        }
+                    }
+                    $("#select-district").val(3075);
+                    $('.select').select2({ width: "100%" }).trigger('change');
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].id == 3075) {
+                            $('#hdnidlat').val(temp[i].Latitude);
+                            $('#hdnidlong').val(temp[i].Longitude);
+                        }
+                    }
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "Location information is unavailable."
+
+                    break;
+                case error.TIMEOUT:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+            $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+            $("#hdnIsLocationSet").val("1");
+        }
+
+        function showPosition2(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            //console.log(location.hostname);
+            $("#hdnidlat").val(position.coords.latitude);
+            $('#hdnidlong').val(position.coords.longitude);
+
+            var latlng = lat + ',' + lon;
+            $.ajax({
+                async: false,
+                type: "get",
+                url: '@Url.Action("UpdateStoreLocation", "Home")',
+                datatype: "json",
+                data: { coordinate: latlng },
+                traditional: true,
+                success: function (data) {
+                    var region = data[0];
+                    var city = data[1];
+                    var district = data[2];
+
+                    $('#hdnisusrloc').val(1);
+                    $('#select-city').val(city);
+                    $('#hdncity').val(city);
+                    $('#hdndistrict').val(district);
+                    //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+                    //var temp = "";
+                    //console.log(AppUtils.DistrictList.ToList());
+                    //console.log(AppUtils.DistrictList.ToString());
+                    var temp = districtArray;//AppUtils.DistrictList.ToList();
+                    $("#select-district").empty();
+                    //$("#select-district1").empty();
+                    $('#select-district').append($('<option>', {
+                        value: "0",
+                        text: "All"
+                    }));
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].cityId == city) {
+                            //console.log(temp[i].id);
+                            $('#select-district').append($('<option>', {
+                                value: ''+temp[i].id+'',
+                                text: '' + temp[i].nameEn + ''
+
+                            }));
+                            //$('#select-district1').append($('<option>', {
+                            //    value: ''+temp[i].id+'',
+                            //    text: '' + temp[i].nameEn + ''
+
+                            //}));
+                            //$('#select-district').append($('<option>', {
+                            //        value: '10',
+                            //        text: 'asfsad'
+                            //    }));
+                            //$('#select-district1').append($('<option>', {
+                            //        value: '10',
+                            //        text: 'asfsad'
+                            //    }));
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                },
+                complete: function () {
+                    //readydropdown();
+                    var a = $('#hdncity').val();
+                    var b = $('#hdndistrict').val();
+                    $('#hdnisusrloc').val(1);
+                    $("#select-district").val(b).trigger('change');
+                    $("#select-city").val(a).trigger('change');
+                    $('.select').select2({ width: "100%" }).trigger('change');
+                    $("#spncity").text($("#select-city option:selected").text());
+                    $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                    $("#hdnIsLocationSet").val("1");
+                    //$(document).ready(function () {
+                    // This event will fire after all the other $(document).ready() functions have completed.
+                    // Usefull when your script is at the top of the page, but you need it run last
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    //});
+                }
+            });
+        }
+
+        function readydropdown() {
+        }
+        function typeAhead() {
+            var $input = $("#txtSearchTerm");
+            $input.typeahead({
+                source: function (query, process) {
+                    var results = [];
+                    map = {};
+                    if (query.length > 1) {
+                        return $.post('@Url.Action("Autocomplete", "Home")', { q: query, lang: 'en' }, function (data) {
+                            $.each(data, function (i, result) {
+                                map[result] = result;
+                                results.push(result);
+                            });
+
+                            process(results);
+                        });
+                    }
+                },
+                updater: function (item) {
+                    $("#txtSearchTerm").text(item.trim());
+                    //window.location = "search?q=" + item.trim();
+                    //$("#search").submit();
+                    return item;
+                },
+                autoSelect: false
+                //autoSelect: true
+            });
+            $input.change(function (e) {
+                if (e.which == 13) {
+                    //alert('You pressed enter!');
+                }
+                var current = $input.typeahead("getActive");
+                if (current) {
+                    if (current.toLowerCase() == $input.val().toLowerCase()) {
+                        // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+                    } else {
+                        // This means it is only a partial match, you can either add a new item
+                        // or take the active if you don't want new items
+                    }
+                } else {
+                    // Nothing is active so it is a new value (or maybe empty value)
+                }
+            });
+        }
+
+
+        function removeL1(id) {
+
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("UpdateProductStatus", "Cart")',
+                datatype: "json",
+                data: { CartId: id, quantity: 0, flagid: 2 },
+                traditional: true,
+                success: function (data) {
+                    var v = data.success;
+                    if (v == true) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            });
+        }
+
+        function MinusQtyL1(id) {
+
+            var min = $('#hdnMinL1_' + id).val();
+            var max = $('#hdnMaxL1_' + id).val();
+            var act = $('#txtvalL1_' + id).val();
+            var price = $('#lblpriceL1_' + id).text();
+
+            if (min < act && max >= act) {
+
+                var a = parseInt(act);
+                if (a >= 1) {
+                    a--;
+                }
+                var fnl = a * parseFloat(price);
+
+                $('#txtvalL1_' + id).val(a);
+
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: '@Url.Action("UpdateProductStatus", "Cart")',
+                    datatype: "json",
+                    data: { CartId: id, quantity: a, flagid: 1 },
+                    traditional: true,
+                    success: function (data) {
+                        var v = data.success;
+                        if (v == true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        return false;
+                    }
+                });
+            }
+            else {
+                $('#loader').hide();
+            }
+        }
+        function PlusQtyL1(id) {
+
+            var min = $('#hdnMinL1_' + id).val();
+            var max = $('#hdnMaxL1_' + id).val();
+            var act = $('#txtvalL1_' + id).val();
+            var price = $('#lblpriceL1_' + id).text();
+
+            if (min <= act && max > act) {
+                var a = parseInt(act);
+                a++;
+                $('#txtvalL1_' + id).val(a);
+                var fnl = a * parseFloat(price);
+                //$('#spnL1_' + id).html(fnl);
+
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: '@Url.Action("UpdateProductStatus", "Cart")',
+                    datatype: "json",
+                    data: { CartId: id, quantity: a, flagid: 1 },
+                    traditional: true,
+                    success: function (data) {
+                        var v = data.success;
+                        if (v == true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        return false;
+                    }
+                });
+            }
+            else {
+            }
+        }
+
+
+        var city = "";
+
+        /* Function to Open the side nav panel */
+        function openNav() {
+            $("#sideNavUserGuide").toggleClass("open");
+            var overlay = $('.overlay');
+            overlay.show();
+        }
+        /* Function to close the side nav panel */
+        $(".user-guide-header button.close").click(function closeNav() {
+            $("#sideNavUserGuide").removeClass("open");
+            var overlay = $('.overlay');
+            overlay.hide();
+        });
+
+        $(document).ready(function () {
+            $("#select-city option:contains(" + ('Riyadh').trim() + ")").attr('selected', 'selected');
+            //$('.customer-logos').slick({
+            //    slidesToShow: 5,
+            //    slidesToScroll: 1,
+            //    autoplay: true,
+            //    autoplaySpeed: 2500,
+            //    arrows: false,
+            //    dots: false,
+            //    pauseOnHover: false,
+            //    responsive: [{
+            //        breakpoint: 1367,
+            //        settings: {
+            //            slidesToShow: 5
+            //        }
+            //    }, {
+            //        breakpoint: 1024,
+            //        settings: {
+            //            slidesToShow: 4
+            //        }
+            //    }, {
+            //        breakpoint: 768,
+            //        settings: {
+            //            slidesToShow: 3
+            //        }
+            //    }, {
+            //        breakpoint: 520,
+            //        settings: {
+            //            slidesToShow: 2
+            //        }
+            //    }]
+            //});
+        });
+
+
+    </script>
+    <script>
+
+        function fnupdatecitydistrict() {
+            var cityid = $("#select-city option:selected").val();
+            var districtid = $("#select-district option:selected").val();
+
+            $.ajax({
+                url: '@Url.Action("ChangeCityDistrict", "Base")',
+                data: { CityId: cityid, DistrictId: districtid },
+                success: function (response) {
+                    if (districtid == 0 || districtid == "") {
+                        var tempcity = "";
+                        //var tempcity = Html.Raw(Session["DefaultCityListData"]);
+                        for (var i = 0; i < tempcity.length; i++) {
+                            if (tempcity[i].id == cityid) {
+                                debugger
+                                $('#hdnidlat').val(tempcity[i].latitude);
+                                $('#hdnidlong').val(tempcity[i].longitude);
+                            }
+                        }
+                    }
+                    location.reload();
+                },
+                error: function (response) 
+                {
+                     
+                }
+            });
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].id == districtid) {
+                    $('#hdnidlat').val(temp[i].latitude);
+                    $('#hdnidlong').val(temp[i].longitude);
+                }
+            }
+        }
+        $("#select-city").change(function (e) {
+            $("#spncity").text($("#select-city option:selected").text());
+            var cityid = $("#select-city option:selected").val();
+            $("#select-district").empty();
+            //$("#select-district1").empty();
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            $('#select-district').append($('<option>', {
+                value: "0",
+                text: "All"
+            }));
+            //$('#select-district1').append($('<option>', {
+            //    value: "0",
+            //    text: "All"
+            //}));
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].cityId == cityid) {
+                    $("#select-district").append($('<option>', {
+                        value: temp[i].id,
+                        text: temp[i].nameEn
+                    }));
+                    //$("#select-district1").append($('<option>', {
+                    //    value: temp[i].id,
+                    //    text: temp[i].nameEn
+                    //}));
+                }
+            }
+            if ($('#hdnisusrloc').val() == 0) {
+                var districtid = $("#select-district option:selected").val();
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].id == districtid) {
+                        $('#hdnidlat').val(temp[i].latitude);
+                        $('#hdnidlong').val(temp[i].longitude);
+                    }
+                }
+            }
+            //}
+        });
+
+        function binddistrict() {
+            $("#select-district").empty();
+            var cityid = $("#select-city option:selected").val();
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            $('#select-district').append($('<option>', {
+                value: "0",
+                text: "All"
+            }));
+            //$('#select-district1').append($('<option>', {
+            //    value: "0",
+            //    text: "All"
+            //}));
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].cityId == cityid) {
+                    $("#select-district").append($('<option>', {
+                        value: temp[i].id,
+                        text: temp[i].nameEn
+                    }));
+                    //$("#select-district1").append($('<option>', {
+                    //    value: temp[i].id,
+                    //    text: temp[i].nameEn
+                    //}));
+                }
+            }
+        }
+
+        $('.city.dropdown-menu').click(function (e) {
+            e.stopPropagation();
+        });
+
+        $(document).on("click", "input[class='select2-search__field']", function () {
+            e.stopPropagation();
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
