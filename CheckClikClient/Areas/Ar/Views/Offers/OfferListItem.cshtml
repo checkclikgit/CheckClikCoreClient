@@ -1,0 +1,106 @@
+﻿@model Customer.Models.OffersDTO
+@inject IConfiguration Configuration;
+@{
+    Layout = null; 
+}
+   
+@if (Model.ProductListOffers != null)
+{
+    foreach (var item in Model.ProductListOffers)
+    {
+        <div class="row mt-60">
+            <div class="col-12">
+                <h2 class="section-title style-1 mb-30">Product Offers</h2>
+            </div>
+            <div class="col-12">
+                <div class="row related-products">
+                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap hover-up">
+                            <div class="product-img-action-wrap">
+                                <div class="product-img product-img-zoom">
+                                    <a href="~/@item.StoreNameEn.Replace(" "," -").ToLower() /@item.MainCategoryNameEn.Replace(" "," -").ToLower() /@item.SubCategoryNameEn.Replace(" "," -").ToLower() /p/@item.GenerateSlug()" tabindex="0">
+                                        <img class="default-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                        <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                    </a>
+                                </div>
+                                <div class="product-action-1" hidden>
+                                    <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                    <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                </div>
+                                <div class="product-badges product-badges-position product-badges-mrg">
+                                    @if (@item.DiscountValue != 0)
+                                    {
+                                        <span class="hot">
+                                            @item.DiscountValue @(item.DiscountType == 1 ? "%OFF" : item.DiscountType == 2 ? "OFF" : "")
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <h2><a href="/ProductDetails/CustomerProducts?Id = @item.GenerateSlug()" tabindex="0">@item.NameEn</a></h2>
+                                @*<div class="rating-result" title="90%">
+                        <span> </span>
+                        </div>*@
+                                <div class="product-price">
+                                    <span>SAR @item.SellingPrice.ToString("N2") </span>
+                                    <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (Model.ServiceListOffers != null)
+{
+    foreach (var item in Model.ServiceListOffers)
+    {
+        <div class="row mt-60">
+            <div class="col-12">
+                <h2 class="section-title style-1 mb-30">Service Offers</h2>
+            </div>
+            <div class="col-12">
+                <div class="row related-products">
+                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap hover-up">
+                            <div class="product-img-action-wrap">
+                                <div class="product-img product-img-zoom">
+                                    <a href="~/@item.StoreNameEn.Replace(" "," -").ToLower() /@item.MainCategoryNameEn.Replace(" "," -").ToLower() /@item.SubCategoryNameEn.Replace(" "," -").ToLower() /s/@item.GenerateSlug()" tabindex="0">
+                                        <img class="default-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                        <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                    </a>
+                                </div>
+                                <div class="product-action-1" hidden>
+                                    <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                    <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                </div>
+                                <div class="product-badges product-badges-position product-badges-mrg">
+                                    @if (@item.DiscountValue != 0)
+                                    {
+                                        <span class="hot">
+                                            @item.DiscountValue @(item.DiscountType == 1 ? "%OFF" : item.DiscountType == 2 ? "OFF" : "")
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <h2><a href="/ServiceDetails/CustomerServices?Id = @item.GenerateSlugService()" tabindex="0">@item.ServiceNameEn</a></h2>
+                                @*<div class="rating-result" title="90%">
+                        <span> </span>
+                        </div>*@
+                                <div class="product-price">
+                                    <span>SAR @item.SellingPrice.ToString("N2") </span>
+                                    <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

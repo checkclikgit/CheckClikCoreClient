@@ -1,0 +1,1234 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+@using CheckClickClient;
+@inject IConfiguration Configuration;
+<head>
+    <meta charset="utf-8">
+    @*<title>CheckClik - Multipurpose eCommerce HTML Template</title>*@
+    <title>@ViewBag.Title </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content>
+    <meta property="og:type" content>
+    <meta property="og:url" content>
+    <meta property="og:image" content>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="fonts/favicon.svg">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/nest/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="~/nest/css/main.css">
+
+    @*<script src="~/web-assets/js/jquery.min.js"></script>*@
+    <script src="~/nest/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/nest/js/vendor/jquery-3.6.0.min.js"></script>
+
+    <script src="~/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/nest/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/nest/js/plugins/slick.js"></script>
+    <script src="~/nest/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="~/nest/js/plugins/waypoints.js"></script>
+    <script src="~/nest/js/plugins/wow.js"></script>
+    <script src="~/nest/js/plugins/perfect-scrollbar.js"></script>
+    <script src="~/nest/js/plugins/magnific-popup.js"></script>
+    <script src="~/nest/js/plugins/select2.min.js"></script>
+    <script src="~/nest/js/plugins/counterup.js"></script>
+    <script src="~/nest/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/nest/js/plugins/images-loaded.js"></script>
+    <script src="~/nest/js/plugins/isotope.js"></script>
+    <script src="~/nest/js/plugins/scrollup.js"></script>
+    <script src="~/nest/js/plugins/jquery.vticker-min.js"></script>
+    <script src="~/nest/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="~/nest/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="~/nest/js/main.js"></script>
+    <script src="~/nest/js/shop.js"></script>
+
+    <style>
+        .header-style-1 .main-categori-wrap > a {
+            color: #3BB77E;
+            line-height: 70px;
+            background: #fff;
+            padding: 0 30px;
+            border: 1px solid #3BB77E;
+        }
+        .header-style-1 .main-categori-wrap > a.categories-button-active i {
+            color: #3BB77E;
+            margin-left: 12px;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+        .header-style-1 .main-categori-wrap > a span {
+            color: #3BB77E !important;
+        }
+        .header-style-1 .main-categori-wrap > a:hover {
+            background-color: #e8efec;
+        }
+        .header-style-1 .search-style-2 form {
+             border: 0px solid #BCE3C9; 
+             /*border: 1px solid #fff !important; */
+            border-radius: 4px;
+            max-width: 700px;
+            background-color: #fff;
+        }
+        .header-style-1 .header-middle-ptb-1 {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+    @{ 
+        IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
+        Customer.Models.CartDTO url = new Customer.Models.CartDTO();
+        url.UrlPath = Configuration["apiurl"]+""+Configuration["UploadLocation"]+""+"/Products/";
+
+        Decimal totalVatL = 0;
+        Decimal totalAmtL = 0;
+    }
+<body> 
+    <!-- Quick view -->
+    <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
+                            <div class="detail-gallery">
+                                <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                <!-- MAIN SLIDES -->
+                                <div class="product-image-slider">
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-2.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-1.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-3.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-4.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-5.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-6.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="/nest/imgs/shop/product-16-7.jpg" alt="product image">
+                                    </figure>
+                                </div>
+                                <!-- THUMBNAILS -->
+                                <div class="slider-nav-thumbnails">
+                                    <div><img src="/nest/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-6.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
+                                    <div><img src="/nest/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
+                                </div>
+                            </div>
+                            <!-- End Gallery -->
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="detail-info pr-30 pl-30">
+                                <span class="stock-status out-stock"> Sale Off </span>
+                                <h3 class="title-detail"><a href="shop-product-right.html" class="text-heading">Seeds of Change Organic Quinoa, Brown</a></h3>
+                                <div class="product-detail-rating">
+                                    <div class="product-rate-cover text-end">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width: 90%"></div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix product-price-cover">
+                                    <div class="product-price primary-color float-left">
+                                        <span class="current-price text-brand">$38</span>
+                                        <span>
+                                            <span class="save-price font-md color3 ml-15">26% Off</span>
+                                            <span class="old-price font-md ml-15">$52</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="detail-extralink mb-30">
+                                    <div class="detail-qty border radius">
+                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                        <span class="qty-val">1</span>
+                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                    </div>
+                                    <div class="product-extra-link2">
+                                        <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                    </div>
+                                </div>
+                                <div class="font-xs">
+                                    <ul>
+                                        <li class="mb-5">Vendor: <span class="text-brand">Nest</span></li>
+                                        <li class="mb-5">MFG:<span class="text-brand"> Jun 4.2022</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Detail Info -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area header-style-1 header-height-2">
+        <div class="mobile-promotion">
+            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
+        </div>
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-4" hidden>
+                        <div class="header-info">
+                            <ul>
+                                <li><a href="page-about.htlm">About Us</a></li>
+                                <li><a href="page-account.html">My Account</a></li>
+                                <li><a href="shop-wishlist.html">Wishlist</a></li>
+                                <li><a href="shop-order.html">Order Tracking</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <ul>
+                                    <li>100% Secure delivery without contacting the courier</li>
+                                    <li>Supper Value Deals - Save more with coupons</li>
+                                    <li>Trendy 25silver jewelry, save up 35% off today</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                                <li>
+                                    <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li>
+                                            <a href="#"><img src="/nest/imgs/shop/flag-fr.png" alt>Arabic</a>
+                                        </li> 
+                                    </ul>
+                                </li>
+                                <li hidden>
+                                    <a class="language-dropdown-active" href="#">USD <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li>
+                                            <a href="#"><img src="/nest/imgs/shop/flag-fr.png" alt>INR</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="/nest/imgs/shop/flag-dt.png" alt>MBP</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="/nest/imgs/shop/flag-ru.png" alt>EU</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block header-bottom header-bottom-bg-color">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1" hidden> 
+                        <a href="/Home/NIndex"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
+                    </div>
+                    @{
+                        var cityList = new SelectList(AppUtils.CityList, "Id", "NameEn");
+                        var districtList = new SelectList(AppUtils.DistrictList, "Id", "NameEn");
+                    }
+
+                    <div class="header-right">
+                        <div class="search-style-2">
+                            <div class="row">
+                                    <div class="col-sm-12 col-md-5 col-lg-4 mt-3"> 
+                                        @*<ul class="list-inline hidden-sm hidden-xs">
+                                            <li class="dropdown">
+                                                <span><i class="fa fa-globe mr-05"></i><strong>Shop In</strong> </span>
+                                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true" id="ancci">
+                                                    <strong id="spncity"></strong>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <div class="city dropdown-menu p-3">
+                                                    <p>select your shopping location</p> 
+                                                        <div class="form-group">
+                                                  
+                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
+                                                            new { @id = "select-city", @class = "select form-control", @data_live_search = "true" })
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
+                                                            new { @id = "select-district", @class = "select form-control", @data_live_search = "true" }) 
+
+                                                        </div>
+                                                        <div class="form-group text-center mb-0">
+                                                            <button type="button" class="btn btn-default form-control" onclick="fnupdatecitydistrict();">Submit</button>
+                                                        </div> 
+                                                </div>
+                                            </li>
+                                        </ul>*@
+                                        <div class="main-categori-wrap d-none d-lg-block">
+                                            <a class="categories-button-active" href="#">
+                                                @*<span class="fi-rs-apps"></span> *@
+                                                <img src="/nest/imgs/theme/icons/icon-location.svg" alt="">
+                                                <span class="et ml-2">Shop In</span> <strong style="float:right;" id="spncity"></strong>
+                                                <i class="fi-rs-angle-down"></i>
+                                            </a>
+                                            <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
+                                                
+                                                    <div class="row pl-30"> 
+                                                        select your shopping location
+                                                    </div>
+                                                <div class="d-flex categori-dropdown-inner pt-2"> 
+                                                        <div class="form-group"> 
+                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
+                                                            new { @id = "select-city", @class = "select form-control", @data_live_search = "true" }) 
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
+                                                            new { @id = "select-district", @class = "select form-control", @data_live_search = "true" }) 
+                                                        </div>
+                                                        <div class="form-group text-center mb-0">
+                                                            <button type="button" class="btn btn-default btn-sm" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 0px 0px 18px 25px !important;" onclick="fnupdatecitydistrict();">Filter</button>
+                                                        </div>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        @*<form action="#" style="max-width: 500px;">  
+                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,"-- Shop In --",
+                                            new { @id = "select-city", @class = "select-active", @data_live_search = "true" })
+
+                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,"-- Area --",
+                                            new { @id = "select-district", @class = "select-active", @data_live_search = "true" })
+                                              
+                                            <span type="button" class="btn" onclick="fnupdatecitydistrict();" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 9px 19px 9px 12px;">Apply</span>
+                                
+                                        </form>*@
+                                    </div>
+                                    <div class="col-sm-12 col-md-7 col-lg-8">
+                                        <div class=" sticky-bar">@*header-bottom header-bottom-bg-color*@
+                                            <div class="container">
+                                                <div class="header-wrap header-space-between position-relative">
+                                                    <div class="logo logo-width-1 d-block d-lg-none">
+                                                        @*<a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>*@
+                                                        <a href="/Home/NIndex"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
+                                                    </div>
+                                                    <div class="header-nav d-none d-lg-flex" style="margin-left:3rem"> 
+                                                        <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading ml-1">
+                                                            <nav>
+                                                                <ul>
+                                                                    <li class="hot-deals"><img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="/Home/NIndex">HOME</a></li> 
+                                                                    <li class="hot-deals">
+                                                                    <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="/search/Nquery">STORES</a>
+                                                                    </li>
+                                                                    <li class="hot-deals">
+                                                                        <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="/Offers/Index">OFFERS</a>
+                                                                    </li>
+                                                                    <li class="hot-deals">
+                                                                        <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="/Coupons/Index">COUPONS</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                                @*<input id="txtSearchTerm" name="txtSearchTerm" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" autocomplete="off" style="background-image: url('') !important;" />*@
+
+                                            @*<input type="submit" class="btn btn-default btn-block btn-lg search-button" value="Search">*@
+
+                                            <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" /> 
+                                            <input type="hidden" name="hdnlocation" id="hdnlocation" /> 
+                                            <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" /> 
+                                            <input type="hidden" name="hdnSearchText" id="hdnSearchText" />
+                                            <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
+                                            <input type="hidden" name="hdnStart" id="hdnStart" />
+                                        }
+                                    </div>
+                             </div> 
+                        </div> 
+                        <div class="header-action-right">
+                            <div class="header-action-2"> 
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                        <img alt="Nest" src="/nest/imgs/theme/icons/icon-cart.svg">
+                                        <span class="pro-count blue">@(cartlst != null ? cartlst.Count() : 0)</span>
+                                    </a>
+                                    <a href="shop-cart.html"><span class="lable">Cart</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+
+                                        @foreach (var item in cartlst)
+                                        {
+                                            <ul>
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="shop-product-right.html"><img alt="Nest" src="@url.UrlPath@item.Image"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="shop-product-right.html">@item.ProductNameEn</a></h4>
+                                                        <h4><span>@item.CartQuantity × </span> <i id="lblpriceL1_@item.CartId">@item.Price.ToString("N2")</i> = @((item.CartQuantity * @item.Price).ToString("N2"))</h4>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#" onclick="removeL1(@item.CartId)"><i class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li> 
+                                            </ul>
+                                             
+                                            @if (item.CartStatus == true)
+                                            {
+                                                    totalAmtL = totalAmtL + item.TotalItemPrice;
+                                                    totalVatL = totalVatL + item.TotalVatAmount ;
+                                            }
+                                        }
+
+                                         
+                                        
+                                        <div class="shopping-cart-footer">
+                                            <div class="shopping-cart-total">
+                                                <h4>Total <span>SAR @(totalAmtL.ToString("N2"))</span></h4>
+                                            </div>
+                                            <div class="shopping-cart-button">
+                                                <a href="/Cart/Cartpreview" class="outline">View cart</a>
+                                                <a href="/Cart/Checkout">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    @{
+
+                                        var data = CheckClickClient.AppUtils.UserLogin;
+                                    }
+
+                                    <div class="header-action-icon-2">
+                                        @*<a href="~/user/myprofile">
+                                            @{
+                                                if (data != null && data.IsLogin == true)
+                                                {
+                                                            <img class="svgInject" alt="Nest" src="@data.UserProfile">
+                                                }
+                                            }
+                                        </a>*@
+                                        @if(CheckClickClient.AppUtils.UserLogin.UserId > 0)
+                                        {
+                                            <a href="#">
+                                                <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                            </a>
+                                            <a href="#"><span class="lable ml-0">@data.UserName</span></a>
+                                            <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                                <ul>
+                                                    <li>
+                                                    <a href="~/user/myprofilenest"><i class="fi fi-rs-user mr-10"></i>My Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/user/manageaddressnest"><i class="fi fi-rs-location-alt mr-10"></i>Manage Address</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/user/changepasswordNest"><i class="fi fi-rs-heart mr-10"></i>Change Password</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("logout", "user")"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
+                                        else{
+                                            <a href="#">
+                                                <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                            </a>
+                                            <a href="@Url.Action("IndexNest", "User")"><span class="lable ml-0">Login</span></a>
+                                        } 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="mobile-header-logo">
+                    <a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-search search-style-3 mobile-header-border">
+                    <form action="#">
+                        <input type="text" placeholder="Search for items…">
+                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <!-- mobile menu start -->
+                    <nav>
+                        <ul class="mobile-menu font-heading">
+                            <li class="menu-item-has-children">
+                                <a href="index.html">Home</a>
+                                <ul class="dropdown">
+                                    <li><a href="index.html">Home 1</a></li>
+                                    <li><a href="index-2.html">Home 2</a></li>
+                                    <li><a href="index-3.html">Home 3</a></li>
+                                    <li><a href="index-4.html">Home 4</a></li>
+                                    <li><a href="index-5.html">Home 5</a></li>
+                                    <li><a href="index-6.html">Home 6</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-grid-right.html">shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
+                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
+                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
+                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
+                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Single Product</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
+                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
+                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
+                                            <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
+                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Shop Invoice</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
+                                            <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
+                                            <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
+                                            <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
+                                            <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
+                                            <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Vendors</a>
+                                <ul class="dropdown">
+                                    <li><a href="vendors-grid.html">Vendors Grid</a></li>
+                                    <li><a href="vendors-list.html">Vendors List</a></li>
+                                    <li><a href="vendor-details-1.html">Vendor Details 01</a></li>
+                                    <li><a href="vendor-details-2.html">Vendor Details 02</a></li>
+                                    <li><a href="vendor-dashboard.html">Vendor Dashboard</a></li>
+                                    <li><a href="vendor-guide.html">Vendor Guide</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Mega menu</a>
+                                <ul class="dropdown">
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Women's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Dresses</a></li>
+                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
+                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
+                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Men's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Jackets</a></li>
+                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
+                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Technology</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Tablets</a></li>
+                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
+                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="blog-category-fullwidth.html">Blog</a>
+                                <ul class="dropdown">
+                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
+                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
+                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
+                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Single Product Layout</a>
+                                        <ul class="dropdown">
+                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
+                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
+                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="page-about.html">About Us</a></li>
+                                    <li><a href="page-contact.html">Contact</a></li>
+                                    <li><a href="page-account.html">My Account</a></li>
+                                    <li><a href="page-login.html">Login</a></li>
+                                    <li><a href="page-register.html">Register</a></li>
+                                    <li><a href="page-forgot-password.html">Forgot password</a></li>
+                                    <li><a href="page-reset-password.html">Reset password</a></li>
+                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
+                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
+                                    <li><a href="/Home/TermsAndConditions" target="_blank">Terms of Service</a></li>
+                                    <li><a href="page-404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Language</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                <div class="mobile-header-info-wrap">
+                    <div class="single-mobile-header-info">
+                        <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon mb-50">
+                    <h6 class="mb-15">Follow Us</h6>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt></a>
+                    <a href="https://twitter.com/checkclik?s=11" target="_blank"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt></a>
+                    <a href="https://instagram.com/checkclik?igshid=YmMyMTA2M2Y=" target="_blank"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-pinterest-white.svg" alt></a>
+                    <a href="#"><img src="/nest/imgs/theme/icons/icon-youtube-white.svg" alt></a>
+                </div>
+                <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+            </div>
+        </div>
+    </div>
+    <!--End header-->
+    <main class="main">
+        @RenderBody()
+    </main>
+    <footer class="main">
+        
+        <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+            <div class="row align-items-center">
+                <div class="col-12 mb-30">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+                    @*<a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
+                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>*@
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
+                    <div class="footer-link-widget widget-install-app col">
+                        @*<h4 class="widget-title">Install App</h4>
+                        <p class="wow fadeIn animated">From App Store or Google Play</p>*@
+                        <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
+                        
+                        <div class=" download-app">
+                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
+                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+                    <div class="hotline d-lg-inline-flex mr-30">
+                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
+                    </div>
+                    <div class="hotline d-lg-inline-flex">
+                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+                        <p>1900 - 8888<span>24/7 Support Center</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <img src="/nest/imgs/shop/loading.gif" alt>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="hdnnmlat" id="hdnidlat" />
+
+    <input type="hidden" name="hdnnmlong" id="hdnidlong" />
+
+    <input type="hidden" id="hdncity" />
+
+    <input type="hidden" id="hdndistrict" />
+
+    @*<input type="hidden" id="hdndistrict" value="@Session["DefaultDistrictListData"]" />*@
+
+    <input type="hidden" id="hdnisusrloc" value="0" />
+    <!-- Vendor JS-->
+    @*<script data-cfasync="false" src="~/nest/js/email-decode.min.js"></script>*@
+    @*<script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
+    @*<script src="~/nest/js/jquery-3.6.0.min.js"></script>*@
+    @*
+    <script src="~/web-assets/js/jquery.min.js"></script>
+    <script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
+    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+
+    
+
+
+    
+    <script>
+        var districtArray = [];
+        var cityArray = []; 
+        $(document).ready(function () {
+            cityArray = @Json.Serialize(AppUtils.CityList.ToList());
+            districtArray = @Json.Serialize(AppUtils.DistrictList.ToList());
+            $(".select").select2({ width: "100%" }); 
+            var city = '@AppUtils.SelectedCity.ToString()';
+            var district =  '@AppUtils.SelectedDistrict.ToString()';
+            if ((city == 0 || city == '') && (district == 0 || district == '')) {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition2, showError);
+                }
+            }
+            else if ((city != 0 || city != '') && (district == 0 || district == '')) { 
+                var cities = cityArray;
+                for (var i = 0; i < cities.length; i++) {
+                    if (cities[i].id == city) {
+                        $('#hdnidlat').val(cities[i].latitude);
+                        $('#hdnidlong').val(cities[i].longitude);
+                        $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                        $("#hdnIsLocationSet").val("1");
+                        $("#spncity").text(cities[i].nameEn);
+                        $("#select-district").val(district).trigger('change');
+                        $("#select-city").val(city).trigger('change');
+                        $('.select').select2({ width: "100%" }).trigger('change');
+                        $(document).trigger("my-event-afterLastDocumentReady");
+                    }
+                }
+            }
+            else {
+                $("#select-city").val(city).trigger('change');
+                $("#spncity").text($("#select-city option:selected").text()); 
+                var temp = districtArray;
+                $("#select-district").empty();
+                $('#select-district').append($('<option>', {
+                    value: "0",
+                    text: "All"
+                }));
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].cityId == city) {
+                        $('#select-district').append($('<option>', {
+                            value: temp[i].id,
+                            text: temp[i].nameEn
+                        }))
+                    }
+                }
+                $('.select').select2({ width: "100%" }).trigger('change');
+                $("#select-district").val(district).trigger('change');
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].id == district) {
+                        
+                            $('#hdnidlat').val(temp[i].latitude);
+                        $('#hdnidlong').val(temp[i].longitude);
+                        //console.log(temp[i].Latitude);
+                        $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                        $("#hdnIsLocationSet").val("1");
+                    }
+                }
+                $(document).trigger("my-event-afterLastDocumentReady");
+            }
+            readydropdown();
+            typeAhead();
+            $("#search").submit(function (e) {
+                $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+            });
+            $("#loader").hide();
+             
+        });
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    $("#select-city").val(3);
+                    $("#spncity").text($("#select-city option:selected").text());
+                    //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+                    var temp = "";
+                    $("#select-district").empty();
+                    $('#select-district').append($('<option>', {
+                        value: "0",
+                        text: "All"
+                    }));
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].CityId == 3) {
+                            $('#select-district').append($('<option>', {
+                                value: temp[i].id,
+                                text: temp[i].nameEn
+                            }))
+                        }
+                    }
+                    $("#select-district").val(3075);
+                    $('.select').select2({ width: "100%" }).trigger('change');
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].id == 3075) {
+                            $('#hdnidlat').val(temp[i].Latitude);
+                            $('#hdnidlong').val(temp[i].Longitude);
+                        }
+                    }
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "Location information is unavailable."
+
+                    break;
+                case error.TIMEOUT:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+            $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+            $("#hdnIsLocationSet").val("1");
+        }
+
+        function showPosition2(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            //console.log(location.hostname);
+            $("#hdnidlat").val(position.coords.latitude);
+            $('#hdnidlong').val(position.coords.longitude);
+
+            var latlng = lat + ',' + lon;
+            $.ajax({
+                async: false,
+                type: "get",
+                url: '@Url.Action("UpdateStoreLocation", "Home")',
+                datatype: "json",
+                data: { coordinate: latlng },
+                traditional: true,
+                success: function (data) {
+                    var region = data[0];
+                    var city = data[1];
+                    var district = data[2];
+
+                    $('#hdnisusrloc').val(1);
+                    $('#select-city').val(city);
+                    $('#hdncity').val(city);
+                    $('#hdndistrict').val(district);
+                    //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+                    //var temp = "";
+                    //console.log(AppUtils.DistrictList.ToList());
+                    //console.log(AppUtils.DistrictList.ToString());
+                    var temp = districtArray;//AppUtils.DistrictList.ToList();
+                    $("#select-district").empty();
+                    //$("#select-district1").empty();
+                    $('#select-district').append($('<option>', {
+                        value: "0",
+                        text: "All"
+                    }));
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].cityId == city) {
+                            //console.log(temp[i].id);
+                            $('#select-district').append($('<option>', {
+                                value: ''+temp[i].id+'',
+                                text: '' + temp[i].nameEn + ''
+
+                            }));
+                            //$('#select-district1').append($('<option>', {
+                            //    value: ''+temp[i].id+'',
+                            //    text: '' + temp[i].nameEn + ''
+
+                            //}));
+                            //$('#select-district').append($('<option>', {
+                            //        value: '10',
+                            //        text: 'asfsad'
+                            //    }));
+                            //$('#select-district1').append($('<option>', {
+                            //        value: '10',
+                            //        text: 'asfsad'
+                            //    }));
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                },
+                complete: function () {
+                    //readydropdown();
+                    var a = $('#hdncity').val();
+                    var b = $('#hdndistrict').val();
+                    $('#hdnisusrloc').val(1);
+                    $("#select-district").val(b).trigger('change');
+                    $("#select-city").val(a).trigger('change');
+                    $('.select').select2({ width: "100%" }).trigger('change');
+                    $("#spncity").text($("#select-city option:selected").text());
+                    $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
+                    $("#hdnIsLocationSet").val("1");
+                    //$(document).ready(function () {
+                    // This event will fire after all the other $(document).ready() functions have completed.
+                    // Usefull when your script is at the top of the page, but you need it run last
+                    $(document).trigger("my-event-afterLastDocumentReady");
+                    //});
+                }
+            });
+        }
+
+        function readydropdown() {
+        }
+        function typeAhead() {
+            var $input = $("#txtSearchTerm");
+            $input.typeahead({
+                source: function (query, process) {
+                    var results = [];
+                    map = {};
+                    if (query.length > 1) {
+                        return $.post('@Url.Action("Autocomplete", "Home")', { q: query, lang: 'en' }, function (data) {
+                            $.each(data, function (i, result) {
+                                map[result] = result;
+                                results.push(result);
+                            });
+
+                            process(results);
+                        });
+                    }
+                },
+                updater: function (item) {
+                    $("#txtSearchTerm").text(item.trim());
+                    //window.location = "search?q=" + item.trim();
+                    //$("#search").submit();
+                    return item;
+                },
+                autoSelect: false
+                //autoSelect: true
+            });
+            $input.change(function (e) {
+                if (e.which == 13) {
+                    //alert('You pressed enter!');
+                }
+                var current = $input.typeahead("getActive");
+                if (current) {
+                    if (current.toLowerCase() == $input.val().toLowerCase()) {
+                        // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+                    } else {
+                        // This means it is only a partial match, you can either add a new item
+                        // or take the active if you don't want new items
+                    }
+                } else {
+                    // Nothing is active so it is a new value (or maybe empty value)
+                }
+            });
+        }
+
+
+        function removeL1(id) {
+
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '@Url.Action("UpdateProductStatus", "Cart")',
+                datatype: "json",
+                data: { CartId: id, quantity: 0, flagid: 2 },
+                traditional: true,
+                success: function (data) {
+                    var v = data.success;
+                    if (v == true) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    return false;
+                }
+            });
+        }
+
+        function MinusQtyL1(id) {
+
+            var min = $('#hdnMinL1_' + id).val();
+            var max = $('#hdnMaxL1_' + id).val();
+            var act = $('#txtvalL1_' + id).val();
+            var price = $('#lblpriceL1_' + id).text();
+
+            if (min < act && max >= act) {
+
+                var a = parseInt(act);
+                if (a >= 1) {
+                    a--;
+                }
+                var fnl = a * parseFloat(price);
+
+                $('#txtvalL1_' + id).val(a);
+
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: '@Url.Action("UpdateProductStatus", "Cart")',
+                    datatype: "json",
+                    data: { CartId: id, quantity: a, flagid: 1 },
+                    traditional: true,
+                    success: function (data) {
+                        var v = data.success;
+                        if (v == true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        return false;
+                    }
+                });
+            }
+            else {
+                $('#loader').hide();
+            }
+        }
+        function PlusQtyL1(id) {
+
+            var min = $('#hdnMinL1_' + id).val();
+            var max = $('#hdnMaxL1_' + id).val();
+            var act = $('#txtvalL1_' + id).val();
+            var price = $('#lblpriceL1_' + id).text();
+
+            if (min <= act && max > act) {
+                var a = parseInt(act);
+                a++;
+                $('#txtvalL1_' + id).val(a);
+                var fnl = a * parseFloat(price);
+                //$('#spnL1_' + id).html(fnl);
+
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: '@Url.Action("UpdateProductStatus", "Cart")',
+                    datatype: "json",
+                    data: { CartId: id, quantity: a, flagid: 1 },
+                    traditional: true,
+                    success: function (data) {
+                        var v = data.success;
+                        if (v == true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        return false;
+                    }
+                });
+            }
+            else {
+            }
+        }
+
+
+        var city = "";
+
+        /* Function to Open the side nav panel */
+        function openNav() {
+            $("#sideNavUserGuide").toggleClass("open");
+            var overlay = $('.overlay');
+            overlay.show();
+        }
+        /* Function to close the side nav panel */
+        $(".user-guide-header button.close").click(function closeNav() {
+            $("#sideNavUserGuide").removeClass("open");
+            var overlay = $('.overlay');
+            overlay.hide();
+        });
+
+        $(document).ready(function () {
+            $("#select-city option:contains(" + ('Riyadh').trim() + ")").attr('selected', 'selected');
+            //$('.customer-logos').slick({
+            //    slidesToShow: 5,
+            //    slidesToScroll: 1,
+            //    autoplay: true,
+            //    autoplaySpeed: 2500,
+            //    arrows: false,
+            //    dots: false,
+            //    pauseOnHover: false,
+            //    responsive: [{
+            //        breakpoint: 1367,
+            //        settings: {
+            //            slidesToShow: 5
+            //        }
+            //    }, {
+            //        breakpoint: 1024,
+            //        settings: {
+            //            slidesToShow: 4
+            //        }
+            //    }, {
+            //        breakpoint: 768,
+            //        settings: {
+            //            slidesToShow: 3
+            //        }
+            //    }, {
+            //        breakpoint: 520,
+            //        settings: {
+            //            slidesToShow: 2
+            //        }
+            //    }]
+            //});
+        });
+
+
+    </script>
+    <script>
+
+        function fnupdatecitydistrict() {
+            var cityid = $("#select-city option:selected").val();
+            var districtid = $("#select-district option:selected").val();
+
+            $.ajax({
+                url: '@Url.Action("ChangeCityDistrict", "Base")',
+                data: { CityId: cityid, DistrictId: districtid },
+                success: function (response) {
+                    if (districtid == 0 || districtid == "") {
+                        var tempcity = "";
+                        //var tempcity = Html.Raw(Session["DefaultCityListData"]);
+                        for (var i = 0; i < tempcity.length; i++) {
+                            if (tempcity[i].id == cityid) {
+                                debugger
+                                $('#hdnidlat').val(tempcity[i].latitude);
+                                $('#hdnidlong').val(tempcity[i].longitude);
+                            }
+                        }
+                    }
+                    location.reload();
+                },
+                error: function (response) 
+                {
+                     
+                }
+            });
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].id == districtid) {
+                    $('#hdnidlat').val(temp[i].latitude);
+                    $('#hdnidlong').val(temp[i].longitude);
+                }
+            }
+        }
+        $("#select-city").change(function (e) {
+            $("#spncity").text($("#select-city option:selected").text());
+            var cityid = $("#select-city option:selected").val();
+            $("#select-district").empty();
+            //$("#select-district1").empty();
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            $('#select-district').append($('<option>', {
+                value: "0",
+                text: "All"
+            }));
+            //$('#select-district1').append($('<option>', {
+            //    value: "0",
+            //    text: "All"
+            //}));
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].cityId == cityid) {
+                    $("#select-district").append($('<option>', {
+                        value: temp[i].id,
+                        text: temp[i].nameEn
+                    }));
+                    //$("#select-district1").append($('<option>', {
+                    //    value: temp[i].id,
+                    //    text: temp[i].nameEn
+                    //}));
+                }
+            }
+            if ($('#hdnisusrloc').val() == 0) {
+                var districtid = $("#select-district option:selected").val();
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].id == districtid) {
+                        $('#hdnidlat').val(temp[i].latitude);
+                        $('#hdnidlong').val(temp[i].longitude);
+                    }
+                }
+            }
+            //}
+        });
+
+        function binddistrict() {
+            $("#select-district").empty();
+            var cityid = $("#select-city option:selected").val();
+            //var temp = Html.Raw(Session["DefaultDistrictListData"]);
+            var temp = districtArray;
+            $('#select-district').append($('<option>', {
+                value: "0",
+                text: "All"
+            }));
+            //$('#select-district1').append($('<option>', {
+            //    value: "0",
+            //    text: "All"
+            //}));
+            for (var i = 0; i < temp.length; i++) {
+                if (temp[i].cityId == cityid) {
+                    $("#select-district").append($('<option>', {
+                        value: temp[i].id,
+                        text: temp[i].nameEn
+                    }));
+                    //$("#select-district1").append($('<option>', {
+                    //    value: temp[i].id,
+                    //    text: temp[i].nameEn
+                    //}));
+                }
+            }
+        }
+
+        $('.city.dropdown-menu').click(function (e) {
+            e.stopPropagation();
+        });
+
+        $(document).on("click", "input[class='select2-search__field']", function () {
+            e.stopPropagation();
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

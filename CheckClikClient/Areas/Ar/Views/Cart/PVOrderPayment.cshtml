@@ -1,0 +1,52 @@
+﻿@model Customer.Models.OrderDisplayDTO
+@{
+    @inject IConfiguration Configuration;
+    var paymentUrl = Configuration["paymentFormURL"] + Model.CheckoutId;
+}
+<script src="https://oppwa.com/v1/paymentWidgets.js?checkoutId=@Model.CheckoutId"></script>
+ 
+@*@{*@
+
+
+                            @*@if(TempData["PaymentStatus"] != null)
+                            {
+                                if (TempData["PaymentStatus"].ToString() == "0")
+                                {
+    <p class="text-red red">Your payment has failed, Please retry.</p>
+                                }
+                            }*@
+                            @if(ViewBag.PaymentStatus != null)
+                            {
+                                if (ViewBag.PaymentStatus.ToString() == "0")
+                                {
+    <p class="text-red red">Your payment has failed, Please retry.</p>
+                                }
+                            }
+
+
+    <p>Do not close the browser or press back button</p>
+    <p>
+        @*Please complete your order payment of SR @ViewData["OrderAmount"] against the invoice @ViewData["InvoiceNo"]*@
+        Please complete your order payment of SR @ViewBag.OrderAmount against the invoice @ViewBag.InvoiceNo
+        <br />
+    </p>
+
+    <script>
+                        var wpwlOptions = {
+                            style: "plain",
+                            onReady: function (e) {
+                                $(".wpwl-group-cvv").after($(".wpwl-group-cardHolder").detach());
+                                $('.wpwl-form-card').find('.wpwl-button-pay').on('click', function (e) {
+                                    validateHolder(e);
+                                });
+                            },
+                            onBeforeSubmitCard: function (e) {
+                                return validateHolder(e);
+                            }
+                        }
+
+    </script>
+    <form action="@ViewBag.RedirectionURL" class="paymentWidgets" data-brands="@(ViewBag.PayMethod == "CC" ? "VISA MASTER": "MADA")"></form>
+
+    @*  }*@
+

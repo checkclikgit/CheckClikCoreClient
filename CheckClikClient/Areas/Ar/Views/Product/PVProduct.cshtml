@@ -1,0 +1,23 @@
+﻿@model Customer.Models.BranchDTO
+@{
+    //var catAndSubCategory = CheckClickClient.AppUtils.Branch.Maroof
+    var cat = Model.listCategory;
+    var subCat = Model.listSubCategory;
+}
+
+@foreach (var item in cat)
+{
+    int subcatId = Convert.ToInt32(item.Id);
+    List<CheckClikClient.Models.SubCategoryDTO> lstSubCateory = new List<CheckClikClient.Models.SubCategoryDTO>();
+    lstSubCateory = subCat.Where(x => x.CategoryId == subcatId).ToList();
+    
+    <ul>
+        @item.NameEn
+        @foreach(var subCato in lstSubCateory)
+        {
+            <li>
+                @subCato.NameEn
+            </li>
+        }
+    </ul>
+} 

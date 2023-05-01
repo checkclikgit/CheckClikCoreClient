@@ -1,0 +1,608 @@
+﻿@using Customer
+@using SearchLibrary
+@using SearchLibrary.Models
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@model QueryResponse<ProductSearchResult>
+@{
+    string strApiURL = Configuration["apiurl"];
+    double maxPrice = 0;
+    double minPrice = 0;
+    double selectedMinPrice = 0;
+    double selectedMaxPrice = 0;
+    @if (Model.Results != null)
+     {
+         if (Model.OriginalResultsCount > 0)
+         { 
+           maxPrice = @Model.MaxPrice;
+           minPrice = @Model.MinPrice;
+         }
+        if (!string.IsNullOrEmpty(Model.StaticFacets.Price))
+        {
+            List<string> lstSplitPrice = Model.StaticFacets.Price.Split(',').ToList();
+            selectedMinPrice = double.Parse(lstSplitPrice[0]);
+            selectedMaxPrice = Double.Parse(lstSplitPrice[1]);
+        }
+        else { 
+            selectedMinPrice = minPrice;
+            selectedMaxPrice = maxPrice;
+        }
+    }
+}
+
+@if (Model != null)
+{
+        <div class="container mb-30">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-4-5">
+                        <div class="shop-product-fillter">
+                            <div class="totall-product">
+                                <p>We found 
+                                    <strong id="1" class="srgtxt text-brand">@Model.NumFound</strong><strong  class="text-brand"> @(Model.NumFound == 1 ? "ITEM" : "ITEMS") </strong> 
+                                    @*<strong id="1" class="srgtxt text-brand">@Model.NumFound</strong><strong  class="text-brand"> @(Model.NumFound == 1 ? "ITEM" : "ITEMS") IN </strong>
+                                    <strong id="2" class="srgtxt text-brand">@Model.NGroups</strong><strong class="text-brand"> @(Model.NGroups == 1 ? "STORE" : "STORES") </strong>*@
+                                    @*<strong class="text-brand">29</strong> *@
+                                    items for you!
+                                </p>
+                            </div>
+                            <div class="sort-by-product-area"> 
+                                <div class="sort-by-cover mr-10">
+                                    <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                                        <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp; Show:</span>
+
+                                        <select id="ddlShow" name="ddlShow" class="ddlShow" style="width:auto;" onchange="GetSearchResults()"> 
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                                @*<div class="sort-by-cover mr-10">
+                                    @{
+                                        string sortLabel = "Relevence";
+                                        if (Model.OriginalQuery != null)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(Model.OriginalQuery.SortField))
+                                            {
+                                                if (Model.OriginalQuery.SortField.ToLower() == "price")
+                                                {
+                                                    sortLabel = Model.OriginalQuery.SortDirection == "asc" ? "Price: Low to High" : "Price: High to Low";
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                    <div class="navbar-right filters-right text-right">
+                                        <span>
+                                            <strong>SORT BY:</strong> &ensp;
+                                            <div class="btn-group">
+                                                <button type="button" class="form-control btn filter-dropdown btn-default dropdown-toggle" data-toggle="dropdown">
+                                                    @sortLabel<span class="caret"></span>
+                                                </button>
+                                                <ul class="delivery-filter dropdown-menu" role="menu">
+                                                    @if (sortLabel != "Price: Low to High")
+                                                    {
+                                                        <li><a href="#" class="search-sort" data-sort-field="Price" data-sort-dir="asc">Price: Low to High</a></li>
+                                                    }
+                                                    @if (sortLabel != "Price: High to Low")
+                                                    {
+                                                        <li><a href="#" class="search-sort" data-sort-field="Price" data-sort-dir="desc">Price: High to Low</a></li>
+                                                    }
+                                                    @if (sortLabel != "Relevence")
+                                                    {
+                                                        <li><a href="#" class="search-sort" data-sort-field="Relevence" data-sort-dir="asc">Relevence</a></li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>*@ 
+                                @*<div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Price: Low to High</a></li>
+                                            <li><a href="#">Price: High to Low</a></li>
+                                            <li><a href="#">Release Date</a></li>
+                                            <li><a href="#">Avg. Rating</a></li>
+                                        </ul>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="row product-grid">
+                            
+                            <div id="searchResultItems" class="row">
+                                @if (Model.Results != null)
+                                {
+                                    for (int i = 0; i < Model.Results.Count; i++)
+                                    { 
+                                        
+                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="#">
+                                                <img class="default-img" src="@Url.Content(strApiURL + "Uploads/Products/" + Model.Results[i].ProductMainImage)" alt="" style="height: 160px;" />
+                                                <img class="hover-img" src="@Url.Content(strApiURL + "Uploads/Products/" + Model.Results[i].ProductMainImage)" alt=""  style="height: 160px;"/>
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1" hidden>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
+                                            @*<a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>*@
+                                            <a aria-label="View Details" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                        </div>
+                                        @*<div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="best">-14%</span>
+                                        </div>*@
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="#">@Model.Results[i].StoreNameEn</a>
+                                        </div>
+                                        <h2><a href="#">@Model.Results[i].NameEn</a></h2>
+                                        @*<div class="product-rate-cover">
+                                            <div class="product-rate d-inline-block">
+                                                <div class="product-rating" style="width: 90%"></div>
+                                            </div>
+                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        </div>*@
+                                        @*<div>
+                                            <span class="font-small text-muted">Branch: <a href="#">@Model.Results[i].BranchNameEn @(Model.Results[i].DistToStoreBranch != null ? string.Concat(Math.Round(Convert.ToDecimal(Model.Results[i].DistToStoreBranch), 2).ToString(), " km") : "")</a></span>
+                                        </div>*@
+                                        <div class="product-card-bottom">
+                                            <div class="product-price">
+                                                <span>@Model.Results[i].Price.ToString("#,###,###,##0.00") SAR</span>
+                                                <span class="old-price">@Model.Results[i].SellingPrice.ToString("#,###,###,##0.00") SAR</span>
+                                            </div>
+                                            @{
+                                                var MainCategory = Model.Results[i].OtherFields.Where(x => x.Key == "BranchCategoryEn").Select(x => x.Value).First().ToString();
+                                                var SubCategory = Model.Results[i].OtherFields.Where(x => x.Key == "BranchSubCategoryEn").Select(x => x.Value).First().ToString();
+                                            }
+                                            <div class="add-cart">
+                                                @if (Model.Results[i].ItemType.ToUpper() == "P")
+                                                {
+                                                    <a  target="_blank" href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/p/@SlugUtil.GenerateSlug(Model.Results[i].ProductBranchId, Model.Results[i].NameEn, Model.Results[i].ProductSKUId, Convert.ToInt32(Model.Results[i].ProductId), Model.Results[i].UPCBarcode,Model.Results[i].BranchId)" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                }
+                                                else
+                                                {
+                                                    <a target="_blank" href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(Model.Results[i].NameEn,Model.Results[i].BranchId,Convert.ToInt32(Model.Results[i].ProductId))" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                }
+                                                @*<a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>*@
+                                            </div>
+                                        </div>
+                                        @if (Model.Results[i].ItemType.ToUpper() == "P")
+                                                {
+                                                    <a href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/p/@SlugUtil.GenerateSlug(Model.Results[i].ProductBranchId, Model.Results[i].NameEn, Model.Results[i].ProductSKUId, Convert.ToInt32(Model.Results[i].ProductId), Model.Results[i].UPCBarcode,Model.Results[i].BranchId)" target="_blank" class="btn btn-xs">View Details <i class="fi-rs-arrow-small-right"></i></a>
+                                                    
+                                                }
+                                                else
+                                                {
+                                                    <a href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(Model.Results[i].NameEn,Model.Results[i].BranchId,Convert.ToInt32(Model.Results[i].ProductId))" target="_blank" class="btn btn-xs">View Details <i class="fi-rs-arrow-small-right"></i></a>
+                                                    
+                                                } 
+                                        @*<a href="shop-cart.html" class="btn w-100 hover-up" tabindex="-1"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>*@
+                                    </div>
+                                </div>
+                            </div> 
+
+
+
+
+
+                                             
+                                    }
+                                    if (Model.Results.Count == 0)
+                                    {
+                                        <div class="row product-grid">
+                                                <div class="archive-header-2 text-center">
+                                                    <h1 class="display-2 mb-50">No Items Found.</h1> 
+                                                </div> 
+                                        </div>
+                                    }
+                                }
+                                
+                            </div> 
+                        </div>
+                        <!--product grid-->
+                        <div class="pagination-area mt-20 mb-20">
+                            @*<div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pagination">
+                                            @{
+                                                int iPageSize = Customer.Utils.SearchUtil.PageSize;
+                                                int iMaxPages = (Model.NGroups + iPageSize - 1) / iPageSize;
+                                                ///if (iMaxPages > 1)
+                                                //{
+                                                for (int i = 1; i <= iMaxPages; i++)
+                                                {
+                                                        <li><a href="javascript:void(0);" class="changePage" data-pageindex="@(i - 1)">@i</a></li>
+                                                }
+                                                //}
+                                            }
+                                        </ul>
+                                    </div>
+                                </div> *@
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                    </li>
+                                            @{
+                                                int iPageSize = Customer.Utils.SearchUtil.PageSize;
+                                                int iMaxPages = (Model.NGroups + iPageSize - 1) / iPageSize;
+                                                ///if (iMaxPages > 1)
+                                                //{
+                                                for (int i = 1; i <= iMaxPages; i++)
+                                                {
+                                                        <li class="page-item"><a href="javascript:void(0);" class="page-link changePage" data-pageindex="@(i - 1)">@i</a></li> 
+
+                                                        //<li><a href="javascript:void(0);" class="changePage" data-pageindex="@(i - 1)">@i</a></li>
+                                                }
+                                                //}
+                                            }
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div> 
+                        <!--End Deals-->
+                    </div>
+
+                    <div class="col-lg-1-5 primary-sidebar sticky-sidebar"> 
+                        <!-- Fillter By Price -->
+                        <div class="sidebar-widget price_range range mb-30">
+                            <h5 class="section-title style-1 mb-30">Filter By</h5>
+                            <div class="price-filter">
+                                <div class="price-filter-inner">
+                                    <label class="fw-900">Filter By Price</label>
+                                    <div id="slider-range" class="mb-20"></div>
+                                    <div class="d-flex justify-content-between"> 
+                                        <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
+                                        <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <div class="list-group-item mb-10 mt-10">
+
+                                    @{//need to check this block.
+                                bool isMultipleItemTypes = false;
+                                if (Model.Facets != null)
+                                {
+                                    FacetsResponse faItemType = Model.Facets.FirstOrDefault(f => f.FacetEn == "ItemType");
+                                    if (faItemType != null)
+                                    {
+                                        if (faItemType.FacetFilters.Count > 1)
+                                        {
+                                            isMultipleItemTypes = true;
+                                            FacetItem faProducts = faItemType.FacetFilters.FirstOrDefault(ff => ff.FacetText == "P");
+                                            FacetItem faServices = faItemType.FacetFilters.FirstOrDefault(ff => ff.FacetText == "S");
+                                                    <header class="card-header">
+                                                        <h6 class="title">ITEM TYPE</h6>
+                                                    </header>
+                                                    <div class="card-body">
+                                                        @if (faProducts != null)
+                                                {
+                                                    if (faServices != null)
+                                                    {
+                                                        if (faProducts.Selected || faServices.Selected)
+                                                        {
+                                                                    @:<a id="lnkClearItemType" class="clear-filters" href="javascript:void(0)">Clear</a>
+                                                        }
+                                                    }
+                                                            <div class="custom-control">
+                                                                <span class="pull-right badge badge-light round">@faProducts.Count</span>
+                                                                @Html.RadioButton("ckbFilterItemTypeP", faProducts.FacetText, faProducts.Selected, new { @class = "custom-control-input optItemType", @Name = "optItemType" })
+                                                                <label for="ckbFilterItemTypeP" class="custom-control-label">Products</label>
+                                                            </div> <!-- form-check.// -->
+                                                }
+                                                        @if (faServices != null)
+                                                {
+                                                            <div class="custom-control">
+                                                                <span class="pull-right badge badge-light round">@faServices.Count</span>
+                                                                @Html.RadioButton("ckbFilterItemTypeS", faServices.FacetText, faServices.Selected, new { @class = "custom-control-input optItemType", @Name = "optItemType" })
+                                                                <label for="ckbFilterItemTypeS" class="custom-control-label">Services</label>
+                                                            </div> <!-- form-check.// -->
+                                                }
+                                                    </div>
+                                        }
+                                    }
+                                }
+                            }
+
+                               @{
+                                if (Model.Facets != null)
+                                {
+                                    List<FacetsResponse> lstDynamicFacets = Model.Facets.Where(f => f.FacetEn == "ManufacturerEn" || f.Id != 0).ToList();
+                                    for (int i = 0; i < lstDynamicFacets.Count; i++)
+                                    {
+                                        //<header class="card-header">
+                                        //    <h6 class="title">@(lstDynamicFacets[i].FacetEn == "ManufacturerEn" ? "BRAND" : lstDynamicFacets[i].FacetEn.ToUpper())</h6>
+                                        //</header>
+                                                <label class="fw-900">@(lstDynamicFacets[i].FacetEn == "ManufacturerEn" ? "BRAND" : lstDynamicFacets[i].FacetEn.ToUpper())</label>
+                                        //<div class="card-body">
+                                            
+                                                FacetsResponse currentFacetFilters = null;
+
+                                                if (lstDynamicFacets[i].FacetEn == "ManufacturerEn")
+                                                {
+                                                    currentFacetFilters = Model.Facets.FirstOrDefault(f => f.FacetEn == lstDynamicFacets[i].FacetEn);
+                                                }
+                                                else
+                                                {
+                                                    currentFacetFilters = Model.Facets.FirstOrDefault(f => f.Id == lstDynamicFacets[i].Id);
+                                                }
+
+                                                //if (currentFacetFilters != null)
+                                                //{
+                                                //    if (currentFacetFilters.FacetFilters.Any(ff => ff.Selected == true))
+                                                //    {
+                                                //        @:<a id="@string.Concat("lknClear_", lstDynamicFacets[i].Id)" class="clear-filters" href="javascript:void(0)">Clear</a>
+                                                //    }
+                                                //}
+                                            
+                                                @foreach (var facetFilterItems in currentFacetFilters.FacetFilters)
+                                            {
+                                                        <div class="custome-checkbox">
+                                                            <input class="form-check-input  ckbFilter filter-auto" type="checkbox" name="@string.Concat("ckbFilter", Model.Facets[i].Id, "_", facetFilterItems.FacetTextId)" id="@string.Concat("ckbFilter", Model.Facets[i].Id, "_", facetFilterItems.FacetTextId)" checked="@facetFilterItems.Selected" value="" />
+                                                            <label class="form-check-label" for="@string.Concat("ckbFilter", Model.Facets[i].Id, "_", facetFilterItems.FacetTextId)"><span>@(facetFilterItems.FacetText.ToTitleCase())</span></label>
+                                                            <br /> 
+                                                        </div>
+                                                //<div class="custom-control custom-checkbox">
+                                                //    <span class="pull-right badge badge-light round">@facetFilterItems.Count</span>
+                                                //    @Html.CheckBox(string.Concat("ckbFilter", Model.Facets[i].Id, "_", facetFilterItems.FacetTextId), facetFilterItems.Selected, new { @class = "custom-control-input ckbFilter filter-auto" })
+                                                //    <label for="@string.Concat("ckbFilter", Model.Facets[i].Id, "_", facetFilterItems.FacetTextId)" class="custom-control-label">@(facetFilterItems.FacetText.ToTitleCase())</label>
+                                                //</div> <!-- form-check.// -->
+                                            }
+                                        //</div>
+                                    }
+                                }
+                            }
+
+                             @if (Model.Results != null)
+                            {
+                                //if (Model.OriginalResultsCount > 0)
+                                { 
+                                     bool IsDeliveryType = true; bool IsServiceType = false;
+
+                                     if (!isMultipleItemTypes)
+                                        {
+                                            if (Model.Results.Count > 0)
+                                            {
+                                                if (Model.Results[0].ItemType == "S")
+                                                {
+                                                    IsServiceType = true;
+                                                    IsDeliveryType = false;
+                                                }
+                                            }
+                                        }
+                                     else
+                                        {
+                                            IsServiceType = true;
+                                        }
+
+                                     if (!string.IsNullOrWhiteSpace(Model.StaticFacets.ItemType))
+                                        {
+                                            IsDeliveryType = Model.StaticFacets.ItemType != "S";
+                                            IsServiceType = !IsDeliveryType;
+                                        }
+
+
+                                    <label class="fw-900 mt-15">PAYMENT METHOD</label> 
+                                    //<div class="custome-checkbox">
+                                    //    @Html.CheckBox("ckbPaymentCOD", new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCOD", Name = "ckbPaymentCOD" }) 
+                                    //    <label class="form-check-label" for="ckbPaymentCOD"><span>Cash On Delivery</span></label>
+                                    //    <br /> 
+                                    //</div>
+                                    <div class="custome-checkbox">
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentCOD" id="ckbPaymentCOD" checked="@Model.StaticFacets.IsCOD" value="" />
+                                        <label class="form-check-label" for="ckbPaymentCOD"><span>Cash On Delivery</span></label>
+                                        <br />
+                                    </div>
+
+                                    <label class="fw-900 mt-15">CREDIT CARD</label> 
+                                    <div class="custome-checkbox">
+                                        @*Html.CheckBoxFor(model => model.StaticFacets.IsCCPN, new { class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayNow", Name = "ckbPaymentCrPayNow" })*@ 
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentCrPayNow" id="ckbPaymentCrPayNow" checked="@Model.StaticFacets.IsCCPN" value="" /> 
+                                        <label class="form-check-label" for="ckbPaymentCrPayNow"><span>Pay Now</span></label>
+                                        <br /> 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsCCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentCrPayLater", Name = "ckbPaymentCrPayLater" }) *@
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentCrPayLater" id="ckbPaymentCrPayLater" checked="@Model.StaticFacets.IsCCPL" value="" /> 
+                                        <label class="form-check-label" for="ckbPaymentCrPayLater"><span>Pay Later</span></label>
+                                        <br /> 
+                                    </div> 
+
+                                    <label class="fw-900 mt-15">DEBIT CARD</label> 
+                                    <div class="custome-checkbox">
+                                    <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentDrPayNow" id="ckbPaymentDrPayNow" checked="@Model.StaticFacets.IsDCPN" value="" /> 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsDCPN, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) *@
+                                        <label class="form-check-label" for="ckbPaymentDrPayNow"><span>Pay Now</span></label>
+                                        <br /> 
+                                        <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbPaymentDrPayLater" id="ckbPaymentDrPayLater" checked="@Model.StaticFacets.IsDCPL" value="" /> 
+                                        @*@Html.CheckBoxFor(model => model.StaticFacets.IsDCPL, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbPaymentDrPayNow", Name = "ckbPaymentDrPayNow" }) *@
+                                        <label class="form-check-label" for="ckbPaymentDrPayLater"><span>Pay Later</span></label>
+                                        <br /> 
+                                    </div> 
+                                 
+
+
+                                        if (IsDeliveryType)
+                                        {
+                                            <label class="fw-900 mt-15">DELIVERY</label> 
+                                            <div class="custome-checkbox">
+                                            <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsPickup" id="ckbIsPickup" checked="@Model.StaticFacets.IsPickup" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsPickup, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsPickup", Name = "ckbIsPickup" }) *@
+                                                <label class="form-check-label" for="ckbIsPickup"><span>Pickup</span></label>
+                                                <br /> 
+                                                <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsDelivery" id="ckbIsDelivery" checked="@Model.StaticFacets.IsDelivery" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsDelivery, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsDelivery", Name = "ckbIsDelivery" }) *@
+                                                <label class="form-check-label" for="ckbIsDelivery"><span>Delivery</span></label>
+                                                <br /> 
+                                                <input class="form-check-input custom-control-input ckbFilter" type="checkbox" name="ckbIsShipping" id="ckbIsShipping" checked="@Model.StaticFacets.IsShipping" value="" /> 
+                                                @*@Html.CheckBoxFor(model => model.StaticFacets.IsShipping, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsShipping", Name = "ckbIsShipping" }) *@
+                                                <label class="form-check-label" for="ckbIsShipping"><span>Shipping</span></label>
+                                                <br /> 
+                                            </div> 
+                                        }
+
+                                        if (IsServiceType)
+                                        {
+                                            FacetsResponse faServiceType = Model.Facets.FirstOrDefault(f => f.FacetEn == "ServiceType");
+                                            if (faServiceType != null)
+                                            {
+                                                //To dynamically dispaly service type filters
+                                                if (faServiceType.FacetFilters.Where(ff => ff.FacetText != "0").Count() > 0)
+                                                {
+                                                    FacetItem faHomeService = faServiceType.FacetFilters.FirstOrDefault(ff => ff.FacetText == "1");
+                                                    FacetItem faStoreService = faServiceType.FacetFilters.FirstOrDefault(ff => ff.FacetText == "2");
+
+                                                    
+                                                            bool IsHomeSelected = false; bool IsStoreSelected = false;
+                                                            if (faHomeService != null)
+                                                            {
+                                                                IsHomeSelected = faHomeService.Selected;
+                                                            }
+                                                            if (faStoreService != null)
+                                                            {
+                                                                IsStoreSelected = faStoreService.Selected;
+                                                            }
+
+                                                            if (IsHomeSelected || IsStoreSelected)
+                                                            {
+                                                                    @:<a id="lnkClearItemType" class="clear-filters" href="javascript:void(0)">Clear</a>
+                                                            }
+                                                        
+
+                                                    <label class="fw-900 mt-15">SERVICE TYPE</label> 
+                                                    <div class="custome-checkbox">
+
+                                                    @if (faHomeService != null)
+                                                        {
+                                                            
+                                                        //@Html.CheckBoxFor(model => model.StaticFacets.IsPickup, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsPickup", Name = "ckbIsPickup" }) 
+                                                        //<label class="form-check-label" for="ckbIsPickup"><span>Pickup</span></label>
+                                                        //<br />  
+
+                                                                //<span class="pull-right badge badge-light round">@faHomeService.Count</span>
+                                                                @Html.RadioButton("ckbFilterServiceTypeH", "1", faHomeService.Selected, new { @class = "form-check-input custom-control-input optServiceType", @Name = "optServiceType" })
+                                                                //<label for="ckbFilterServiceTypeH" class="custom-control-label">Home Service</label>
+                                                                <label class="form-check-label" for="ckbFilterServiceTypeH"><span>Home Service</span></label>
+                                                                <br /> 
+                                                        }
+                                                        @if (faStoreService != null)
+                                                        {
+                                                            @Html.RadioButton("ckbFilterServiceTypeS", "2", faStoreService.Selected, new { @class = "form-check-input custom-control-input optServiceType", @Name = "optServiceType" })
+                                                        //@Html.CheckBoxFor(model => model.StaticFacets.IsPickup, new { @class = "form-check-input custom-control-input ckbFilter", id = "ckbIsPickup", Name = "ckbIsPickup" }) 
+                                                        <label class="form-check-label" for="ckbFilterServiceTypeS"><span>Store Service</span></label>
+                                                        <br />  
+
+                                                            //<div class="custom-control">
+                                                            //    <span class="pull-right badge badge-light round">@faStoreService.Count</span>
+                                                            //    @Html.RadioButton("ckbFilterServiceTypeS", "2", faStoreService.Selected, new { @class = "custom-control-input optServiceType", @Name = "optServiceType" })
+                                                            //    <label for="ckbFilterServiceTypeS" class="custom-control-label">Store Service</label>
+                                                            //</div> <!-- form-check.// -->
+                                                        }
+
+
+                                                    </div> 
+
+
+                                                    <header class="card-header">
+                                                        <h6 class="title">SERVICE TYPE</h6>
+                                                    </header>
+                                                    <div class="card-body">
+                                                        
+                                                        @if (faHomeService != null)
+                                                        {
+                                                            <div class="custom-control">
+                                                                <span class="pull-right badge badge-light round">@faHomeService.Count</span>
+                                                                @Html.RadioButton("ckbFilterServiceTypeH", "1", faHomeService.Selected, new { @class = "custom-control-input optServiceType", @Name = "optServiceType" })
+                                                                <label for="ckbFilterServiceTypeH" class="custom-control-label">Home Service</label>
+                                                            </div> <!-- form-check.// -->
+                                                        }
+                                                        @if (faStoreService != null)
+                                                        {
+                                                            <div class="custom-control">
+                                                                <span class="pull-right badge badge-light round">@faStoreService.Count</span>
+                                                                @Html.RadioButton("ckbFilterServiceTypeS", "2", faStoreService.Selected, new { @class = "custom-control-input optServiceType", @Name = "optServiceType" })
+                                                                <label for="ckbFilterServiceTypeS" class="custom-control-label">Store Service</label>
+                                                            </div> <!-- form-check.// -->
+                                                        }
+                                                    </div>
+                                                }
+                                            }
+                                        }
+
+
+                                }
+                            }
+                             
+                                    
+                                </div>
+                            </div>
+                            <a href="#" id="btnFilterDown"  onclick="SetDataInHiddenField()" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                        </div>
+                        <!-- Product sidebar Widget --> 
+                    </div>
+                </div>
+        </div>
+
+
+
+
+}
+<script>
+  // Slider Range JS
+    if ($("#slider-range").length) {
+        
+        //noUiSlider.reset();
+
+        $(".noUi-handle").on("click", function () {
+            $(this).width(50);
+        });
+        var rangeSlider = document.getElementById("slider-range");
+        //rangeSlider.noUiSlider.reset()
+        var moneyFormat = wNumb({
+            decimals: 0,
+            thousand: ",",
+            prefix: "SAR "
+        });
+
+        noUiSlider.create(rangeSlider, {
+            start: [@selectedMinPrice, @(Math.Ceiling( selectedMaxPrice))],
+            step: 1,
+            range: { 
+                min: [0],
+                max: [@(Math.Ceiling( maxPrice))]
+            },
+            //range: { 
+            //    min: [0],
+            //    max: [@(Math.Ceiling( maxPrice))]
+            //},
+            format: moneyFormat,
+            connect: true
+        });
+
+        // Set visual min and max values and also update value hidden form inputs
+        rangeSlider.noUiSlider.on("update", function (values, handle) {
+            console.log ("Values: "+values[0]+" "+values[1]);
+            document.getElementById("slider-range-value1").innerHTML = values[0];
+            document.getElementById("slider-range-value2").innerHTML = values[1];
+            document.getElementsByName("min-value").value = moneyFormat.from(values[0]);
+            document.getElementsByName("max-value").value = moneyFormat.from(values[1]);
+        });
+    }
+</script>

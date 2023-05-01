@@ -1,0 +1,137 @@
+﻿@model Customer.Models.OffersDTO
+@{
+    //ViewBag.Title = Model.NameEn == "Products" ? "Buy Products from your nearest stores" : "Request Services from your nearest stores";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.ProductListOffers != null)
+{
+    foreach (var item in Model.ProductListOffers)
+    {
+
+        @*<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 fwidth">*@
+<div class="slide">
+    <div class="thumbnail">
+        <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/p/@item.GenerateSlug()">
+
+            <img src="@Model.ApiURL/Uploads/Products/@item.Image" width="100%">
+            </a>
+            @if (@item.DiscountValue != 0)
+            {
+                <div class="carousel-caption">
+                    <img src="~/web-assets/images/offer-tag.png">
+                </div>
+                <div class="carousel-caption">
+                    @if (item.DiscountType == 1)
+                    {
+                        <strong>
+                            @item.DiscountValue%OFF
+                        </strong>
+                    }
+                    else if (item.DiscountType == 2)
+                    {
+                        <strong>
+                            @item.DiscountValue OFF
+                        </strong>
+                    }
+                </div>
+            }
+            <div class="product-list-cart">
+                @*<i class="far fa-heart"></i><br>*@
+                @*<i class="fas fa-shopping-cart"></i>*@
+                @if (item.Favorite == true)
+                {
+                    <a onclick="AddFavoriteItem('@item.ProductSkuId','@item.BranchSubCategoryId')"><i id="favicon-@item.ProductSkuId" class="far fa-heart red-color"></i></a><br>
+                }
+                else
+                {
+                    <a onclick="AddFavoriteItem('@item.ProductSkuId','@item.BranchSubCategoryId')"><i id="favicon-@item.ProductSkuId" class="far fa-heart"></i></a><br>
+                }
+            </div>
+            <div class="caption">
+                <h4>@item.NameEn</h4>
+                @if (@item.DiscountValue != 0)
+                {
+                    <del>SAR @item.SellingPrice</del>
+                }
+                else
+                {
+                    <del style="visibility:hidden;">SAR @item.SellingPrice</del>
+                }
+                <div class="row">
+                    <div class="col-sm-6 col-xs-6 pull-left">
+                        <h4 class="pull-left">SAR @item.Price</h4>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+</div>
+
+
+    }
+}
+@if (Model.ServiceListOffers != null)
+{
+    foreach (var item in Model.ServiceListOffers)
+    {
+
+        <div class="slide">
+            <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/s/@item.GenerateSlugService()">
+                <div class="thumbnail">
+                    <img src="@Model.ApiURL/Uploads/Products/@item.Image" width="100%">
+                    @if (@item.DiscountValue != 0)
+                    {
+                        <div class="carousel-caption">
+                            <img src="~/web-assets/images/offer-tag.png">
+                        </div>
+                        <div class="carousel-caption">
+                            <strong>
+                                @item.DiscountValue%OFF
+                            </strong>
+                            @*@if (item.DiscountType == 1)
+                                {
+                                }
+                                else if (item.DiscountType == 2)
+                                {
+                                    <strong>
+                                        @item.DiscountValue OFF
+                                    </strong>
+                                }*@
+                        </div>
+                    }
+                    <div class="product-list-cart">
+                        @*<i class="far fa-heart"></i><br>
+                            <i class="fas fa-shopping-cart"></i>*@
+                        @if (item.Favorite == true)
+                        {
+                            <a onclick="AddFavoriteItem('@item.ServiceId','@item.BranchSubCategoryId')"><i id="favicon-@item.ServiceId" class="far fa-heart red-color"></i></a><br>
+                        }
+                        else
+                        {
+                            <a onclick="AddFavoriteItem('@item.ServiceId','@item.BranchSubCategoryId')"><i id="favicon-@item.ServiceId" class="far fa-heart"></i></a><br>
+                        }
+                    </div>
+                    <div class="caption">
+                        <h4>@item.NameEn</h4>
+                        @if (@item.DiscountValue != 0)
+                        {
+                            <del>SAR @item.SellingPrice</del>
+                        }
+                        else
+                        {
+                            <del style="visibility:hidden;">SAR @item.SellingPrice</del>
+                        }
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6 pull-left">
+                                <h4 class="pull-left">SAR @item.Price</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+    }
+}
+

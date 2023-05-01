@@ -16,10 +16,84 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Ar\Views\Account\Login.cshtml" />
     <Content Remove="Views\Account\Login.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Ar\Views\B2B\Index.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\CartPreview.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\Checkout.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\OrderConfirmed.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\PVManageAddress.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\PVOrderPayment.cshtml" />
+    <None Include="Areas\Ar\Views\Cart\_PVOrderPaymentOptions.cshtml" />
+    <None Include="Areas\Ar\Views\Coupons\CouponsPV.cshtml" />
+    <None Include="Areas\Ar\Views\Coupons\Index.cshtml" />
+    <None Include="Areas\Ar\Views\CustomerProducts\ProductDetails.cshtml" />
+    <None Include="Areas\Ar\Views\Home\Index.cshtml" />
+    <None Include="Areas\Ar\Views\Home\NIndex.cshtml" />
+    <None Include="Areas\Ar\Views\Home\Privacy.cshtml" />
+    <None Include="Areas\Ar\Views\Home\TermsAndConditions.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\Index.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\IndexNest.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\OrderDetailsPV.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\ProcessingOrdersPV.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\PVHistoryOrders.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\PVPendingOrders.cshtml" />
+    <None Include="Areas\Ar\Views\MyOrders\PVProcessingOrders.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\AllCategories.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\Index-2019-02-28_11-01-43-174.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\Index.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\OfferList.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\OfferListItem.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\PVItems.cshtml" />
+    <None Include="Areas\Ar\Views\Offers\PVOffer.cshtml" />
+    <None Include="Areas\Ar\Views\Product\Index.cshtml" />
+    <None Include="Areas\Ar\Views\Product\IndexNest.cshtml" />
+    <None Include="Areas\Ar\Views\Product\PVBranchTimings.cshtml" />
+    <None Include="Areas\Ar\Views\Product\PVProduct.cshtml" />
+    <None Include="Areas\Ar\Views\Product\PVSideCategoryAndSubCategory.cshtml" />
+    <None Include="Areas\Ar\Views\Product\_SearchResults - Copy.cshtml" />
+    <None Include="Areas\Ar\Views\Product\_SearchResults.cshtml" />
+    <None Include="Areas\Ar\Views\Search\Index.cshtml" />
+    <None Include="Areas\Ar\Views\Search\NIndex.cshtml" />
+    <None Include="Areas\Ar\Views\Search\_SearchResults.cshtml" />
+    <None Include="Areas\Ar\Views\Search\_SearchResultsStore.cshtml" />
+    <None Include="Areas\Ar\Views\Search\_SearchResultsStoreNest.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\Error.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_B2bLayout.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew - Copy.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNewStore.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartCheckout.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartDetails.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Empty.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_PaymentConfirm.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails1.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Profile.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_StoreDetails.cshtml" />
+    <None Include="Areas\Ar\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\Ar\Views\User\ChangePassword.cshtml" />
+    <None Include="Areas\Ar\Views\User\ChangePasswordNest.cshtml" />
+    <None Include="Areas\Ar\Views\User\Index.cshtml" />
+    <None Include="Areas\Ar\Views\User\IndexNest.cshtml" />
+    <None Include="Areas\Ar\Views\User\ManageAddress.cshtml" />
+    <None Include="Areas\Ar\Views\User\ManageAddressNest.cshtml" />
+    <None Include="Areas\Ar\Views\User\MyProfile.cshtml" />
+    <None Include="Areas\Ar\Views\User\MyProfileNest.cshtml" />
+    <None Include="Areas\Ar\Views\User\SignUp.cshtml" />
+    <None Include="Areas\Ar\Views\User\SignUpNest.cshtml" />
+    <None Include="Areas\Ar\Views\User\_PVOffers.cshtml" />
+    <None Include="Areas\Ar\Views\User\_PVOffersNest.cshtml" />
+    <None Include="Areas\Ar\Views\WishList\Index.cshtml" />
+    <None Include="Areas\Ar\Views\WishList\PVProductWishlist.cshtml" />
+    <None Include="Areas\Ar\Views\WishList\PVServiceWishlist.cshtml" />
+    <None Include="Areas\Ar\Views\WishList\PVStoreWishlist.cshtml" />
+    <None Include="Areas\Ar\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Ar\Views\_ViewStart.cshtml" />
     <None Include="Views\WishList\Index.cshtml" />
     <None Include="Views\WishList\PVProductWishlist.cshtml" />
     <None Include="Views\WishList\PVServiceWishlist.cshtml" />
@@ -475,7 +549,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
@@ -484,6 +558,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Ar\Data\" />
+    <Folder Include="Areas\Ar\Models\" />
+    <Folder Include="Areas\Ar\Views\Account\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
 

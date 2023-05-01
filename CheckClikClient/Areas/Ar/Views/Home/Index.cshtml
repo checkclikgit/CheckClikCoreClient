@@ -1,0 +1,251 @@
+﻿@*@model Customer.Models.HomePageDTO*@
+@model CheckClikClient.Models.HomeImageDTO
+@{
+    ViewBag.Title = "CHECKCLIK - Multi Vendor Marketplace Platform & Online Shopping - Saudi Arabia";
+    int srno = 0;
+    int srno2 = 0;
+}
+@section Styles{
+    <link href="~/web-assets/css/sweetalert.css" rel="stylesheet" />
+    <style>
+        body {
+            overflow-y: hidden !important;
+        }
+
+        header {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .logoimg-middle {
+            text-align: center;
+        }
+
+        .logo-banner {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 174px);
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .logoimg-middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .logo-footer ul {
+            /*            position: absolute;
+        */ left: 0px;
+            right: 0px;
+            bottom: 10px
+        }
+
+            .logo-footer ul li {
+                display: inline-block
+            }
+
+                .logo-footer ul li a {
+                    padding-left: 10px;
+                    padding-right: 10px
+                }
+        /*.help-chat a {
+                    display: block;
+                    background-color: #333;
+                    color: #fff;
+                    padding: 6px 12px;
+                    border-radius: 15px;
+                    position: absolute;
+                    right: 0px;
+                    bottom: 20px;
+                }*/
+        #logo {
+            margin: auto;
+            display: block;
+            width: 100%;
+        }
+
+        #logoContainer {
+            margin: 3em 0 3em 0;
+        }
+    </style>
+}
+    <div class="container">
+        <div class="row text-center" id="logoContainer">
+            <div class="col-md-12">
+            @if(Model == null)
+            {
+                <img id="logo" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
+            }
+            else if (!string.IsNullOrEmpty(Model.ImagePath))
+            { 
+                <img id="logo" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" height="250" />
+            }
+            else
+            {
+                <img id="logo" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
+            } 
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12 logo-footer">
+                <ul>
+                    <li><a href="https://sell.checkclik.com" target="_blank">Sell With Us</a></li>
+                    <li><a href="~/home/terms-and-conditions" target="_blank">Terms Of Use</a></li>
+                    <li><a href="~/home/terms-of-sales" target="_blank">Terms Of Sale</a></li>
+                    <li><a href="~/home/privacy-policy" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div> 
+    </div>
+
+    <section id="dvpvHome" style="display: none"></section>
+
+     
+
+    <section id="newsletter" style="display: none">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="bold">Connect to CheckClik</h3>
+                    <h1 class="bold">Join Our Newsletter</h1>
+                    <p>
+                        Hey you, sign up it only takes a second to be the first to find out about our
+                        latest news and promotions…
+                    </p>
+                    <form action="#" method="POST">
+                        <input type="text" name="" placeholder="Your Email Address" id="txtEmailSubscription">
+                        @*(<span id="EmailError" class="text-danger"></span>)*@
+                        <button type="button" class="bold" value="SIGN UP" onclick="EmailSubScription()">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-app" id="download-app" style="display: none">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="~/assets/images/download-app.png" width="100%">
+                </div>
+                <div class="col-md-7">
+                    <div class="app-download">
+                        <h1 class="bold">Download Our Mobile App</h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                        <a href="#" class="btn-appstore"><i class="fab fa-apple"></i><span>Available <small>On App Store</small></span></a>
+                        <a href="#" class="btn-appstore btn-appstore1"><i class="fab fa-android"></i><span>Available <small>On Play Store</small></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @section Scripts{
+    <script src="~/web-assets/js/sweetalert.js"></script>
+    <script>
+        $("#divLoader").hide();
+        $("#loader").hide(); 
+
+         
+        $(document).on("my-event-afterLastDocumentReady", function () {
+            var city = $("#select-city option:selected").val();
+            var district = $("#select-district option:selected").val();
+            var lat = $("#hdnidlat").val();
+            var long = $('#hdnidlong').val();
+            $('#hdnurl').val('Home/Index');
+             
+                });
+        function EmailSubScription() {
+            var email = $("#txtEmailSubscription").val();
+            $("#EmailError").text(email == "" ? swal({
+                type: 'error',
+                title: 'E-mail Required!',
+                //text: result.Message,
+                icon: "error",
+                button: "Ok!",
+            }) : "");
+            if (email != '') {
+                var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var res = regex.test(email);
+                if (res) {
+                    $.ajax({
+                        url: '@Url.Action("EmailSubScription", "Home")',
+                        data: { 'Email': email },
+                        datatype: 'json',
+                        type: 'Get',
+                        success: function (result) {
+                            var status = result.Status;
+                            if (!status) {
+                                swal({
+                                    type: 'error',
+                                    title: 'Error...',
+                                    text: result.Message,
+                                    icon: "error",
+                                    button: "Ok!",
+                                })
+
+                                //$('#EmailError').html(result.Message).addClass("text-danger");
+                                return
+                            }
+                            else {
+                                //$('#EmailError').html('')
+                                swal({
+                                    title: "Good job!",
+                                    //text: "E-mail Updated Successful.",
+                                    text: result.Message,
+                                    icon: "success",
+                                    buttons: {
+                                        button: "Ok!",
+                                    },
+                                }).then((value) => {
+                                    window.location.href = "/Home/Index";
+                                });
+                            }
+                        },
+                        error: function () {
+                            swal({
+                                type: 'error',
+                                title: 'Error...',
+                                text: 'Something went wrong!',
+                                icon: "error",
+                                button: "Ok!",
+                            })
+
+                            //$('#EmailError').html('Something went wrong').addClass("text-danger");;
+                        }
+                    })
+                }
+                if (!res) {
+                    swal({
+                        type: 'error',
+                        title: 'Invalid E-mail',
+                        //text: "Invalid Email Id",
+                        icon: "error",
+                        button: "Ok!",
+                    })
+
+                    //$('#EmailError').html('Invalid Email Id').addClass("text-danger");
+                    return;
+                }
+            }
+
+        }
+
+
+
+
+
+         
+    </script>
+
+    <script type="text/javascript">
+
+
+        // =========== Slider ===============
+
+
+
+    </script> 
+    }

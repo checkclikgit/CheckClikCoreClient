@@ -1,0 +1,209 @@
+﻿@model Customer.Models.FavoritesDTO
+
+@inject IConfiguration Configuration;
+<div class="row storebox-height">
+    @*@if (Model.StoreDetailslst != null && Model.StoreDetailslst.Count() > 0)
+    {
+    foreach (var item in Model.StoreDetailslst)
+    {
+    var storetype = (item.StoreType == 1 ? "products" : "services");
+    <a href="~/@item.StoreEn.Replace(" ","-").ToLower()/b/@Customer.Utils.StringUtil.URLEncrypt(item.BranchId.ToString()).Replace("/","-")">
+    <div class="col-md-4 col-sm-6 col-xs-6 fwidth">
+
+    <div class="store mb-3">
+    <div class="product-list-cart">
+    <a onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.BranchId',3)"><i class="fas fa-times"></i></a>
+    <img src="@Model.ApiURL/Uploads/Stores/@item.BranchLogoImage" width="100%">
+    <div class="d-flex justify-content-between">
+    <div class="">
+    <h4 class="profile-text-justify"><a href="#">@item.StoreEn</a></h4>
+    <h6><span><i class="far fa-star"></i> @item.Reviews</span> (@item.ReviewsCount Reviews)</h6>
+    </div>
+    <div class="w-50 text-right">
+    @if (item.BranchStatus == "Open")
+    {
+    <small class="green"><i class="fas fa-circle"></i> @item.BranchStatus</small><br>
+    }
+    else if (item.BranchStatus == "Close")
+    {
+    <small class="pink"><i class="fas fa-circle"></i> @item.BranchStatus</small><br>
+
+    }
+    @if (item.VendorType == 1)
+    {
+    <small class="yellow"><i class="fas fa-users"></i></small><br>
+    }
+    else if (item.VendorType == 2)
+    {
+    <small class="yellow"><i class="fas fa-user"></i></small><br>
+    }
+    <small>@item.Distance km</small>
+    </div>
+    </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+    <div class="">
+    <h6 class="mb-2">Minimum Order</h6>
+    </div>
+    <div class="text-right">
+    <h6 class="mb-2">SAR @item.MinimumOrderValue</h6>
+    </div>
+    </div>
+    <div class="d-flex justify-content-between">
+    <div>
+    <h6 class="mt-0 mb-2">Delivery Time</h6>
+    </div>
+    <div class="text-right">
+    <h6 class="mt-0 mb-2">@item.DeliveryTime</h6>
+    </div>
+    </div>
+    <div class="d-flex justify-content-between">
+    <div>
+    <h6 class="mt-0 mb-2">Payment Options</h6>
+    </div>
+    <div class="text-right">
+    <h6 class="mt-0 mb-2">
+    @if (item.IsCreditCardAllowed == true)
+    {<i class="far fa-credit-card"></i>}  @if (item.IsCashAllowed == true)
+    {<i class="far fa-money-bill-alt"></i>}
+    </h6>
+    </div>
+    </div>
+    </div>
+    </div>
+    </a>
+    }
+    }*@
+
+    @if (Model.StoreDetailslst.Count() > 0)
+    {
+        foreach (var item in Model.StoreDetailslst)
+        {
+            var storetype = (item.StoreType == 1 ? "products" : "services");
+
+            <div class="row mt-60">
+                <div class="col-12">
+                    <div class="row related-products">
+                        <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                            <div class="product-cart-wrap hover-up">
+                                <div class="product-img-action-wrap">
+                                     
+                                    <div class="product-img product-img-zoom">
+                                        <a href="#" tabindex="0">
+                                            <img class="default-img" src="@Configuration["apiurl"]/Uploads/Stores/@item.BranchLogoImage" alt="" />
+                                            <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Stores/@item.BranchLogoImage" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Remove" class="action-btn small hover-up" href="#" onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.BranchId',3)" tabindex="0"><i style="font-size: 19px;" class="fi-rs-trash"></i></a>
+                                    </div>
+                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                        <span class="hot">
+                                            @item.Reviews (@item.ReviewsCount Reviews)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <h2>
+                                        <a href="#" tabindex="0">@item.StoreEn</a>
+                                        @if (item.BranchStatus == "Open")
+                                        {
+                                            <small class="green"><i class="fas fa-circle"></i> (@item.BranchStatus)</small>
+                                        }
+                                        else if (item.BranchStatus == "Close")
+                                        {
+                                            <small class="pink"><i class="fas fa-circle"></i> (@item.BranchStatus)</small>
+                                        }
+                                    </h2>
+
+                                    <div class="product-price">
+                                        <span>Distance: </span><b style="font-weight: 800;">@item.Distance km</b>
+                                    </div>
+                                    <div class="product-price">
+                                        <span>Minimum Order: </span><b style="font-weight: 800;"> SAR @item.MinimumOrderValue</b>
+                                    </div>
+                                    <div class="product-price">
+                                        <span><small>Payment Options: </small> </span>
+                                        <b style="font-weight: 800;">
+                                            @if (item.IsCreditCardAllowed == true)
+                                            {
+                                                @Html.Raw("Card ")
+                                            }
+                                            @if (item.IsCashAllowed == true)
+                                            {
+                                                @Html.Raw("Cash")
+                                            }
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <span class="text-danger">
+            No Store Found
+        </span>
+    }
+</div>
+<div class="container" id="dvstorepaging">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo-store" class="pagination">
+                <!-- <a href="#">&lt;</a> -->
+                @*<a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&gt;</a>*@
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnToPagesCountForStorePagination" value="@Model.StorepagingNumber" />
+<input type="hidden" id="hdnPageNumberStore_twbs" value="@Model.StorePageNumber" />
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="~/Scripts/jquery.twbsPagination.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // debugger
+        //var sortid = $('#hdnSortId').val();
+        var sortid = 1;//$('#hdnSortId').val();
+        var pNo = $('#hdnPageNumberStore_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo-store').twbsPagination({
+            totalPages: $('#hdnToPagesCountForStorePagination').val(),
+            visiblePages: 5,
+            startPage: i,
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetStore(page, sortid);
+            }
+        });
+    });
+</script>
+<script>
+    var scrolled = 0;
+    $(document).ready(function () {
+        $(".upstore").on("click", function () {
+            scrolled = scrolled > 0 ? scrolled - 300 : 0;
+            $(".storebox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+        $(".downstore").on("click", function () {
+            scrolled = scrolled + 300;
+            $(".storebox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+    });
+</script>

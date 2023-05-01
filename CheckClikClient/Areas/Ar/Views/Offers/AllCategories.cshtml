@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "All Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+<style>
+    .carousel-control {
+        width: 35px;
+        text-align: center;
+        height: 50px;
+        font-size: 26px;
+        background-image: linear-gradient(transparent, transparent) !important;
+        background-color: rgba(255,255,255,0.6);
+        color: #333;
+        top: 50%;
+        transform: translate(0%, -50%);
+        padding-top: 5px;
+    }
+    .left.carousel-control {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .right.carousel-control {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .carousel-indicators {
+        bottom: 0px;
+    }
+</style>
+}
+
+<div class="pt-5 p-3 bg-light-grey">
+    <div class="container background--white pb-4">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="same-block-height">
+                    <h4>CATEGORIES</h4>
+                    <hr class="mt-0 mb-3" />
+                    <ul class="offer-categories">
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Consumer Electronics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Apparel</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Vehicles & Accessories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Sports & Entertainment</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Machinery</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Home & Garden</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>Beauty & Personal Care</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="~/assets/images/productdetails-11.jpg" />
+                                <span>All Categories</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 pr-md-0">
+                <div class="same-block-height mb-3">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators all-categories">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3a731b27807905.56443f4a79ded.jpg" style="width:100%;height: 250px" />
+                            </div>
+                            <div class="item">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c7184327807905.561b991856602.jpg" style="width:100%;height: 250px" />
+                            </div>
+                            <div class="item">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/412ae427807905.5636b14bb42e9.jpg" style="width:100%;height: 250px" />
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="fa fa-angle-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="fa fa-angle-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="pr-4">
+                    <strong>Featured</strong>
+                    <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="">
+                        <ol class="carousel-indicators all-categories">
+                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel" data-slide-to="1"></li>
+                            <li data-target="#carousel" data-slide-to="2"></li>
+                            <li data-target="#carousel" data-slide-to="3"></li>
+                            <li data-target="#carousel" data-slide-to="4"></li>
+                            <li data-target="#carousel" data-slide-to="5"></li>
+                            <li data-target="#carousel" data-slide-to="6"></li>
+                            <li data-target="#carousel" data-slide-to="7"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 1</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 2</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 3</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 4</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 5</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 6</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 7</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 8</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 9</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 10</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="carousel-col">
+                                    <figure class="figure">
+                                        <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                        <figcaption class="figure-caption">Women's Clothing 11</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row all-categories-featured">
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Women's Clothing </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Men's Clothing</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Sports Wear</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Childrens Clothing</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Garments</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-2 col-sm-4">
+                            <figure class="figure">
+                                <img src="~/web-assets/images/Product-offer3.jpg" class="figure-img img-responsive img-fluid rounded">
+                                <figcaption class="figure-caption">Novelty & Special Use</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    (function ($) {
+        var $myCarousel = $('#myCarousel'),
+            $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+        $myCarousel.carousel({
+            interval: 4000,
+            pause: "null"
+
+        });
+    })(jQuery);
+</script>

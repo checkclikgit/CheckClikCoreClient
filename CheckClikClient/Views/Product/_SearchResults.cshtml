@@ -172,11 +172,11 @@
                                             <div class="add-cart">
                                                 @if (Model.Results[i].ItemType.ToUpper() == "P")
                                                 {
-                                                    <a href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/p/@SlugUtil.GenerateSlug(Model.Results[i].ProductBranchId, Model.Results[i].NameEn, Model.Results[i].ProductSKUId, Convert.ToInt32(Model.Results[i].ProductId), Model.Results[i].UPCBarcode,Model.Results[i].BranchId)" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                    <a  target="_blank" href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/p/@SlugUtil.GenerateSlug(Model.Results[i].ProductBranchId, Model.Results[i].NameEn, Model.Results[i].ProductSKUId, Convert.ToInt32(Model.Results[i].ProductId), Model.Results[i].UPCBarcode,Model.Results[i].BranchId)" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                                 }
                                                 else
                                                 {
-                                                    <a href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(Model.Results[i].NameEn,Model.Results[i].BranchId,Convert.ToInt32(Model.Results[i].ProductId))" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                    <a target="_blank" href="~/@Model.Results[i].StoreNameEn.Replace(" ","-").ToLower()/@MainCategory.Replace(" ","-").ToLower()/@SubCategory.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(Model.Results[i].NameEn,Model.Results[i].BranchId,Convert.ToInt32(Model.Results[i].ProductId))" class="add"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                                 }
                                                 @*<a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>*@
                                             </div>
