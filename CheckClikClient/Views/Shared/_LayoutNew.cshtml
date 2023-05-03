@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html class="no-js" lang="en"> 
+<html class="no-js" lang="en">
 @using CheckClickClient;
 @inject IConfiguration Configuration;
 <head>
@@ -29,48 +29,56 @@
             padding: 0 30px;
             border: 1px solid #3BB77E;
         }
-        .header-style-1 .main-categori-wrap > a.categories-button-active i {
-            color: #3BB77E;
-            margin-left: 12px;
-            font-size: 10px;
-            margin-bottom: 5px;
-        }
-        .header-style-1 .main-categori-wrap > a span {
-            color: #3BB77E !important;
-        }
-        .header-style-1 .main-categori-wrap > a:hover {
-            background-color: #e8efec;
-        }
+
+            .header-style-1 .main-categori-wrap > a.categories-button-active i {
+                color: #3BB77E;
+                margin-left: 12px;
+                font-size: 10px;
+                margin-bottom: 5px;
+            }
+
+            .header-style-1 .main-categori-wrap > a span {
+                color: #3BB77E !important;
+            }
+
+            .header-style-1 .main-categori-wrap > a:hover {
+                background-color: #e8efec;
+            }
+
         .header-style-1 .search-style-2 form {
-             border: 0px solid #BCE3C9; 
-             /*border: 1px solid #fff !important; */
+            border: 0px solid #BCE3C9;
+            /*border: 1px solid #fff !important; */
             border-radius: 4px;
             max-width: 700px;
             background-color: #fff;
         }
+
         .header-style-1 .header-middle-ptb-1 {
             padding: 10px 0;
         }
-        html,body{
-    height: 100%;
-    overflow-y:hidden;
-}
-.download-app{
+        /*html,body{
+            height: 100%;
+            overflow-y:hidden;
+        }*/
+        .download-app {
+            justify-content: center;
+            margin: 10px !important;
+        }
 
-    justify-content:center;
-    margin:10px !important;
-}
+        .w-400 {
+            width: 400px;
+        }
     </style>
 </head>
-    @{ 
-        IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
-        Customer.Models.CartDTO url = new Customer.Models.CartDTO();
-        url.UrlPath = Configuration["apiurl"]+""+Configuration["UploadLocation"]+""+"/Products/";
+@{
+    IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
+    Customer.Models.CartDTO url = new Customer.Models.CartDTO();
+    url.UrlPath = Configuration["apiurl"] + "" + Configuration["UploadLocation"] + "" + "/Products/";
 
-        Decimal totalVatL = 0;
-        Decimal totalAmtL = 0;
-    }
-<body> 
+    Decimal totalVatL = 0;
+    Decimal totalAmtL = 0;
+}
+<body>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -200,7 +208,7 @@
                                     <ul class="language-dropdown">
                                         <li>
                                             <a href="#"><img src="/nest/imgs/shop/flag-fr.png" alt>Arabic</a>
-                                        </li> 
+                                        </li>
                                     </ul>
                                 </li>
                                 <li hidden>
@@ -226,7 +234,7 @@
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block header-bottom header-bottom-bg-color">
             <div class="container">
                 <div class="header-wrap">
-                    <div class="logo logo-width-1" hidden> 
+                    <div class="logo logo-width-1" hidden>
                         <a href="/Home/NIndex"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
                     </div>
                     @{
@@ -237,77 +245,62 @@
                     <div class="header-right">
                         <div class="search-style-2">
                             <div class="row">
-                                    <div class="col-sm-12 col-md-5 col-lg-4 mt-3"> 
-                                        @*<ul class="list-inline hidden-sm hidden-xs">
-                                            <li class="dropdown">
-                                                <span><i class="fa fa-globe mr-05"></i><strong>Shop In</strong> </span>
-                                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true" id="ancci">
-                                                    <strong id="spncity"></strong>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                                <div class="city dropdown-menu p-3">
-                                                    <p>select your shopping location</p> 
-                                                        <div class="form-group">
-                                                  
-                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
-                                                            new { @id = "select-city", @class = "select form-control", @data_live_search = "true" })
+                                <div class="col-sm-12 col-md-5 col-lg-4 mt-3">
+                                    @*<ul class="list-inline hidden-sm hidden-xs">
+                                    <li class="dropdown">
+                                    <span><i class="fa fa-globe mr-05"></i><strong>Shop In</strong> </span>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true" id="ancci">
+                                    <strong id="spncity"></strong>
+                                    <i class="fas fa-angle-down"></i>
+                                    </a>
+                                    <div class="city dropdown-menu p-3">
+                                    <p>select your shopping location</p>
+                                    <div class="form-group">
 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
-                                                            new { @id = "select-district", @class = "select form-control", @data_live_search = "true" }) 
+                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
+                                    new { @id = "select-city", @class = "select form-control", @data_live_search = "true" })
 
-                                                        </div>
-                                                        <div class="form-group text-center mb-0">
-                                                            <button type="button" class="btn btn-default form-control" onclick="fnupdatecitydistrict();">Submit</button>
-                                                        </div> 
-                                                </div>
-                                            </li>
-                                        </ul>*@
-                                        <div class="main-categori-wrap d-none d-lg-block">
-                                            <a class="categories-button-active" href="#">
-                                                @*<span class="fi-rs-apps"></span> *@
-                                                <img src="/nest/imgs/theme/icons/icon-location.svg" alt="">
-                                                <span class="et ml-2">Shop In</span> <strong style="float:right;" id="spncity"></strong>
-                                                <i class="fi-rs-angle-down"></i>
-                                            </a>
-                                            <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
-                                                
-                                                    <div class="row pl-30"> 
-                                                        select your shopping location
-                                                    </div>
-                                                <div class="d-flex categori-dropdown-inner pt-2"> 
-                                                        <div class="form-group"> 
-                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
-                                                            new { @id = "select-city", @class = "select form-control", @data_live_search = "true" }) 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
-                                                            new { @id = "select-district", @class = "select form-control", @data_live_search = "true" }) 
-                                                        </div>
-                                                        <div class="form-group text-center mb-0">
-                                                            <button type="button" class="btn btn-link btn-sm" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 0px 0px 18px 25px !important;" onclick="fnupdatecitydistrict();">Filter</button>
-                                                        </div>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                        @*<form action="#" style="max-width: 500px;">  
-                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,"-- Shop In --",
-                                            new { @id = "select-city", @class = "select-active", @data_live_search = "true" })
-
-                                            @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,"-- Area --",
-                                            new { @id = "select-district", @class = "select-active", @data_live_search = "true" })
-                                              
-                                            <span type="button" class="btn" onclick="fnupdatecitydistrict();" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 9px 19px 9px 12px;">Apply</span>
-                                
-                                        </form>*@
                                     </div>
+                                    <div class="form-group">
+                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
+                                    new { @id = "select-district", @class = "select form-control", @data_live_search = "true" })
+
+                                    </div>
+                                    <div class="form-group text-center mb-0">
+                                    <button type="button" class="btn btn-default form-control" onclick="fnupdatecitydistrict();">Submit</button>
+                                    </div>
+                                    </div>
+                                    </li>
+                                    </ul>*@
+                                    <div class="main-categori-wrap d-none d-lg-block">
+                                        <a class="categories-button-active" href="#">
+                                            @*<span class="fi-rs-apps"></span> *@
+                                            <img src="/nest/imgs/theme/icons/icon-location.svg" alt="">
+                                            <span class="et ml-2">Shop In</span> <strong style="float:right;" id="spncity"></strong>
+                                            <i class="fi-rs-angle-down"></i>
+                                        </a>
+                                        <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
+
+                                            <div class="row pl-30">
+                                                select your shopping location
+                                            </div>
+                                            <div class="d-flex categori-dropdown-inner pt-2">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,
+                                                    new { @id = "select-city", @class = "select form-control", @data_live_search = "true" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,
+                                                    new { @id = "select-district", @class = "select form-control", @data_live_search = "true" })
+                                                </div>
+                                                <div class="form-group text-center mb-0">
+                                                    <button type="button" class="btn btn-link btn-sm" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 0px 0px 18px 25px !important;" onclick="fnupdatecitydistrict();">Filter</button>
                                     <div class="col-sm-12 col-md-7 col-lg-8">
-                                        <div class=" sticky-bar">@*header-bottom header-bottom-bg-color*@
+                                        <div class=" sticky-bar">header-bottom header-bottom-bg-color
                                             <div class="container">
                                                 <div class="header-wrap header-space-between position-relative">
                                                     <div class="logo logo-width-1 d-block d-lg-none">
-                                                        @*<a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>*@
+                                                        <a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>
                                                         <a href="/Home/NIndex"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
                                                     </div>
                                                     <div class="header-nav d-none d-lg-flex" style="margin-left:3rem"> 
@@ -331,25 +324,67 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                                @*<input id="txtSearchTerm" name="txtSearchTerm" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" autocomplete="off" style="background-image: url('') !important;" />*@
-
-                                            @*<input type="submit" class="btn btn-default btn-block btn-lg search-button" value="Search">*@
-
-                                            <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" /> 
-                                            <input type="hidden" name="hdnlocation" id="hdnlocation" /> 
-                                            <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" /> 
-                                            <input type="hidden" name="hdnSearchText" id="hdnSearchText" />
-                                            <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
-                                            <input type="hidden" name="hdnStart" id="hdnStart" />
-                                        }
                                     </div>
-                             </div> 
-                        </div> 
+                                    @*<form action="#" style="max-width: 500px;">
+                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)cityList,"-- Shop In --",
+                                    new { @id = "select-city", @class = "select-active", @data_live_search = "true" })
+
+                                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)districtList,"-- Area --",
+                                    new { @id = "select-district", @class = "select-active", @data_live_search = "true" })
+
+                                    <span type="button" class="btn" onclick="fnupdatecitydistrict();" style="background-color: transparent;border: none;font-size: 20px;color: #3BB77E;height: 100%;padding: 9px 19px 9px 12px;">Apply</span>
+
+                                    </form>*@
+                                </div>
+                                <!--<div class="col-sm-12 col-md-7 col-lg-8">
+                                    <div class=" sticky-bar">-->
+                                        @*header-bottom header-bottom-bg-color*@
+                                        <!--<div class="container">
+                                            <div class="header-wrap header-space-between position-relative">
+                                                <div class="logo logo-width-1 d-block d-lg-none">-->
+                                                    @*<a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>*@
+                                                    <!--<a href="index.html"><img src="/nest/imgs/theme/icons/checkclik.png" alt="logo"></a>
+                                                </div>
+                                                <div class="header-nav d-none d-lg-flex" style="margin-left:3rem">
+                                                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading ml-1">
+                                                        <nav>
+                                                            <ul>
+                                                                <li class="hot-deals"><img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="/Home/NIndex">HOME</a></li>
+                                                                <li class="hot-deals">
+                                                                    <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="#">STORES</a>
+                                                                </li>
+                                                                <li class="hot-deals">
+                                                                    <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="#">OFFERS</a>
+                                                                </li>
+                                                                <li class="hot-deals">
+                                                                    <img src="/nest/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="#">COUPONS</a>
+                                                                </li>
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @*<input id="txtSearchTerm" name="txtSearchTerm" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" autocomplete="off" style="background-image: url('') !important;" />*@
+
+                                        @*<input type="submit" class="btn btn-default btn-block btn-lg search-button" value="Search">*@
+
+                                        <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" />
+                                        <input type="hidden" name="hdnlocation" id="hdnlocation" />
+                                        <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" />
+                                        <input type="hidden" name="hdnSearchText" id="hdnSearchText" />
+                                        <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
+                                        <input type="hidden" name="hdnStart" id="hdnStart" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
                         <div class="header-action-right">
-                            <div class="header-action-2"> 
+                            <div class="header-action-2">
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="shop-cart.html">
                                         <img alt="Nest" src="/nest/imgs/theme/icons/icon-cart.svg">
@@ -372,18 +407,18 @@
                                                     <div class="shopping-cart-delete">
                                                         <a href="#" onclick="removeL1(@item.CartId)"><i class="fi-rs-cross-small"></i></a>
                                                     </div>
-                                                </li> 
+                                                </li>
                                             </ul>
-                                             
+
                                             @if (item.CartStatus == true)
                                             {
-                                                    totalAmtL = totalAmtL + item.TotalItemPrice;
-                                                    totalVatL = totalVatL + item.TotalVatAmount ;
+                                                totalAmtL = totalAmtL + item.TotalItemPrice;
+                                                totalVatL = totalVatL + item.TotalVatAmount;
                                             }
                                         }
 
-                                         
-                                        
+
+
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
                                                 <h4>Total <span>SAR @(totalAmtL.ToString("N2"))</span></h4>
@@ -396,49 +431,50 @@
                                     </div>
                                 </div>
 
+                                @{
+
+                                    var data = CheckClickClient.AppUtils.UserLogin;
+                                }
+
+                                <div class="header-action-icon-2">
+                                    @*<a href="~/user/myprofile">
                                     @{
-
-                                        var data = CheckClickClient.AppUtils.UserLogin;
+                                    if (data != null && data.IsLogin == true)
+                                    {
+                                    <img class="svgInject" alt="Nest" src="@data.UserProfile">
                                     }
-
-                                    <div class="header-action-icon-2">
-                                        @*<a href="~/user/myprofile">
-                                            @{
-                                                if (data != null && data.IsLogin == true)
-                                                {
-                                                            <img class="svgInject" alt="Nest" src="@data.UserProfile">
-                                                }
-                                            }
-                                        </a>*@
-                                        @if(CheckClickClient.AppUtils.UserLogin.UserId > 0)
-                                        {
-                                            <a href="#">
-                                                <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
-                                            </a>
-                                            <a href="#"><span class="lable ml-0">@data.UserName</span></a>
-                                            <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                                <ul>
-                                                    <li>
+                                    }
+                                    </a>*@
+                                    @if (CheckClickClient.AppUtils.UserLogin.UserId > 0)
+                                    {
+                                        <a href="#">
+                                            <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                        </a>
+                                        <a href="#"><span class="lable ml-0">@data.UserName</span></a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                            <ul>
+                                                <li>
                                                     <a href="~/user/myprofilenest"><i class="fi fi-rs-user mr-10"></i>My Profile</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/user/manageaddressnest"><i class="fi fi-rs-location-alt mr-10"></i>Manage Address</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/user/changepasswordNest"><i class="fi fi-rs-heart mr-10"></i>Change Password</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="@Url.Action("logout", "user")"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        }
-                                        else{
-                                            <a href="#">
-                                                <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
-                                            </a>
-                                            <a href="@Url.Action("IndexNest", "User")"><span class="lable">Login</span></a>
-                                        } 
+                                                </li>
+                                                <li>
+                                                    <a href="~/user/manageaddress"><i class="fi fi-rs-location-alt mr-10"></i>Manage Address</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/user/changepassword"><i class="fi fi-rs-heart mr-10"></i>Change Password</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("logout", "user")"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                        </a>
+                                        <a href="@Url.Action("IndexNest", "User")"><span class="lable">Login</span></a>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -446,7 +482,7 @@
                 </div>
             </div>
         </div>
-        
+
     </header>
     <div class="mobile-header-active mobile-header-wrapper-style">
         <div class="mobile-header-wrapper-inner">
@@ -631,65 +667,55 @@
         </div>
     </div>
     <!--End header-->
-    <main class="main">
+    <main class="main" style="min-height: calc(100vh - 130px)">
         @RenderBody()
     </main>
     <footer class="main fixed-bottom">
-        
+
         @*<div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
-            <div class="row align-items-center">
-                <div class="col-12 mb-30">
-                    <div class="footer-bottom"></div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
-                    <a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
-                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
-                    <div class="footer-link-widget widget-install-app col">
-                        <h4 class="widget-title">Install App</h4>
-                        <p class="wow fadeIn animated">From App Store or Google Play</p>
-                        <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
-                        
-                        <div class=" download-app">
-                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
-                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
-                        </div> 
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
-                    <div class="hotline d-lg-inline-flex mr-30">
-                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
-                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
-                    </div>
-                    <div class="hotline d-lg-inline-flex">
-                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
-                        <p>1900 - 8888<span>24/7 Support Center</span></p>
-                    </div>
-                </div>
-            </div>
+        <div class="row align-items-center">
+        <div class="col-12 mb-30">
+        <div class="footer-bottom"></div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+        <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+        <a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
+        <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
+        <div class="footer-link-widget widget-install-app col">
+        <h4 class="widget-title">Install App</h4>
+        <p class="wow fadeIn animated">From App Store or Google Play</p>
+        <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
+
+        <div class=" download-app">
+        <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
+        <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+        <div class="hotline d-lg-inline-flex mr-30">
+        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
+        </div>
+        <div class="hotline d-lg-inline-flex">
+        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
+        <p>1900 - 8888<span>24/7 Support Center</span></p>
+        </div>
+        </div>
+        </div>
         </div>*@
-        <section class="section-padding footer-mid">
-            <div class="container justify-content-center text-center pt-15 pb-20">
-                <div class="row">
-                    <div class="footer-link-widget widget-install-app col">
-                       @* <h4 class="widget-title">Install App</h4>
-                        <p class="wow fadeIn animated">From App Store or Google Play</p>
-                        <div class="download-app">
-                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
-                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
-                        </div>*@
-                        <p class="mb-20">Secured Payment Gateways</p>
-                        <img class="wow fadeIn animated" src="/nest/imgs/theme/payment-method.png" alt="" />
-                        @*<div class="download-app">
-                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
-                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
-                        </div>*@
-                    </div>
-                </div>
-            </div>
-        </section>
+        @*<section class="section-padding footer-mid">
+        <div class="container justify-content-center text-center pt-15 pb-20">
+        <div class="row">
+        <div class="footer-link-widget widget-install-app col">
+        <p class="mb-20">Secured Payment Gateways</p>
+        <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:15%;"/>
+        </div>
+        </div>
+        </div>
+        </section>*@
         <div class="container pb-30 mt-auto">
             <div class="row align-items-center">
                 <div class="col-12 mb-30">
@@ -699,7 +725,7 @@
                     <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
                 </div>
                 <div class="col-xl-4 col-lg-6 justify-content-center text-center d-none d-xl-block">
-                        <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
+                    <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
                     <div class="header-info text-center">
                         <ul>
                             <li><a href="page-about.htlm">Sell with Us</a></li>
@@ -725,13 +751,13 @@
     </footer>@*
     <!-- Preloader Start -->
     <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <img src="/nest/imgs/shop/loading.gif" alt>
-                </div>
-            </div>
-        </div>
+    <div class="preloader d-flex align-items-center justify-content-center">
+    <div class="preloader-inner position-relative">
+    <div class="text-center">
+    <img src="/nest/imgs/shop/loading.gif" alt>
+    </div>
+    </div>
+    </div>
     </div>*@
     <input type="hidden" name="hdnnmlat" id="hdnidlat" />
 
@@ -775,22 +801,22 @@
     <script src="~/nest/js/shop.js"></script>
 
 
-    
+
     <script>
         var districtArray = [];
-        var cityArray = []; 
+        var cityArray = [];
         $(document).ready(function () {
             cityArray = @Json.Serialize(AppUtils.CityList.ToList());
             districtArray = @Json.Serialize(AppUtils.DistrictList.ToList());
-            $(".select").select2({ width: "100%" }); 
+            $(".select").select2({ width: "100%" });
             var city = '@AppUtils.SelectedCity.ToString()';
-            var district =  '@AppUtils.SelectedDistrict.ToString()';
+            var district = '@AppUtils.SelectedDistrict.ToString()';
             if ((city == 0 || city == '') && (district == 0 || district == '')) {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(showPosition2, showError);
                 }
             }
-            else if ((city != 0 || city != '') && (district == 0 || district == '')) { 
+            else if ((city != 0 || city != '') && (district == 0 || district == '')) {
                 var cities = cityArray;
                 for (var i = 0; i < cities.length; i++) {
                     if (cities[i].id == city) {
@@ -808,7 +834,7 @@
             }
             else {
                 $("#select-city").val(city).trigger('change');
-                $("#spncity").text($("#select-city option:selected").text()); 
+                $("#spncity").text($("#select-city option:selected").text());
                 var temp = districtArray;
                 $("#select-district").empty();
                 $('#select-district').append($('<option>', {
@@ -827,8 +853,8 @@
                 $("#select-district").val(district).trigger('change');
                 for (var i = 0; i < temp.length; i++) {
                     if (temp[i].id == district) {
-                        
-                            $('#hdnidlat').val(temp[i].latitude);
+
+                        $('#hdnidlat').val(temp[i].latitude);
                         $('#hdnidlong').val(temp[i].longitude);
                         //console.log(temp[i].Latitude);
                         $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
@@ -843,7 +869,7 @@
                 $("#hdnlocation").val($("#hdnidlat").val() + ',' + $("#hdnidlong").val() + ',' + $("#select-district").val());
             });
             $("#loader").hide();
-             
+
         });
 
         function showError(error) {
@@ -933,7 +959,7 @@
                         if (temp[i].cityId == city) {
                             console.log(temp[i].id);
                             $('#select-district').append($('<option>', {
-                                value: ''+temp[i].id+'',
+                                value: '' + temp[i].id + '',
                                 text: '' + temp[i].nameEn + ''
 
                             }));
@@ -1194,9 +1220,8 @@
                     }
                     location.reload();
                 },
-                error: function (response) 
-                {
-                     
+                error: function (response) {
+
                 }
             });
             //var temp = Html.Raw(Session["DefaultDistrictListData"]);
