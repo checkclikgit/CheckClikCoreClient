@@ -1,10 +1,10 @@
 ﻿@model Customer.Models.CouponsDTO
 @{
-    ViewBag.Title = "CHECKCLIK | Coupons";
-    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    ViewBag.Title = "Available Coupons";
+    Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
 }
- 
 
+<div class="container mb-30">
     <section class="myorders-banner text-center">
         <h2><strong>Coupons</strong></h2>
         <div class="text-center">
@@ -20,41 +20,6 @@
             </div>
         </div>
     </section>
-     
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var pageNumber = 1;
-            GetCoupons(pageNumber);
-        }); 
-        function GetCoupons(pageNumber) { 
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("CouponsofCustomers")',
-                datatype: "json",
-                data: { pageNumber: pageNumber },
-                success: function (data) {
-                    // debugger;
-                    if (data != "") {
-                        $('#div_Coupons').html('');
-                        $('#div_Coupons').html(data.result);
-                    }
-                    //else {
-                    //    location.reload();
-                    //}
-                },
-                complete: function () {
+</div>
 
-                    if ($("#hdncount").val() == "" || $("#hdncount").val() == undefined) {
-                        $("#strCount").text('not');
-                    }
-                    else {
-                        $("#strCount").text($("#hdncount").val());
-                    }
-                },
-                onerror: function (data) {
-                    $('.loader').hide();
-                }
-            });
-        }
-    </script>
 

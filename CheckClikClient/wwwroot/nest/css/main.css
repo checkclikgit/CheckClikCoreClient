@@ -7239,14 +7239,28 @@ h6.post-title {
           box-shadow: none;
   padding: 0;
 }
-
-.header-action-right {
+.brand_title {
+    font-weight: bold;
+    background-size: 100%;
+    text-transform: uppercase;
+    background-clip: text;
+    background-color: transparent;
+    background-color: red;
+    background-image: linear-gradient(to right, #5BBFBD,rgba(38,68,127,1),#D61A67,#F37022);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+/*.header-action-right {
   display: none;
 }
 
 .header-action-right .search-location {
   display: none;
-}
+}*/
 
 .search-style-1 {
   margin-right: 28px;
