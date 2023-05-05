@@ -431,6 +431,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CMmJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_CustomScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DdXN0b21TY3JpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNewStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -554,6 +558,18 @@ build_metadata.AdditionalFiles.CssScope = b-eb9m1i5zpe
 [D:/CheckClik/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_StoreDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-rkzje4uo7u
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_HomeLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9Ib21lTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-395omepob4
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_MenuLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9NZW51TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-82e8da16cr
+
+[D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_StoreLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9TdG9yZUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-n83pwyczuw
 
 [D:/CheckClik/CheckClikClient/CheckClikClient/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

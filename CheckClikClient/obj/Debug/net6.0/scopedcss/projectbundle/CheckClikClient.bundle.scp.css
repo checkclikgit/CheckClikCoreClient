@@ -537,6 +537,153 @@ button.accept-policy[b-rkzje4uo7u] {
   white-space: nowrap;
   line-height: 60px;
 }
+/* _content/CheckClikClient/Views/Shared/Redesign/_HomeLayout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-395omepob4] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-395omepob4] {
+  color: #0077cc;
+}
+
+.btn-primary[b-395omepob4] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-395omepob4], .nav-pills .show > .nav-link[b-395omepob4] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-395omepob4] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-395omepob4] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-395omepob4] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-395omepob4] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-395omepob4] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+/* _content/CheckClikClient/Views/Shared/Redesign/_MenuLayout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-82e8da16cr] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-82e8da16cr] {
+  color: #0077cc;
+}
+
+.btn-primary[b-82e8da16cr] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-82e8da16cr], .nav-pills .show > .nav-link[b-82e8da16cr] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-82e8da16cr] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-82e8da16cr] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-82e8da16cr] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-82e8da16cr] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-82e8da16cr] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+/* _content/CheckClikClient/Views/Shared/Redesign/_StoreLayout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-n83pwyczuw] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-n83pwyczuw] {
+  color: #0077cc;
+}
+
+.btn-primary[b-n83pwyczuw] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-n83pwyczuw], .nav-pills .show > .nav-link[b-n83pwyczuw] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-n83pwyczuw] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-n83pwyczuw] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-n83pwyczuw] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-n83pwyczuw] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-n83pwyczuw] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
 /* _content/CheckClikClient/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

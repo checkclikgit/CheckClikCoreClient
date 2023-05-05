@@ -270,3 +270,6 @@ D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Areas\Ar
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Areas\Ar\Views\Shared\_LayoutNew_ProductDetails1.cshtml.rz.scp.css
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Areas\Ar\Views\Shared\_LayoutNew_Profile.cshtml.rz.scp.css
 D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Areas\Ar\Views\Shared\_LayoutNew_StoreDetails.cshtml.rz.scp.css
+D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\Redesign\_HomeLayout.cshtml.rz.scp.css
+D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\Redesign\_MenuLayout.cshtml.rz.scp.css
+D:\CheckClik\CheckClikClient\CheckClikClient\obj\Debug\net6.0\scopedcss\Views\Shared\Redesign\_StoreLayout.cshtml.rz.scp.css
