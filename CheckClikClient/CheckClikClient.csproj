@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AreasOld\**" />
+    <Compile Remove="Areas\**" />
+    <Content Remove="AreasOld\**" />
+    <Content Remove="Areas\**" />
+    <EmbeddedResource Remove="AreasOld\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="AreasOld\**" />
+    <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Handlers\SubdomainRoute.cs" />
     <Compile Remove="Models\CustomerRegistrationDTO.cs" />
     <Compile Remove="Models\UserRegistrationDTO-2019-02-16_19-00-30-415.cs" />
@@ -16,84 +27,328 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Ar\Views\Account\Login.cshtml" />
     <Content Remove="Views\Account\Login.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Areas\Ar\Views\B2B\Index.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\CartPreview.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\Checkout.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\OrderConfirmed.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\PVManageAddress.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\PVOrderPayment.cshtml" />
-    <None Include="Areas\Ar\Views\Cart\_PVOrderPaymentOptions.cshtml" />
-    <None Include="Areas\Ar\Views\Coupons\CouponsPV.cshtml" />
-    <None Include="Areas\Ar\Views\Coupons\Index.cshtml" />
-    <None Include="Areas\Ar\Views\CustomerProducts\ProductDetails.cshtml" />
-    <None Include="Areas\Ar\Views\Home\Index.cshtml" />
-    <None Include="Areas\Ar\Views\Home\NIndex.cshtml" />
-    <None Include="Areas\Ar\Views\Home\Privacy.cshtml" />
-    <None Include="Areas\Ar\Views\Home\TermsAndConditions.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\Index.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\IndexNest.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\OrderDetailsPV.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\ProcessingOrdersPV.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\PVHistoryOrders.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\PVPendingOrders.cshtml" />
-    <None Include="Areas\Ar\Views\MyOrders\PVProcessingOrders.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\AllCategories.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\Index-2019-02-28_11-01-43-174.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\Index.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\OfferList.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\OfferListItem.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\PVItems.cshtml" />
-    <None Include="Areas\Ar\Views\Offers\PVOffer.cshtml" />
-    <None Include="Areas\Ar\Views\Product\Index.cshtml" />
-    <None Include="Areas\Ar\Views\Product\IndexNest.cshtml" />
-    <None Include="Areas\Ar\Views\Product\PVBranchTimings.cshtml" />
-    <None Include="Areas\Ar\Views\Product\PVProduct.cshtml" />
-    <None Include="Areas\Ar\Views\Product\PVSideCategoryAndSubCategory.cshtml" />
-    <None Include="Areas\Ar\Views\Product\_SearchResults - Copy.cshtml" />
-    <None Include="Areas\Ar\Views\Product\_SearchResults.cshtml" />
-    <None Include="Areas\Ar\Views\Search\Index.cshtml" />
-    <None Include="Areas\Ar\Views\Search\NIndex.cshtml" />
-    <None Include="Areas\Ar\Views\Search\_SearchResults.cshtml" />
-    <None Include="Areas\Ar\Views\Search\_SearchResultsStore.cshtml" />
-    <None Include="Areas\Ar\Views\Search\_SearchResultsStoreNest.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\Error.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_B2bLayout.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_Layout.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew - Copy.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNewStore.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartCheckout.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartDetails.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Empty.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_PaymentConfirm.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails1.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Profile.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_LayoutNew_StoreDetails.cshtml" />
-    <None Include="Areas\Ar\Views\Shared\_ValidationScriptsPartial.cshtml" />
-    <None Include="Areas\Ar\Views\User\ChangePassword.cshtml" />
-    <None Include="Areas\Ar\Views\User\ChangePasswordNest.cshtml" />
-    <None Include="Areas\Ar\Views\User\Index.cshtml" />
-    <None Include="Areas\Ar\Views\User\IndexNest.cshtml" />
-    <None Include="Areas\Ar\Views\User\ManageAddress.cshtml" />
-    <None Include="Areas\Ar\Views\User\ManageAddressNest.cshtml" />
-    <None Include="Areas\Ar\Views\User\MyProfile.cshtml" />
-    <None Include="Areas\Ar\Views\User\MyProfileNest.cshtml" />
-    <None Include="Areas\Ar\Views\User\SignUp.cshtml" />
-    <None Include="Areas\Ar\Views\User\SignUpNest.cshtml" />
-    <None Include="Areas\Ar\Views\User\_PVOffers.cshtml" />
-    <None Include="Areas\Ar\Views\User\_PVOffersNest.cshtml" />
+    <Compile Include="Areas\Ar\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Ar\Controllers\UserController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Areas\Ar\Views\B2B\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\CartPreview.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\Checkout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\OrderConfirmed.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\PVManageAddress.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\PVOrderPayment.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Cart\_PVOrderPaymentOptions.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Coupons\CouponsPV.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Coupons\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\CustomerProducts\ProductDetails.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Home\NIndex.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Home\Privacy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Home\TermsAndConditions.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\IndexNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\OrderDetailsPV.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\ProcessingOrdersPV.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\PVHistoryOrders.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\PVPendingOrders.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\MyOrders\PVProcessingOrders.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\AllCategories.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\Index-2019-02-28_11-01-43-174.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\OfferList.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\OfferListItem.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\PVItems.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Offers\PVOffer.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\IndexNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\PVBranchTimings.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\PVProduct.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\PVSideCategoryAndSubCategory.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\_SearchResults - Copy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\_SearchResults.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Search\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Search\NIndex.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Search\_SearchResults.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Search\_SearchResultsStore.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Search\_SearchResultsStoreNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\Error.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\Redesign\_HomeLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\Redesign\_MenuLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\Redesign\_StoreLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_B2bLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_CustomScript.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew - Copy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNewStore.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_CartCheckout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_CartDetails.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_Empty.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_PaymentConfirm.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails1.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_Profile.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_LayoutNew_StoreDetails.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Shared\_ValidationScriptsPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\ChangePassword.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\ChangePasswordNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\IndexNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\ManageAddress.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\ManageAddressNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\MyProfile.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\MyProfileNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\SignUp.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\SignUpNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\_PVOffers.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\User\_PVOffersNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Ar\Views\Shared\Redesign\_HomeLayout.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\Redesign\_MenuLayout.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\Redesign\_StoreLayout.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_Layout.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew - Copy.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartCheckout.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_CartDetails.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Empty.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_PaymentConfirm.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_ProductDetails1.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_Profile.cshtml.css" />
+    <None Include="Areas\Ar\Views\Shared\_LayoutNew_StoreDetails.cshtml.css" />
     <None Include="Areas\Ar\Views\WishList\Index.cshtml" />
     <None Include="Areas\Ar\Views\WishList\PVProductWishlist.cshtml" />
     <None Include="Areas\Ar\Views\WishList\PVServiceWishlist.cshtml" />
     <None Include="Areas\Ar\Views\WishList\PVStoreWishlist.cshtml" />
-    <None Include="Areas\Ar\Views\_ViewImports.cshtml" />
-    <None Include="Areas\Ar\Views\_ViewStart.cshtml" />
     <None Include="Views\WishList\Index.cshtml" />
     <None Include="Views\WishList\PVProductWishlist.cshtml" />
     <None Include="Views\WishList\PVServiceWishlist.cshtml" />

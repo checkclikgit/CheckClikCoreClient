@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BXyxGd8dsFeSahdgWsHAESdog0f2959RbC13PLHwL5/2np85gKXNguxJvDxmlv4uCX12pbT3gX1z2uvFPS+wJA==",
+  "dgSpecHash": "f3H7pceDa8wKuwXJTRb60dQY6QVne9wBPAG8qKRQTUWsWf7g80pJLXVXf5JcqE8fteCbaOVLCLiTGpn22B/62A==",
   "success": true,
-  "projectFilePath": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
+  "projectFilePath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This pc\\.nuget\\packages\\commonservicelocator\\2.0.6\\commonservicelocator.2.0.6.nupkg.sha512",
     "C:\\Users\\This pc\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

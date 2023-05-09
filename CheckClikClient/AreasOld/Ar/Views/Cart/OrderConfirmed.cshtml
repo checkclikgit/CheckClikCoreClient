@@ -1,0 +1,202 @@
+﻿@model Customer.Models.OrderDisplayDTO
+@{
+    Layout = "~/Views/Shared/_LayoutNew_PaymentConfirm.cshtml";
+    ViewBag.Title = "CHECKCLICK | Order Confirmed";
+}
+@{
+    string strOrderType = "";
+    switch (Model.OrderType)
+    {
+        case 1:
+    @*<label class="uppercase">Pick Up</label>*@
+            strOrderType = "Your order will be packed ";
+            break;
+        case 2:
+    @*<label class="uppercase">Delivery</label>*@
+            strOrderType = "Your order will be deliver ";
+            break;
+        case 3:
+    @*<label class="uppercase">Shipment</label>*@
+            strOrderType = "Your order will be shipped ";
+            break;
+        case 4:
+    @*<label class="uppercase">Home Service</label>*@
+            strOrderType = "Your service order will be deliver";
+            break;
+        case 5:
+    @*<label class="uppercase">In Store</label>*@
+            strOrderType = "Your order will be packed";
+            break;
+    }
+}
+<div class="invoice invoice-content invoice-2">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="invoice-inner">
+            <div class="invoice-info" id="invoice_wrapper">
+                    <div class="invoice-header" style="padding: 20px 150px; border-radius: 10px;">
+                        <h3>Thank You For Your Order!</h3>
+                </div>
+                <div class="invoice-header" style="padding:35px 150px;">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="invoice-numb">
+                                    <h5 class="invoice-header-1 mb-10 mt-20">@strOrderType On: <br /><span class="text-brand">#@Model.ExpectingDelivery.ToString("ddd MMM dd, yyyy") @Model.TimeSlot</span></h5>
+                                    <h6 class="">Payment Type: @Model.PaymentType</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="invoice-name text-end">
+                                <div class="logo">
+                                    @*<a href="index.html"><img src="/nest/imgs/theme/logo.svg" alt="logo" /></a>*@
+                                        <h5 class="invoice-header-1 mb-10 mt-20">
+                                            Invoice No:  <br />
+                                            <span class="text-brand">#@Model.InvoiceNo</span>
+                                        </h5>
+                                        <h6 class="invoice-header-1 mb-10 mt-20">
+                                            @strOrderType to:  <br />
+                                            <span class="text-brand">
+                                                @if (Model.OrderType == 1 || Model.OrderType == 5)
+                                                {
+                                                    <strong class="font16">@Model.BranchNameEn</strong> <br /> 
+                                                    <p class="text-sm text-mutted">@Model.UserDetails.FirstOrDefault().Address</p>
+                                                     
+                                                }
+                                                else
+                                                {
+                                                    <strong class="font16">@Model.UserDetails.FirstOrDefault().FirstName @Model.UserDetails.FirstOrDefault().LastName</strong> <br />
+                                                    <p class="text-sm text-mutted">@Model.UserDetails.FirstOrDefault().Address</p>
+                                                    
+                                                     
+                                                }
+                                            </span>
+                                        </h6>
+                                        @*<h6 class="">Payment Type: @Model.PaymentType</h6>
+                                    <p class="text-sm text-mutted">205 North Michigan Avenue, Suite 810 <br> Chicago, 60601, USA</p>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="invoice-center">
+                    <div class="table-responsive">
+                        <table class="table table-striped invoice-table">
+                            <thead class="bg-active">
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>@(Model.StoreType == "Product" ? "PRODUCTS" : "SERVICE")</th>
+                                        <th class="text-center">PRICE</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @{
+                                        foreach (Customer.Models.OrderItemDTO item in Model.Items.Distinct())
+                                        {
+                                            <tr>
+                                                <td><img src="@ViewBag.UrlPath@item.Image " width="60px"></td>
+                                                <td>
+                                                    @if (Model.OrderType == 1 || Model.OrderType == 2 || Model.OrderType == 3)
+                                                    {
+                                                        <div class="item-desc-1">
+                                                            <span>@item.NameEn</span>
+                                                            <small>@item.Qty piece</small>
+                                                        </div> 
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item-desc-1">
+                                                            <span>@item.NameEn</span>
+                                                            <small>@item.Qty @item.CountingMeasureEn by @item.ServiceProviderName</small>
+                                                        </div> 
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    SAR @item.Price.ToString("N2")
+                                                </td>
+                                                <td class="text-center">
+                                                    @item.Qty
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>SAR @item.GrandTotal.ToString("N2")</strong>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    }
+                                 
+                                <tr>
+                                        <td colspan="4" class="text-end f-w-600">Total</td>
+                                        <td class="text-right">SAR @Model.SubTotal.ToString("N2")</td>
+                                </tr>
+                                <tr>
+                                        <td colspan="4" class="text-end f-w-600">Discount</td>
+                                        <td class="text-right">SAR @Model.Discount.ToString("N2")</td>
+                                </tr>
+                                    @if (Model.OrderType == 2 || Model.OrderType == 4 || Model.OrderType == 3)
+                                    { 
+                                        <tr>
+                                            <td colspan="4" class="text-end f-w-600">@(@Model.OrderType == 3 ? "Shipment" : "Delivery") Charges</td>
+                                            <td class="text-right f-w-600">SAR @Model.DeliveryFee.ToString("N2")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.OrderType == 3 && Model.PaymentType == "COD" && Model.PaymentMode == "COD")
+                                    { 
+                                        <tr>
+                                            <td colspan="4" class="text-end f-w-600">COD Charges</td>
+                                            <td class="text-right f-w-600">SAR @Model.ShipmentCODFee.ToString("N2")</td>
+                                        </tr>
+                                    }
+                                
+                                
+                                <tr>
+                                        <td colspan="4" class="text-end f-w-600">Tax (VAT)</td>
+                                        <td class="text-right f-w-600">SAR @Model.VAT.ToString("N2")</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-end f-w-600">Grand Total</td>
+                                        <td class="text-right f-w-600">SAR @Model.GrandTotal.ToString("N2")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @*<div class="invoice-bottom">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div>
+                                <h3 class="invoice-title-1">Important Note</h3>
+                                <ul class="important-notes-list-1">
+                                    <li>All amounts shown on this invoice are in US dollars</li>
+                                    <li>finance charge of 1.5% will be made on unpaid balances after 30 days.</li>
+                                    <li>Once order done, money can't refund</li>
+                                    <li>Delivery might delay due to some external dependency</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-offsite">
+                            <div class="text-end">
+                                <p class="mb-0 text-13">Thank you for your business</p>
+                                <p><strong>AliThemes JSC</strong></p>
+                                <div class="mobile-social-icon mt-50 print-hide">
+                                    <h6>Follow Us</h6>
+                                    <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                                    <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                                    <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                                    <a href="#"><img src="/nest/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
+                                    <a href="#"><img src="/nest/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            <div class="invoice-btn-section clearfix d-print-none">
+                <a href="javascript:window.print()" class="btn btn-lg btn-custom btn-print hover-up"> <img src="/nest/imgs/theme/icons/icon-print.svg" alt="" /> Print </a>
+                @*<a id="invoice_download_btn" class="btn btn-lg btn-custom btn-download hover-up"> <img src="/nest/imgs/theme/icons/icon-download.svg" alt="" /> Download </a>*@
+            </div>
+        </div>
+    </div>
+</div>
+</div>

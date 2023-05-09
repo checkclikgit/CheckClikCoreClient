@@ -491,6 +491,7 @@ namespace Customer.Areas.Ar.Controllers
         }
 
         [HttpGet]
+        [Route("User/GetForgotVerifyOtp")]
         public async Task<ActionResult> GetForgotVerifyOtp(string MobileNo, string otp)
         {
             MessageOTPDTO msgOtp = new MessageOTPDTO();

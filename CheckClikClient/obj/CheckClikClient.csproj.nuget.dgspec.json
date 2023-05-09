@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {}
+    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {}
   },
   "projects": {
-    "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {
+    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
+        "projectUniqueName": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
         "projectName": "CheckClikClient",
-        "projectPath": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
+        "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
         "packagesPath": "C:\\Users\\This pc\\.nuget\\packages\\",
-        "outputPath": "D:\\CheckClik\\CheckClikClient\\CheckClikClient\\obj\\",
+        "outputPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\This pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
-                "projectPath": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj"
+              "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
+                "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj"
               }
             }
           }
@@ -80,14 +80,14 @@
         }
       }
     },
-    "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
+    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
+        "projectUniqueName": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
         "projectName": "SearchLibrary",
-        "projectPath": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
+        "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
         "packagesPath": "C:\\Users\\This pc\\.nuget\\packages\\",
-        "outputPath": "D:\\CheckClik\\CheckClikClient\\SearchLibrary\\obj\\",
+        "outputPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\This pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

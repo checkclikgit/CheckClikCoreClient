@@ -1,0 +1,2362 @@
+﻿@model Customer.Models.CartDTO
+
+@{
+    //ViewBag.Title = "CHECKCLIK | Checkout";
+    Layout = "~/Views/Shared/_LayoutNew_CartCheckout.cshtml";
+}
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBjAQqck7-kG7Nq5Y-vS3XSyhCT7sSZTa4"></script>
+
+    <title>CHECKCLIK | Checkout</title>
+    <style>
+        .coupon-popup-box h6 span {
+            background: #666666;
+            color: #fff;
+            font-size: 12px;
+            letter-spacing: 0.8px;
+            padding: 3px 4px;
+            margin-left: 10px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .address-box {
+            background: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .tabsdiv {
+            /*hdnCity_ background: white;*/
+            border: 0 none;
+            border-radius: 0px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            width: 98%;
+            height: auto;
+            margin: 0 1%;
+            position: relative;
+        }
+
+        .green {
+            color: #01ad01;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .req {
+            border-color: red !important;
+        }
+
+        .coupon-popup-box {
+            padding: 0px;
+            letter-spacing: 1.2px;
+        }
+
+            .coupon-popup-box a {
+                font-size: 12px;
+                margin-top: -10px;
+                padding: 0px 30px;
+                border-radius: 5px;
+                border: 1px solid #fff;
+                color: #666666;
+                float: right;
+                -webkit-transition: 1s all;
+                transition: 1s all;
+                background-color: #f1f1f1;
+                border: 1px solid #ccc;
+                padding: 5px 8px;
+            }
+
+            .coupon-popup-box h4 span {
+                background: #666666;
+                color: #fff;
+                font-size: 12px;
+                letter-spacing: 0.8px;
+                padding: 3px 4px;
+                margin-left: 10px;
+                font-weight: bold;
+                border-radius: 3px;
+            }
+
+        .alert {
+            padding: 0px;
+            margin-bottom: 0px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .product-details .number-cart .form-control, .Product-cart-list .quantity .form-control {
+            width: 65px;
+        }
+
+        .Product-cart-list .quantity {
+            width: 160px;
+        }
+
+        #loader {
+            background-color: rgba(255, 255, 255, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            display: flex;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+        }
+
+        svg {
+            width: 100px;
+            height: 100px;
+        }
+
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            background-color: #fff;
+            opacity: 1;
+        }
+
+        .side-nav-ug .cart-list .cart-item .btn-danger, .Product-cart-list .cart-update .btn-danger, .Product-cart-list .cart-pricing a {
+            background-color: #7F7F7F;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        .auto-scroll {
+            max-height: 60vh;
+            overflow: auto;
+        }
+    </style>
+    <style>
+        .wpwl-label, .wpwl-wrapper {
+            width: 100%
+        }
+
+            .wpwl-wrapper.wpwl-wrapper-brand {
+                width: 66.66%
+            }
+
+        .wpwl-control {
+            width: 100%;
+            height: 40px;
+            font-size: 15px;
+            padding: 6px 12px;
+            background-color: #fff;
+            border: 1px solid #c2cad8;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+
+        div.wpwl-group-expiry, div.wpwl-group-brand {
+            width: 30%;
+            float: left
+        }
+
+        div.wpwl-group-cvv {
+            width: 68%;
+            float: left;
+            margin-left: 2%
+        }
+
+        div.wpwl-group-cardHolder, div.wpwl-sup-wrapper-street1, div.wpwl-group-expiry {
+            clear: both
+        }
+
+        div.wpwl-sup-wrapper-street1 {
+            padding-top: 1px
+        }
+
+        div.wpwl-wrapper-brand {
+            width: auto
+        }
+
+        div.wpwl-group-cardNumber {
+            width: 100%;
+            float: left;
+        }
+
+        div.wpwl-group-brand {
+            width: 100%;
+            float: left;
+            /*margin-top: 28px*/
+        }
+
+        div.wpwl-brand-ca!importantd {
+            width: 65px
+        }
+
+        .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+            /*position: absolute;*/
+            margin-top: 4px;
+            margin-left: -20px;
+            height: 30px !important;
+        }
+
+        .checkbox-inline, .radio-inline {
+            position: relative;
+            /*display: inline-block;*/
+            display: inline-flex;
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-weight: 400;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<div id="loader">
+    <svg version="1.1" id="L7" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 100 100" xml:space="preserve">
+    <path fill="#666666" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+  c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+    <animateTransform attributeName="transform"
+                      attributeType="XML"
+                      type="rotate"
+                      dur="2s"
+                      from="0 50 50"
+                      to="360 50 50"
+                      repeatCount="indefinite" />
+
+      </path>
+    <path fill="#666666" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+  c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+    <animateTransform attributeName="transform"
+                      attributeType="XML"
+                      type="rotate"
+                      dur="1s"
+                      from="0 50 50"
+                      to="-360 50 50"
+                      repeatCount="indefinite" />
+
+      </path>
+    <path fill="#666666" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+  L82,35.7z">
+    <animateTransform attributeName="transform"
+                      attributeType="XML"
+                      type="rotate"
+                      dur="2s"
+                      from="0 50 50"
+                      to="360 50 50"
+                      repeatCount="indefinite" />
+
+      </path>
+    </svg>
+</div>
+<section class="Product-cart-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 sec-head text-center">
+                <!-- <h4>MAKE THE HARD WAY</h4> -->
+                <h2 class="bold">CHECKOUT</h2>
+                <div class="separator"><span><img src="~/web-assets/images/heading-logo.png"></span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div id="msform">
+                    <ul id="progressbar">
+                        <li id="li_1" class="active">
+                            @(Model.OrderType == 1 ? "Shipping" : "Order Details")
+                        </li>
+                        <li id="li_2" class="">Confirm Order</li>
+                        <li id="li_3" class="">Payment</li>
+                    </ul>
+                    <div class="tabsdiv" id="fld_1" style="display:block;">
+                        @if (Model.OrderType == 1)
+                        {
+                            <div class="form-group">
+                                <label>Choose Type Of Service:</label><br>
+
+                                @*<input type="radio" name="checkout" value="0"
+                            @{if (Model.IsDelivery == true) { } else { <text> disabled </text>  }} checked>Delivery*@
+                                @{
+                                    if (Model.ShippingProvider == true)
+                                    {
+                                        <label class="radio-inline">  <input type="radio" name="checkout" value="1" checked /><span class="mt-1 ml-1" style="margin-left: .5rem;">Shipping</span></label>
+                                    }
+                                    else if (Model.IsDelivery == true && Model.ShippingProvider == false)
+                                    {
+                                        <label class="radio-inline">  <input type="radio" name="checkout" value="0" checked /><span class="mt-1 ml-1" style="margin-left: .5rem;">Delivery</span></label>
+                                    }
+                                    if (Model.InStoreService == true)
+                                    {
+                                        <label class="radio-inline">  <input type="radio" name="checkout" value="2" onchange="GetAddressDetails(0)" /><span class="mt-1 ml-1" style="margin-left: .5rem;">Pickup</span></label>
+                                    }
+                                }
+
+
+
+
+                                @*<label class="radio-inline" disabled><input type="radio" name="checkout" value="1" disabled>Shipping</label>*@
+                                @*<label class="radio-inline"><input type="radio" name="checkout" value="2" @{if (Model.InStoreService == true) { } else { <text> disabled </text>  }}>Pickup</label>*@
+                            </div>
+                        }
+
+                        <div class="form-group" id="when">
+                            @if (Model.OrderType == 1)
+                            {
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="dtp_input1" control-label">When ?</label>
+                                        <div class="">
+                                            <div class="input-group date" style="width: 100%">
+                                                <input type="text" class="form-control" id="txtDelivery" placeholder="select date" readonly required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="dtp_input1" control-label">Time</label>
+                                        <select id="ddlDelivery" class="form-control" required></select>
+                                    </div>
+                                </div>
+                            }
+                            else if (Model.OrderType == 2)
+                            {
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>Service :</label>
+                                        <div class="">
+                                            <div class="input-group date" style="width: 100%">
+                                                <h4>
+
+                                                    @if (Model.ServiceType == "1")
+                                                    {
+                                                        <strong id="srvcty_txt">
+                                                            Home
+                                                        </strong>
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong id="srvcty_txt">
+                                                            In Store
+                                                        </strong>
+                                                    }
+
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Requested Service Provider :</label>
+                                        <div class="">
+                                            <div class="input-group date" style="width: 100%">
+                                                <h4><strong id="str_txt">@Model.ServiceProviderName</strong></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Requested Date & Time :</label>
+                                        <div class="">
+                                            <div class="input-group date" style="width: 100%">
+                                                <h4><strong id="str_txt">@Model.RequestDate</strong></h4>
+                                                <h4>(<strong id="str_txt">@Model.TimeSlot</strong>)</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="form-group d-none" id="pickup">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="dtp_input1" control-label">When ?</label>
+                                    <div class="">
+                                        <div class="input-group date" style="width: 100%">
+                                            <input type="text" class="form-control" id="txtPickUp" placeholder="select date" required autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="dtp_input1" control-label">Time</label>
+                                    <select id="ddlPickup" class="form-control" required autocomplete="off"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="address2">
+                            <label for="dtp_input1" control-label">Address</label>
+                            <span id="spn_address_modalpopup" class="pull-right">
+                                @*<a href="#" title="live location"><i class="fas fa-life-ring"></i></a>*@
+                                @*<a href="#ModalAddress" onclick="ShowAddressModal()" data-toggle="modal"><i class="fi-rs-edit mr-5"></i></a>*@
+                                <a href="#" onclick="ShowAddressModal()"><i class="fi-rs-edit mr-5"></i></a>
+                            </span>
+                            <textarea id="txtaddress_all" rows="4" readonly required></textarea>
+                        </div>
+                        <div>
+                            <span id="spnShipmentMessage" class="text text-danger"></span>
+                            <span id="spnAddrMessage1" class="text text-danger"></span>
+                        </div>
+                        <div> <span id="spnOrderErrorMssage" class="text text-danger"></span></div>
+
+                        @*<input onclick="AddFields()" type="button" name="next" class="next action-button" value="Next" />*@
+                        <a style="display: inline-block;text-align: center;" onclick="AddFields(@Model.OrderType)" class="action-button nxtbtn1"> Next </a>
+                    </div>
+                    <div class="tabsdiv" id="fld_2" style="display:none;">
+                        <div class="form-group">
+                            <a class="pull-right" data-toggle="collapse" data-target="#demo">
+                                <h3><i class="fa fa-angle-down"></i></h3>
+                            </a>
+                            <label>
+                                Your Order
+                                @if (Model.CouponId != 0)
+                                {
+                                    if (Model.CouponList.Count() > 0)
+                                    {
+                                        int q = 0;
+                                        foreach (var item in Model.CouponList.Where(x => x.Id == Model.CouponId))
+                                        {
+                                            q = 1;
+                                            <small id="spn_status_active" class="green">(Coupon Applied)</small>
+                                            <small id="spn_status_red" class="red d-none">(Coupon Expired)</small>
+                                        }
+                                        if (q == 0)
+                                        {
+                                            <small id="spn_status_active" class="green d-none">(Coupon Applied)</small>
+                                            <small id="spn_status_red" class="red">(Coupon Expired)</small>
+                                        }
+                                    }
+                                }
+                            </label>
+                            <h4>
+                                <strong>
+                                    @*<l> SAR</l> <span id="net_discount">@Model.Price.ToString("N2")</span>*@
+                                    <l> SAR</l> <span id="net_discount">@((Model.SubTotal + Model.VAT) - Model.DiscountAmount)</span>
+                                    <span id="delcharge"></span>
+                                    <input type="hidden" value="@Model.Price" id="hdnSubTotal" />
+
+                                    @if (Model.CouponList != null && Model.CouponList.Count() > 0)
+                                    {
+                                        <div class="pull-right coupon-popup-box d-none">
+                                            <a href="#" data-toggle="modal" data-target="#myModal" class="apply-coupon-pop">list of Coupons</a>
+                                        </div>
+                                    }
+
+                                </strong>
+                            </h4> @{
+                                decimal totalVat = 0;
+                            }
+                            <div id="demo" class="collapse">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>PRODUCT</th>
+                                                <th>PRICE</th>
+                                                <th class="text-center">QUANTITY</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.ProductList)
+                                            {
+                                                <tr>
+                                                    <td><img src="@Model.UrlPath@item.Image" width="20px"> @item.ProductNameEn</td>
+                                                    <td>SAR @item.Price.ToString("N2")</td>
+                                                    <td class="text-center">@item.CartQuantity</td>
+                                                    <td>@item.TotalItemPrice.ToString("N2")</td>
+                                                </tr>
+                                                totalVat += item.VatAmountPerItem;
+                                            }
+                                            <tr>
+                                                <td>Total Amount</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td>@Model.SubTotal.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Discount</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td>@Model.DiscountAmount.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sub Total</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td>@((Model.SubTotal - Model.DiscountAmount).ToString("N2"))</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>VAT</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td>@Model.VAT.ToString("N2")</td>
+                                                @*<td>@totalVat</td>*@
+                                            </tr>
+                                            <tr id="trBDdelcharge">
+                                                <td id="txtBDdelcharge">Delivery/Shipment Charges(Inclusive Vat)</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td> <span id="BDdelcharge">0.00</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Net Total</td>
+                                                <td></td>
+                                                <td class="text-center"></td>
+                                                <td> <span id="txtNetTotal">0.00</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-1">
+                        @if (Model.CouponId != 0)
+                        {
+                            if (Model.CouponList.Count() > 0)
+                            {
+                                int q = 0;
+                                foreach (var item in Model.CouponList.Where(x => x.Id == Model.CouponId))
+                                {
+                                    <div id="active_coupon_div">
+                                        <div class="form-group">
+                                            <div class="pull-right"><h4 class="mb-0"> <l id="discount_amt1">@Model.DiscountAmount </l> </h4><a href="#" onclick="removecoupon()" class="red pull-right">Remove</a> </div>
+
+                                            <div class="coupon-popup-box">
+                                                <h4 class="text-uppercase">@item.VoucherNameEn - <strong>@item.VoucherDiscount %</strong> <span>@item.CouponCode</span> </h4>
+                                                <p class="mb-0 "><small>max discount @item.MaxDiscountAmount</small></p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div id="expired_coupon_div" class="d-none">
+                                        <div class="form-group">
+                                            <div class="coupon-popup-box">
+                                                <a href="#" data-toggle="modal" data-target="#myModal" class="apply-coupon-pop">Apply</a>
+                                                <h4 class="text-uppercase">Add Coupon </h4>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    q = 1;
+                                }
+                                if (q == 0)
+                                {
+                                    <div id="active_coupon_div" class="d-none">
+                                        <div class="form-group">
+                                            <div class="pull-right"><h4 class="mb-0"> -<l id="discount_amt"> </l> </h4><a href="#" onclick="removecoupon()" class="red pull-right">Remove</a> </div>
+
+                                            <div class="coupon-popup-box">
+                                                <h4 class="text-uppercase"><l id="lvoucher_name">VoucherNameEn</l> - <strong><l id="lvoucher_discount">VoucherDiscount</l> %</strong> <span id="lcoupon_code">CouponCode</span> </h4>
+                                                <p class="mb-0 "><small>max discount <l id="lMaxDiscountAmount">MaxDiscountAmount</l></small></p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div id="expired_coupon_div">
+                                        <div class="form-group">
+                                            <div class="coupon-popup-box">
+                                                <a href="#" data-toggle="modal" data-target="#myModal" class="apply-coupon-pop">Apply</a>
+                                                <h4 class="text-uppercase">Add Coupon </h4>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                }
+                            }
+                        }
+
+                        @if (Model.OrderType == 1)
+                        {
+                            <div class="form-group">
+
+                                <label id="lblReviewOrder_Type">Shipping</label>
+                                <h4><strong id="str_txt">Deliver with in 7  to 14 business day</strong></h4>
+                            </div>
+                            <hr>
+                        }
+                        <div id="payment_div">
+                        </div>
+                        <div>
+                            <span id="spnAddrMessage2" class="text text-danger"></span>
+                        </div>
+
+                        <a style="display: inline-block;text-align: center;" onclick="Previous()" class="previous action-button-previous">Previous</a>
+                        <a style="display: inline-block;text-align: center;" onclick="AddOrder(@Model.OrderType)" class="next action-button acnford">Confirm</a>
+                        <input type="hidden" id="hdnOrdType" value="@Model.OrderType" />
+
+                    </div>
+                    <div class="tabsdiv" id="fld_3" style="display:none;">
+                        <div class="row">
+                            <div class="col-md-6 sec-head text-center">
+                                <h2 class="bold">Order Payment</h2>
+                                <div class="separator"><span><img src="~/web-assets/images/heading-logo.png"></span></div>
+                            </div>
+                        </div>
+                        <div id="payment_divtype">
+                        </div>
+                        <div id="paymentfordiv">
+                        </div>
+                        <input type="hidden" id="hdnorderid" />
+                        <input type="hidden" id="hdninvoiceno" />
+                        <input type="hidden" id="hdnpaymenttype" />
+                        <input type="hidden" id="hdnpaymentmode" />
+                        @*<input type="submit" name="submit" class="submit action-button" value="Pay" />*@
+                        @*<a style="display: inline-block;text-align: center;" onclick="Pay()" class="previous action-button-previous">Pay</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div id="paymentfordiv"></div>*@
+    <div class="modal fade custom-modal show" id="myModal" tabindex="-1" aria-labelledby="onloadModalLabel" style="padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/web-assets/images/coupon-pop-img.jpg" width="100%" class="img-fluid" />
+                        </div>
+                        <div class="col-md-6 popup-coupon">
+                            <div class="p-4">
+                                @if (Model.CouponList.Count() > 0)
+                                {
+                                    foreach (var item in Model.CouponList)
+                                    {
+                                        <div class="coupon-popup-box">
+                                            <a href="#" onclick="AddCouponPopup(@item.Id,@item.VoucherDiscount,@item.MaxDiscountAmount,'@item.VoucherNameEn','@item.CouponCode')" class="apply-coupon-pop">Apply</a>
+                                            <h4 class="text-uppercase">@item.VoucherNameEn - <strong>@item.VoucherDiscount %</strong> <span>@item.CouponCode</span> </h4>
+                                            <p class="mb-0"><small>max discount @item.MaxDiscountAmount, Exp Date: @item.EndDate.ToString("dd-MM-yyyy") </small></p>
+                                        </div>
+                                        <hr class="m-3" />
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+    <div class="modal" id="" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal fade" id="ModalAddress" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog auto-scroll">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Manage Address</h4>
+    </div>
+    <div class="modal-body">
+    <a href="#" onclick="show_div()" id="AddNewAdrtxt">+ Add New Address</a>
+    <div id="new-address" class="pt-4 mb-4">
+    <div class="row">
+    <div class="col-md-12" id="divManageAddress">
+
+    </div>
+    </div>
+    </div>
+    <div class="row mb-3" id="addresslst">
+    @if (Model.ListOfCustomerAddress != null)
+    {
+    foreach (var item in Model.ListOfCustomerAddress)
+    {
+    <div class="col-md-12">
+    <div class="address-box">
+    <a href="#" onclick="GetAddressDetails(@item.Id)">
+    <span id="hdnctid_@item.Id" hidden>@item.CityId</span>
+    <h5 class="mb-1">
+    <label>
+    @if (item.AddressType == 0)
+    {
+    <h4 class="mb-4">Home Address</h4>
+    }
+    else
+    {
+    <h4 class="mb-4">Office Address</h4>
+    }
+    </label>
+    </h5>
+    <div id="addressdiv_@item.Id" class="Address pl-2">
+    <p id="lblName_@item.Id" class="mb-0">@item.FullName</p>
+    <p id="lblAddress_@item.Id">@item.Address1</p>
+    <input type="hidden" id="hdnCity_@item.Id" value="@item.CityNameEn" />
+    <p id="lblextrafields_@item.Id">@item.CityNameEn - @item.Zipcode , @item.CountryNameEn , @item.PhoneNumber</p>
+    </div>
+    </a>
+    </div>
+    </div>
+    }
+    }
+    </div>
+    </div>
+    </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>*@
+
+
+    <div class="modal fade custom-modal" id="ModalAddress" tabindex="-1" aria-labelledby="onloadModalLabel" style="padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" id="btnCloseModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="deal">
+                        <div class="deal-top">
+                            <h6 class="mb-10 text-brand-2">Manage Address</h6>
+                        </div>
+                        <h4 class="product-title">
+                            <a href="#" onclick="show_div()" class="text-heading" id="AddNewAdrtxt">+ Add New Address</a>
+                        </h4>
+
+                        <div class="deal-content detail-info">
+                            <div id="new-address" class="pt-4 mb-4">
+                                <div class="row">
+                                    <div class="col-md-12" id="divManageAddress">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix" id="addresslst">
+                                @if (Model.ListOfCustomerAddress != null)
+                                {
+                                    foreach (var item in Model.ListOfCustomerAddress)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="address-box">
+                                                <a href="#" onclick="GetAddressDetails(@item.Id)">
+                                                    <span id="hdnctid_@item.Id" hidden>@item.CityId</span>
+                                                    <h5 class="mb-1">
+                                                        <label>
+                                                            @if (item.AddressType == 0)
+                                                            {
+                                                                <h4 class="mb-4">Home Address</h4>
+                                                            }
+                                                            else
+                                                            {
+                                                                <h4 class="mb-4">Office Address</h4>
+                                                            }
+                                                        </label>
+                                                    </h5>
+                                                    <div id="addressdiv_@item.Id" class="Address pl-2">
+                                                        <p id="lblName_@item.Id" class="mb-0">@item.FullName</p>
+                                                        <p id="lblAddress_@item.Id">@item.Address1</p>
+                                                        <input type="hidden" id="hdnCity_@item.Id" value="@item.CityNameEn" />
+                                                        <p id="lblextrafields_@item.Id">@item.CityNameEn - @item.Zipcode , @item.CountryNameEn , @item.PhoneNumber</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="hdnhideshow" value="0" />
+    @if (Model.PreBookingInStoreTimeUnit == 1)
+    {
+        <input type="hidden" id="hdndeliverydays" value="@Model.valfirst" />
+    }
+    else
+    {
+        <input type="hidden" id="hdndeliverydays" value="0" />
+    }
+
+    @if (Model.PreBookingDeliveryTimeUnit == 1)
+    {
+        <input type="hidden" id="hdnpickupdays" value="@Model.valfirst" />
+    }
+    else
+    {
+        <input type="hidden" id="hdnpickupdays" value="0" />
+    }
+
+    <input type="hidden" id="hdnpickupWeekdays" value="@Model.PickupInServiceWeekdays" />
+    <input type="hidden" id="hdndeliveryWeekdays" value="@Model.DeliveryHomeWeekdays" />
+    <input type="hidden" id="hdnBranchAddress" value="@Model.Address" />
+    <input type="hidden" id="hdnUserid" value="@Model.UserId" />
+    <input type="hidden" id="hdnAddressId" value="0" />
+    <input type="hidden" id="hdnremarks" value="@Model.Remarks" />
+    <input type="hidden" id="hdnShppingExpDate" value="" />
+    <input type="hidden" id="hdnStreet" value="" />
+    <input type="hidden" id="hdnCity" value="" />
+    <input type="hidden" id="hdnRegion" value="" />
+    <input type="hidden" id="hdnPostalCode" value="" />
+    <input type="hidden" id="hdnCountry" value="" />
+
+
+    @if (Model.CouponList.Count() > 0)
+    {
+        foreach (var item in Model.CouponList.Where(x => x.Id == Model.CouponId))
+        {
+            @*<input type="hidden" id="hdndiscount_amt" value="@item.VoucherDiscount" />*@
+            <input type="hidden" id="hdndiscount_amt" value="@item.DiscountAmount" />
+            <input type="hidden" id="hdnMaxDiscountAmount" value="@item.MaxDiscountAmount" />
+
+        }
+    }
+    <input type="hidden" id="hdnCouponId" value="@Model.CouponId" />
+</section>
+
+@*<script src="~/assets/js/app.js"></script>
+        <script src="~/assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/assets/js/components-date-time-pickers.min.js"></script>*@
+@*<script type="text/javascript" src="~/web-assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>*@
+@*<script src="~/web-assets/js/jquery.easing.min.js"></script>*@
+@*<script src="~/web-assets/js/progress-bar.js"></script>*@
+@*<script src="~/web-assets/js/select2.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<script>
+    var cl = "";
+    var AdresId = 0;
+
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var left, opacity, scale; //fieldset properties which we will animate
+    var animating; //flag to prevent quick multi-click glitches
+
+    $('#loader').hide();
+    $('#navdiv').hide();
+    $('#navdiva').css("display", "none");
+    BindManageAddress();
+    var cityList = [];
+
+
+    var disabledays_pickup = $('#hdnpickupWeekdays').val();
+
+    var day = '@Model.BranchExpiry.ToString("dd")';
+    var month = '@Model.BranchExpiry.ToString("MM")';
+    var year = '@Model.BranchExpiry.ToString("yyyy")';
+    var days = '@Model.BranchExpiryDays';
+
+    var ordertyperdb = $('input[name="checkout"]:checked').val();
+    if (ordertyperdb == 1) {
+        $("#when").hide();
+        $("#shipto").hide();
+        $("#address2").show();
+    }
+
+    function ShowAddressModal() {
+        $("#ModalAddress").modal("show");
+    }
+
+    function removecoupon() {
+        $('#loader').show();
+        $('#active_coupon_div').hide();
+        $('#expired_coupon_div').show();
+        $('#spn_status_active').hide();
+        $('#spn_status_red').hide();
+
+        var sub_total = $('#hdnSubTotal').val();
+        //$('#net_discount').html(sub_total);
+
+        var remarks = $('#hdnremarks').val();
+        $.ajax({
+            async: false,
+            type: "post",
+            url: '@Url.Action("EditCart", "Cart")',
+            datatype: "json",
+            data: { CouponId: 0, remarks: remarks },
+            traditional: true,
+            success: function (data) {
+                var v = data.success;
+                if (v == true) {
+                    window.location.reload(true);
+                }
+                else {
+                    window.location.href = v;
+                }
+                $('#loader').hide();
+            },
+            error: function (xhr, status, error) {
+                $('#loader').hide();
+                return false;
+            }
+        });
+    }
+
+    function AddCouponPopup(id, discnt, maxvalue, vouchername, couponcode) {
+        $('#loader').show();
+        $('#hdnCouponId').val(id);
+        $('#myModal').modal("hide");
+        $('#active_coupon_div').show();
+        $('#expired_coupon_div').hide();
+        $('#spn_status_active').show();
+        $('#spn_status_red').hide();
+        var sub_total = $('#hdnSubTotal').val();
+        $('#lvoucher_name').html(vouchername);
+        $('#lMaxDiscountAmount').html(maxvalue);
+
+        $('#lvoucher_discount').html(discnt);
+        $('#lcoupon_code').html(couponcode);
+        var calculated_discnt_value = (sub_total / 100) * discnt;
+        var actual_discount_val = 0;
+        if (calculated_discnt_value > maxvalue) {
+            $('#discount_amt').html(maxvalue.toFixed(2));
+            actual_discount_val = maxvalue;
+        }
+        else if (calculated_discnt_value <= maxvalue) {
+            $('#discount_amt').html(calculated_discnt_value.toFixed(2));
+            actual_discount_val = calculated_discnt_value;
+        }
+
+        //net_discount hdnNetTotal
+        var net = $('#hdnSubTotal').val();
+        var netval = net - actual_discount_val;
+        $('#net_discount').html(netval.toFixed(2));
+
+        var remarks = $('#hdnremarks').val();
+        $.ajax({
+            async: false,
+            type: "post",
+            url: '@Url.Action("EditCart", "Cart")',
+            datatype: "json",
+            data: { CouponId: id, remarks: remarks },
+            traditional: true,
+            success: function (data) {
+                var v = data.success;
+                if (v == true) {
+                    window.location.reload(true);
+                    //$('#loader').hide();
+                }
+                else {
+                    $('#loader').hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                $('#loader').hide();
+                return false;
+            }
+        });
+    }
+
+    function AddCoupon(id, discnt, maxvalue) {
+
+        $('#hdnCouponId').val(id);
+        //$('#myModal').modal("toggle");
+
+        var sub_total = $('#hdnSubTotal').val();
+
+        var calculated_discnt_value = (sub_total / 100) * discnt;
+        var actual_discount_val = 0;
+        if (calculated_discnt_value > maxvalue) {
+            $('#discount_amt').html(maxvalue);
+            actual_discount_val = maxvalue;
+        }
+        else if (calculated_discnt_value <= maxvalue) {
+            $('#discount_amt').html(calculated_discnt_value);
+            actual_discount_val = calculated_discnt_value;
+        }
+        // debugger
+        //net_discount hdnNetTotal
+        var net = $('#hdnSubTotal').val();
+        var netval = net - actual_discount_val;
+        //$('#net_discount').html(netval);
+    }
+
+    function Previous() {
+        $('#fld_3').hide();
+        $('#fld_2').hide();
+        $('#fld_1').show();
+
+        $('#li_2').removeClass("active");
+    }
+
+    function AddOrder(odt) {
+        //// debugger
+        var UserId = $('#hdnUserid').val();
+        if (UserId == null) {
+            return false;
+        }
+        var AddressId = $('#hdnAddressId').val();
+        if (AddressId == 0) {
+            // Commented temporary
+            //alert('Address Required');
+        }
+        var PaymentStatus = false;
+        //payment
+        var PaymentMode = "";
+        var PaymentType = "";
+
+        $('input[name="payment"]:checked').each(function () {
+            //alert(this.value);
+            if (this.value == 3) {
+                //COD
+                PaymentMode = "COD";
+                PaymentType = "COD";
+                PaymentStatus = true;
+            }
+            else if (this.value == 5) {
+                //Debit Card
+                PaymentMode = "DC";
+            }
+            else if (this.value == 4) {
+                //Credit Card
+                PaymentMode = "CC";
+            }
+            else if (this.value == 11) {
+                // Mada card
+                PaymentMode = "MADA";
+            }
+            else if (this.value == 12) {
+                // Apple pay
+                PaymentMode = "APAY";
+            }
+        });
+        if (PaymentMode == "") {
+            alert('Payment Method Required');
+            return false;
+        }
+        if (PaymentMode == "DC") {
+            $('input[name="pay"]:checked').each(function () {
+
+                if (this.value == 8) {
+                    PaymentType = "PayNow";
+                }
+                else if (this.value == 9) {
+                    //Debit Card
+                    PaymentType = "PayLater";
+                }
+            });
+        }
+        else if (PaymentMode == "CC") {
+            $('input[name="payCC"]:checked').each(function () {
+                //alert(this.value);
+                if (this.value == 6) {
+                    PaymentType = "PayNow";
+                }
+                else if (this.value == 7) {
+                    //Debit Card
+                    PaymentType = "PayLater";
+                }
+            });
+        }
+        else if (PaymentMode == "MADA" || PaymentMode == "APAY") {
+            PaymentType = "Instant";
+        }
+        //payCC
+        if (PaymentType == "") {
+            alert('Payment Method Required');
+            return false;
+        }
+        var ExpectingDelivery = "";
+        var TimeSlotId = "";
+
+        var OrderType = 0;
+        $('input[name="checkout"]:checked').each(function () {
+
+            if (this.value == 0) {
+                //Delivery
+                OrderType = 2;
+                ExpectingDelivery = $('#txtDelivery').val();
+                TimeSlotId = $('#ddlDelivery').val();
+            }
+            else if (this.value == 1) {
+                //Shipping
+                OrderType = 3;
+                //ExpectingDelivery = new Date();
+                ExpectingDelivery = $('#hdnShppingExpDate').val();
+                TimeSlotId = "0";
+
+            }
+            else if (this.value == 2) {
+                //PickUp
+                OrderType = 1;
+                ExpectingDelivery = $('#txtPickUp').val();
+                TimeSlotId = $('#ddlPickup').val();
+
+
+            }
+        });
+        if (ExpectingDelivery == "" || TimeSlotId == "") {
+            if (odt == 1) {
+                alert('Required Fields');
+                return false
+            }
+        }
+
+        $("#spnOrderErrorMssage").html('');
+        var fileData = new FormData();
+        fileData.append('Comments', '');
+        fileData.append('AddressId', AddressId);
+        fileData.append('PaymentMode', PaymentMode);
+        fileData.append('PaymentType', PaymentType);
+        fileData.append('OrderType', OrderType);
+        fileData.append('ExpectingDelivery', ExpectingDelivery);
+        fileData.append('PaymentStatus', PaymentStatus);
+        fileData.append('TimeSlotId', TimeSlotId);
+        fileData.append('Type', odt);
+        var _street = $("#hdnStreet").val();
+        fileData.append('street', _street);
+        var _city = $("#hdnCity").val();
+        fileData.append('city', _city);
+        var _region = $("#hdnRegion").val();
+        fileData.append('region', _region);
+        var _PostalCode = $("#hdnPostalCode").val();
+        fileData.append('postalcode', _PostalCode);
+        var _country = $("#hdnCountry").val();
+        fileData.append('country', _country);
+
+        $('#fld_3').show();
+        $('#fld_2').hide();
+        $('#fld_1').hide();
+
+        $('#li_3').addClass("active");
+        var orderResp;
+        $('#loader').show();
+        $.ajax({
+            url: '@Url.Action("SaveUsersDetails")',
+            dataType: "json",
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+
+                orderResp = data;
+
+            },
+            error: function (xhr, status, error) {
+                return false;
+            },
+            complete: function () {
+
+                orderResp = JSON.parse(orderResp);
+                if (orderResp.StatusCode == "1") {
+                    var sitebaseurl = "@Html.Raw(@ViewBag.siteBaseURL)";
+                    console.log("siteurl" + sitebaseurl);
+                    var redirectionURL = sitebaseurl;
+                    if (orderResp.PaymentMode === "COD") {
+                        redirectionURL += "cart/orderconfirmed?id=" + orderResp.OrderId + "&inv=" + orderResp.InvoiceNo;
+                        window.location = redirectionURL;
+                    }
+                    else {
+                        $("#hdnorderid").val(orderResp.OrderId);
+                        $("#hdninvoiceno").val(orderResp.InvoiceNo);
+                        $("#hdnpaymenttype").val(orderResp.PaymentType);
+                        $("#hdnpaymentmode").val(orderResp.PaymentMode);
+                        $('#loader').hide();
+                        PayTab();
+                    }
+
+                }
+                else {
+                    //order placing failed due to some reason;
+                    $('#loader').hide();
+                    $('#fld_1').show();
+                    $('#fld_2').hide();
+                    $('#fld_3').hide();
+
+                    $('#li_1').addClass("active");
+                    $('#li_2').removeClass("active");
+                    $('#li_3').removeClass("active");
+                    $("#spnOrderErrorMssage").text(orderResp.StatusMessage);
+                }
+
+            }
+        });
+    }
+
+    function AddFields(val) {
+        var date = '';
+        var chk_val = 0;
+
+        $('input[name="checkout"]:checked').each(function () {
+            chk_val = this.value;
+            if (this.value == 0) {
+                $('#lblReviewOrder_Type').html('Delivery');
+                date = $("#txtDelivery").val();
+                $('#str_txt').html('Order will be delivered on - ' + date);
+                if (@Model.DelDeliveryFee > 0) {
+                    $('#delcharge').html(' + ' + @Model.DelDeliveryFee.ToString("N2") + ' (Delivery Charges)');
+                    $('#BDdelcharge').html('@Model.DelDeliveryFee.ToString("N2")');
+                    $('#txtBDdelcharge').html('Delivery Charges(Inclusive Vat)');
+                    $('#trBDdelcharge').show();
+                    $('#txtNetTotal').html(' @(((Model.SubTotal + Model.VAT + Model.DelDeliveryFee) - Model.DiscountAmount).ToString("N2"))');
+                }
+            }
+            else if (this.value == 1) {
+                $('#lblReviewOrder_Type').html('Delivery');
+                date = $("#hdnShppingExpDate").val();
+                $('#str_txt').html('Order Shipping within 7-14 days');
+                $('#delcharge').html('+ ' + @Model.ShippingDeliveryFee.ToString("N2") + ' (Shipping Charges)');
+                $('#BDdelcharge').html('@Model.ShippingDeliveryFee.ToString("N2")');
+                $('#txtNetTotal').html(' @(((Model.SubTotal + Model.VAT + Model.ShippingDeliveryFee) - Model.DiscountAmount).ToString("N2"))');
+                $('#trBDdelcharge').show();
+                $('#txtBDdelcharge').html('Shipping Charges(Inclusive Vat)');
+            }
+
+            else if (this.value == 2) {
+                $('#lblReviewOrder_Type').html('PickUp');
+                date = $("#txtPickUp").val();
+                $('#str_txt').html('Order PickUp Date ' + date);
+                $('#delcharge').html('');
+                $('#trBDdelcharge').hide();
+                $('#txtNetTotal').html(' @(((Model.SubTotal + Model.VAT) - Model.DiscountAmount).ToString("N2"))');
+            }
+        });
+
+
+        var AddressId = $('#hdnAddressId').val();
+        var req = 0;
+        if (val == 1) {
+
+            if (chk_val == 0) {
+                if (date == '') {
+                    $('#txtDelivery').addClass("req");
+                    req = 1;
+                }
+                else { $('#txtDelivery').removeClass("req"); }
+
+                var ddlDelivery = $('#ddlDelivery').val();
+                if (ddlDelivery == "" || ddlDelivery == null) {
+                    $('#ddlDelivery').addClass("req");
+                    req = 1;
+                }
+                else {
+                    $('#ddlDelivery').removeClass("req");
+                }
+                if (AddressId == 0) {
+                    $('#txtaddress_all').addClass("req");
+                    req = 1;
+                }
+                else {
+                    $('#txtaddress_all').removeClass("req");
+                }
+                //ddlDelivery
+            }
+            else if (chk_val == 1) {
+
+                if (AddressId == 0) {
+                    $('#txtaddress_all').addClass("req");
+                    req = 1;
+                }
+                else {
+                    $('#txtaddress_all').removeClass("req");
+                }
+            }
+            else if (chk_val == 2) {
+                if (date == '') {
+                    $('#txtPickUp').addClass("req");
+                    req = 1;
+                }
+                else {
+                    $('#txtPickUp').removeClass("req");
+                }
+                //ddlPickup
+
+                var ddlPickup = $('#ddlPickup').val();
+                if (ddlPickup == "" || ddlPickup == null) {
+                    $('#ddlPickup').addClass("req");
+                    req = 1;
+                }
+                else {
+                    $('#ddlPickup').removeClass("req");
+                }
+            }
+
+        }
+        else if (val == 2) {
+            if (AddressId == 0) {
+                $('#txtaddress_all').addClass("req");
+                req = 1;
+            }
+            else {
+                $('#txtaddress_all').removeClass("req");
+
+            }
+        }
+
+        if (req == 0) {
+            $('#fld_3').hide();
+            $('#fld_2').show();
+            $('#fld_1').hide();
+
+            $('#li_2').addClass("active");
+
+            var cid = $('#hdnCouponId').val();
+            if (cid != 0) {
+                var dis = $('#hdndiscount_amt').val();
+                var maxv = $('#hdnMaxDiscountAmount').val();
+                AddCoupon(cid, dis, maxv);
+            }
+        }
+
+    }
+
+    function GetExpectedDateForShipping(cityId) {
+
+    }
+
+    function GetAddressDetails(id) {
+        //debugger;
+        $('#hdnAddressId').val(id);
+        var t = $('#lblName_' + id).html();
+        var u = $('#lblAddress_' + id).html();
+        var v = $('#lblextrafields_' + id).html();
+
+        var ftl = t + ',' + u + ',' + v;
+
+        $('#txtaddress_all').val(ftl);
+        $('#ModalAddress').modal('hide');
+
+        if ($('input[name="checkout"]:checked').val() == "1") {
+
+            $('#loader').show();
+            $('#payment_div').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: $('#hdnctid_' + id).text() },
+                //  dataType: "json",
+                url: '@Url.Action("ShippingExpectedDate","Cart")',
+                success: function (data) {
+                    //console.log(data);
+                    $('#payment_div').html('');
+                    $('#payment_div').html(data);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                    alert(ex);
+                },
+                complete: function () {
+                    $('#loader').hide();
+                    if ($('#hdnShipment').val() == "True") {
+                        $('#spnShipmentMessage').html("");
+                        $('.acnford').show();
+                        $('.nxtbtn1').show();
+                        $('#hdnShppingExpDate').val($('#hdnExpectedDate').val());
+                        $('#str_txt').html('Order Shipping ' + $('#hdnExpectedDate').val()); //txtDelivery
+                    }
+                    else {
+
+                        $('#spnShipmentMessage').html("Shipment not available for " + $('#hdnCityName').val() + " city, try with other city!");
+                        $('#payment_div').html('');
+                        $('#txtaddress_all').val(null);
+                        $('.acnford').hide();
+                        $('.nxtbtn1').hide();
+                    }
+                }
+            });
+
+            // for tab 3
+            $('#payment_divtype').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: $('#hdnctid_' + id).text(), type: 2 },
+                //  dataType: "json",
+                url: '@Url.Action("ShippingExpectedDate","Cart")',
+                success: function (data) {
+                    //console.log(data);
+                    $('#payment_divtype').html('');
+                    $('#payment_divtype').html(data);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+        else if ($('input[name="checkout"]:checked').val() == "0") {
+            $('#str_txt').val($('#txtDelivery').val());
+            $('#loader').show();
+            $('#payment_div').html('');
+            var cityid = $('#hdnctid_' + id).text();
+            $.ajax({
+                type: 'get',
+                data: { CityId: cityid, OrderType: 2 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")', // we are calling json method
+                success: function (data) {
+                    $('#payment_div').html('');
+                    $('#payment_div').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    //alert('Failed to retrieve slots.' + ex);
+                    $('#spnAddrMessage1').html("Something went wrong, try after sometime!");
+                    $('#spnAddrMessage2').html("Something went wrong, try after sometime!");
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#spnAddrMessage1').html("");
+                    $('#spnAddrMessage2').html("");
+                    if ($('#hdnShipment').val() == "True") {
+                        $('#spnShipmentMessage').html("");
+                        $('.acnford').show();
+                        $('.nxtbtn1').show();
+                        $('#hdnShppingExpDate').val($('#hdnExpectedDate').val());
+                        $('#str_txt').html('Order Shipping ' + $('#hdnExpectedDate').val()); //txtDelivery
+
+                        if ($('#hdnPayment').val() == "True") {
+                            $('.acnford').show();
+                            $('.nxtbtn1').show();
+                        }
+                        else {
+                            $('.acnford').hide();
+                            $('.nxtbtn1').hide();
+                            //$('#spnAddrMessage1').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+                            //$('#spnAddrMessage2').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+                            $('#spnAddrMessage1').html("Shipment not available for " + $('#hdnCityName').val() + " city, try with other city!");
+                            $('#spnAddrMessage2').html("Shipment not available for " + $('#hdnCityName').val() + " city, try with other city!");
+                            $('#txtaddress_all').val(null);
+                        }
+                    }
+                    else {
+
+                        $('#spnShipmentMessage').html("Delivery not available for " + $('#hdnCityName').val() + " city, try with other city!");
+                        $('#payment_div').html('');
+                        $('#txtaddress_all').val(null);
+                        $('.acnford').hide();
+                        $('.nxtbtn1').hide();
+                    }
+                    $('#loader').hide();
+                }
+            });
+            $('#payment_divtype').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: cityid, OrderType: 2, type: 2 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")', // we are calling json method
+                success: function (data) {
+                    $('#payment_divtype').html('');
+                    $('#payment_divtype').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+        else if ($('input[name="checkout"]:checked').val() == "2") {
+            // debugger
+            $('#spnShipmentMessage').html("");
+            $('#loader').show();
+            $('#payment_div').html('');
+            $('#str_txt').val($('#txtDelivery').val());
+            //var cityid = $('#hdnctid_' + id).text();
+            $.ajax({
+                type: 'get',
+                data: { CityId: 0, OrderType: 1 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")',
+                success: function (data) {
+                    //console.log(data);
+                    $('#payment_div').html('');
+                    $('#payment_div').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    if ($('#hdnPayment').val() == "True") {
+                        $('.acnford').show();
+                        $('#spnAddrMessage1').html("");
+                        $('#spnAddrMessage2').html("");
+                        $('.nxtbtn1').show();
+                    }
+                    else {
+                        $('.acnford').hide();
+                        $('.nxtbtn1').hide();
+                        //$('#spnAddrMessage1').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+                        //$('#spnAddrMessage2').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+
+                        $('#spnAddrMessage1').html("Pickup not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                        $('#spnAddrMessage2').html("Pickup not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                        $('#txtaddress_all').val(null);
+                    }
+                    $('#loader').hide();
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                data: { CityId: 0, OrderType: 1, type: 2 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")',
+                success: function (data) {
+                    console.log(data);
+                    $('#payment_divtype').html('');
+                    $('#payment_divtype').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+        else if (@Model.OrderType == 2 && @Model.ServiceType == "1") {
+            $('#loader').show();
+            $('#payment_div').html('');
+            var cityid = $('#hdnctid_' + id).text();
+            $.ajax({
+                type: 'get',
+                data: { CityId: cityid, OrderType: 2 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")', // we are calling json method
+                success: function (data) {
+                    $('#payment_div').html('');
+                    $('#payment_div').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    //alert('Failed to retrieve slots.' + ex);
+                    $('#spnAddrMessage1').html("Something went wrong, try after sometime!");
+                    $('#spnAddrMessage2').html("Something went wrong, try after sometime!");
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    if ($('#hdnShipment').val() == "True") {
+                        $('#spnShipmentMessage').html("");
+                        $('.acnford').show();
+                        $('.nxtbtn1').show();
+                        $('#spnAddrMessage1').html("");
+                        $('#spnAddrMessage2').html("");
+                        if ($('#hdnPayment').val() == "True") {
+                            $('.acnford').show();
+                            $('.nxtbtn1').show();
+                        }
+                        else {
+                            $('.acnford').hide();
+                            $('.nxtbtn1').hide();
+                            //$('#spnAddrMessage1').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+                            //$('#spnAddrMessage2').html("No payment methods available for " + $('#hdnCityName').val() + " city.");
+                            $('#spnAddrMessage1').html("Service not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                            $('#spnAddrMessage2').html("Service not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                            $('#txtaddress_all').val(null);
+                        }
+                    }
+                    else {
+
+                        $('#spnShipmentMessage').html("Service not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                        $('#payment_div').html('');
+                        $('#txtaddress_all').val(null);
+                        $('.acnford').hide();
+                        $('.nxtbtn1').hide();
+                    }
+                    $('#loader').hide();
+                }
+            });
+
+            $('#payment_divtype').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: cityid, OrderType: 2, type: 2 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")', // we are calling json method
+                success: function (data) {
+                    $('#payment_divtype').html('');
+                    $('#payment_divtype').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+        else if (@Model.OrderType == 2 && @Model.ServiceType != "1") {
+            $('#spnShipmentMessage').html("");
+            $('#loader').show();
+            $('#payment_div').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: 0, OrderType: 1 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")',
+                success: function (data) {
+                    console.log(data);
+                    $('#payment_div').html('');
+                    $('#payment_div').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    if ($('#hdnPayment').val() == "True") {
+                        $('.acnford').show();
+                        $('#spnAddrMessage1').html("");
+                        $('#spnAddrMessage2').html("");
+                        $('.nxtbtn1').show();
+                    }
+                    else {
+                        $('.acnford').hide();
+                        $('.nxtbtn1').hide();
+                        //$('#spnAddrMessage1').html("No payment methods available for " + $('#hdnCity_'+id).val() + " city.");
+                        //$('#spnAddrMessage2').html("No payment methods available for " + $('#hdnCity_'+id).val() + " city.");
+                        $('#spnAddrMessage1').html("Service not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                        $('#spnAddrMessage2').html("Service not available for " + $('#hdnCity_' + id).val() + " city, try with other city!");
+                        $('#txtaddress_all').val(null);
+                    }
+                    $('#loader').hide();
+                }
+            });
+
+            $('#payment_divtype').html('');
+            $.ajax({
+                type: 'get',
+                data: { CityId: 0, OrderType: 1 },
+                url: '@Url.Action("ValidatePaymentMethods","Cart")',
+                success: function (data) {
+                    //console.log(data);
+                    $('#payment_divtype').html('');
+                    $('#payment_divtype').html(data.result);
+                    $('#loader').hide();
+                },
+                error: function (ex) {
+                    $('#loader').hide();
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+    }
+
+    function BindManageAddress() {
+        $.ajax({
+            type: 'get',
+            url: '@Url.Action("ManageAddress","Cart")', // we are calling json method
+            //dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $('#divManageAddress').html('');
+                $('#divManageAddress').html(data.result);
+            },
+            error: function (ex) {
+            },
+            complete: function () {
+                cityList = JSON.stringify($('#hdnCitylist').val());
+            }
+        });
+    }
+
+    function countryChange() {
+        // debugger;
+        //var ctlt = JSON.parse(cl);
+        var ctlt = cl;
+        var cval = $("#drpCountryList option:selected").val();
+        //CountryID = cval;
+        if (ctlt != null) {
+            var markup = "<option value='0'>-Select City-</option>";
+            for (var x = 0; x < ctlt.length; x++) {
+                var a = ctlt[x]["countryID"];
+                if (a == cval) {
+                    markup += "<option value=" + ctlt[x]["id"] + ">" + ctlt[x]["nameEn"] + "</option>";
+                }
+            }
+
+            $("#drpCityList").html(markup).show();
+            //$("#lblCountryList").hide();
+            $("#drpCityList").attr("disabled", false);
+
+        }
+        else {
+            var markup = "<option value='0'>-Select City-</option>";
+            $("#drpCityList").html(markup).show();
+        }
+    }
+
+    function datePickUpChanged(ev) {
+        var weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        var dsa = $("#txtPickUp").data("datepicker").getDate();
+        var n = weekday[dsa.getDay()];
+        var val = 0;
+        switch (n) {
+            case 'Sunday':
+                val = 1;
+                break;
+            case 'Monday':
+                val = 2;
+                break;
+            case 'Tuesday':
+                val = 3;
+                break;
+            case 'Wednesday':
+                val = 4;
+                break;
+            case 'Thursday':
+                val = 5;
+                break;
+            case 'Friday':
+                val = 6;
+                break;
+            case 'Saturday':
+                val = 7;
+                break;
+        }
+        var deliverydate = $("#txtPickUp").val();
+        var userid = $('#hdnUserid').val();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetTimeSlots")', // we are calling json method
+            dataType: 'json',
+            data: { WeekdayId: val, date: deliverydate, userid: userid, type: 'P' },
+            success: function (data) {
+                var district = "<select id='ddlPickup' class='form-control'>";
+                district = district + '<option value="">--Select--</option>';
+
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].value + '>' + data[i].text + '</option>';
+                }
+                district = district + '</select>';
+                $('#ddlPickup').html(district);
+            },
+            error: function (ex) {
+                alert('Failed to retrieve slots.' + ex);
+            }
+        });
+    }
+
+    function show_div() {
+        var val = $('#hdnhideshow').val();
+        if (val == 0) {
+            $('#hdnhideshow').val(1);
+            $('#new-address').show();
+            $('#AddNewAdrtxt').text('Show Address List');
+            $('#addresslst').hide();
+        }
+        if (val == 1) {
+            $('#hdnhideshow').val(0);
+            $('#new-address').hide();
+            $('#AddNewAdrtxt').text("+ Add New Address");
+            $('#addresslst').show();
+        }
+    }
+
+    function isNumricKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode < 48 || charCode > 57)
+            return false;
+        return true;
+    }
+
+    function dateChanged(ev) {
+        var weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        var dsa = $("#txtDelivery").data("datepicker").getDate();
+
+        var n = weekday[dsa.getDay()];
+        var val = 0;
+        switch (n) {
+            case 'Sunday':
+                val = 1;
+                break;
+            case 'Monday':
+                val = 2;
+                break;
+            case 'Tuesday':
+                val = 3;
+                break;
+            case 'Wednesday':
+                val = 4;
+                break;
+            case 'Thursday':
+                val = 5;
+                break;
+            case 'Friday':
+                val = 6;
+                break;
+            case 'Saturday':
+                val = 7;
+                break;
+        }
+
+        var deliverydate = $("#txtDelivery").val();
+        var userid = $('#hdnUserid').val();
+        $.ajax({
+            type: 'POST',
+            url: '/Cart/GetTimeSlots', // we are calling json method
+            dataType: 'json',
+            data: { WeekdayId: val, date: deliverydate, userid: userid, type: 'D' },
+            success: function (data) {
+                var district = "<select id='ddlDelivery' class='form-control'>";
+                district = district + '<option value="">--Select--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].value + '>' + data[i].text + '</option>';
+                }
+                district = district + '</select>';
+                $('#ddlDelivery').html(district);
+            },
+            error: function (ex) {
+                alert('Failed to retrieve slots.' + ex);
+            }
+        });
+
+
+        var __today = new Date();
+        console.log(dsa + "|" + __today);
+        var __timeDiff = Math.abs(dsa.getTime() - __today.getTime());
+        var __diffDays = Math.ceil(__timeDiff / (1000 * 3600 * 24));
+        if (__diffDays > 10) {
+            //disable pay later radio buttons
+            $("#rdplDC").attr('disabled', 'disabled');
+            $("#rdplCC").attr('disabled', 'disabled');
+        }
+        else {
+            $("#rdplDC").removeAttr('disabled');
+            $("#rdplCC").removeAttr('disabled');
+        }
+
+    }
+
+    function AddressSave() {
+        var dropCountry = 0;
+        if ($('#drpCountryList').val() == 0) {
+            $("#lblCountryList").show();
+            drop = 1;
+        }
+        else {
+            $("#lblCountryList").hide();
+        }
+
+        var dropCity = 0;
+        if ($('#drpCityList').val() == 0) {
+            $("#lblCityList").show();
+            dropCity = 1;
+        } else $("#lblCityList").hide();
+
+        var optAddr = 0;
+        var asdf = $('input[name=optradio]:checked').val();
+        if (asdf != "0" && asdf != "1") {
+            $("#lblAddressType").show();
+            optAddr = 1;
+        }
+        else {
+            $("#lblAddressType").hide();
+        }
+        var txtAddr1 = 0;
+        if ($('#txtAddress1').val() == 0) {
+            $("#lblAddress1").show();
+            txtAddr1 = 1;
+        } else $("#lblAddress1").hide();
+
+        var txtFlName = 0;
+        if ($('#txtFullName').val() == 0) {
+            $("#lblFullName").show();
+            txtAddr1 = 1;
+        } else $("#lblFullName").hide();
+
+        var txtMbl = 0;
+        if ($('#txtPhoneNumber').val() == 0) {
+            $("#lblPhoneNumber").text("Enter Phone Number");
+            $("#lblPhoneNumber").show();
+            txtMbl = 1;
+        } else if ($('#txtPhoneNumber').val().length != 9) {
+            $("#lblPhoneNumber").text("Phone number must be 9 digits.");
+            txtMbl = 1;
+            $("#lblPhoneNumber").show();
+
+        } else $("#lblPhoneNumber").hide();
+
+        var txtZp = 0;
+        if ($('#txtZipcode').val() == 0) {
+            $("#lblZipCode").text("Enter Zip Code");
+            txtZp = 1;
+            $("#lblZipCode").show();
+        }
+        else if ($('#txtZipcode').val().length >= 5 && $('#txtZipcode').val().length <= 6) {
+            $("#lblZipCode").hide();
+        }
+        else {
+            $("#lblZipCode").text("Zip code must be 5-6 digits.");
+            txtMbl = 1;
+            $("#lblZipCode").show();
+        }
+
+        if (dropCountry == 0 && dropCity == 0 && txtFlName == 0 && optAddr === 0 && txtAddr1 == 0 && txtMbl == 0 && txtZp == 0) {
+            $('#loader').show();
+            var Data = {
+                CountryId: $('#drpCountryList').val(),
+                CityId: $('#drpCityList').val(),
+                CountryNameEn: $('#drpCountryList option:selected').text(),
+                CityNameEn: $('#drpCityList option:selected').text(),
+                FullName: $('#txtFullName').val(),
+                AddressType: asdf,
+                Address1: $('#txtAddress1').val(),
+                Address2: $('#txtAddress2').val(),
+                PhoneNumber: '+966' + $('#txtPhoneNumber').val(),
+                Zipcode: $('#txtZipcode').val()
+            }
+
+            console.log("dddddddd: " + JSON.stringify(Data));
+
+            $.ajax({
+                async: false,
+                type: "Post",
+                url: "/Cart/ManageAddress",
+                datatype: "json",
+                data: { data: JSON.stringify(Data) },
+                traditional: true,
+                success: function (data) {
+                    var v = data.status;
+                    alert(v);
+                    console.log(data.status + " _ " + v);
+                    if (v == true) {
+                        AdresId = data.id;
+                        var distinct = '<div class="col-md-12">'
+                        distinct = distinct + '<div class="address-box">'
+                        distinct = distinct + '<a href="#" onclick="GetAddressDetails(' + data.id + ')">'
+                        var cityhdn = 'hdnctid_' + data.id;
+                        distinct = distinct + '<span id=' + cityhdn + ' hidden>' + data.cityId + '</span>';
+                        distinct = distinct + '<h5 class="mb-1"><label>'
+                        if (data.addressType == 0) {
+                            distinct = distinct + '<h4 class="mb-4">Home Address</h4>'
+                        }
+                        else {
+                            distinct = distinct + '<h4 class="mb-4">Office Address</h4>'
+                        }
+                        distinct = distinct + '</label>'
+                        distinct = distinct + '</h5>'
+                        var addrdiv = 'addressdiv_' + data.id;
+                        distinct = distinct + '<div id=' + addrdiv + 'class="Address pl-2">'
+                        var name = 'lblName_' + data.id;
+                        distinct = distinct + '<p id=' + name + ' class="mb-0">' + data.fullName + '</p>'
+                        var address = 'lblAddress_' + data.Id;
+                        distinct = distinct + '<p id=' + address + ">" + data.address1 + '</p>'
+                        var exfid = 'lblextrafields_' + data.id;
+                        distinct = distinct + '<p id=' + exfid + ">" + data.cityNameEn + '-' + data.zipcode + ',' + data.countryNameEn + ',' + data.phoneNumber + '</p>'
+                        var city = 'hdnCity_' + data.id;
+                        distinct = distinct + '<input type="hidden" id="' + city + '" value="' + data.cityNameEn + '" />'
+                        distinct = distinct + '</div>'
+                        distinct = distinct + '</a>'
+                        distinct = distinct + '</div>'
+                        distinct = distinct + '</div>'
+                        console.log(distinct);
+                        $('#addresslst').prepend(distinct);
+                        show_div();
+
+                    }
+                    else {
+                    }
+                    $('#loader').hide();
+                },
+                error: function (xhr, status, error) {
+                    $('#loader').hide();
+                    return false;
+                }
+            });
+        }
+        else {
+
+
+        }
+    }
+
+    function CopyRadioOptions(paymentMode1, paymentType1) {
+        if (paymentMode1 == "MADA") {
+            $("#pmtMada").prop("checked", true);
+            $("#rdpnCC3").prop("checked", false);
+            $("#rdplCC3").prop("checked", false);
+            $("#rbCC3").prop("checked", false);
+            ChangePaymentType("MADA", "Instant");
+            if ($('input[name="checkout"]:checked').val() == 1) {
+                $('#delcharge').html('+ ' + @Model.ShippingDeliveryFee + ' (Shipping Charges)');
+            }
+        }
+        else if (paymentMode1 == "CC") {
+            $("#pmtMada").prop("checked", false);
+            $("#rbCC3").prop("checked", true);
+            if (paymentType1 == "PayNow") {
+                $("#rdpnCC3").prop("checked", true);
+                $("#rdplCC3").prop("checked", false);
+
+                ChangePaymentType("CC", "PayNow");
+            }
+            if (paymentType1 == "PayLater") {
+                $("#rdpnCC3").prop("checked", false);
+                $("#rdplCC3").prop("checked", true);
+                ChangePaymentType("CC", "PayLater");
+            }
+            if ($('input[name="checkout"]:checked').val() == 1) {
+                $('#delcharge').html('+ ' + @Model.ShippingDeliveryFee + ' (Shipping Charges)');
+            }
+            $("#credit-options1").show();
+            $("#card-details").hide();
+            $("#debit-options").hide();
+
+        }
+
+        else if (paymentMode1 == "COD") {
+            if ($('input[name="checkout"]:checked').val() == 1) {
+                $('#delcharge').html('+ ' + @Model.ShippingDeliveryFee + ' + ' + @Model.ShipmentCODFee  +' (Shipping & COD Charges)');
+            }
+        }
+    }
+
+    function ChangePaymentType(paymentMode, paymentType) {
+        $("#loader").show();
+        var orderId = $("#hdnorderid").val();
+        var invoiceNo = $("#hdninvoiceno").val();
+        if (invoiceNo.length > 0) {
+            $.ajax({
+                url: '@Url.Action("PVOrderPayment")',
+                data: {
+                    "id": orderId,
+                    "inv": invoiceNo,
+                    "PaymentMode": paymentMode,
+                    "PaymentType": paymentType
+                },
+                success: function (data) {
+                    $("#loader").hide();
+                    if (data != "") {
+                        $("#paymentfordiv").html("");
+                        $("#paymentfordiv").html(data.result);
+
+
+                        if (paymentMode == "CC" && (paymentType == "PayNow" || paymentType == "PayLater")) {
+                            $("#credit-options").removeClass('d-none');
+                            $("#credit-options1").removeClass('d-none');
+                        }
+                    }
+                },
+                error: function (data) {
+                    $("#loader").hide();
+                }
+            });
+        }
+        else {
+            $("#loader").hide();
+        }
+    }
+
+    function PayTab() {
+        //debugger
+        $('#fld_3').show();
+        $('#fld_2').hide();
+        $('#fld_1').hide();
+
+        $('#li_1').removeClass("active");
+        $('#li_2').removeClass("active");
+        $('#li_3').addClass("active");
+
+        // shujat
+        if ($("#hdnpaymentmode").val() == "MADA") {
+            $("#pmtMada").prop("checked", true);
+            $("#rdpnCC3").prop("checked", false);
+            $("#rdplCC3").prop("checked", false);
+            $("#payment3").prop("checked", false);
+            ChangePaymentType("MADA", "Instant");
+        }
+        else if ($("#hdnpaymentmode").val() == "CC") {
+            $("#pmtMada").prop("checked", false);
+            if ($("#hdnpaymenttype").val() == "PayNow") {
+                $("#rdpnCC3").prop("checked", true);
+                $("#rdplCC3").prop("checked", false);
+                $("#pmtMada").prop("checked", false);
+                ChangePaymentType("CC", "PayNow");
+            }
+            if ($("#hdnpaymenttype").val() == "PayLater") {
+                $("#rdpnCC3").prop("checked", true);
+                $("#rdplCC3").prop("checked", false);
+                $("#pmtMada").prop("checked", false);
+                ChangePaymentType("CC", "PayLater");
+            }
+        }
+    }
+
+
+    function validateHolder(e) {
+        var holder = $('.wpwl-control-cardHolder').val();
+        if (holder.trim().length < 2) {
+            $('.wpwl-control-cardHolder').addClass('wpwl-has-error').after('<div class="wpwl-hint wpwl-hint-cardHolderError">Invalid card holder</div>');
+            return false;
+        }
+        return true;
+    }
+    //$("#btnAddAddress").on("click", function () {
+    //    var dropCountry = 0;
+    //    if ($('#drpCountryList').val() == 0) {
+    //        $("#lblCountryList").show();
+    //        drop = 1;
+    //    }
+    //    else {
+    //        $("#lblCountryList").hide();
+    //    }
+    //    var dropCity = 0;
+    //    if ($('#drpCityList').val() == 0) {
+    //        $("#lblCityList").show();
+    //        dropCity = 1;
+    //    } else $("#lblCityList").hide();
+    //    var optAddr = 0;
+    //    var asdf = $('input[name=optradio]:checked').val();
+    //    if (asdf != "0" && asdf != "1") {
+    //        $("#lblAddressType").show();
+    //        optAddr = 1;
+    //    }
+    //    else {
+    //        $("#lblAddressType").hide();
+    //    }
+    //    var txtAddr1 = 0;
+    //    if ($('#txtAddress1').val() == 0) {
+    //        $("#lblAddress1").show();
+    //        txtAddr1 = 1;
+    //    } else $("#lblAddress1").hide();
+
+    //    var txtFlName = 0;
+    //    if ($('#txtFullName').val() == 0) {
+    //        $("#lblFullName").show();
+    //        txtAddr1 = 1;
+    //    } else $("#lblFullName").hide();
+
+    //    var txtMbl = 0;
+    //    if ($('#txtPhoneNumber').val() == 0) {
+    //        $("#lblPhoneNumber").text("Enter Phone Number");
+    //        $("#lblPhoneNumber").show();
+    //        txtMbl = 1;
+    //    } else if ($('#txtPhoneNumber').val().length != 9) {
+    //        $("#lblPhoneNumber").text("Phone number must be 9 digits.");
+    //        txtMbl = 1;
+    //        $("#lblPhoneNumber").show();
+
+    //    } else $("#lblPhoneNumber").hide();
+
+    //    var txtZp = 0;
+    //    if ($('#txtZipcode').val() == 0) {
+    //        $("#lblZipCode").text("Enter Zip Code");
+    //        txtZp = 1;
+    //        $("#lblZipCode").show();
+    //    }
+    //    else if ($('#txtZipcode').val().length >= 5 && $('#txtZipcode').val().length <= 6) {
+    //        $("#lblZipCode").hide();
+    //    }
+    //    else {
+    //        $("#lblZipCode").text("Zip code must be 5-6 digits.");
+    //        txtMbl = 1;
+    //        $("#lblZipCode").show();
+    //    }
+
+    //    if (dropCountry == 0 && dropCity == 0 && txtFlName == 0 && optAddr === 0 && txtAddr1 == 0 && txtMbl == 0 && txtZp == 0) {
+    //        $('#loader').show();
+    //        var Data = {
+    //            CountryId: $('#drpCountryList').val(),
+    //            CityId: $('#drpCityList').val(),
+    //            CountryNameEn: $('#drpCountryList option:selected').text(),
+    //            CityNameEn: $('#drpCityList option:selected').text(),
+    //            FullName: $('#txtFullName').val(),
+    //            AddressType: asdf,
+    //            Address1: $('#txtAddress1').val(),
+    //            Address2: $('#txtAddress2').val(),
+    //            PhoneNumber: '+966' + $('#txtPhoneNumber').val(),
+    //            Zipcode: $('#txtZipcode').val()
+    //        }
+
+    //        console.log("dddddddd: " + JSON.stringify(Data));
+
+    //        $.ajax({
+    //            async: false,
+    //            type: "Post",
+    //            url: "/Cart/ManageAddress",
+    //            datatype: "json",
+    //            data: { data: JSON.stringify(Data) },
+    //            traditional: true,
+    //            success: function (data) {
+    //                var v = data.status;
+    //                if (v == true) {
+    //                    AdresId = data.id;
+    //                    var distinct = '<div class="col-md-12">'
+    //                    distinct = distinct + '<div class="address-box">'
+    //                    distinct = distinct + '<a href="#" onclick="GetAddressDetails(' + data.id + ')">'
+    //                    var cityhdn = 'hdnctid_' + data.id;
+    //                    distinct = distinct + '<span id=' + cityhdn + ' hidden>' + data.cityId + '</span>';
+    //                    distinct = distinct + '<h5 class="mb-1"><label>'
+    //                    if (data.addressType == 0) {
+    //                        distinct = distinct + '<h4 class="mb-4">Home Address</h4>'
+    //                    }
+    //                    else {
+    //                        distinct = distinct + '<h4 class="mb-4">Office Address</h4>'
+    //                    }
+    //                    distinct = distinct + '</label>'
+    //                    distinct = distinct + '</h5>'
+    //                    var addrdiv = 'addressdiv_' + data.id;
+    //                    distinct = distinct + '<div id=' + addrdiv + 'class="Address pl-2">'
+    //                    var name = 'lblName_' + data.id;
+    //                    distinct = distinct + '<p id=' + name + ' class="mb-0">' + data.fullName + '</p>'
+    //                    var address = 'lblAddress_' + data.Id;
+    //                    distinct = distinct + '<p id=' + address + ">" + data.address1 + '</p>'
+    //                    var exfid = 'lblextrafields_' + data.id;
+    //                    distinct = distinct + '<p id=' + exfid + ">" + data.cityNameEn + '-' + data.zipcode + ',' + data.countryNameEn + ',' + data.phoneNumber + '</p>'
+    //                    var city = 'hdnCity_' + data.id;
+    //                    distinct = distinct + '<input type="hidden" id="' + city + '" value="' + data.cityNameEn + '" />'
+    //                    distinct = distinct + '</div>'
+    //                    distinct = distinct + '</a>'
+    //                    distinct = distinct + '</div>'
+    //                    distinct = distinct + '</div>'
+    //                    $('#addresslst').prepend(distinct);
+    //                    show_div();
+
+    //                }
+    //                else {
+    //                }
+    //                $('#loader').hide();
+    //            },
+    //            error: function (xhr, status, error) {
+    //                $('#loader').hide();
+    //                return false;
+    //            }
+    //        });
+    //    }
+    //    else {
+
+
+    //    }
+    //});
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#new-address').hide();
+
+        $("#btnCloseModal").on("click", function () {
+            $("#new-address").css("display", "none");
+            $('#hdnhideshow').val(0);
+            $('#new-address').hide();
+            $('#AddNewAdrtxt').text("+ Add New Address");
+        });
+
+
+        $(".next").click(function (data) {
+
+        });
+
+        $(".previous").click(function () {
+
+        });
+
+        $(".submit").click(function () {
+            return false;
+        });
+
+
+        var disabledays_delivery = $('#hdndeliveryWeekdays').val();
+
+        var days = '@Model.BranchExpiryDays';
+        $('#txtDelivery').datepicker({
+            daysOfWeekDisabled: disabledays_delivery,
+            startDate: '+' + $('#hdndeliverydays').val() + 'd',
+            autoclose: true,
+            maxDate: days + 'd'
+        }).change(dateChanged);
+
+
+
+        $('#txtPickUp').datepicker({
+            daysOfWeekDisabled: disabledays_pickup,
+            startDate: '+' + $('#hdnpickupdays').val() + 'd',
+            autoclose: true
+        }).change(datePickUpChanged);
+
+
+
+        $('input[type=radio][name=checkout]').change(function () {
+            if (this.value == '0') {
+                $('#txtaddress_all').html('');
+                $("#when").show();
+                $("#shipto").hide();
+                $('#pickup').hide();
+                $('#pickup').addClass("d-none");
+                $("#address2").show();
+                $('#spn_address_modalpopup').show();
+
+                $('.acnford').show();
+                $('#spnAddrMessage1').html("");
+                $('#spnAddrMessage2').html("");
+                $('.nxtbtn1').show();
+                $('#txtaddress_all').val("");
+                $('#str_txt').val($('#txtDelivery').val());
+            }
+            else if (this.value == '1') {
+                $('#txtaddress_all').html('');
+                $("#when").hide();
+                $("#shipto").show();
+                $("#address2").show();
+                $('#pickup').hide();
+                $('#pickup').addClass("d-none");
+                $('#spn_address_modalpopup').show();
+                $('#spnAddrMessage1').html("");
+                $('#spnAddrMessage2').html("");
+                $('#txtaddress_all').val("");
+            }
+            else if (this.value == '2') {
+                $("#when").hide();
+                $("#shipto").hide();
+                $("#address2").show();
+                $('#pickup').show();
+                $('#pickup').removeClass("d-none");
+                $('#txtaddress_all').val("");
+                $('#txtaddress_all').val($('#hdnBranchAddress').val());
+                $('#spn_address_modalpopup').hide();
+                $('.acnford').show();
+                $('#spnAddrMessage1').html("");
+                $('#spnAddrMessage2').html("");
+                $('.nxtbtn1').show();
+                $('#str_txt').val($('#txtDelivery').val());
+            }
+        });
+
+        $('input[type=radio][name=pay]').change(function () {
+            if (this.value == '6') {
+                $("#card-details").show();
+            }
+            else if (this.value == '7') {
+                $("#card-details").hide();
+            }
+        });
+
+        $('input[type=radio][name=pay]').change(function () {
+            if (this.value == '8') {
+                $("#card-details").show();
+            }
+            else if (this.value == '9') {
+                $("#card-details").hide();
+            }
+        });
+
+    });
+
+</script>
+
+
+

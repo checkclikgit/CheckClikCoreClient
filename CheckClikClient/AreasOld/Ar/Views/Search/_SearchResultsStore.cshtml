@@ -1,0 +1,93 @@
+﻿@using Customer
+@using SearchLibrary
+@using SearchLibrary.Models
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@model QueryResponse<ProductSearchResult>
+@{
+    string strApiURL = Configuration["apiurl"]; 
+}
+
+@if (Model != null)
+{
+    <section class="stores-sec">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav filters">
+
+                        <li>
+                            <a href="#">
+                                <strong id="1" class="srgtxt">@Model.NumFound</strong><strong> @(Model.NumFound == 1 ? "ITEM" : "ITEMS") IN </strong>
+                                <strong id="2" class="srgtxt">@Model.NGroups</strong><strong> @(Model.NGroups == 1 ? "STORE" : "STORES") </strong>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <section class="search__results">
+        <div class="container">
+            <div class="row">
+                <main id="searchResultItems" class="col-sm-12">
+                    @if (Model.Results != null)
+                    {
+                        int serial = 1;
+                        <div class="row">
+                            @for (int i = 0; i < Model.Results.Count; i++)
+                            {
+                                <div class="col-sm-3">
+                                    <figure class="card card-product">
+                                        <div class="img-wrap">
+                                            <img class="img-responsive" src="@Url.Content(strApiURL + "Uploads/Stores/" + Model.Results[i].StoreLogo)">
+                                        </div>
+                                        <figcaption class="product-desc">
+                                            <h4 class="title">@Model.Results[i].StoreNameEn</h4>
+                                        </figcaption>
+                                        <div class="product-price">
+                                            <a href="/Product/List?storeid=@Model.Results[i].StoreId" target="_blank" id="btnViewBranches" class="btn btn-sm btn-default">View Details</a>
+                                        </div> <!-- product-price.// -->
+                                    </figure>
+                                </div> <!-- col // -->
+                            }
+                        </div>
+                    }
+                    @if (Model.Results.Count == 0)
+                    {
+                        <div class="row">
+                            <div class="col-sm-12">
+                                No Results matching your search criteria
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="pagination">
+                                @{
+                                    int iPageSize = Customer.Utils.SearchUtil.PageSize;
+                                    int iMaxPages = (Model.NGroups + iPageSize - 1) / iPageSize;
+                                    ///if (iMaxPages > 1)
+                                    //{
+                                    @for (int i = 1; i <= iMaxPages; i++)
+                                    {
+                                        <li><a href="javascript:void(0);" class="changePage" data-pageindex="@(i - 1)">@i</a></li>
+                                    }
+                                    //}
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- end col-sm-9-->
+            </div> <!-- end row -->
+        </div>
+
+        <!-- end container-->
+    </section>
+
+    <!-- end search__results-->
+}

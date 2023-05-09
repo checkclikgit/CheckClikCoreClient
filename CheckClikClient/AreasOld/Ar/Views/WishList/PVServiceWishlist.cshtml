@@ -1,0 +1,132 @@
+﻿@using Customer
+@model Customer.Models.FavoritesDTO
+@inject IConfiguration Configuration;
+
+<div class="row servicebox-height">
+    @*@if (Model.ServiceDetailslst != null && Model.ServiceDetailslst.Count() > 0)
+    {
+        foreach (var item in Model.ServiceDetailslst)
+        {
+            <a href="~/@item.StoreEn.Replace(" ","-").ToLower()/@item.MainCatEn.Replace(" ","-").ToLower()/@item.SubCatEn.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(item.ServiceNameEn.Replace("_","-"),item.BranchId,item.ServiceId,item.SubCatId)">
+                <div class="col-md-4 col-sm-6 col-xs-6 fwidth">
+                    <div class="thumbnail mt-4">
+                        <img src="@Model.ApiURL/Uploads/Products/@item.Image" class="fav-product-img" width="100%">
+                        <div class="product-list-cart">
+                            <a onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.ItemId',2)"><i class="fas fa-times"></i></a>
+                        </div>
+                        <div class="caption">
+                            <h4 class="profile-text-justify-auto">@item.ServiceNameEn</h4>
+                            <h5 class="pull-right red-color mt-0">SAR @item.Price</h5>
+                            @if (@item.DiscountValue != 0)
+                            {
+                                <del><small>SAR @item.SellingPrice</small></del>
+                            }
+                            else
+                            {
+                                <del style="visibility:hidden;">SAR @item.SellingPrice</del>
+                            } 
+                        </div> 
+                    </div>
+                </div>
+            </a>
+        }
+
+    }*@
+
+    @if (Model.ServiceDetailslst.Count() > 0)
+    {
+        foreach (var item in Model.ServiceDetailslst)
+        {
+            <div class="row mt-60">
+                <div class="col-12">
+                    <div class="row related-products">
+                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                            <div class="product-cart-wrap hover-up">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="~/@item.StoreEn.Replace(" ","-").ToLower()/@item.MainCatEn.Replace(" ","-").ToLower()/@item.SubCatEn.Replace(" ","-").ToLower()/s/@SlugUtil.GenerateSlugService(item.ServiceNameEn.Replace("_","-"),item.BranchId,item.ServiceId,item.SubCatId)" tabindex="0">
+                                            <img class="default-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                            <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Remove" class="action-btn small hover-up" href="#" onclick="DeleteFavoriteItem(@item.FavoriteId,'@item.ItemId',2)" tabindex="0"><i style="font-size: 19px;" class="fi-rs-trash"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <h2><a href="#" tabindex="0">@item.ServiceNameEn</a></h2>
+                                    <div class="product-price">
+                                        <span>SAR @item.Price </span>
+                                        <span class="old-price">SAR @item.SellingPrice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <span class="text text-danger">
+            No Service Found
+        </span>
+    }
+</div> 
+<div class="container" id="dvservicepaging">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul id="pagination-demo-service" class="pagination">
+                <!-- <a href="#">&lt;</a> -->
+                @*<a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&gt;</a>*@
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnToPagesCountForServicePagination" value="@Model.StorepagingNumber" />
+<input type="hidden" id="hdnPageNumberService_twbs" value="@Model.StorePageNumber" />
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="~/Scripts/jquery.twbsPagination.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // debugger
+        //var sortid = $('#hdnSortId').val();
+        var sortid = 1;//$('#hdnSortId').val();
+        var pNo = $('#hdnPageNumberService_twbs').val();
+        var i = parseInt(pNo);
+        $('#pagination-demo-service').twbsPagination({
+            totalPages: $('#hdnToPagesCountForServicePagination').val(),
+            visiblePages: 5,
+            startPage: i,
+            initiateStartPageClick: false,
+            onPageClick: function (event, page) {
+                //fetch content and render here
+                GetServices(page, sortid);
+            }
+        });
+    });
+</script>
+<script>
+    var scrolled = 0;
+    $(document).ready(function () {
+        $(".upservice").on("click", function () {
+            scrolled = scrolled > 0 ? scrolled - 300 : 0;
+            $(".servicebox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+        $(".downservice").on("click", function () {
+            scrolled = scrolled + 300;
+            $(".servicebox-height").animate({
+                scrollTop: scrolled
+            });
+        });
+    });
+</script>

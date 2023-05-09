@@ -1,0 +1,256 @@
+﻿@model Customer.Models.OffersDTO
+@*@model Customer.Models.BranchDTO*@
+
+@{
+    ViewBag.Title = "CHECKCLIK | Offers ";
+    //Layout = "~/Views/Shared/_StoreSubLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string SubCategoryEn = Model.SubCategoryEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    SubCategoryEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(SubCategoryEn.ToLower());
+}
+@section Styles{
+
+}
+<section class="store-products-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4><strong>@SubCategoryEn</strong></h4>
+            </div>
+            <div class="col-sm-6 text-right">
+                <div class="filters-right">
+                    <span>
+                        <strong>SORT BY:</strong> &ensp;
+                        <div class="btn-group">
+                            <button type="button" class="form-control btn filter-dropdown btn-default dropdown-toggle" data-toggle="dropdown">
+                                All <span class="caret"></span>
+                            </button>
+                            <ul class="delivery-filter dropdown-menu" role="menu">
+                                <li><a onclick="Sorting(1)" href="#">Newest Arrival</a></li>
+                                <li><a onclick="Sorting(2)" href="#">Price:High to Low</a></li>
+                                <li><a onclick="Sorting(3)" href="#">Price:Low to High</a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.ProductListOffers != null)
+            {
+                foreach (var item in Model.ProductListOffers)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 fwidth">
+                        <div class="thumbnail">
+                            @*<a href="@Url.Action("ProductDetails", "CustomerProducts", new { Id = item.GenerateSlug() })">*@
+                            <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/p/@item.GenerateSlug()">
+
+                                <img src="@Model.ApiURL/Uploads/Products/@item.Image" width="100%">
+                            </a>
+                            @if (@item.DiscountValue != 0)
+                            {
+                        <div class="carousel-caption">
+                            <img src="~/web-assets/images/offer-tag.png">
+                        </div>
+                        <div class="carousel-caption">
+                            @if (item.DiscountType == 1)
+                            {
+                        <strong>
+                            @item.DiscountValue %OFF
+                        </strong>
+                            }
+                            else if (item.DiscountType == 2)
+                            {
+                        <strong>
+                            @item.DiscountValue OFF
+                        </strong>
+                            }
+                        </div>
+                            }
+                            <div class="product-list-cart">
+                                @if (item.Favorite == true)
+                                {
+                        <a onclick="AddFavoriteItem('@item.ProductSkuId','@item.BranchSubCategoryId')"><i id="favicon-@item.ProductSkuId" class="far fa-heart red-color"></i></a><br>
+                                }
+                                else
+                                {
+                        <a onclick="AddFavoriteItem('@item.ProductSkuId','@item.BranchSubCategoryId')"><i id="favicon-@item.ProductSkuId" class="far fa-heart"></i></a><br>
+                                }
+                            </div>
+                            <a href="@Url.Action("ProductDetails", "CustomerProducts", new { Id = item.GenerateSlug() })">
+
+                                <div class="caption">
+                                    <h4>@item.NameEn</h4>
+                                    @if (@item.DiscountValue != 0)
+            {
+                        <del>SAR @item.SellingPrice</del>
+}
+else
+{
+                        <del style="visibility:hidden;">SAR @item.SellingPrice</del>
+}
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR @item.Price</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                }
+            }
+            @if (Model.ServiceListOffers != null)
+            {
+                foreach (var item in Model.ServiceListOffers)
+                {
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 fwidth">
+                        <div class="thumbnail">
+                            @*<a href="@Url.Action("ServiceDetails","CustomerServices", new { Id=item.GenerateSlugService()})">*@
+                            <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/s/@item.GenerateSlugService()">
+                                <img src="@Model.ApiURL/Uploads/Products/@item.Image" width="100%">
+                            </a>
+                            @if (@item.DiscountValue != 0)
+    {
+                        <div class="carousel-caption">
+                            <img src="~/web-assets/images/offer-tag.png">
+                        </div>
+                        <div class="carousel-caption">
+                            <strong>
+                                @item.DiscountValue%OFF
+                            </strong>
+                            @*@if (item.DiscountType == 1)
+        {
+        }
+        else if (item.DiscountType == 2)
+        {
+            <strong>
+                @item.DiscountValue OFF
+            </strong>
+        }*@
+                        </div>
+}
+                            <div class="product-list-cart">
+                                @if (item.Favorite == true)
+        {
+                        <a onclick="AddFavoriteItem('@item.ServiceId','@item.BranchSubCategoryId')"><i id="favicon-@item.ServiceId" class="far fa-heart red-color"></i></a><br>
+}
+else
+{
+                        <a onclick="AddFavoriteItem('@item.ServiceId','@item.BranchSubCategoryId')"><i id="favicon-@item.ServiceId" class="far fa-heart"></i></a><br>
+}
+                            </div>
+                            <a href="@Url.Action("ServiceDetails","CustomerServices", new { Id=item.GenerateSlugService()})">
+
+                                <div class="caption">
+                                    <h4>@item.ServiceNameEn</h4>
+                                    @if (@item.DiscountValue != 0)
+            {
+                        <del>SAR @item.SellingPrice</del>
+}
+else
+{
+                        <del style="visibility:hidden;">SAR @item.SellingPrice</del>
+}
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR @item.Price</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                }
+            }
+        </div>
+    </div>
+</section>
+
+
+@*<input type="hidden" id="hdnsubcategoryid" value="@Model.BranchSubCategoryId" />
+    <input type="hidden" id="hdnSortId" value="0" />*@
+
+@section Scripts{
+    <script>
+
+
+    </script>
+    @*<script type="text/javascript">
+            $(document).ready(function () {
+                var sortid = $('#hdnSortId').val();
+                GetProducts(1, sortid);
+            });
+
+            function Sorting(id) {
+                debugger
+                $('#hdnSortId').val(id);
+                GetProducts(1, id);
+            }
+
+            function GetProducts(pageNumber,sort) {
+
+                var id = $('#hdnsubcategoryid').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ProductsOnCustomerSite")',
+                    datatype: "json",
+                    data: { pageNumber: pageNumber, subcategoryid: id, SortId: sort},
+                    success: function (data) {
+                        if (data != "") {
+                            $('#div_Products').html('');
+                            $('#div_Products').html(data);
+                        }
+                        else {
+                            location.reload();
+                        }
+                    },
+                    onerror: function (data) {
+                        $('.loader').hide();
+                    }
+                });
+            }
+
+
+
+
+
+
+        $('.delivery-filter a').on('click', function () {
+            $('.filter-dropdown.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');
+        })
+
+        $('.adds').click(function add() {
+            var _qty = $(this).parent().children(".noOfQty");
+
+            var $rooms = $(_qty);
+            var a = $rooms.val();
+
+            a++;
+            $(".subs").prop("disabled", !a);
+            $rooms.val(a);
+        });
+        $(".subs").prop("disabled", !$(".noOfQty").val());
+
+        $('.subs').click(function subst() {
+
+            var _qty = $(this).parent().children(".noOfQty");
+
+            var $rooms = $(_qty);
+            var b = $rooms.val();
+            if (b >= 1) {
+                b--;
+                $rooms.val(b);
+            }
+            else {
+                $(".subs").prop("disabled", true);
+            }
+        });
+        </script>*@
+}
+

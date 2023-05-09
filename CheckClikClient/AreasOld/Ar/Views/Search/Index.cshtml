@@ -1,0 +1,466 @@
+﻿
+@{
+    ViewBag.Title = "Search Results | CheckClik MarketPlace";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link href="~/assets/css/bootstrap-slider.css" rel="stylesheet" />
+    <style>
+        .loading-wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 64px;
+            height: 64px;
+        }
+
+            .lds-ring div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 51px;
+                height: 51px;
+                margin: 6px;
+                border: 6px solid #666666;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: #666666 transparent transparent transparent;
+            }
+
+                .lds-ring div:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                .lds-ring div:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                .lds-ring div:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+
+        @@keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .sub-footer {
+            background: #fff;
+            padding: 0;
+            border-top: 2px solid #eaeaea;
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+}
+
+    <li class="dropdown mega-dropdown">
+        <a href="#" class="filter" data-toggle="dropdown"><i class="fas fa-filter"></i> <strong>FILTERS</strong></a>
+        <ul id="ul1" class="dropdown-menu mega-dropdown-menu row">
+            <div class="col-sm-12">
+                <div action="" method="">
+                    @*<li class="col-sm-2 col-xs-6">
+                <ul>
+                <li class="dropdown-header">STATUS</li>
+                <li>
+                <div class="checkbox checkbox-info checkbox-circle">
+                <input id="checkbox 1" class="styled" type="checkbox">
+                <label for="checkbox1"> Open</label>
+                </div>
+                </li>
+                <li>
+                <div class="checkbox checkbox-info checkbox-circle">
+                <input id="checkbox2" class="styled" type="checkbox" checked>
+                <label for="checkbox2">Close</label>
+                </div>
+                </li>
+                <li>
+                <div class="checkbox checkbox-info checkbox-circle">
+                <input id="checkbox3" class="styled" type="checkbox">
+                <label for="checkbox3">Busy</label>
+                </div>
+                </li>
+                </ul>
+                </li>*@
+            <li class="col-sm-4 col-xs-6">
+                <ul>
+                    <li class="dropdown-header">PAYMENT METHOD</li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox4" class="styled" type="checkbox" checked> checkbox checkbox-info checkbox-circle*@
+                            <input type="radio" class="styled" name="rbPayment" value="1" />
+                            <label for="checkbox4">Cash On Delivery</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @* <input id="checkbox5" class="styled" type="checkbox"> onchange="return fnFilterStore();" *@
+                            <input type="radio" class="styled" name="rbPayment" value="2" />
+                            <label for="checkbox5">Card</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox6" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbPayment" value="3" />
+                            <label for="checkbox6">Both</label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="col-sm-4 col-xs-6" hidden>
+                <ul>
+                    <li class="dropdown-header">RATING</li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox7" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbrating" value="1" />
+                            <label for="checkbox7">One Star</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox8" class="styled" type="checkbox" checked>*@
+                            <input type="radio" class="styled" name="rbrating" value="2" />
+
+                            <label for="checkbox8">Two Star</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox9" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbrating" value="3" />
+
+                            <label for="checkbox9">Three Star</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox10" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbrating" value="4" />
+
+                            <label for="checkbox10">Four Star</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox11" class="styled" type="checkbox" checked>*@
+                            <input type="radio" class="styled" name="rbrating" value="5" />
+                            <label for="checkbox11">Five Star</label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+                    @*<li class="col-sm-2 col-xs-6">
+        <ul>
+        <li class="dropdown-header">VENDOR TYPE</li>
+        <li>
+        <div class="">
+        <input type="radio" class="styled" name="rbvendortype" value="1" />
+        <label for="checkbox12">Company</label>
+        </div>
+        </li>
+        <li>
+        <div class="">
+        <input type="radio" class="styled" name="rbvendortype" value="2" />
+        <label for="checkbox13">Individual</label>
+        </div>
+        </li>
+        <li>
+        <div class="">
+        <input type="radio" class="styled" name="rbvendortype" value="0" />
+        <label for="checkbox14">Both</label>
+        </div>
+        </li>
+        </ul>
+        </li>*@
+            <li class="col-sm-4 col-xs-6" hidden>
+                <ul>
+                    <li class="dropdown-header">DISTANCE</li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox15" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbdistance" value="1" />
+                            <label for="rbdistance">1 KM</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox16" class="styled" type="checkbox">*@
+                            <input type="radio" class="styled" name="rbdistance" value="10" />
+                            <label for="rbdistance">10 KM</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                                    @*<input id="checkbox17" class="styled" type="checkbox" checked>*@
+                            <input type="radio" class="styled" name="rbdistance" value="20" />
+                            <label for="rbdistance">20 and above</label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            </div>
+            </div>
+            <div class="col-sm-12 reset-filter">
+                <a href="#store" onclick="return GetSearchResults();"><i class="fa fa-plus"></i> Apply Filters</a>
+                <a href="#store" onclick="clearfilter()"><i class="fas fa-sync-alt"></i> Reset Filters</a>
+            </div>
+        </ul>
+    </li>
+
+<div id="divLoader" class="loading-wrapper">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div id="divSearchResults"></div>
+
+
+@section Scripts{
+    <script src="~/assets/js/bootstrap-slider.js"></script>
+    <script type="text/javascript">
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $(document).ready(function () {
+            //hdnIsLocationSet
+            setTimeout(function () { GetSearchLocationResults(); }, 100);
+            //$(window).scroll(function () {
+            //    if ($("#hdnIsLocationSet").val() == "1") {
+            //        if ($(window).scrollTop() == $(document).height() - $(window).height() - $("footer").height()) {
+            //            GetSearchResults();
+            //        }
+            //        console.log("ScrollTop:" + $(window).scrollTop());
+            //        //console.log("Doc Height:" + $(document).height());
+            //        //console.log("Window Height:" + $(window).height());
+            //        console.log("Results height:" + $("#searchResultItems").height());
+            //        //console.log("Doc height - Window height:" + ($(document).height() - $(window).height() - $("footer").height()));
+            //    }
+            //});
+        });
+        var vLocationLoadedTimeout;
+        function GetSearchLocationResults() {
+         $("#hdnStart").val(0);
+            //console.log("GetSearchLocationResults called");
+            if ($("#hdnIsLocationSet").val() == "0") {
+                //console.log("Location not loaded");
+                vLocationLoadedTimeout = setTimeout(function () { GetSearchLocationResults(); }, 100);
+            }
+            else {
+                clearTimeout(vLocationLoadedTimeout);
+                //console.log("Location loaded");
+                GetSearchResults();
+            }
+        }
+        function GetSearchResults() {
+            //$.ajax({
+            //    type: 'POST',
+            //    url: "/Search/SearchResults/",
+            //    datatype: "json",
+            //    //contentType: false,
+            //    contenttype: 'application/json; charset=utf-8',
+            //    //processData: false,
+            //    cache: false,
+            //    //data: formData,
+            //    data: {
+            //                //partialViewForm relates to the form element in your partial view
+            //                model: JSON.stringify($('#search').serializeObject()),
+            //    },
+            //    success: function (response) 
+            //    {
+            //        //if (response.responseCode == 0) {
+            //        //    var student = JSON.parse(response.responseMessage);
+            //        //    $("#email").val(student.Email);
+            //        //    $("#name").val(student.Name);
+            //        //    $("#hdn-student-id").val(student.Id);
+
+            //        //}
+            //        //else {
+            //        //    bootbox.alert(response.ResponseMessage);
+            //        //}
+            //    },
+            //    error: function (response) 
+            //    {
+                
+            //    }
+            //});
+            var rbPaymentmode = $("input[name='rbPayment']:checked").val();
+            //var rbRatings = $("input[name='rbrating']:checked").val();
+            //var rbDistance = $("input[name='rbdistance']:checked").val();
+            var points = JSON.stringify({PaymentType: rbPaymentmode})
+            $.ajax({
+                url: "@Url.Action("SearchResults", "Search")",
+                //datatype: "json",
+                type: "post",
+                data: {
+                    //partialViewForm relates to the form element in your partial view
+                    model: JSON.stringify($('#search').serializeObject()), points: points
+                }, 
+                //contenttype: 'application/json; charset=utf-8',
+                //async: true,
+                success: function (dataReturn) {
+                    emptyStr = dataReturn.result.replace(/[\r\n]+/g, '');
+                    if (emptyStr != '') {
+                        $("#divSearchResults").html(dataReturn.result);
+                        $("#divSearchResults").show();
+                        BindFiltersOnChange();
+                        DisplayActivePage();
+                    }
+                    if ($("#txtPriceRange").length > 0) {
+                        $("#txtPriceRange").slider({
+                            tooltip: 'hide'
+                        }).on('slideStop', changePrice).on('change', displayChangedPrice);
+                        displayChangedPrice();
+                    }
+                    $("#divLoader").hide();
+                    $("#loader").hide();
+                },
+                error: function (xhr) {
+                    //console.log(xhr.responseText);
+                    //alert('error');
+                    $("#divLoader").hide();
+                    $("#loader").hide();
+                }
+            });
+        }
+
+        function changePrice() {
+            //console.log(txtPriceRange.value);
+            isPriceChanged = false;
+            isPriceChanged = txtPriceRange.value.split(",")[0] == $("#spnMinPrice").text();
+            if (!isPriceChanged)
+                isPriceChanged = txtPriceRange.value.split(",")[1] == $("#spnMaxPrice").text();
+            if (isPriceChanged)
+                LoadSearchResults();
+        }
+
+        function displayChangedPrice() {
+            $("#spnMinPrice").text(txtPriceRange.value.split(",")[0]);
+            $("#spnMaxPrice").text(txtPriceRange.value.split(",")[1]);
+        }
+
+        function DisplayActivePage() {
+            $(".changePage.active").removeClass("active");
+            $(".changePage").eq(parseInt($("#hdnStart").val())).addClass("active");
+        }
+
+        function BindFiltersOnChange() {
+            $(".clear-filters").on("click", function (e) {
+                e.preventDefault();
+                $("#hdnStart").val("0");
+                //lknClear_3
+                var groupId = $(this).attr("id").replace("lknClear_", "");
+                $("[id^='ckbFilter" + groupId + "_'][type=checkbox]:checked").each(function () {
+                    this.checked = false;
+                });
+                LoadSearchResults();
+            });
+            $("#lnkClearPriceFilter").on("click", function (e) {
+                e.preventDefault();
+                $("#hdnStart").val("0");
+                var txtPriceRange = $("#txtPriceRange");
+                var arRange = [parseInt(txtPriceRange.data("slider-min")), parseInt(txtPriceRange.data("slider-max"))];
+                $("#spnMinPrice").text(txtPriceRange.data("slider-min"));
+                $("#spnMaxPrice").text(txtPriceRange.data("slider-max"));
+                txtPriceRange.slider('setValue', arRange, true)
+                //txtPriceRange.slider('refresh');
+                LoadSearchResults();
+            });
+
+            $(".search-sort").on("click", function (e) {
+                e.preventDefault();
+                $("#hdnSort").val($(this).data("sort-field") + "," + $(this).data("sort-dir"));
+                LoadSearchResults();
+            });
+
+            $(".ckbFilter").on("change", function () {
+                $("#hdnStart").val("0");
+                LoadSearchResults();
+            });
+            $(".optItemType").on("change", function () {
+                $("#hdnStart").val("0");
+                LoadSearchResults();
+            });
+            $(".optServiceType").on("change", function () {
+                $("#hdnStart").val("0");
+                LoadSearchResults();
+            });
+            $("#lnkClearItemType").on("click", function (e) {
+                e.preventDefault();
+                $("#hdnStart").val("0");
+                $(".optItemType:checked").prop('checked', false);
+                LoadSearchResults();
+            });
+            $(".changePage").on("click", function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass("active")) {
+                    $("#hdnStart").val($(this).data("pageindex"));
+                    LoadSearchResults();
+                }
+            });
+        }
+
+        function LoadSearchResults() {
+            $("#divLoader").show();
+            $("#divSearchResults").hide();
+
+            var obj = '{'
+                + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+                + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+                + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+                + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+                + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+                + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+                + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+                + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+            if ($(".optServiceType:checked").length > 0)
+                obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+            obj += '"Price": "' + $("#txtPriceRange").val()+'",';
+
+            if ($(".optItemType:checked").length > 0)
+                obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+            $(".filter-auto").each(function () {
+                var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+                var isCurrentFilter = $(this).is(":checked");
+                obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+            });
+
+            if (obj.endsWith(","))
+                obj = obj.slice(0, -1);
+            obj += '}';
+
+            $("#hdnSearchFilters").val(obj);
+            GetSearchResults();
+        }
+    </script>
+}

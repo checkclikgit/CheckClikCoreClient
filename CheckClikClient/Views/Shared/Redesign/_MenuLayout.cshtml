@@ -3,6 +3,7 @@
 @using CheckClickClient;
 @inject IConfiguration Configuration;
 @{
+    
     IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
     Customer.Models.CartDTO url = new Customer.Models.CartDTO();
     url.UrlPath = Configuration["apiurl"] + "" + Configuration["UploadLocation"] + "" + "/Products/";

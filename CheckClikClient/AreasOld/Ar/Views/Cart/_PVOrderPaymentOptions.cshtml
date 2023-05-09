@@ -1,0 +1,156 @@
+﻿@model Customer.Models.PaymentOptionDTO
+@{
+}
+@if (Model.Type == 1)
+{
+
+    if (Model.IsCashAllowed == true)
+    {
+        <div class="form-group">
+            <label>Payment Method</label><br>
+            <label class="radio-inline"><input type="radio" name="payment" value="3" checked="checked" onclick="CopyRadioOptions('COD','COD')">Cash On Delivery</label>
+        </div>
+    }
+    if (Model.IsCreditCardAllowed == true && (Model.IsCcPayNow == true || Model.IsCcPayLater == true))
+    {
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="payment" value="4">International Cards (Visa/Master)</label>
+            <span class="pull-right">
+                <img src="~/web-assets/images/mastercard.PNG" width="30">
+                <img src="~/web-assets/images/visacard.png" width="30">
+            </span>
+        </div>
+        if (Model.IsCcPayNow == true || Model.IsCcPayLater == true)
+        {
+            <div class="form-group d-none" id="credit-options">
+                @if (Model.IsCcPayNow == true)
+                {
+                    <text>&ensp;&ensp; </text><label class="radio-inline"><input id="rdpnCC" type="radio" name="payCC" value="6" onclick="CopyRadioOptions('CC','PayNow')">Pay Now</label>
+                }
+                @if (Model.IsCcPayLater == true)
+                {
+                    <label class="radio-inline"><input id="rdplCC" type="radio" name="payCC" value="7" onclick="CopyRadioOptions('CC','PayLater')">Pay Later </label>
+                    <span data-toggle="tooltip" data-placement="bottom" title="! The money will not be deducted untill the order been recived from the vender.!" class="btn-danger">!</span>
+                }
+            </div>
+        }
+    }
+    if (Model.IsMadaCardAllowed == true)
+    {
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="payment" value="11" onclick="CopyRadioOptions('MADA','Instant')">Local Debit Card (MADA)</label>
+            <span class="pull-right">
+                <img src="~/web-assets/images/madacard.png" width="30">
+            </span>
+        </div>
+    }
+    <input type="hidden" id="hdnPayment" value="@Model.IsPayment.ToString()" />
+    <input type="hidden" id="hdnShipment" value="@Model.IsShipment.ToString()" />
+    <input type="hidden" id="hdnCityName" value="@Model.CityName" />
+    <input type="hidden" id="hdnExpectedDate" value="@Model.ExpectedDate" />
+    <script>
+
+        $(document).ready(function () {
+            $('input[type=radio][name=payment]').change(function () {
+                if (this.value == '3') {
+                    $("#credit-options").hide();
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+                else if (this.value == '4') {
+                    $("#credit-options").show();
+                    $("#credit-options").removeClass('d-none');
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+                else if (this.value == '5') {
+                    $("#credit-options").hide();
+                    $("#card-details").hide();
+                    $("#debit-options").show();
+                }
+                else if (this.value == '11') {
+                    $("#credit-options").hide();
+                    $("#card-details").hide();
+                    $("#debit-options").show();
+                }
+            });
+        });
+    </script>
+
+}
+else
+{
+    // shujat
+    if (Model.IsCreditCardAllowed == true && (Model.IsCcPayNow == true || Model.IsCcPayLater == true))
+    {
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" value="4" name="payment3" id="rbCC3">International Cards (Visa/Master)</label>
+            <span class="pull-right">
+                <img src="~/web-assets/images/mastercard.PNG" width="30">
+                <img src="~/web-assets/images/visacard.png" width="30">
+            </span>
+        </div>
+        if (Model.IsCcPayNow == true || Model.IsCcPayLater == true)
+        {
+
+            <div class="form-group d-none" id="credit-options1">
+                @if (Model.IsCcPayNow == true)
+                {
+                    <text>&ensp;&ensp; </text><label class="radio-inline"><input id="rdpnCC3" type="radio" name="payCC3" onclick="ChangePaymentType('CC','PayNow')" value="6">Pay Now</label>
+                }
+                @if (Model.IsCcPayLater == true)
+                {
+                    <label class="radio-inline"><input id="rdplCC3" type="radio" name="payCC3" onclick="ChangePaymentType('CC','PayLater')">Pay Later </label>
+                    <span data-toggle="tooltip" data-placement="bottom" title="! The money will not be deducted untill the order been recived from the vender.!" class="btn-danger">!</span>
+                }
+            </div>
+        }
+    }
+    if (Model.IsMadaCardAllowed == true)
+    {
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="payment3" value="3" id="pmtMada" onclick="ChangePaymentType('MADA','Instant')">Local Debit Card (MADA)</label>
+            <span class="pull-right">
+                <img src="~/web-assets/images/madacard.png" width="30">
+            </span>
+        </div>
+    }
+    <input type="hidden" id="hdnPayment" value="@Model.IsPayment.ToString()" />
+    <input type="hidden" id="hdnShipment" value="@Model.IsShipment.ToString()" />
+    <input type="hidden" id="hdnCityName" value="@Model.CityName" />
+    <input type="hidden" id="hdnExpectedDate" value="@Model.ExpectedDate" />
+    <script>
+
+        $(document).ready(function () {
+            $('input[type=radio][name=payment3]').change(function () {
+                if (this.value == '3') {
+                    $("#credit-options1").hide();
+                    
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+                else if (this.value == '4') {
+                    $("#credit-options1").show();
+                    $("#credit-options1").removeClass('d-none');
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+            });
+
+            $('input[type=radio][name=payment]').change(function () {
+                if (this.value == '3') {
+                    $("#credit-options1").hide();
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+                else if (this.value == '4') {
+                    $("#credit-options1").show();
+                    $("#credit-options1").removeClass('d-none');
+                    $("#card-details").hide();
+                    $("#debit-options").hide();
+                }
+
+            });
+        });
+    </script>
+}

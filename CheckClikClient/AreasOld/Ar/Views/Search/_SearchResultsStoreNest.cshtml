@@ -1,0 +1,241 @@
+﻿@using Customer
+@using SearchLibrary
+@using SearchLibrary.Models
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<head>
+    <style>
+                option:hover {
+            background-color: rgb(59, 183, 126);
+            color: rgb(255, 255, 255);
+        }
+
+        .sort-by-dropdown ul li a {
+            font-weight: 500;
+            font-size: 13px;
+            padding-top: 5px;
+            padding-right: 30px;
+            padding-bottom: 5px;
+            padding-left: 30px;
+            display: block;
+            position: relative;
+            color: rgb(126, 126, 126);
+        }
+            option {
+                font-weight: 500;
+            font-size: 17px;
+            padding-top: 5px;
+            padding-right: 30px;
+            padding-bottom: 5px;
+            padding-left: 30px;
+            display: block;
+            position: relative;
+            color: rgb(126, 126, 126);
+            }
+            select {
+                font-size:17px;
+            }
+                    .vendor-wrap .vendor-content-wrap h6 a {
+            color: #253D4E;
+        }
+                .vendor-wrap .vendor-content-wrap h6 a:hover {
+            color: #3BB77E;
+        }
+    </style>
+</head>
+
+@model QueryResponse<ProductSearchResult>
+@{
+    string strApiURL = Configuration["apiurl"];
+}
+<div class="totall-product  ml-20">
+    <p>We found <strong class="text-brand">@Model.NGroups</strong> Stores for you!</p>
+</div>
+
+<div class="row vendor-grid"> 
+    @if (Model.Results != null && Model.Results.Count() > 0)
+    {
+        for (int i = 0; i < Model.Results.Count(); i++)
+        {
+            var city = CheckClickClient.AppUtils.CityList.Where(x => x.Id == @Model.Results[i].CityId).FirstOrDefault();
+            var district = CheckClickClient.AppUtils.DistrictList.Where(x => x.Id == @Model.Results[i].DistrictId).FirstOrDefault();
+
+            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
+                <div class="vendor-wrap mb-40">
+                    <div class="vendor-img-action-wrap">
+                        <div class="vendor-img">
+                            <a href="#">
+                                <img class="default-img" style="height: 130px; border-radius: 10px;" src="@Url.Content(strApiURL + "Uploads/Stores/" + Model.Results[i].StoreLogo)" alt="" />
+                            </a>
+                        </div>
+                        <div class="product-badges product-badges-position product-badges-mrg">
+                            <span class="best">@(Model.Results[i].ItemType == "1" ? "Single" : "Entity")</span>
+                        </div>
+                    </div>
+                    <div class="vendor-content-wrap">
+                        <div class="d-flex justify-content-between align-items-end mb-30">
+                            <div>
+                                @*<div class="product-category">
+                                    <span class="text-muted">Since 2012</span>
+                                </div>*@
+                                <h6 class="mb-5"><a href="#">@Model.Results[i].StoreNameEn</a></h6>
+                                <div class="product-rate-cover">
+                                    <div class="product-rate d-inline-block">
+                                        @{
+                                                var starPercetage = int.Parse(Model.Results[i].Ratings) * 20;
+                                                int i1 = 0;
+                                        }
+                                        <div class="product-rating" style="width: @starPercetage%"></div>
+                                    </div>
+                                    <span class="font-small ml-5 text-muted"> (@Model.Results[i].Ratings)</span>
+                                </div>
+                            </div>
+                            <div class="mb-10">
+                                <span class="font-small total-product">@Model.Results[i].ReviewsCount Reviews</span>
+                            </div>
+                        </div>
+                        <div class="vendor-info mb-30">
+
+                            <ul class="contact-infor text-muted">
+                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>@*@Model.Results[i].DescriptionEn*@ @city.NameEn, @district.NameEn, @Model.Results[i].StreetNo, @Model.Results[i].BuildingNo, @Model.Results[i].FloorNo</span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us: &nbsp;</strong><span> @Model.Results[i].ContactNo</span></li>
+                            </ul>
+                        </div>
+                        <a href="/Product/List?storeid=@Model.Results[i].StoreId" target="_blank" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="pagination-area mt-20 mb-20">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href=""><i class="fi-rs-arrow-small-left"></i></a>
+                    </li>
+                    @{
+                        int iPageSize = Customer.Utils.SearchUtil.PageSize;
+                        int iMaxPages = (Model.NGroups + iPageSize - 1) / iPageSize;
+
+                                @for (int i = 1; i <= iMaxPages; i++)
+                        {
+                                    <li class="page-item"><a href="refjavascript:void(0);" class="page-link changePage" data-pageindex="@(i - 1)" href="">@i</a></li>
+                            //<li><a href="javascript:void(0);" class="changePage" data-pageindex="@(i - 1)">@i</a></li>
+                        }
+
+                    }
+                    @*<li class="page-item"><a class="page-link" href="">1</a></li>
+                <li class="page-item active"><a class="page-link" href="">2</a></li>
+                <li class="page-item"><a class="page-link" href="">3</a></li>
+                <li class="page-item"><a class="page-link dot" href="">...</a></li>
+                <li class="page-item"><a class="page-link" href="">6</a></li>*@
+                    <li class="page-item">
+                        <a class="page-link" href=""><i class="fi-rs-arrow-small-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+    else
+    {
+        <div class="archive-header-2 text-center">
+            <h1 class="display-2 mb-50">No Store Found.</h1>
+
+        </div>
+    }
+</div>
+
+<div class="container mb-30" style="display:none;">
+    <div class="row flex-row-reverse">
+        <div class="col=lg-4-12">
+            @*col-lg-4-5*@
+            <div class="row product-grid">
+                @if (Model.Results != null && Model.Results.Count() > 0)
+                {
+                    for (int i = 0; i < Model.Results.Count(); i++)
+                    {
+                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="https://wp.alithemes.com/html/nest/demo/shop-product-right.html">
+                                            <img class="default-img" src="@Url.Content(strApiURL + "Uploads/Stores/" + Model.Results[i].StoreLogo)" alt="">
+                                            <img class="hover-img" src="@Url.Content(strApiURL + "Uploads/Stores/" + Model.Results[i].StoreLogo)" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1"> 
+                                        <a aria-label="Compare" class="action-btn" href="#"><i class="fi-rs-shuffle"></i></a> 
+                                    </div>
+                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                        <span class="hot">Store</span> 
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-category"> 
+                                        <a href="#">Total Reviews: @Model.Results[i].ReviewsCount</a>
+                                    </div>
+                                    <h2><a href="#">@Model.Results[i].StoreNameEn</a></h2>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            @{
+                                                var starPercetage = int.Parse(Model.Results[i].Ratings) * 20;
+                                                int i1 = 0;
+                                            }
+                                            <div class="product-rating" style="width: @starPercetage%;"></div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (@Model.Results[i].Ratings)</span>
+                                    </div>
+                                     
+                                    <div class="pt-15"> 
+                                        <div class="add-cart">
+                                            <a class="btn w-100 hover-up" href="/Product/List?storeid=@Model.Results[i].StoreId"><i class="fi-rs-home mr-5"></i>View Store Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="pagination-area mt-20 mb-20">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href=""><i class="fi-rs-arrow-small-left"></i></a>
+                                </li>
+                                @{
+                                    int iPageSize = Customer.Utils.SearchUtil.PageSize;
+                                    int iMaxPages = (Model.NGroups + iPageSize - 1) / iPageSize;
+
+                                                        @for (int i = 1; i <= iMaxPages; i++)
+                                    {
+                                                            <li class="page-item"><a href="refjavascript:void(0);" class="page-link changePage" data-pageindex="@(i - 1)" href="">@i</a></li>
+                                        //<li><a href="javascript:void(0);" class="changePage" data-pageindex="@(i - 1)">@i</a></li>
+                                    }
+
+                                }
+                                @*<li class="page-item"><a class="page-link" href="">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="">2</a></li>
+                            <li class="page-item"><a class="page-link" href="">3</a></li>
+                            <li class="page-item"><a class="page-link dot" href="">...</a></li>
+                            <li class="page-item"><a class="page-link" href="">6</a></li>*@
+                                <li class="page-item">
+                                    <a class="page-link" href=""><i class="fi-rs-arrow-small-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                }
+                else
+                {
+                    <div class="archive-header-2 text-center">
+                        <h1 class="display-2 mb-50">No Store Found.</h1>
+
+                    </div>
+                }
+                 
+
+            </div>
+            <!--product grid-->
+            <!--End Deals-->
+        </div>
+    </div>
+</div>
