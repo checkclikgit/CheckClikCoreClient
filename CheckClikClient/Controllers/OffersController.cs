@@ -53,6 +53,19 @@ namespace CheckClikClient.Controllers
                 return View("Error");
             }
         }
+        [Route("Offers/IndexNew")]
+        public async Task<ActionResult> IndexN()
+        {
+            try
+            { 
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+        }
+
         public async Task<ActionResult> PVOffer(int CityId = 0, int DistrictId = 0, string Latitude = "", string Longitude = "")
         {
             try
