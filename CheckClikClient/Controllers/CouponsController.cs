@@ -56,6 +56,12 @@ namespace CheckClikClient.Controllers
             }
         }
 
+        [Route("Coupons/IndexNew")]
+        public ActionResult IndexN()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<ActionResult> CouponsofCustomers(int pageNumber)
         {
