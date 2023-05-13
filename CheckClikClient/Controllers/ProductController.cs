@@ -67,6 +67,10 @@ namespace CheckClikClient.Controllers
              
             return View(lstBranchDTO);
         }
+        public async Task<ActionResult> CategoryDetails(int storeId, string q)
+        {
+            return View();
+        }
 
 
         [HttpPost]
