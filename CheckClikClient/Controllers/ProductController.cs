@@ -71,6 +71,10 @@ namespace CheckClikClient.Controllers
         {
             return View();
         }
+        public async Task<ActionResult> StoreContactUs(int storeId, string q)
+        {
+            return View();
+        }
 
 
         [HttpPost]
