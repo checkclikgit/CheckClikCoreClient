@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Stores list | CheckClik MarketPlace";
+    Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
+}
+<link href="~/assets/css/bootstrap-slider.css" rel="stylesheet" />
+<style>
+    .loading-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+    .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 51px;
+            height: 51px;
+            margin: 6px;
+            border: 6px solid #666666;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #666666 transparent transparent transparent;
+        }
+
+            .lds-ring div:nth-child(1) {
+                animation-delay: -0.45s;
+            }
+
+            .lds-ring div:nth-child(2) {
+                animation-delay: -0.3s;
+            }
+
+            .lds-ring div:nth-child(3) {
+                animation-delay: -0.15s;
+            }
+
+    @@keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .sub-footer {
+        background: #fff;
+        padding: 0;
+        border-top: 2px solid #eaeaea;
+        position: static;
+        bottom: 0;
+        width: 100%;
+    }
+    .shop-product-fillter {
+        margin: 10px 0 10px;
+    display: block;
+    } 
+    button.input:hover, button[type='button']:hover 
+    {
+    background-color: #29A56C !important;
+    border-radius: 10px;
+    }
+</style>
+
+<div class="container mb-30">
+        <div class="archive-header-2 text-center pt-70 pb-0">
+            @*<h1 class="display-2 mb-50">
+                <img id="logo" style="right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+            </h1>*@
+            <div class="row">
+                <div class="col-lg-5 mx-auto">
+                    <div class="sidebar-widget-2 widget_search mb-50">
+                        <div class="search-form"> 
+                                <form action="#">
+                                    <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
+                                    <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
+                                </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+<div class="shop-product-fillter">
+    <div class="totall-product">
+        @*<p>We found <strong class="text-brand">@Model.NGroups</strong> Stores for you!</p>*@
+    </div>
+    <div class="sort-by-product-area">
+
+        <div class="sort-by-cover mr-10 ml-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp; DISTANCE:</span>
+                <select id="ddlDistance" name="ddlDistance" class="" style="width:auto; ">
+                    <option value="1">1 KM</option>
+                    <option value="10">10 KM</option>
+                    <option value="20">20 and above</option>
+                </select>
+            </div>
+        </div>
+        <div class="sort-by-cover mr-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp;PAYMENT METHOD:</span>
+                <select id="ddlPaymentOption" name="ddlPaymentOption" class="" style="width:auto; ">
+                    <option value="0">Any</option>
+                    <option value="1">Cash On Delivery</option>
+                    <option value="2">Card</option>
+                    <option value="3">Both</option>
+                </select>
+            </div>
+        </div>
+        <div class="sort-by-cover mr-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp; Show:</span>
+
+                <select id="ddlShow" name="ddlShow" class="" style="width:auto; ">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <a href="#" id="btnFilter" name="btnFilter" value="Filter By" onclick="GetSearchLocationResults()" class="btn btn-sm btn-default" style="height: auto;"><i class="fi-rs-filter mr-5"></i>Filter By</a>
+        </div>
+        @*<div class="sort-by-cover">
+
+        <div class="sort-by-product-wrap">
+        <div class="sort-by">
+        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+        </div>
+        <div class="sort-by-dropdown-wrap">
+        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+        </div>
+        </div>
+        <div class="sort-by-dropdown">
+        <ul>
+        <li><a class="active" href="">Featured</a></li>
+        <li><a href="">Price: Low to High</a></li>
+        <li><a href="">Price: High to Low</a></li>
+        <li><a href="">Release Date</a></li>
+        <li><a href="">Avg. Rating</a></li>
+        </ul>
+        </div>
+        </div>*@
+    </div>
+</div>
+
+
+<div id="divLoader" class="loading-wrapper">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div id="divSearchResults"></div>
+</div>
+
+
+@*<script src="~/web-assets/js/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+
+@*<script src="~/assets/js/bootstrap-slider.js"></script>
+<script type="text/javascript">
+
+   
+</script>*@

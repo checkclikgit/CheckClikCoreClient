@@ -1,0 +1,531 @@
+﻿@model IEnumerable<Customer.Models.BranchDTO>
+@inject IConfiguration Configuration
+@{
+    string strApiURL = Configuration["apiurl"];
+}
+
+@{
+    ViewBag.Title = "Main Store Page";
+    Layout = "~/Views/Shared/Redesign/_StoreLayout.cshtml";
+}
+@*<link rel="stylesheet" href="/nest/css/slider-range.css" />*@
+@*<link href="~/nest/css/bootstrap-slider.css" rel="stylesheet" />*@
+@*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />*@
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.css" integrity="sha512-SZgE3m1he0aEF3tIxxnz/3mXu/u/wlMNxQSnE0Cni9j/O8Gs+TjM9tm1NX34nRQ7GiLwUEzwuE3Wv2FLz2667w==" crossorigin="anonymous" />*@
+@*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>*@
+@*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>*@
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>*@
+<style>
+       /* .loading-wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 64px;
+            height: 64px;
+        }
+
+            .lds-ring div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 51px;
+                height: 51px;
+                margin: 6px;
+                border: 6px solid #666666;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: #666666 transparent transparent transparent;
+            }
+
+                .lds-ring div:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                .lds-ring div:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                .lds-ring div:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+
+        @@keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    */
+        .sub-footer {
+            background: #fff;
+            padding: 0;
+            border-top: 2px solid #eaeaea;
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+        .archive-header {
+        background: url(../images/header-bg.png) no-repeat center center;
+        border-radius: 7px;
+        padding: 11px 15px;
+        background-size: cover;
+    }
+        #slider-div {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+    }
+
+    #slider-div>div {
+      margin: 8px;
+    }
+
+    .slider-label {
+      position: absolute;
+      background-color: #eee;
+      padding: 4px;
+      font-size: 0.75rem;
+    }
+    .product-cart-wrap .product-action-1 {
+    
+    left: 47%;
+    }
+</style>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "search", @class = "" }))
+{ 
+        <input type="hidden" name="hdnlocation" id="hdnlocation" /> 
+        <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" /> 
+        <input type="hidden" name="hdnSearchText" id="hdnSearchText" value="@CheckClickClient.AppUtils.SearchString"/>
+        <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
+        <input type="hidden" name="hdnStart" id="hdnStart" value="0" />
+        <input type="hidden" name="hdnCat" id="hdnCat" value="" />
+        <input type="hidden" name="hdnSubCat" id="hdnSubCat" value="" />
+        <!-- end col --> 
+}
+
+
+<div class="row mt-2" style="height: 80px;">
+    <div class="col-sm-12 col-md-5 col-lg-5">
+        <div class="archive-header">
+            <div class="row align-items-center">
+                @*<div class="col-xl-3">*@
+                <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <div class="main-menu d-lg-block">
+                                @*main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading*@
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Category List  <i class="fi-rs-angle-down"></i></a>
+                                            <div id="divCatAndSubCat">
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <div class="breadcrumb">
+                                <a href="#" rel="nofollow"><i class="fi-rs-home mr-5"></i>Category</a>
+                                &nbsp;&nbsp; <span id="divCat">All Category</span> &nbsp;&nbsp; <span id="divSubCat"> All SubCategory </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<h1 class="mb-15">Snack</h1>*@
+
+                </div>
+            </div>
+        </div>
+        <div class="row" hidden>
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <figure class="card card-product">
+                        <div class="img-wrap" style="height: auto;">
+                            @if (!string.IsNullOrEmpty(item.BranchLogoImage))
+                            {
+                                <img src="@Url.Content(strApiURL + "Uploads/Stores/" + item.BranchLogoImage)" class="pic-bordered radius-50" alt="" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content(strApiURL + "Uploads/Stores/default.jpg")" class="pic-bordered radius-50" alt="" />
+                            }
+
+                        </div>
+                        <figcaption class="product-desc">
+                            <h5 class="title">@item.BranchNameEn</h5>
+                        </figcaption>
+                        <div class="product-price">
+                            <button id="btnViewBranches" class="btn btn-sm btn-default">View Details</button>
+                        </div> <!-- product-price.// -->
+                    </figure>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <select id="ddlBranchList" class=" form-control">
+                    @*select-active*@
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.Id">@item.BranchNameEn</option>
+                    }
+                </select>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <input id="txtSearchProduct" name="txtSearchProduct" type="text" class="form-control" value="@CheckClickClient.AppUtils.SearchString" placeholder="Search Product" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-2 col-md-2">
+        <input type="button" id="btnTopSearchFilter" onclick="SetDataInHiddenField()" class="btn btn-sm btn-primary" style="height: 3rem;width: auto;" value="Search" />
+    </div>
+</div>
+
+  
+
+<div id="divSearchResults">
+    @*<div class="price-filter">
+                    <div class="price-filter-inner">
+                        <div id="slider-range" class="mb-20"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
+                            <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
+                        </div>
+                    </div>
+                </div>*@
+</div>
+
+
+<div class="row mt-2 mb-3">
+    <div id="divTiming">
+    </div>
+</div>
+
+
+@*<script src="~/assets/js/bootstrap-slider.js"></script>*@
+<script type="text/javascript">
+    var clearSession = false;
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    function test()
+    {
+        alert("a");
+    }
+
+    $(document).ready(function () {
+        //hdnIsLocationSet
+        setTimeout(function () {
+            GetCategorySubCategoryTimingResults();
+            GetSearchResults();
+        }, 100);
+
+        $("#ddlBranchList").on("change", function () {
+            GetCategorySubCategoryTimingResults();
+             GetSearchResults();
+             ClearField();
+             
+            $("#divCat").html("All Category");
+            $("#divSubCat").html("All Subcategory");
+        });
+
+        
+    });
+    function ClearField()
+    {
+        clearSession = true;
+
+        $("#hdnSearchFilters").val("");
+
+        $("#hdnCat").html("");
+        $("#divCat").html("");
+        $("#hdnSubCat").val("");
+        $("#divSubCat").html("");
+        
+    }
+    function SetCategory(categoryId, catName)
+    { 
+        $("#hdnCat").html(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val("");
+        $("#divSubCat").html("");
+    }
+    function SetSubCategory(categoryId, catName, subCatId, subCatName)
+    { @*alert("a");*@
+        $("#hdnCat").val(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val(subCatName);
+        $("#divSubCat").html(subCatName);
+    }
+    @*function SetSubCategory(categoryId, catName, subCatId, subCatName)
+    { 
+        $("#hdnCat").val(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val(subCatName);
+        $("#divSubCat").html(subCatName);
+    }*@
+
+    function GetCategorySubCategoryTimingResults() {
+        $("#divCatAndSubCat").html("");
+        $("#divTiming").html("");
+        var branchId = $("#ddlBranchList").val();
+
+        $.ajax({
+            url: "@Url.Action("GetCatSubCatTiming", "Product")",
+            type: "POST",
+            data: {
+                ////partialViewForm relates to the form element in your partial view
+                //model: JSON.stringify($('#search').serializeObject()),
+                branchid: parseInt(branchId), branchName: "", Latitude: "", Longitude: ""
+            },
+            success: function (data) {
+                $("#divCatAndSubCat").html(data.resultCatAndSubCat);
+                $("#divTiming").html(data.resultTiming);
+    @*GetSearchResults();*@
+                },
+            error: function (xhr) {
+                $("#divLoader").hide();
+                $("#loader").hide();
+            }
+        });
+    }
+
+    function GetSearchResults() {
+
+        var showRows = $("#ddlShow").val() == null ? "0" : $("#ddlShow").val();
+        @*var catId = parseInt($("#hdnCat").val());
+        var subCatId = parseInt($("#hdnSubCat").val());*@
+        var catId = $("#hdnCat").val();
+        var subCatId = $("#hdnSubCat").val();
+
+        var branchId = $("#ddlBranchList").val();
+        var ProductSearchText = $("#txtSearchProduct").val();
+        $.ajax({
+            url: "@Url.Action("ProductSearchResults", "Product")",
+            //datatype: "json",
+            type: "post",
+            data: {
+                //partialViewForm relates to the form element in your partial view
+                 model: JSON.stringify($('#search').serializeObject()), branchid: parseInt(branchId), ProductSearchText: ProductSearchText, showRows: parseInt(showRows), catId: catId, subCatId: subCatId, clearSession : clearSession
+            },
+            //JSON.stringify({ "q": userName, "password": password }),
+            //contenttype: 'application/json; charset=utf-8',
+            //async: true,
+            success: function (dataReturn) {
+                emptyStr = dataReturn.result.replace(/[\r\n]+/g, '');
+                if (emptyStr != '') {
+                    $("#divSearchResults").html(dataReturn.result);
+                    $("#divSearchResults").show();
+                    @*BindFiltersOnChange();*@
+                    @*DisplayActivePage();*@
+                }
+                if ($("#txtPriceRange").length > 0) {
+                    @*$("#txtPriceRange").slider({
+                        tooltip: 'hide'
+                    }).on('slideStop', changePrice).on('change', displayChangedPrice);*@
+                    displayChangedPrice();
+                }
+                $("#divLoader").hide();
+            },
+            error: function (xhr) {
+                //console.log(xhr.responseText);
+                //alert('error');
+                $("#divLoader").hide();
+            }
+        });
+    }
+
+   @* function changePrice() {
+        //console.log(txtPriceRange.value);
+        isPriceChanged = false;
+        isPriceChanged = txtPriceRange.value.split(",")[0] == $("#spnMinPrice").text();
+        if (!isPriceChanged)
+            isPriceChanged = txtPriceRange.value.split(",")[1] == $("#spnMaxPrice").text();
+        if (isPriceChanged)
+            LoadSearchResults();
+    }
+
+    function displayChangedPrice() {
+        $("#spnMinPrice").text(txtPriceRange.value.split(",")[0]);
+        $("#spnMaxPrice").text(txtPriceRange.value.split(",")[1]);
+    }
+
+    function DisplayActivePage() {
+        $(".changePage.active").removeClass("active");
+        $(".changePage").eq(parseInt($("#hdnStart").val())).addClass("active");
+    }
+
+    function BindFiltersOnChange() {
+        $(".clear-filters").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            //lknClear_3
+            var groupId = $(this).attr("id").replace("lknClear_", "");
+            $("[id^='ckbFilter" + groupId + "_'][type=checkbox]:checked").each(function () {
+                this.checked = false;
+            });
+            LoadSearchResults();
+        });
+        $("#lnkClearPriceFilter").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            var txtPriceRange = $("#txtPriceRange");
+            var arRange = [parseInt(txtPriceRange.data("slider-min")), parseInt(txtPriceRange.data("slider-max"))];
+            $("#spnMinPrice").text(txtPriceRange.data("slider-min"));
+            $("#spnMaxPrice").text(txtPriceRange.data("slider-max"));
+            txtPriceRange.slider('setValue', arRange, true)
+            //txtPriceRange.slider('refresh');
+            LoadSearchResults();
+        });
+
+        $(".search-sort").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnSort").val($(this).data("sort-field") + "," + $(this).data("sort-dir"));
+            LoadSearchResults();
+        });
+
+        $(".ckbFilter").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optItemType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optServiceType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $("#lnkClearItemType").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            $(".optItemType:checked").prop('checked', false);
+            LoadSearchResults();
+        });
+        $(".changePage").on("click", function (e) {
+            e.preventDefault();
+            if (!$(this).hasClass("active")) {
+                $("#hdnStart").val($(this).data("pageindex"));
+                LoadSearchResults();
+            }
+        });
+    }
+
+    function LoadSearchResults() {
+        $("#divLoader").show();
+        $("#divSearchResults").hide();
+
+        var obj = '{'
+            + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+            + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+            + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+            + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+            + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+            + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+            + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+            + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+        if ($(".optServiceType:checked").length > 0)
+            obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+        obj += '"Price": "' + $("#txtPriceRange").val() + '",';
+
+        if ($(".optItemType:checked").length > 0)
+            obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+        $(".filter-auto").each(function () {
+            var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+            var isCurrentFilter = $(this).is(":checked");
+            obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+        });
+
+        if (obj.endsWith(","))
+            obj = obj.slice(0, -1);
+        obj += '}';
+
+        $("#hdnSearchFilters").val(obj);
+        GetSearchResults();
+    }*@
+
+    function SetDataInHiddenField()
+    {
+        var hdnSearchText = $("#txtSearchProduct").val();
+        $("#hdnSearchText").val(hdnSearchText);
+
+        var startPrice = $("#slider-range-value1").html(); 
+        var endPrice = $("#slider-range-value2").html();
+        var priceRange = "";
+
+        if (startPrice != 'false' && startPrice != undefined) {
+            startPrice = $("#slider-range-value1").html().split(" ");
+            endPrice = $("#slider-range-value2").html().split(" ");
+            priceRange = parseFloat(startPrice[1]) + "," + parseFloat(endPrice[1]);
+        }
+        else{
+            priceRange = "";
+        }
+        var obj = '{'
+            + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+            + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+            + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+            + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+            + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+            + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+            + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+            + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+        if ($(".optServiceType:checked").length > 0)
+            obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+        @*obj += '"Price": "' + $("#txtPriceRange").val() + '",';*@
+            obj += '"Price": "' + priceRange + '",';
+
+        if ($(".optItemType:checked").length > 0)
+            obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+        $(".filter-auto").each(function () {
+            var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+            var isCurrentFilter = $(this).is(":checked");
+            obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+        });
+
+        if (obj.endsWith(","))
+            obj = obj.slice(0, -1);
+        obj += '}';
+
+        $("#hdnSearchFilters").val(obj);
+        GetSearchResults();
+    }
+    
+        $("#ddlShow").on("change", function () {
+            alert("a");
+            SetDataInHiddenField();
+        });
+</script>

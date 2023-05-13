@@ -1,0 +1,395 @@
+﻿@model Customer.Models.OffersDTO
+<head>
+    <style>
+                .product-cart-wrap {
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #d3d3d3;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: .2s;
+            -moz-transition: .2s;
+            -webkit-transition: .2s;
+            -o-transition: .2s;
+        }
+                        .inner {
+            font-size: 30px;
+            font-color: #878787;
+            position: absolute;
+            top: 50%;
+            left: 79%;
+            /* background-color: white; */
+            color: white;
+        }
+
+        .rotate {
+            -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+          -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+          transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+        }
+    </style>
+</head>
+@{
+    ViewBag.Title = "Available Coupons";
+    Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
+}
+
+<div>
+    <section class="home-slider position-relative mb-30">
+        <div class="container">
+            <div class="home-slide-cover mt-30">
+                <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                    <div class="single-hero-slider single-animation-wrap" style="background-image: url(/nest/imgs/slider/slider-1.png)">
+                        <div class="slider-content">
+                            <h1 class="display-2 mb-40">
+                                Don’t miss amazing<br />
+                                grocery deals
+                            </h1>
+                            <p class="mb-65">Sign up for the daily newsletter</p>
+                        </div>
+                    </div>
+                    <div class="single-hero-slider single-animation-wrap" style="background-image: url(/nest/imgs/slider/slider-2.png)">
+                        <div class="slider-content">
+                            <h1 class="display-2 mb-40">
+                                Fresh Vegetables<br />
+                                Big discount
+                            </h1>
+                            <p class="mb-65">Save up to 50% off on your first order</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-arrow hero-slider-1-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mb-30">
+        <div class="row">
+            <div class="">
+                <div class="shop-product-fillter" style="display: -webkit-box">
+                    <div class="header-style-1" style="width:50%">
+                        <div class="search-style-2">
+                            <form action="#">
+                                <select class="select-active">
+                                    <option>All Categories</option>
+                                    <option>Milks and Dairies</option>
+                                    <option>Wines & Alcohol</option>
+                                    <option>Clothing & Beauty</option>
+                                    <option>Pet Foods & Toy</option>
+                                    <option>Fast food</option>
+                                    <option>Baking material</option>
+                                    <option>Vegetables</option>
+                                    <option>Fresh Seafood</option>
+                                    <option>Noodles & Rice</option>
+                                    <option>Ice cream</option>
+                                </select>
+                                <input type="text" placeholder="Search for items..." />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sort-by-product-area">
+                        <div class="sort-by-cover mr-10">
+                            <div class="sort-by-product-wrap">
+                                <div class="sort-by">
+                                    <span><i class="fi-rs-apps"></i>Show:</span>
+                                </div>
+                                <div class="sort-by-dropdown-wrap">
+                                    <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="sort-by-dropdown">
+                                <ul>
+                                    <li><a class="active" href="#">50</a></li>
+                                    <li><a href="#">100</a></li>
+                                    <li><a href="#">150</a></li>
+                                    <li><a href="#">200</a></li>
+                                    <li><a href="#">All</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sort-by-cover">
+                            <button type="button" class="btn btn-primary btn-sm"><i class="fi-rs-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ml-15"><h3>Coupons</h3></div>
+                </div>
+                <div class="row product-grid mt-20">
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="product-cart-wrap mb-30">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-8 col-lg-8  p-2" style="background-color:#faf5f0">
+                                    <div class="product-content-wrap mt-2">
+                                        <h2 style="text-align:center;">Seeds of Change Organic Quinoe</h2>
+                                        <div class="" style="text-align:center;">
+                                            <span class="font-small">Valid till <span style="font-weight:bold">24 jul 2023</span></span>
+                                        </div>
+                                        <hr />
+                                        <p class="product-card-bottom" style="text-align:center;">
+                                            this is a sample message from kamrul. this is a sample message from kamrul. this is a sample message from kamrul. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #2a9bea;"> 
+                                    <h1 style="text-align:center;" class="inner rotate">Voucher</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <!--end product card-->
+                </div>
+                <!--product grid-->
+                <div class="pagination-area mt-20 mb-20">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">6</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!--End Deals-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@model Customer.Models.CustomerManageAddressDTO
+ 
+    <link href="~/web-assets/css/select2.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.DropDownListFor(model => model.CountryId, new SelectList(Model.CountryList, "Id", "NameEn"), "-Select Country-",new { id = "drpCountryList", @class = "form-control select", @onchange = "countryChange();" })
+            <span id="lblCountryList" class="text-danger" style="display:none;">Select Country</span>
+            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.DropDownListFor(model => model.CityId, new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "NameEn"), "-Select City-",new { id = "drpCityList", @class = "form-control select" })
+            <span id="lblCityList" class="text-danger" style="display:none;">Select City</span>
+            @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.TextBoxFor(model => model.FullName, new
+            {
+                @placeholder = "Enter Full Name",
+                @id = "txtFullName",
+                @class = "form-control",
+                @maxlength = "50"
+            })
+            <span id="lblFullName" class="text-danger" style="display:none;">Enter Full Name</span>
+            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.TextBoxFor(model => model.Address1, new
+            {
+
+                @placeholder = "Enter Address1",
+                @id = "txtAddress1",
+                @class = "form-control",
+                @maxlength = "100"
+            })
+            <span id="lblAddress1" class="text-danger" style="display:none;">Enter Address</span>
+            @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.TextBoxFor(model => model.Address2, new
+            {
+                @placeholder = "Enter Address2",
+                @id = "txtAddress2",
+                @class = "form-control",
+                @maxlength = "100"
+            })
+            @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group has-float-label">
+            @Html.TextBoxFor(model => model.Zipcode, new
+            {
+                @placeholder = "Enter Zipcode",
+                @id = "txtZipcode",
+                @onkeypress = "return isNumricKey(event)",
+                @maxLength = 6,
+                @minLength = 6,
+                @class = "form-control"
+            })
+            <span id="lblZipCode" class="text-danger" style="display:none;">Enter Zip Code</span>
+            @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6"> 
+        <div class="form-item">
+            <div class="input-group" style="width: 100%">
+                <span class="input-group-addon" id="faPhone">
+                    <i class="">+966</i>
+                </span>
+                @Html.TextBoxFor(model => model.PhoneNumber,
+                  new
+                  {
+                      @placeholder = "Enter Phone Number",
+                      @id = "txtPhoneNumber",
+                      @onkeypress = "return isNumricKey(event)",
+                      @maxLength = 9,
+                      @class = "form-control"
+                  })
+
+            </div>
+            <span id="lblPhoneNumber" class="text-danger" style="display:none;">Enter Phone Number</span>
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+        </div>
+
+     <div class="col-md-6">
+         <label class="radio-inline" id="radioValidations">
+             @Html.RadioButton("optradio", "0") Home Address
+         </label>
+         <label class="radio-inline">
+             @Html.RadioButton("optradio", "1") Office Address
+         </label>
+         <br />
+         <span id="lblAddressType" class="text-danger" style="display:none;">Select Address Type</span>
+     </div>
+    <div class="clearfix"></div>
+    <hr />
+    <div class="col-md-12">
+            <button type="button" class="btn btn-block " style="background-color: #666666;" id="btnAddAddress" onclick="AddressSave()"> <span class="text bold" style="color:white;">Save & Continue</span></button> 
+         
+        </div>
+    </div>
+     
+<input type="hidden" value="" id="hdnCitylist" />
+
+<script src="~/web-assets/js/select2.js"></script> 
+<script> 
+    cl = @Json.Serialize(Model.CityList);
+    $('#hdnCitylist').val(cl);
+
+    
+        $(document).ready(function () {
+             
+        });
+    $(".select").select2({ width: "100%" });
+</script>
+
+
+
+
+

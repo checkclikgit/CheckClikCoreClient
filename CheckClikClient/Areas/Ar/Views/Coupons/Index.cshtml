@@ -1,0 +1,25 @@
+﻿@model Customer.Models.CouponsDTO
+@{
+    ViewBag.Title = "Available Coupons";
+    Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
+}
+
+<div class="container mb-30">
+    <section class="myorders-banner text-center">
+        <h2><strong>Coupons</strong></h2>
+        <div class="text-center">
+            <p><span id="strCount"></span> Coupons Available</p>
+
+        </div>
+    </section>
+
+    <section class="coupons-list mt-20">
+        <div class="container">
+            <div class="row">
+                <div id="div_Coupons"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

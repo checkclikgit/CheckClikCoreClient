@@ -1,0 +1,259 @@
+﻿@model Customer.Models.OffersDTO
+@using Customer
+@{
+    int srno = 0;
+    int srno2 = 0;
+}
+<link href="~/web-assets/font-icons/flaticon.css" rel="stylesheet" />
+<style>
+    .offer-images img {
+        object-fit: cover;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="manage-account text-center">
+    @if (Model.ListOffers != null && Model.ListOffers.Count() > 0)
+    {
+        foreach (var item in Model.ListOffers)
+        {
+            <figure class="figure col">
+                @*<img src="~/web-assets/images/productdetails-2.jpg" class="figure-img img-fluid rounded">*@
+                <i class="@item.IconClass figure-img img-fluid rounded"></i>
+                <figcaption class="figure-caption">@item.NameEn</figcaption>
+            </figure>
+        }
+    }
+    else
+    {
+        <span class="text-danger">
+            No offers available
+        </span>
+    }
+    @if (Model.ProductListOffers != null)
+    {
+        foreach (var item in Model.ProductListOffers)
+        {
+            <figure class="figure col">
+                <img src="@Model.ApiURL/Uploads/Products/@item.Image" class="figure-img img-fluid rounded">
+                <figcaption class="figure-caption">@item.ProductNameEn</figcaption>
+            </figure>
+        }
+    }
+    @if (Model.ServiceListOffers != null)
+    {
+        foreach (var item in Model.ServiceListOffers)
+        {
+            <figure class="figure col">
+                <img src="@Model.ApiURL/Uploads/Products/@item.Image" class="figure-img img-fluid rounded">
+                <figcaption class="figure-caption">@item.ProductNameEn</figcaption>
+            </figure>
+        }
+    } 
+</div>
+<hr class="mg-ac-hr" />
+<div class="row">
+    <div class="col-md-7 border-right-divider">
+        <div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>Discover Stores</h5>
+                <a href="#">See All</a>
+            </div>
+            <hr class="mg-ac-hr mt-1 mb-3" />
+            <div class="manage-account text-center mb-4">
+                @if (Model.listStores != null && Model.listStores.Count() > 0)
+                {
+                    foreach (var item in Model.listStores)
+                    {
+                        if (item.StoreType == 1)
+                        {
+                            <a href="~/@item.StoreEn.Replace(" ","-").ToLower()/b/@Customer.Utils.StringUtil.URLEncrypt(item.BranchId.ToString()).Replace("/","-")">
+                                 
+                                <figure class="figure col">
+                                    <img src="@Model.ApiURL/Uploads/Stores/@item.BranchLogoImage" class="figure-img img-fluid rounded">
+                                    <figcaption class="figure-caption">@item.StoreEn</figcaption>
+                                </figure>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="~/@item.StoreEn.Replace(" ","-").ToLower()/b/@Customer.Utils.StringUtil.URLEncrypt(item.BranchId.ToString()).Replace("/","-")">
+                                <div class="col-md-3 col-sm-4 col-xs-6 fwidth">
+                                    <div class="thumbnail">
+                                        <img src="@Model.ApiURL/Uploads/Stores/@item.BranchLogoImage" width="100%" class="object-fit">
+                                        <div class="caption">
+                                            <h4>@item.StoreEn</h4>
+                                            <h5><span><i class="far fa-star"></i> @item.Ratings</span> (@item.Reviews Reviews)  </h5> - @item.VisitCount Visited
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                }
+                else
+                {
+                    <h2 class="text-danger text-center">
+                        No stores available
+                    </h2>
+                } 
+            </div> 
+            <div id="myacc-ads">
+                <div id="myCarousel" class="carousel slide offer-carousel" data-ride="carousel">
+                    <ol class="carousel-indicators all-categories">
+                        @if (Model.listBanners != null)
+                        {
+                            foreach (var item in Model.listBanners)
+                            {
+                                <li data-target="#carousel-example-generic"
+                                    @if (srno == 0) { <text> class="active" </text> }
+                                    data-slide-to="@srno++"></li>
+                            }
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        @if (Model.listBanners != null)
+                        {
+                            foreach (var item in Model.listBanners)
+                            {
+                                 
+                                <div class="item @if(srno2++ == 0){ <text>active </text>}">
+                                    <img src="@Model.ApiURL/Uploads/AdvOfr/@item.BannerImageEn" style="width:100%;height: 200px" />
+                                </div>
+                            }
+                            if (Model.listBanners.Count == 0)
+                            {
+
+                                <div class="item @if(srno2++ == 0){ <text>active </text>}">
+                                    <img src="@Model.ApiURL/Uploads/AdvOfr/15984576slide1.jpg" style="width:100%;height: 200px" />
+                                </div> 
+                            }
+
+                        }
+                    </div>
+
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="fas fa-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="fas fa-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5"> 
+        @*<hr class="mg-ac-hr mt-1 mb-3" />*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="offers">
+                    @*@{var listOffers = (List<Customer.Models.OffersCDTO>)TempData["ProductOfferList"];}*@
+                    @{
+                        var listOffers = Model.ProductListOffers;
+                    }
+                    @if(listOffers != null && listOffers.Count() > 0)
+                    {
+                        foreach (var bracs in listOffers)
+                        {
+
+                            Customer.Models.ProductListDTO prod = new Customer.Models.ProductListDTO()
+                            {
+                                BranchId = (int)bracs.BranchId,
+                                ProductNameEn = bracs.NameEn,
+                                Id = bracs.InventoryId,
+                                BranchSubCategoryId = (int)bracs.BranchSubCategoryId,
+
+                            }; 
+                                <div class="slide">
+                                    <div class="thumbnail">
+                                        <a href="~/@bracs.StoreNameEn.Replace(" ", "-").ToLower()/@bracs.MainCategoryNameEn.Replace(" ", "-").ToLower()/@bracs.SubCategoryNameEn.Replace(" ", "-").ToLower()/p/@SlugUtil.GenerateSlug(prod)">
+                                            <img src="@Model.ApiURL/Uploads/Products/@bracs.BannerImageEn" class="main-img">
+                                        </a>
+                                        <div class="carousel-caption">
+                                            <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="#" class="pull-right"><i class="far fa-heart"></i></a>
+                                        </div>
+                                        <div class="offer-img">
+                                            <img src="~/assets/images/offer-tag.png" width="40px">
+                                        </div>
+                                        <div class="offer-img">
+                                            <strong>@bracs.Percentage% Off</strong>
+                                        </div>
+                                        <a href="~/@bracs.StoreNameEn.Replace(" ", "-").ToLower()/@bracs.MainCategoryNameEn.Replace(" ", "-").ToLower()/@bracs.SubCategoryNameEn.Replace(" ", "-").ToLower()/p/@SlugUtil.GenerateSlug(prod)">
+                                            <div class="caption">
+                                                <h4>@bracs.NameEn</h4>
+                                                <del>SAR @bracs.Price</del>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xs-12 pull-left">
+                                                        <h4 class="pull-left">SAR @bracs.DiscountPrice</h4>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> 
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function ($) {
+        var $myCarousel = $('#myCarousel'),
+            $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+        $myCarousel.carousel({
+            interval: 4000,
+            pause: "null"
+
+        });
+        $(".offers").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3500,
+            arrows: true,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+            }, {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2
+                }
+            }, {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1
+                }
+            }]
+        });
+    })(jQuery);
+    
+    //$(document).ready(function () {
+    //    $(".store-offers-slide").slick({
+    //        autoplay: true,
+    //        autoplaySpeed: 2500,
+    //        speed: 2000,
+    //        fade: true,
+    //        arrows: false,
+    //        dots: false,
+    //        pauseOnHover: false,
+    //    });
+    //});
+</script>

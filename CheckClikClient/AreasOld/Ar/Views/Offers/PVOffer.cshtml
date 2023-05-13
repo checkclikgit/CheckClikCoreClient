@@ -1,0 +1,343 @@
+﻿  
+@inject IConfiguration Configuration;
+@model Customer.Models.OffersDTO
+@{
+    int srno = 0;
+    int srno2 = 0;
+}
+<link href="~/web-assets/font-icons/flaticon.css" rel="stylesheet" />
+@*<link rel="stylesheet" type="text/css" href="~/web-assets/css/slick.css">
+<link rel="stylesheet" type="text/css" href="~/web-assets/css/slick-theme.css">*@
+<style>
+    .offer-images img {
+        object-fit: cover;
+        margin-top: 20px;
+    }
+
+    @@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap');
+
+    html {
+        height: 100%;
+    }
+
+    /*body
+        {
+          background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='229' height='229' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(272)'%3E%3Crect width='100%25' height='100%25' fill='rgba(237, 242, 247,1)'/%3E%3Cpath d='M0 40a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5zM0 0a 9.5-9.5 0 0 0 9.5-9.5h1a-10.5 10.5 0 0 1-10.5 10.5z' fill='rgba(145, 207, 243,0.41)'/%3E%3Cpath d='M0 0a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 0 9.5 9.5a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 0 9.5 9.5a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 1 9.5 9.5v1a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 1-9.5-9.5a-10.5-10.5 0 0 0-10.5-10.5h1a 9.5 9.5 0 0 1 9.5 9.5a 9.5 9.5 0 0 0 9.5 9.5zM-40 0a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 0 9.5 9.5a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 0 9.5 9.5a 10.5 10.5 0 0 1 10.5 10.5a 9.5 9.5 0 0 1 9.5 9.5v1a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 0-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5h1a 9.5 9.5 0 0 0 9.5 9.5zM40 0a 10.5 10.5 0 0 1 10.5 10.5h-1a-9.5-9.5 0 0 1-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5a-9.5-9.5 0 0 1-9.5-9.5a-10.5-10.5 0 0 1-10.5-10.5z' fill='rgba(143, 208, 255,0.14)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ")
+        }*/
+
+    @@media(min-width:768px) {
+        .carousel-caption {
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+
+
+    .ombre-externe {
+        background-color: white;
+        padding: 1rem;
+        -moz-box-shadow: 20px 20px 36px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 20px 20px 36px rgba(0,0,0,0.2);
+        box-shadow: 20px 20px 36px rgba(0,0,0,0.2);
+    }
+
+    .ombre-interne {
+        padding: 2vw;
+        background-color: white;
+        -webkit-box-shadow: inset 8px 0px 14px -1px rgba(0,0,0,0.4);
+        -moz-box-shadow: inset 8px 0px 14px -1px rgba(0,0,0,0.4);
+        box-shadow: inset 8px 0px 14px -1px rgba(0,0,0,0.4);
+    }
+
+
+    h5 {
+        font-size: 2vw;
+        font-family: 'Caveat', cursive;
+        text-shadow: 0px 0px 6px rgba(0, 2, 0, 1);
+    }
+
+    p {
+        /*text-shadow: -2px -2px 21px rgba(0, 2, 0, 1);*/
+    }
+</style>
+
+
+<div class="page-content pt-50 pb-50">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-lg-10 m-auto">*@
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="dashboard-menu">
+                            <h4>CATEGORIES</h4>
+                            <hr class="mt-0 mb-3" />
+                            <ul class="nav flex-column" role="tablist">
+                                @if (Model.ListOffers != null && Model.ListOffers.Count() > 0)
+                                {
+                                    int serial = 1;
+                                    foreach (var item in Model.ListOffers)
+                                    {
+                                        <li onclick="GetOfferItems(@item.Id)" class="nav-item">
+                                            <a class="nav-link @(serial == 1 ? "active" : "")" id="dashboard-tab" href="#" aria-controls="dashboard" aria-selected="false"><i class="@item.IconClass bnr-icon mr-10"></i>@item.NameEn</a>
+                                        </li>
+                                        serial++;
+                                    }
+                                }
+                                else
+                                {
+                                    <li>
+                                        <span class="text-danger">
+                                            No offers available
+                                        </span>
+                                    </li>
+                                }
+                                @*<li class="nav-item">
+                                    <a class="nav-link " id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Offer 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Offer 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Offer 3</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Offer 4</a>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content account dashboard-content pl-50">
+                            <div class="container my-5">
+                                <div class="ombre-externe">
+                                    <div class="ombre-interne">
+                                        <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                @if (Model.listBanners != null)
+                                                {
+                                                    foreach (var item in Model.listBanners)
+                                                    {
+                                                        @*<div class="item @if(srno2++ == 0){ <text>active </text>}">
+                                                <img src="@Model.ApiURL/Uploads/AdvOfr/@item.BannerImageEn" style="width:100%;height: 320px" />
+                                                </div>*@
+                                                        <div class="carousel-item @(srno2++ == 0 ? "active":"")">
+                                                            @*<img src="https://nsm09.casimages.com/img/2021/07/21//21072103063525998217500508.jpg" class="d-block w-100 peinture-ombre-interne-fine" alt="...">*@
+                                                            <img src="@(Model.ApiURL+"/Uploads/AdvOfr/"+@item.BannerImageEn)" style="width:100%;height: 320px" class="d-block w-100 peinture-ombre-interne-fine" alt="...">
+                                                            <div class="carousel-caption">
+                                                                <h5>
+                                                                    @*@item.NameEn*@
+                                                                </h5>
+                                                                <p>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    if (Model.listBanners.Count == 0)
+                                                    {
+                                                        <div class="carousel-item @(srno2++ == 0 ? "active":"")">
+                                                            @*<img src="https://nsm09.casimages.com/img/2021/07/21//21072103063525998217500508.jpg" class="d-block w-100 peinture-ombre-interne-fine" alt="...">*@
+                                                            <img src="@Model.ApiURL/Uploads/AdvOfr/15984576slide1.jpg" style="width:100%;height: 320px" class="d-block w-100 peinture-ombre-interne-fine" alt="...">
+                                                            <div class="carousel-caption">
+                                                                <h5>
+                                                                    First slide
+                                                                </h5>
+                                                                <p>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        @*<div class="item @if(srno2++ == 0){ <text>active </text>}">
+                                                <img src="@Model.ApiURL/Uploads/AdvOfr/15984576slide1.jpg" style="width:100%;height: 320px" />
+                                                </div>*@
+
+                                                    }
+                                                }
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- ombre-interne -->
+                                </div>
+                                <!-- ombre-externe -->
+                            </div>
+                        </div>
+
+                        <div class="offers" id="divofferitems">
+                            @if (Model.ProductListOffers != null)
+                            {
+                                foreach (var item in Model.ProductListOffers)
+                                {
+                                    <div class="row mt-60">
+                                        <div class="col-12">
+                                            <h2 class="section-title style-1 mb-30">Product Offers</h2>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row related-products">
+                                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                                    <div class="product-cart-wrap hover-up">
+                                                        <div class="product-img-action-wrap">
+                                                            <div class="product-img product-img-zoom">
+                                                                <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/p/@item.GenerateSlug()" tabindex="0">
+                                                                    <img class="default-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                                                    <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-action-1" hidden>
+                                                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                                <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                                            </div>
+                                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                                @if (@item.DiscountValue != 0)
+                                                                {
+                                                                    <span class="hot">
+                                                                        @item.DiscountValue @(item.DiscountType == 1 ? "%OFF" : item.DiscountType == 2 ? "OFF" : "")
+                                                                    </span>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-content-wrap">
+                                                            <h2><a href="/ProductDetails/CustomerProducts?Id = @item.GenerateSlug()" tabindex="0">@item.NameEn</a></h2>
+                                                            @*<div class="rating-result" title="90%">
+                                                    <span> </span>
+                                                    </div>*@
+                                                            <div class="product-price">
+                                                                <span>SAR @item.SellingPrice.ToString("N2") </span>
+                                                                <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            @if (Model.ServiceListOffers != null)
+                            {
+                                foreach (var item in Model.ServiceListOffers)
+                                {
+                                    <div class="row mt-60">
+                                        <div class="col-12">
+                                            <h2 class="section-title style-1 mb-30">Service Offers</h2>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row related-products">
+                                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                                    <div class="product-cart-wrap hover-up">
+                                                        <div class="product-img-action-wrap">
+                                                            <div class="product-img product-img-zoom">
+                                                                <a href="~/@item.StoreNameEn.Replace(" ","-").ToLower()/@item.MainCategoryNameEn.Replace(" ","-").ToLower()/@item.SubCategoryNameEn.Replace(" ","-").ToLower()/s/@item.GenerateSlug()" tabindex="0">
+                                                                    <img class="default-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                                                    <img class="hover-img" src="@Configuration["apiurl"]/Uploads/Products/@item.Image" alt="" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-action-1" hidden>
+                                                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                                <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                                            </div>
+                                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                                @if (@item.DiscountValue != 0)
+                                                                {
+                                                                    <span class="hot">
+                                                                        @item.DiscountValue @(item.DiscountType == 1 ? "%OFF" : item.DiscountType == 2 ? "OFF" : "")
+                                                                    </span>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-content-wrap">
+                                                            <h2><a href="/ServiceDetails/CustomerServices?Id = @item.GenerateSlugService()" tabindex="0">@item.ServiceNameEn</a></h2>
+                                                            @*<div class="rating-result" title="90%">
+                                                                <span> </span>
+                                                            </div>*@
+                                                            <div class="product-price">
+                                                                <span>SAR @item.SellingPrice.ToString("N2") </span>
+                                                                <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+<script type="text/javascript">
+    (function ($) {
+        var $myCarousel = $('#myCarousel'),
+            $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+        $myCarousel.carousel({
+            interval: 4000,
+            pause: "null",
+            loop: true,
+
+            dots: true,
+            nav: true,
+
+        });
+    })(jQuery);
+    $(document).ready(function () {
+        //$(".store-offers-slide").slick({
+        //    autoplay: true,
+        //    autoplaySpeed: 2500,
+        //    speed: 2000,
+        //    fade: true,
+        //    arrows: false,
+        //    dots: false,
+        //    pauseOnHover: false,
+        //});
+        //$(".offers").slick({
+        //    slidesToShow: 4,
+        //    slidesToScroll: 1,
+        //    autoplay: true,
+        //    autoplaySpeed: 3500,
+        //    arrows: true,
+        //    dots: false,
+        //    pauseOnHover: false,
+        //    responsive: [{
+        //        breakpoint: 1280,
+        //        settings: {
+        //            slidesToShow: 4
+        //        }
+        //    }, {
+        //        breakpoint: 1200,
+        //        settings: {
+        //            slidesToShow: 3
+        //        }
+        //    }, {
+        //        breakpoint: 992,
+        //        settings: {
+        //            slidesToShow: 2
+        //        }
+        //    }, {
+        //        breakpoint: 576,
+        //        settings: {
+        //            slidesToShow: 1
+        //        }
+        //    }]
+        //});
+    });
+</script>
+
+

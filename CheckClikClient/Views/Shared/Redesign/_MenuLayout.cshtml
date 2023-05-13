@@ -3,6 +3,7 @@
 @using CheckClickClient;
 @inject IConfiguration Configuration;
 @{
+    
     IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
     Customer.Models.CartDTO url = new Customer.Models.CartDTO();
     url.UrlPath = Configuration["apiurl"] + "" + Configuration["UploadLocation"] + "" + "/Products/";
@@ -190,7 +191,9 @@
         <div class="header-bottom header-bottom-bg-color sticky-bar">
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
-
+                   @* <div class="logo logo-width-1">
+                        <a asp-action="NIndex" asp-controller="Home"><img src="~/Images/Logo.png" alt="logo" /></a>
+                    </div>*@
                     @{
                         var cityList = new SelectList(AppUtils.CityList, "Id", "NameEn");
                         var districtList = new SelectList(AppUtils.DistrictList, "Id", "NameEn");

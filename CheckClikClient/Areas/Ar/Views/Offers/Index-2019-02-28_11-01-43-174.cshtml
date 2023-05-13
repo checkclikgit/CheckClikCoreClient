@@ -1,0 +1,357 @@
+﻿@model Customer.Models.OffersDTO
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>*@
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link href="assets/css/bootstrap-select.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="assets/css/slick.css">
+<link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<section class="store-category-offers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 sec-head text-center">
+                <h4>MAKE THE HARD WAY</h4>
+                <h2 class="bold">OFFERS</h2>
+                <div class="separator"><span><img src="assets/images/heading-logo.png"></span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="store-offers-slide slider">
+                    @if (Model.listBanners != null)
+                    {
+                        foreach (var items in Model.listBanners)
+                        {
+                            <div class="slide">
+                                @*<img src="assets/images/store-offer-slide1.png">*@
+                                <img src="http://csadms.com/CheckClickAPI/Uploads/Advertisements/@items.BannerImageEn">
+                            </div>
+                        }
+                    }
+
+                    @*<div class="slide">
+                        <img src="assets/images/store-offer-slide1.png">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/store-offer-slide1.png">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/store-offer-slide1.png">
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="offers slider">
+                    @if (Model.ListOffers != null)
+                    {
+                        foreach (var items in Model.ListOffers)
+                        {
+                            <div class="slide">
+                                <div class="thumbnail">
+                                    <img src="assets/images/store-offers.png">
+                                    <div class="carousel-caption">
+                                        <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                        <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                    </div>
+                                    <div class="offer-img">
+                                        <img src="http://csadms.com/CheckClickAPI/Uploads/Products/@items.BannerImageEn" width="80px;">
+                                        @*<img src="assets/images/offer-tag.png" width="80px;">*@
+                                    </div>
+                                    <div class="offer-img">
+                                        <strong>@items.Discount Off</strong>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>@items.NameEn</h4>
+                                        <del>SAR @items.Price</del>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-xs-6 pull-left">
+                                                <h4 class="pull-left">SAR 235.50</h4>
+                                            </div>
+                                            <div class="col-sm-6 col-xs-6 pull-right">
+                                                <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                                <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                                <input type="button" value="+" class="btn btn-default adds" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+
+                    @*<div class="slide">
+                            <div class="thumbnail">
+                                <img src="assets/images/store-offers.png">
+                                <div class="carousel-caption">
+                                    <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="offer-img">
+                                    <img src="assets/images/offer-tag.png" width="80px;">
+                                </div>
+                                <div class="offer-img">
+                                    <strong>90% Off</strong>
+                                </div>
+                                <div class="caption">
+                                    <h4>Rose Flower</h4>
+                                    <del>SAR 300.00</del>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR 235.50</h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 pull-right">
+                                            <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                            <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                            <input type="button" value="+" class="btn btn-default adds" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="thumbnail">
+                                <img src="assets/images/store-offers.png">
+                                <div class="carousel-caption">
+                                    <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="offer-img">
+                                    <img src="assets/images/offer-tag.png" width="80px;">
+                                </div>
+                                <div class="offer-img">
+                                    <strong>90% Off</strong>
+                                </div>
+                                <div class="caption">
+                                    <h4>Rose Flower</h4>
+                                    <del>SAR 300.00</del>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR 235.50</h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 pull-right">
+                                            <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                            <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                            <input type="button" value="+" class="btn btn-default adds" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="thumbnail">
+                                <img src="assets/images/store-offers.png">
+                                <div class="carousel-caption">
+                                    <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="offer-img">
+                                    <img src="assets/images/offer-tag.png" width="80px;">
+                                </div>
+                                <div class="offer-img">
+                                    <strong>90% Off</strong>
+                                </div>
+                                <div class="caption">
+                                    <h4>Rose Flower</h4>
+                                    <del>SAR 300.00</del>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR 235.50</h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 pull-right">
+                                            <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                            <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                            <input type="button" value="+" class="btn btn-default adds" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="thumbnail">
+                                <img src="assets/images/store-offers.png">
+                                <div class="carousel-caption">
+                                    <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="offer-img">
+                                    <img src="assets/images/offer-tag.png" width="80px;">
+                                </div>
+                                <div class="offer-img">
+                                    <strong>90% Off</strong>
+                                </div>
+                                <div class="caption">
+                                    <h4>Rose Flower</h4>
+                                    <del>SAR 300.00</del>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR 235.50</h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 pull-right">
+                                            <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                            <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                            <input type="button" value="+" class="btn btn-default adds" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="thumbnail">
+                                <img src="assets/images/store-offers.png">
+                                <div class="carousel-caption">
+                                    <a href="#" class="pull-left"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="pull-right"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="offer-img">
+                                    <img src="assets/images/offer-tag.png" width="80px;">
+                                </div>
+                                <div class="offer-img">
+                                    <strong>90% Off</strong>
+                                </div>
+                                <div class="caption">
+                                    <h4>Rose Flower</h4>
+                                    <del>SAR 300.00</del>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6 pull-left">
+                                            <h4 class="pull-left">SAR 235.50</h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 pull-right">
+                                            <input type="button" value="-" class="btn btn-default subs pull-left" />
+                                            <input type="text" value="1" class="onlyNumber form-control pull-left noOfQty" value="" name="noOfRoom" />
+                                            <input type="button" value="+" class="btn btn-default adds" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+@*<script src="assets/js/jquery.min.js"></script>*@
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-select.min.js"></script>
+<script src="assets/js/fade-animation.js"></script>
+<script src="assets/js/slick.js"></script>
+
+<script type="text/javascript">
+		/* Function to Open the side nav panel */
+	function openNav(){
+  		$("#sideNavUserGuide").toggleClass("open");
+			var overlay = $('.overlay');
+			overlay.show();
+		}
+	/* Function to close the side nav panel */
+	$(".user-guide-header button.close").click(function closeNav(){
+  		$("#sideNavUserGuide").removeClass("open");
+  			var overlay = $('.overlay');
+			overlay.hide();
+		});
+
+
+	$('.delivery-filter a').on('click', function(){
+    	$('.filter-dropdown.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');
+	})
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$('a[href="#search"]').on('click', function(event) {
+		$('#search').addClass('open');
+		$('#search > form > input[type="search"]').focus();
+	});
+	$('#search, #search button.close').on('click keyup', function(event) {
+		if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+			$(this).removeClass('open');
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(".offers").slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3500,
+        arrows: true,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+        	breakpoint: 1280,
+            settings: {
+                slidesToShow: 4
+            	}
+        }, {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 3
+            }
+        }, {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2
+            }
+        }, {
+            breakpoint: 576,
+            settings: {
+                slidesToShow: 1
+            }
+        }]
+    });
+});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(".store-offers-slide").slick({
+        autoplay: true,
+        autoplaySpeed: 2500,
+        arrows: false,
+        dots: true,
+        pauseOnHover: false,
+    });
+});
+</script>
+<script type="text/javascript">
+	$('.adds').click(function add() {
+	var _qty = $(this).parent().children(".noOfQty");
+
+    var $rooms = $(_qty);
+    var a = $rooms.val();
+
+    a++;
+    $(".subs").prop("disabled", !a);
+    $rooms.val(a);
+});
+$(".subs").prop("disabled", !$(".noOfQty").val());
+
+$('.subs').click(function subst() {
+
+	var _qty = $(this).parent().children(".noOfQty");
+
+    var $rooms = $(_qty);
+    var b = $rooms.val();
+    if (b >= 1) {
+        b--;
+        $rooms.val(b);
+    }
+    else {
+        $(".subs").prop("disabled", true);
+    }
+});
+</script>
+

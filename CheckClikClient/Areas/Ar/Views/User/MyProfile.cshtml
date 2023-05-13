@@ -1,0 +1,493 @@
+﻿@model CheckClickClient.Models.CustomerRegistrationDTO
+@{
+    ViewBag.Title = "CHECKCLIK | My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link href="~/web-assets/css/bootstrap-fileinput.css" rel="stylesheet" />
+    <script src="~/web-assets/js/sweetalert.js"></script>
+    }
+    <style>
+        .user-img, .user-menu, .user-details {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            -webkit-box-shadow: 0 0 10px #ccc;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+            .user-img img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .user-img .image-upload > input {
+                display: none;
+            }
+
+        .image-upload span {
+            font-weight: bold
+        }
+
+        .user-menu ul li a {
+            display: block;
+            font-size: 15px;
+            padding: 10px 0 0;
+            font-weight: bold
+        }
+
+            .user-menu ul li a:hover {
+                color: #d06e67
+            }
+
+            .user-menu ul li a i {
+                width: 30px;
+                color: #666666;
+            }
+
+        .user-menu hr {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .user-details .form-wrapper {
+            max-width: none;
+            margin: inherit;
+            box-shadow: none;
+            background: #fff;
+        }
+
+            .user-details .form-wrapper a small {
+                font-size: 14px;
+                color: #666666;
+            }
+
+            .user-details .form-wrapper input {
+                background: #fff;
+            }
+    </style>
+@using (Html.BeginForm("MyProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" value="" id="hdnMobile" />
+
+    <section class="profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="user-img">
+                        <div class="image-upload">
+                            <label for="file-input">
+                                @if (Model.ProfilePhoto != null)
+                                {
+                                    <img id="imgProfile" src="@Model.ProfilePhoto" />
+                                }
+                                else
+                                {
+                                    <img id="imgProfile" src="~/web-assets/images/user-profile.png" />
+                                }
+
+                            </label>
+                            @*<input id="file-input" type="file" name="ProfilePic" value="Choose file" accept="image/*" onchange="loadFile(event)" />*@
+
+                            <span class="pl-8 ">@Model.FirstName @Model.LastName</span>
+                        </div>
+                    </div>
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="~/user/myProfile"><i class="fas fa-user"></i> Profile</a></li>
+                            <hr />
+                            <li><a href="~/myorders"><i class="fas fa-box-open"></i> My Orders</a></li>
+                            <hr />
+                            <li><a href="~/wishlist"><i class="fas fa-heart"></i> Wishlist</a></li>
+                            <hr />
+                            <li><a href="~/user/manageAddress"><i class="fas fa-address-book"></i> Manage Account</a></li>
+                            <hr />
+                            <li><a href="~/user/changePassword"><i class="fas fa-sync-alt"></i> Change Password</a></li>
+                            <hr />
+                            @*<li><a href="~/user/chat"><i class="fa fa-comments" aria-hidden="true"></i> Chat</a></li>
+                            <hr />*@
+                            <li><a href="@Url.Action("logout", "user")"><i class="fas fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 user-details">
+                    <div class="" id="divoffer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog" style="background-color:white">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Update Mobile Number</h4>
+            </div>
+            <br />
+            <div class="form-wrapper">
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default">+966</span>
+                        </span>
+                        <div class="form-item">
+                            <input type="text" id="mobileNo" onkeypress="return isNumricKey(event)" class="form-control" data-val="true" maxlength="9" name="MobileNo" placeholder="Enter Mobile Number" value="" />
+                            <span id="mobileErr"></span>
+                        </div>
+
+                    </div>
+                    <br /><br />
+
+                    <div class="button-panel mt-5">
+                        <a class="button form-control pt-3" onclick="verifyMobile()" id="btnUpdate">Update</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div id='myModalOTp' class='modal'>
+        <div class="modal-dialog" style="background-color:white">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Update Mobile Number</h4>
+            </div>
+            <br />
+            <div class="form-wrapper">
+                <form>
+                    <span id="Timer"></span>
+                    <p>Enter the OTP Sent to the mobile number<br /><strong>+966 <span id="fmobNo"></span></strong> for verification.  </p>
+                    <div class="form-item">
+                        <input id="fotpNo" class="form-control number" autocomplete="off" type="text" name="fname" maxlength="4" minlength="4" required="required" placeholder="Enter OTP" />
+                    </div>
+                    <span id="fotpError" class="text-danger"></span>
+                    <span id="otpTimer"></span>
+                    <div class="button-panel mt-5">
+                        <a class="button form-control pt-3" onclick="VerifyOTP()">Verify</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div id='myModalEmail' class='modal'>
+        <div class="modal-dialog" style="background-color:white">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Update E-Mail</h4>
+            </div>
+            <br />
+            <div class="form-wrapper">
+                <form>
+
+                    <div class="form-item">
+                        <input id="fEmailId" class="form-control number" autocomplete="off" type="text" name="fname" required="required" placeholder="Enter Email-Id" />
+                    </div>
+                    <span id="fEmailIdError" class="text-danger"></span>
+
+                    <div class="button-panel mt-5">
+                        <a class="button form-control pt-3" onclick="VerifyEmail()" id="verifyEmailID">Update</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+}
+@section Scripts{
+    <script src="~/web-assets/js/bootstrap-fileinput.js"></script>
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('imgProfile');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script>
+        $(document).ready(function () {
+            
+                    $("#divLoader").hide();
+                    $("#loader").hide();
+
+            $("#address_country").select2({ width: "100%" });
+            $("#address_city").select2({ width: "100%" });
+
+            $("#EditPersonal").click(function () {
+                $('#btnEditPersonal').show();
+            });
+
+            $("#txtFirstName").blur(function () {
+                // debugger;
+                var val = $(this).val();
+                $("#lblFirstName").text(val == "" ? "Required" : "");
+            });
+            $("#txtLastName").blur(function () {
+                // debugger;
+                var val = $(this).val();
+                $("#lblLastName").text(val == "" ? "Required" : "");
+            });
+
+            $("#fEmailId").blur(function () {
+                // debugger;
+                var email = $(this).val();
+                $("#fEmailIdError").text(email == "" ? "Email ID Required" : "");
+                if (email != '') {
+                    var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    var res = regex.test(email);
+                    if (res) {
+                        $.ajax({
+                            url: '@Url.Action("GetVerifyEmail", "User")',
+                            data: { 'Email': email },
+                            datatype: 'json',
+                            type: 'Get',
+                            success: function (result) {
+                                // debugger
+                                var status = result.Status;
+                                if (!status) {
+                                    $('#fEmailIdError').html(result.Message).addClass("text-danger");
+                                    return
+                                }
+                                else {
+                                    $('#fEmailIdError').html('')
+                                }
+                            },
+                            error: function () {
+                                $('#fEmailIdError').html('Something went wrong').addClass("text-danger");;
+                            }
+                        })
+                    }
+                    if (!res) {
+                        $('#fEmailIdError').html('Invalid Email Id').addClass("text-danger");
+                        return;
+                    }
+                }
+            });
+
+            $("#txtMobileNo").blur(function () {
+                // debugger;
+                var val = $(this).val();
+                $("#lblMobileNoErr").text(val == "" ? "Mobile Number Required" : "");
+                if (val != "") {
+                    $("#lblMobileNoErr").text(isNaN(val) == true ? "Invalid Mobile Number" : "");
+                    if (val.length != 9)
+                        $("#lblMobileNoErr").text("Mobile Number Must Be 9 Digit");
+                }
+            });
+            $("#OpenModel").click(function () {
+                $('#myModal').modal('show');
+            });
+            $("#modelEmail").click(function () {
+                $('#myModalEmail').modal('show');
+            });
+
+            var MenuIDs = sessionStorage.getItem('Name');
+            var MobileNoMOdel = sessionStorage.getItem('MobileNoMOdel');
+            var MobileNo = sessionStorage.getItem('MobileNo');
+            if (MenuIDs == 1) {
+                $('#myModalOTp').modal('show');
+                $("#hdnMobile").val(MobileNo);
+                $('#fmobNo').html(MobileNo);
+                sessionStorage.removeItem('Name');
+            }
+            if (MobileNoMOdel == 2) {
+                $('#myModal').modal('show');
+                sessionStorage.removeItem('MobileNoMOdel');
+            }
+        });
+    </script>
+    <script>
+        function isNumricKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode < 48 || charCode > 57)
+                return false;
+            return true;
+        }
+        function verifyMobile() {
+
+            var mob = $("#mobileNo").val();
+            if (mob == '') {
+                $('#mobileErr').html('Mobile No Required').addClass("text-danger");
+                return;
+            }
+
+            if (mob.length != 9) {
+                $('#mobileErr').html('Invalid Mobile No').addClass("text-danger");
+                return;
+            }
+            else {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetOtp", "User")',
+                    contentType: "application/json; charset=utf-8",
+                    data: { "MobileNo": mob },
+                    datatype: "json",
+                    success: function (data) {
+
+                        var countDownDate = data.Status;
+                        if (!countDownDate) {
+
+                            $('#mobileErr').html(data.Message).addClass("text-danger");
+                            sessionStorage.setItem('MobileNoMOdel', 2)
+                            $('#myModal').modal('show');
+
+                        }
+                        else {
+                            // debugger
+                            var mno = $("#mobileNo").val();
+
+
+                            $('#fmobNo').html(mno);
+                            $('#myModal').modal('hide');
+                            var userName = 1;
+                            sessionStorage.setItem('Name', userName)
+                            sessionStorage.setItem('MobileNo', mno)
+                        }
+                    },
+                    error: function () {
+                        $('#mobileErr').html('Something Went Wrong').addClass("text-danger");
+                        $('#myModal').modal('show');
+                        return;
+                    }
+                });
+                $('#mobileErr').html('');
+            }
+        }
+
+        function VerifyOTP() {
+            var mobileNo = $("#hdnMobile").val();
+            var otpno = $("#fotpNo").val();
+
+            $.ajax({
+
+                /**/
+                url: '@Url.Action("GetUpdateMobile")',
+                /**/
+                type: 'get',
+                datatype: 'json',
+                data: { 'MobileNo': mobileNo, 'otp': otpno },
+                success: function (data) {
+                    // debugger;
+                    var countDownDate = data.Status;
+                    if (!countDownDate) {
+                        $('#fotpError').html("Invalid OTP").addClass("text-danger");
+                        return
+                    }
+                    else {
+                        $('#fotpError').html(data.Message).css('color', 'green');
+                        swal({
+                            title: "Success!",
+                            text: "Mobile Number Updated Successful.",
+                            icon: "success",
+                            buttons: {
+                                button: "Ok!",
+                            },
+                        }).then((value) => {
+                            window.location.href = "/User/MyProfile";
+                        });
+                    }
+                },
+                error: function () {
+                    alert("Error Submission")
+                }
+            });
+        }
+
+
+        function VerifyEmail() {
+            var vefemail = $("#fEmailId").val();
+            // debugger
+            $("#fEmailIdError").text(vefemail == "" ? "Email ID Required" : "");
+            if (vefemail != '') {
+                var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var res = regex.test(vefemail);
+                if (res) {
+                    $.ajax({
+                        url: '@Url.Action("GetVerifyEmail", "User")',
+                        data: { 'Email': vefemail },
+                        datatype: 'json',
+                        type: 'Get',
+                        success: function (result) {
+                            // debugger
+                            var status = result.Status;
+                            if (!status) {
+                                $('#fEmailIdError').html(result.Message).addClass("text-danger");
+                                return
+                            }
+                            else {
+                                $.ajax({
+                                    url: '@Url.Action("GetUpdateEmail")',
+                                    type: 'get',
+                                    datatype: 'json',
+                                    data: { 'vefEmail': vefemail },
+                                    success: function (data) {
+                                        // debugger;
+                                        var countDownDate = data.Status;
+                                        if (countDownDate) {
+                                            $('#fEmailIdError').html(data.Message).css('color', 'green');
+                                            swal({
+                                                title: "Success!",
+                                                text: "E-mail Updated Successful.",
+                                                icon: "success",
+                                                buttons: {
+                                                    button: "Ok!",
+                                                },
+                                            }).then((value) => {
+                                                window.location.href = "/User/MyProfile";
+                                            });
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("Error Submission")
+                                    }
+                                });
+                            }
+                        },
+                        error: function () {
+                            $('#fEmailIdError').html('Something went wrong').addClass("text-danger");;
+                        }
+                    })
+                }
+                if (!res) {
+                    $('#fEmailIdError').html('Invalid Email Id').addClass("text-danger");
+                    return;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        $(window).on("load", function () {
+        //$(document).ready(function () {
+            var city = $("#select-city option:selected").val();
+            var district = $("#select-district option:selected").val();
+            var lat = $("#hdnidlat").val();
+            var long = $('#hdnidlong').val();
+            var paramPvOffer = JSON.stringify({ cityId: parseInt("0"), districtId: parseInt("0"), latitude: lat, longitude: long });
+            $.ajax({
+                url: '@Url.Action("PVOffer")',
+                type: "Post",
+                data: { model: paramPvOffer },
+                //{
+                //    paramPvOffer: paramPvOffer
+                //},
+                //datatype: "json",
+                // //contenttype: 'application/json; charset=utf-8',
+
+                //contentType: 'application/json; charset=utf-8',
+                //contentType: false,
+                success: function (result) {
+                    $("#divoffer").html(result.result);
+                    //alert("success");
+                },
+                error: function (data) {
+                    var res = "";
+                    alert("false");
+                }
+            });
+        });
+    </script>
+}

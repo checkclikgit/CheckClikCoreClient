@@ -1,0 +1,400 @@
+﻿@{
+    ViewBag.Title = "Search Results | CheckClik MarketPlace";
+    Layout = "~/Views/Shared/_LayoutNewStore.cshtml";
+}
+<link href="~/assets/css/bootstrap-slider.css" rel="stylesheet" />
+<style>
+    .loading-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+    .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 51px;
+            height: 51px;
+            margin: 6px;
+            border: 6px solid #666666;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #666666 transparent transparent transparent;
+        }
+
+            .lds-ring div:nth-child(1) {
+                animation-delay: -0.45s;
+            }
+
+            .lds-ring div:nth-child(2) {
+                animation-delay: -0.3s;
+            }
+
+            .lds-ring div:nth-child(3) {
+                animation-delay: -0.15s;
+            }
+
+    @@keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .sub-footer {
+        background: #fff;
+        padding: 0;
+        border-top: 2px solid #eaeaea;
+        position: static;
+        bottom: 0;
+        width: 100%;
+    }
+    .shop-product-fillter {
+        margin: 10px 0 10px;
+    display: block;
+    } 
+    button.input:hover, button[type='button']:hover 
+    {
+    background-color: #29A56C !important;
+    border-radius: 10px;
+    }
+</style>
+
+<div class="container mb-30">
+        <div class="archive-header-2 text-center pt-70 pb-0">
+            @*<h1 class="display-2 mb-50">
+                <img id="logo" style="right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+            </h1>*@
+            <div class="row">
+                <div class="col-lg-5 mx-auto">
+                    <div class="sidebar-widget-2 widget_search mb-50">
+                        <div class="search-form"> 
+                                <form action="#">
+                                    <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
+                                    <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
+                                </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="shop-product-fillter">
+    <div class="totall-product">
+        @*<p>We found <strong class="text-brand">@Model.NGroups</strong> Stores for you!</p>*@
+    </div>
+    <div class="sort-by-product-area">
+
+        <div class="sort-by-cover mr-10 ml-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp; DISTANCE:</span>
+                <select id="ddlDistance" name="ddlDistance" class="" style="width:auto; ">
+                    <option value="1">1 KM</option>
+                    <option value="10">10 KM</option>
+                    <option value="20">20 and above</option>
+                </select>
+            </div>
+        </div>
+        <div class="sort-by-cover mr-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp;PAYMENT METHOD:</span>
+                <select id="ddlPaymentOption" name="ddlPaymentOption" class="" style="width:auto; ">
+                    <option value="0">Any</option>
+                    <option value="1">Cash On Delivery</option>
+                    <option value="2">Card</option>
+                    <option value="3">Both</option>
+                </select>
+            </div>
+        </div>
+        <div class="sort-by-cover mr-10">
+            <div class="sort-by" style="border: 1px solid #ececec; color: #777;padding: 9px 16px;border-radius: 10px;">
+                <span><i class="fi-rs-apps mr-1"></i>&nbsp;&nbsp; Show:</span>
+
+                <select id="ddlShow" name="ddlShow" class="" style="width:auto; ">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <a href="#" id="btnFilter" name="btnFilter" value="Filter By" onclick="GetSearchLocationResults()" class="btn btn-sm btn-default" style="height: auto;"><i class="fi-rs-filter mr-5"></i>Filter By</a>
+        </div>
+        @*<div class="sort-by-cover">
+
+        <div class="sort-by-product-wrap">
+        <div class="sort-by">
+        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+        </div>
+        <div class="sort-by-dropdown-wrap">
+        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+        </div>
+        </div>
+        <div class="sort-by-dropdown">
+        <ul>
+        <li><a class="active" href="">Featured</a></li>
+        <li><a href="">Price: Low to High</a></li>
+        <li><a href="">Price: High to Low</a></li>
+        <li><a href="">Release Date</a></li>
+        <li><a href="">Avg. Rating</a></li>
+        </ul>
+        </div>
+        </div>*@
+    </div>
+</div>
+
+
+<div id="divLoader" class="loading-wrapper">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div id="divSearchResults"></div>
+
+
+
+@*<script src="~/web-assets/js/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+
+<script src="~/assets/js/bootstrap-slider.js"></script>
+<script type="text/javascript">
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    function SetSearchTextToHiddenField()
+    {
+            var searchText = $("#txtSearch").val();
+            //if(searchText != "")
+            //{
+                $("#txtSearchTerm").val(searchText);
+                $("#hdnSearchText").val(searchText);
+                
+                //$("#search").submit();
+            //}
+    }
+    function SearchSectionSubmit()
+    { 
+           $("#search").submit(); 
+    }
+
+    $(document).ready(function () {
+        //hdnIsLocationSet
+        setTimeout(function () { GetSearchLocationResults(); }, 100);
+
+        $("#btnSearch").on("click",function(){
+            SetSearchTextToHiddenField();
+            SearchSectionSubmit();
+        });
+
+    });
+
+    var vLocationLoadedTimeout;
+
+    function GetSearchLocationResults() {
+        
+        SetSearchTextToHiddenField();
+
+        $("#hdnStart").val(0);
+        //console.log("GetSearchLocationResults called");
+        if ($("#hdnIsLocationSet").val() == "0") {
+            //console.log("Location not loaded");
+            //alert("nindex227search");
+            vLocationLoadedTimeout = setTimeout(function () { GetSearchLocationResults(); }, 100);
+        }
+        else {
+            clearTimeout(vLocationLoadedTimeout);
+            //console.log("Location loaded");
+            GetSearchResults();
+        }
+    }
+
+    function GetSearchResults() {
+        //var rbPaymentmode = $("input[name='rbPayment']:checked").val();
+        //var searchTerm = $("#txtSearchTerm").val();
+        var searchTerm = $("#txtSearch").val();
+        console.log("SearchTerm:"+searchTerm);
+        var rbPaymentmode = $("#ddlPaymentOption").val();
+        var showRows = $("#ddlShow").val();
+        var sortingOrder = "";
+        //var rbRatings = $("input[name='rbrating']:checked").val();
+        //var rbDistance = $("input[name='rbdistance']:checked").val();
+        var points = JSON.stringify({ PaymentType: rbPaymentmode })
+        $.ajax({
+            url: "@Url.Action("NSearchResults", "Search")",
+            //datatype: "json",
+            type: "post",
+            data: {
+                //partialViewForm relates to the form element in your partial view
+                model: JSON.stringify($('#search').serializeObject()), points: points, showRows: parseInt(showRows), sortingOrder: sortingOrder
+            },
+            //contenttype: 'application/json; charset=utf-8',
+            //async: true,
+            success: function (dataReturn) {
+                emptyStr = dataReturn.result.replace(/[\r\n]+/g, '');
+                if (emptyStr != '') {
+                    $("#divSearchResults").html(dataReturn.result);
+                    $("#divSearchResults").show();
+                    BindFiltersOnChange();
+                    DisplayActivePage();
+                }
+                if ($("#txtPriceRange").length > 0) {
+                    $("#txtPriceRange").slider({
+                        tooltip: 'hide'
+                    }).on('slideStop', changePrice).on('change', displayChangedPrice);
+                    displayChangedPrice();
+                }
+                $("#divLoader").hide();
+                $("#loader").hide();
+            },
+            error: function (xhr) {
+                //console.log(xhr.responseText);
+                //alert('error');
+                $("#divLoader").hide();
+                $("#loader").hide();
+            }
+        });
+    }
+
+    function changePrice() {
+        //console.log(txtPriceRange.value);
+        isPriceChanged = false;
+        isPriceChanged = txtPriceRange.value.split(",")[0] == $("#spnMinPrice").text();
+        if (!isPriceChanged)
+            isPriceChanged = txtPriceRange.value.split(",")[1] == $("#spnMaxPrice").text();
+        if (isPriceChanged)
+            LoadSearchResults();
+    }
+
+    function displayChangedPrice() {
+        $("#spnMinPrice").text(txtPriceRange.value.split(",")[0]);
+        $("#spnMaxPrice").text(txtPriceRange.value.split(",")[1]);
+    }
+
+    function DisplayActivePage() {
+        $(".changePage.active").removeClass("active");
+        $(".changePage").eq(parseInt($("#hdnStart").val())).addClass("active");
+    }
+
+    function BindFiltersOnChange() {
+        $(".clear-filters").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            //lknClear_3
+            var groupId = $(this).attr("id").replace("lknClear_", "");
+            $("[id^='ckbFilter" + groupId + "_'][type=checkbox]:checked").each(function () {
+                this.checked = false;
+            });
+            LoadSearchResults();
+        });
+        $("#lnkClearPriceFilter").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            var txtPriceRange = $("#txtPriceRange");
+            var arRange = [parseInt(txtPriceRange.data("slider-min")), parseInt(txtPriceRange.data("slider-max"))];
+            $("#spnMinPrice").text(txtPriceRange.data("slider-min"));
+            $("#spnMaxPrice").text(txtPriceRange.data("slider-max"));
+            txtPriceRange.slider('setValue', arRange, true)
+            //txtPriceRange.slider('refresh');
+            LoadSearchResults();
+        });
+
+        $(".search-sort").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnSort").val($(this).data("sort-field") + "," + $(this).data("sort-dir"));
+            LoadSearchResults();
+        });
+
+        $(".ckbFilter").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optItemType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optServiceType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $("#lnkClearItemType").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            $(".optItemType:checked").prop('checked', false);
+            LoadSearchResults();
+        });
+        $(".changePage").on("click", function (e) {
+            e.preventDefault();
+            if (!$(this).hasClass("active")) {
+                $("#hdnStart").val($(this).data("pageindex"));
+                LoadSearchResults();
+            }
+        });
+    }
+
+    function LoadSearchResults() {
+        $("#divLoader").show();
+        $("#divSearchResults").hide();
+
+        var obj = '{'
+            + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+            + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+            + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+            + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+            + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+            + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+            + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+            + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+        if ($(".optServiceType:checked").length > 0)
+            obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+        obj += '"Price": "' + $("#txtPriceRange").val() + '",';
+
+        if ($(".optItemType:checked").length > 0)
+            obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+        $(".filter-auto").each(function () {
+            var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+            var isCurrentFilter = $(this).is(":checked");
+            obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+        });
+
+        if (obj.endsWith(","))
+            obj = obj.slice(0, -1);
+        obj += '}';
+
+        $("#hdnSearchFilters").val(obj);
+        GetSearchResults();
+    }
+</script>

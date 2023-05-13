@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Coupons/IndexN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xJbmRleE4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/CustomerProducts/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -110,6 +114,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/IndexN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4Ti5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/OfferList.cshtml]
@@ -280,6 +288,242 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/B2B/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQjJCXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/CartPreview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxDYXJ0UHJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/OrderConfirmed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxPcmRlckNvbmZpcm1lZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/PVManageAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxQVk1hbmFnZUFkZHJlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/PVOrderPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxQVk9yZGVyUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/_PVOrderPaymentOptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxfUFZPcmRlclBheW1lbnRPcHRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/CouponsPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xDb3Vwb25zUFYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/CustomerProducts/ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/NIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxOSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/TermsAndConditions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/IndexNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcSW5kZXhOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/OrderDetailsPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcT3JkZXJEZXRhaWxzUFYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/ProcessingOrdersPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUHJvY2Vzc2luZ09yZGVyc1BWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVHistoryOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZIaXN0b3J5T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVPendingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZQZW5kaW5nT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVProcessingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZQcm9jZXNzaW5nT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/AllCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEFsbENhdGVnb3JpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4LTIwMTktMDItMjhfMTEtMDEtNDMtMTc0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/OfferList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXE9mZmVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/OfferListItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXE9mZmVyTGlzdEl0ZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/PVItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXFBWSXRlbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/PVOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXFBWT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/IndexNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleE5lc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVBranchTimings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVkJyYW5jaFRpbWluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVlByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVSideCategoryAndSubCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cyAtIENvcHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/NIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXE5JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStoreNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmVOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_B2bLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9CMmJMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_CustomScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9DdXN0b21TY3JpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNewStore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ChangePasswordNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZE5lc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/IndexNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxJbmRleE5lc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ManageAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ManageAddressNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzTmVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNeVByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/MyProfileNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNeVByb2ZpbGVOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/SignUpNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxTaWduVXBOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/_PVOffers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxfUFZPZmZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/_PVOffersNest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxfUFZPZmZlcnNOZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Redesign/_HomeLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9Ib21lTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-395omepob4
@@ -335,3 +579,59 @@ build_metadata.AdditionalFiles.CssScope = b-qz6lj4i7zq
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_StoreDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-jbemnad9j2
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_HomeLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9Ib21lTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-jd8tfm57wl
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_MenuLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9NZW51TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-33wue69yy3
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_StoreLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9TdG9yZUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-gl1r0gdbdx
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-85b2x0vcv7
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXcgLSBDb3B5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-fm2nsujqph
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-f6isnvif1j
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartCheckout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydENoZWNrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-a730ke35jn
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-mdg9idzemp
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Empty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfRW1wdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ju6bcpklzs
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUGF5bWVudENvbmZpcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-t9iphcf06r
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-o65lj13lbt
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-620p5wxjzj
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-eb9m1i5zpe
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_StoreDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-rkzje4uo7u

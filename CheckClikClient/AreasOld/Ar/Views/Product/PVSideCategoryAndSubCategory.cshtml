@@ -1,0 +1,30 @@
+﻿@model Customer.Models.BranchDTO
+@{
+    //var catAndSubCategory = CheckClickClient.AppUtils.Branch.Maroof
+    var cat = Model.listCategory;
+    var subCat = Model.listSubCategory;
+}
+
+@foreach (var item in cat)
+{
+    int subcatId = Convert.ToInt32(item.Id);
+    List<CheckClikClient.Models.SubCategoryDTO> lstSubCateory = new List<CheckClikClient.Models.SubCategoryDTO>();
+    lstSubCateory = subCat.Where(x => x.CategoryId == subcatId).ToList();
+
+        @*List<CheckClikClient.Models.SubCategoryDTO> lstSubCateory = new List<CheckClikClient.Models.SubCategoryDTO>();
+        lstSubCateory = subCat.Where(x => x.CategoryId = item.Id);*@
+
+
+    <ul class="sub-menu">
+        <li>
+            <a href="#" onclick="SetCategory(@item.CategoryTypeId,'@item.NameEn')">@item.NameEn<i class="fi-rs-angle-right"></i></a>
+            <ul class="level-menu">
+                @foreach (var subCato in lstSubCateory)
+                {
+                    <li onclick="SetSubCategory(@item.CategoryTypeId,'@item.NameEn', @subCato.Id,'@subCato.NameEn')"><a href="#" >@subCato.NameEn</a></li>
+                }
+            </ul>
+        </li>
+    </ul>
+     
+} 
