@@ -1,0 +1,103 @@
+﻿@{
+    IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
+    Customer.Models.CartDTO url = new Customer.Models.CartDTO();
+    url.UrlPath = Configuration["apiurl"] + "" + Configuration["UploadLocation"] + "" + "/Products/";
+
+    Decimal totalVatL = 0;
+    Decimal totalAmtL = 0;
+}
+<div class="header-action-right">
+                            <div class="header-action-2">
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                        <img alt="Nest" src="/nest/imgs/theme/icons/icon-cart.svg">
+                                        <span class="pro-count blue">@(cartlst != null ? cartlst.Count() : 0)</span>
+                                    </a>
+                                    <a href="shop-cart.html"><span class="lable">Cart</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+
+                                        @foreach (var item in cartlst)
+                                        {
+                                            <ul>
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="shop-product-right.html"><img alt="Nest" src="@url.UrlPath@item.Image"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="shop-product-right.html">@item.ProductNameEn</a></h4>
+                                                        <h4><span>@item.CartQuantity × </span> <i id="lblpriceL1_@item.CartId">@item.Price.ToString("N2")</i> = @((item.CartQuantity * @item.Price).ToString("N2"))</h4>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#" onclick="removeL1(@item.CartId)"><i class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                            @if (item.CartStatus == true)
+                                            {
+                                                totalAmtL = totalAmtL + item.TotalItemPrice;
+                                                totalVatL = totalVatL + item.TotalVatAmount;
+                                            }
+                                        }
+
+
+
+                                        <div class="shopping-cart-footer">
+                                            <div class="shopping-cart-total">
+                                                <h4>Total <span>SAR @(totalAmtL.ToString("N2"))</span></h4>
+                                            </div>
+                                            <div class="shopping-cart-button">
+                                                <a href="/Cart/Cartpreview" class="outline">View cart</a>
+                                                <a href="/Cart/Checkout">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @{
+
+                                    var data = CheckClickClient.AppUtils.UserLogin;
+                                }
+
+                                <div class="header-action-icon-2">
+                                    @*<a href="~/user/myprofile">
+                                    @{
+                                    if (data != null && data.IsLogin == true)
+                                    {
+                                    <img class="svgInject" alt="Nest" src="@data.UserProfile">
+                                    }
+                                    }
+                                    </a>*@
+                                    @if (CheckClickClient.AppUtils.UserLogin.UserId > 0)
+                                    {
+                                        <a href="#">
+                                            <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                        </a>
+                                        <a href="#"><span class="lable ml-0">@data.UserName</span></a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                            <ul>
+                                                <li>
+                                                    <a href="~/user/myprofilenest"><i class="fi fi-rs-user mr-10"></i>My Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/user/manageaddress"><i class="fi fi-rs-location-alt mr-10"></i>Manage Address</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/user/changepassword"><i class="fi fi-rs-heart mr-10"></i>Change Password</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("logout", "user")"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <img class="svgInject" alt="Nest" src="/nest/imgs/theme/icons/icon-user.svg">
+                                        </a>
+                                        <a href="@Url.Action("IndexNest", "User")"><span class="lable">Login</span></a>
+                                    }
+                                </div>
+                            </div>
+                        </div>

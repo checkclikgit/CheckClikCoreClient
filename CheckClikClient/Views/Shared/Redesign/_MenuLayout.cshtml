@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
-<body data-cities="@Json.Serialize(AppUtils.CityList.ToList())" data-districts="@Json.Serialize(AppUtils.DistrictList.ToList())" data-selectedDist="@AppUtils.SelectedDistrict" data-selectedCity="@AppUtils.SelectedCity">
+<body>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -140,13 +140,13 @@
                     </div>
                     <div class="col-xl-6 col-lg-4">
                         <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
+                            @*<div id="news-flash" class="d-inline-block">
                                 <ul>
                                     <li>100% Secure delivery without contacting the courier</li>
                                     <li>Supper Value Deals - Save more with coupons</li>
                                     <li>Trendy 25silver jewelry, save up 35% off today</li>
                                 </ul>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
@@ -190,14 +190,15 @@
         <div class="header-bottom header-bottom-bg-color sticky-bar">
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
-                    <div class="logo logo-width-1">
-                        <a asp-action="NIndex" asp-controller="Home"><img src="~/Images/Logo.png" alt="logo" /></a>
-                    </div>
+
                     @{
                         var cityList = new SelectList(AppUtils.CityList, "Id", "NameEn");
                         var districtList = new SelectList(AppUtils.DistrictList, "Id", "NameEn");
                     }
                     <div class="header-nav d-none d-lg-flex">
+                        @*<div class="logo">
+                            <a asp-action="NIndex" asp-controller="Home"><img src="~/Images/Logo.png" alt="logo" /></a>
+                        </div>*@
                         <div class="main-categori-wrap d-none d-lg-block">
                             <a class="categories-button-active" href="#">
                                 @*<span class="fi-rs-location-alt"></span> <span class="et">Select</span> your shopping location
@@ -205,7 +206,7 @@
 
                                 <span class="fi-rs-location-alt"></span>
                                 @*<img src="/nest/imgs/theme/icons/icon-location.svg" alt="">*@
-                            <span class="et ml-2">Shop In </span> <strong style="float:right;" id="spncity"></strong>
+                                <span class="et ml-2">Shop In </span> <strong style="float:right;" id="spncity"></strong>
                                 <i class="fi-rs-angle-down"></i>
                             </a>
                             <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
@@ -247,77 +248,7 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="header-action-right">
-                        <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
-                                    <img class="svgInject" alt="Nest" src="~/nest/imgs/theme/icons/icon-heart.svg" />
-                                    <span class="pro-count blue">6</span>
-                                </a>
-                                <a href="shop-wishlist.html"><span class="lable">Wishlist</span></a>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
-                                    <img alt="Nest" src="~/nest/imgs/theme/icons/icon-cart.svg" />
-                                    <span class="pro-count blue">2</span>
-                                </a>
-                                <a href="shop-cart.html"><span class="lable">Cart</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="~/nest/imgs/shop/thumbnail-3.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="~/nest/imgs/shop/thumbnail-2.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
-                                            <a href="shop-checkout.html">Checkout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a href="page-account.html">
-                                    <img class="svgInject" alt="Nest" src="~/nest/imgs/theme/icons/icon-user.svg" />
-                                </a>
-                                <a href="page-account.html"><span class="lable ml-0">Account</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                    <ul>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>My Voucher</a></li>
-                                        <li><a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
-                                        <li><a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <partial name="_LoggedInLayout" />
                 </div>
             </div>
         </div>
@@ -505,21 +436,22 @@
         </div>
     </div>
     <!--End header-->
-    <main class="main" style="min-height: calc(100vh - 243px)">
+    <main class="main">
         @RenderBody()
     </main>
-    <footer class="main">
-        <div class="container pb-30 mt-auto">
+    <footer class="main" id="footer">
+        <div class="container pb-10 mt-auto">
             <div class="row align-items-center">
                 <div class="col-12 mb-15">
                     <div class="footer-bottom"></div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+                <div class="col-xl-4 col-lg-6 col-md-6 ">
+                    <p class="font-sm mb-0"><strong>Secured Payment Gateways</strong></p>
+                    <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:45%;" />
                 </div>
-                <div class="col-xl-4 col-lg-6 justify-content-center text-center d-none d-xl-block">
+                <div class="col-xl-4 col-lg-6  col-md-6 justify-content-center text-center d-none d-xl-block">
                     <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
-                    <div class="header-info text-center">
+                    <div class="header-info header-info-footer text-center">
                         <ul>
                             <li><a href="page-about.htlm">Sell with Us</a></li>
                             <li><a href="/Home/TermsAndConditions" target="_blank">Terms & Conditions</a></li>
@@ -535,7 +467,7 @@
                         <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
                         <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
                     </div>
-                    <p class="font-sm">Up to 15% discount on your first subscribe</p>
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -587,7 +519,7 @@
     <script src="~/nest/js/shop.js?v=5.6"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.3/dist/typeahead.jquery.js" integrity="sha512-h6BgTelOAlxClugUkZwcBdOj4hzNi8+7DOMvQWuEmrUY0IO8XbAzSO22wfQSUSlFCBHy5kXfs/Cz1OiXr+LLNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom  JS -->
-     <partial name="_CustomScript" />
+    <partial name="_CustomScript" />
 </body>
 
 </html>
