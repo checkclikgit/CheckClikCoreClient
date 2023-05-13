@@ -1,6 +1,4 @@
-html {
-  font-size: 14px;
-}
+
 
 @media (min-width: 768px) {
   html {
@@ -8,18 +6,24 @@ html {
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  margin-bottom: 60px;
-}
 .logo img{
     width:100px !important;
     min-width:100px !important;
 }
 .w-400 {
     width: 400px !important;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.header-info-footer{
+    margin-left:2.5em;
+}
+.tags-list li {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    text-align: left;
 }
