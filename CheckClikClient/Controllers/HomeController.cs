@@ -285,6 +285,10 @@ namespace CheckClikClient.Controllers
         {
             return View();
         }
+        public IActionResult TermsOfSales()
+        {
+            return View();
+        }
 
         public async Task<string> GetCityDistricts()
         {
