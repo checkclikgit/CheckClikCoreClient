@@ -163,7 +163,7 @@
                 }));
                 for (var i = 0; i < temp.length; i++) {
                     if (temp[i].cityId == city) {
-                        console.log(temp[i].id);
+                        //console.log(temp[i].id);
                         $('#select-district').append($('<option>', {
                             value: '' + temp[i].id + '',
                             text: '' + temp[i].nameEn + ''
@@ -574,7 +574,7 @@
         //var rbPaymentmode = $("input[name='rbPayment']:checked").val();
         //var searchTerm = $("#txtSearchTerm").val();
         var searchTerm = $("#txtSearch").val();
-        console.log("SearchTerm:" + searchTerm);
+        //console.log("SearchTerm:" + searchTerm);
         var rbPaymentmode = $("#ddlPaymentOption").val();
         var showRows = $("#ddlShow").val();
         var sortingOrder = "";
@@ -734,7 +734,7 @@
         var lat = $("#hdnidlat").val();
         var long = $('#hdnidlong').val();
         $.ajax({
-            url: '@Url.Action("PVOffer")',
+            url: '/Offers/PVOffer',
             data: { CityId: 0, DistrictId: 0, Latitude: lat, Longitude: long },
             success: function (result) {
                 $("#offerdiv").html(result.result);
@@ -816,7 +816,7 @@
     function GetCoupons(pageNumber) {
         $.ajax({
             type: 'POST',
-            url: '@Url.Action("CouponsofCustomers")',
+            url: '/Coupons/CouponsofCustomers',
             datatype: "json",
             data: { pageNumber: pageNumber },
             success: function (data) {
@@ -843,4 +843,294 @@
             }
         });
     }
+    //Main store page script
+    var clearSession=false;
+        $(document).ready(function () {
+        //hdnIsLocationSet
+        setTimeout(function () {
+            GetCategorySubCategoryTimingResults();
+            GetProductSearchResults();
+        }, 100);
+
+        $("#ddlBranchList").on("change", function () {
+            GetCategorySubCategoryTimingResults();
+             GetProductSearchResults();
+             ClearField();
+             
+            $("#divCat").html("All Category");
+            $("#divSubCat").html("All Subcategory");
+        });
+
+        
+    });
+    function ClearField()
+    {
+        clearSession = true;
+
+        $("#hdnSearchFilters").val("");
+
+        $("#hdnCat").html("");
+        $("#divCat").html("");
+        $("#hdnSubCat").val("");
+        $("#divSubCat").html("");
+        
+    }
+    function SetCategory(categoryId, catName)
+    { 
+        $("#hdnCat").html(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val("");
+        $("#divSubCat").html("");
+    }
+    function SetSubCategory(categoryId, catName, subCatId, subCatName)
+    { @*alert("a");*@
+        $("#hdnCat").val(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val(subCatName);
+        $("#divSubCat").html(subCatName);
+    }
+    @*function SetSubCategory(categoryId, catName, subCatId, subCatName)
+    { 
+        $("#hdnCat").val(catName);
+        $("#divCat").html(catName);
+        $("#hdnSubCat").val(subCatName);
+        $("#divSubCat").html(subCatName);
+    }*@
+
+    function GetCategorySubCategoryTimingResults() {
+        $("#divCatAndSubCat").html("");
+        $("#divTiming").html("");
+        var branchId = $("#ddlBranchList").val();
+
+        $.ajax({
+            url: "@Url.Action("GetCatSubCatTiming", "Product")",
+            type: "POST",
+            data: {
+                ////partialViewForm relates to the form element in your partial view
+                //model: JSON.stringify($('#search').serializeObject()),
+                branchid: parseInt(branchId), branchName: "", Latitude: "", Longitude: ""
+            },
+            success: function (data) {
+                $("#divCatAndSubCat").html(data.resultCatAndSubCat);
+                $("#divTiming").html(data.resultTiming);
+    @*GetProductSearchResults();*@
+                },
+            error: function (xhr) {
+                $("#divLoader").hide();
+                $("#loader").hide();
+            }
+        });
+    }
+
+    function GetProductSearchResults() {
+
+        var showRows = $("#ddlShow").val() == null ? "0" : $("#ddlShow").val();
+        @*var catId = parseInt($("#hdnCat").val());
+        var subCatId = parseInt($("#hdnSubCat").val());*@
+        var catId = $("#hdnCat").val();
+        var subCatId = $("#hdnSubCat").val();
+
+        var branchId = $("#ddlBranchList").val();
+        var ProductSearchText = $("#txtSearchProduct").val();
+        $.ajax({
+            url: "@Url.Action("ProductSearchResults", "Product")",
+            //datatype: "json",
+            type: "post",
+            data: {
+                //partialViewForm relates to the form element in your partial view
+                 model: JSON.stringify($('#search').serializeObject()), branchid: parseInt(branchId), ProductSearchText: ProductSearchText, showRows: parseInt(showRows), catId: catId, subCatId: subCatId, clearSession : clearSession
+            },
+            //JSON.stringify({ "q": userName, "password": password }),
+            //contenttype: 'application/json; charset=utf-8',
+            //async: true,
+            success: function (dataReturn) {
+                emptyStr = dataReturn.result.replace(/[\r\n]+/g, '');
+                if (emptyStr != '') {
+                    $("#divSearchResults").html(dataReturn.result);
+                    $("#divSearchResults").show();
+                    @*BindFiltersOnChange();*@
+                    @*DisplayActivePage();*@
+                }
+                if ($("#txtPriceRange").length > 0) {
+                    @*$("#txtPriceRange").slider({
+                        tooltip: 'hide'
+                    }).on('slideStop', changePrice).on('change', displayChangedPrice);*@
+                    displayChangedPrice();
+                }
+                $("#divLoader").hide();
+            },
+            error: function (xhr) {
+                //console.log(xhr.responseText);
+                //alert('error');
+                $("#divLoader").hide();
+            }
+        });
+    }
+
+   @* function changePrice() {
+        //console.log(txtPriceRange.value);
+        isPriceChanged = false;
+        isPriceChanged = txtPriceRange.value.split(",")[0] == $("#spnMinPrice").text();
+        if (!isPriceChanged)
+            isPriceChanged = txtPriceRange.value.split(",")[1] == $("#spnMaxPrice").text();
+        if (isPriceChanged)
+            LoadSearchResults();
+    }
+
+    function displayChangedPrice() {
+        $("#spnMinPrice").text(txtPriceRange.value.split(",")[0]);
+        $("#spnMaxPrice").text(txtPriceRange.value.split(",")[1]);
+    }
+
+    function DisplayActivePage() {
+        $(".changePage.active").removeClass("active");
+        $(".changePage").eq(parseInt($("#hdnStart").val())).addClass("active");
+    }
+
+    function BindFiltersOnChange() {
+        $(".clear-filters").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            //lknClear_3
+            var groupId = $(this).attr("id").replace("lknClear_", "");
+            $("[id^='ckbFilter" + groupId + "_'][type=checkbox]:checked").each(function () {
+                this.checked = false;
+            });
+            LoadSearchResults();
+        });
+        $("#lnkClearPriceFilter").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            var txtPriceRange = $("#txtPriceRange");
+            var arRange = [parseInt(txtPriceRange.data("slider-min")), parseInt(txtPriceRange.data("slider-max"))];
+            $("#spnMinPrice").text(txtPriceRange.data("slider-min"));
+            $("#spnMaxPrice").text(txtPriceRange.data("slider-max"));
+            txtPriceRange.slider('setValue', arRange, true)
+            //txtPriceRange.slider('refresh');
+            LoadSearchResults();
+        });
+
+        $(".search-sort").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnSort").val($(this).data("sort-field") + "," + $(this).data("sort-dir"));
+            LoadSearchResults();
+        });
+
+        $(".ckbFilter").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optItemType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $(".optServiceType").on("change", function () {
+            $("#hdnStart").val("0");
+            LoadSearchResults();
+        });
+        $("#lnkClearItemType").on("click", function (e) {
+            e.preventDefault();
+            $("#hdnStart").val("0");
+            $(".optItemType:checked").prop('checked', false);
+            LoadSearchResults();
+        });
+        $(".changePage").on("click", function (e) {
+            e.preventDefault();
+            if (!$(this).hasClass("active")) {
+                $("#hdnStart").val($(this).data("pageindex"));
+                LoadSearchResults();
+            }
+        });
+    }
+
+    function LoadSearchResults() {
+        $("#divLoader").show();
+        $("#divSearchResults").hide();
+
+        var obj = '{'
+            + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+            + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+            + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+            + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+            + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+            + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+            + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+            + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+        if ($(".optServiceType:checked").length > 0)
+            obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+        obj += '"Price": "' + $("#txtPriceRange").val() + '",';
+
+        if ($(".optItemType:checked").length > 0)
+            obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+        $(".filter-auto").each(function () {
+            var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+            var isCurrentFilter = $(this).is(":checked");
+            obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+        });
+
+        if (obj.endsWith(","))
+            obj = obj.slice(0, -1);
+        obj += '}';
+
+        $("#hdnSearchFilters").val(obj);
+        GetProductSearchResults();
+    }*@
+
+    function SetDataInHiddenField()
+    {
+        var hdnSearchText = $("#txtSearchProduct").val();
+        $("#hdnSearchText").val(hdnSearchText);
+
+        var startPrice = $("#slider-range-value1").html(); 
+        var endPrice = $("#slider-range-value2").html();
+        var priceRange = "";
+
+        if (startPrice != 'false' && startPrice != undefined) {
+            startPrice = $("#slider-range-value1").html().split(" ");
+            endPrice = $("#slider-range-value2").html().split(" ");
+            priceRange = parseFloat(startPrice[1]) + "," + parseFloat(endPrice[1]);
+        }
+        else{
+            priceRange = "";
+        }
+        var obj = '{'
+            + '"IsCOD" : ' + $("#ckbPaymentCOD").is(":checked") + ','
+            + '"IsCrPN"  :' + $("#ckbPaymentCrPayNow").is(":checked") + ','
+            + '"IsCrPL"  :' + $("#ckbPaymentCrPayLater").is(":checked") + ','
+            + '"IsDrPN"  :' + $("#ckbPaymentDrPayNow").is(":checked") + ','
+            + '"IsDrPL"  :' + $("#ckbPaymentDrPayLater").is(":checked") + ','
+            + '"IsPickup"  :' + $("#ckbIsPickup").is(":checked") + ','
+            + '"IsDelivery"  :' + $("#ckbIsDelivery").is(":checked") + ','
+            + '"IsShipping"  :' + $("#ckbIsShipping").is(":checked") + ',';
+
+        if ($(".optServiceType:checked").length > 0)
+            obj += '"ServiceType"  :"' + $("input[name='optServiceType']:checked").val() + '",';
+
+        @*obj += '"Price": "' + $("#txtPriceRange").val() + '",';*@
+            obj += '"Price": "' + priceRange + '",';
+
+        if ($(".optItemType:checked").length > 0)
+            obj += '"ItemType"  :"' + $("input[name='optItemType']:checked").val() + '",';
+
+        $(".filter-auto").each(function () {
+            var currentCkbFilter = $(this).attr("Id").replace("ckbFilter", "")
+            var isCurrentFilter = $(this).is(":checked");
+            obj += '"' + currentCkbFilter + '" : ' + isCurrentFilter + ',';
+        });
+
+        if (obj.endsWith(","))
+            obj = obj.slice(0, -1);
+        obj += '}';
+
+        $("#hdnSearchFilters").val(obj);
+        GetProductSearchResults();
+    }
+    
+        $("#ddlShow").on("change", function () {
+            alert("a");
+            SetDataInHiddenField();
+        });
 </script>

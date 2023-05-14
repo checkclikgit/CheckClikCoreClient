@@ -690,9 +690,9 @@
     @*<script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
     @*<script src="~/nest/js/jquery-3.6.0.min.js"></script>*@
     @*
-    <script src="~/web-assets/js/jquery.min.js"></script>
     <script src="~/nest/js/modernizr-3.6.0.min.js"></script>*@
     @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+    <script src="~/web-assets/js/jquery.min.js"></script>
 
     <script src="~/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
     <script src="~/nest/js/vendor/bootstrap.bundle.min.js"></script>
@@ -715,6 +715,7 @@
     <script src="~/nest/js/main.js?v=5.6"></script>
     <script src="~/nest/js/shop.js?v=5.6"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.3/dist/typeahead.jquery.js" integrity="sha512-h6BgTelOAlxClugUkZwcBdOj4hzNi8+7DOMvQWuEmrUY0IO8XbAzSO22wfQSUSlFCBHy5kXfs/Cz1OiXr+LLNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     
     <script>
@@ -872,7 +873,7 @@
                     }));
                     for (var i = 0; i < temp.length; i++) {
                         if (temp[i].cityId == city) {
-                            console.log(temp[i].id);
+                            //console.log(temp[i].id);
                             $('#select-district').append($('<option>', {
                                 value: ''+temp[i].id+'',
                                 text: '' + temp[i].nameEn + ''
