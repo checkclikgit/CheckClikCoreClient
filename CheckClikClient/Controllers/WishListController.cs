@@ -110,6 +110,84 @@ namespace CheckClikClient.Controllers
             }
         }
     }
+    // GET: WishList
+    [Route("wishlist/indexnew")]
+    public async Task<ActionResult> Indexnew()
+    {
+        using (HttpClient client = new HttpClient())
+        {
+
+            bool status = false;
+            _commonHeader.setHeaders(client);
+            try
+            {
+
+                FavoritesDTO obj = new FavoritesDTO();
+                SessionDTO login = AppUtils.UserLogin;
+                if (login == null)
+                {
+                    return RedirectToAction("IndexNest", "User"); // later call login form
+                }
+                else
+                {
+                    obj.UserId = login.UserId; 
+                }
+                obj.Type = 1;
+
+                HttpResponseMessage responseMessage = await client.PostAsJsonAsync("api/OrdersAPI/NewAddGetDeleteUserFavorite", obj);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    var response = JObject.Parse(responseData);
+                    var Data = response.SelectToken("Data");
+                    var Message = Convert.ToString(response.SelectToken("Message"));
+                    status = Convert.ToBoolean(response.SelectToken("Status").ToString());
+                    var storeDetails = Data.SelectToken("StoreList").ToString();
+                    var productDetails = Data.SelectToken("ProductList").ToString();
+                    var serviceDetails = Data.SelectToken("ServiceList").ToString();
+                    var lstStoreDetails = JsonConvert.DeserializeObject<List<FavoritesDTO>>(storeDetails.ToString());
+                    var lstProductDetails = JsonConvert.DeserializeObject<List<FavoritesDTO>>(productDetails.ToString());
+                    var lstServiceDetails = JsonConvert.DeserializeObject<List<FavoritesDTO>>(serviceDetails.ToString());
+                    if (lstStoreDetails != null)
+                    {
+                        if (lstStoreDetails.Count != 0)
+                        { 
+                            AppUtils.WishStorelist = lstStoreDetails; 
+                        }
+
+                        else
+                            obj.StoreDetailslst = null;
+                    }
+                    if (lstProductDetails != null)
+                    {
+                        if (lstProductDetails.Count != 0)
+                        { 
+                            AppUtils.WishProductlist = lstProductDetails; 
+                        }
+                        else
+                            obj.ProductDetailslst = null;
+                    }
+                    if (lstServiceDetails != null)
+                    {
+                        if (lstServiceDetails.Count != 0)
+                        { 
+                            AppUtils.WishServicelist = lstServiceDetails; 
+
+                        }
+                        else
+                            obj.ServiceDetailslst = null;
+                    }
+                }
+                return View(obj);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogDTO err = new ErrorLogDTO(); 
+                _errorHandler.WriteError(err, ex.Message);
+                return RedirectToAction("Error");
+            }
+        }
+    }
 
     [HttpPost]
     public async Task<ActionResult> PVStoresWishlistAsync(int pageNumber, int SortId)
