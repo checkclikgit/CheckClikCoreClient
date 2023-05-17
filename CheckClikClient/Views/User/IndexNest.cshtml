@@ -1,73 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
     ViewBag.Title = "Login to your account";
-}
-@*<!DOCTYPE html>
-<html class="no-js" lang="en">
-    <head>
-    <meta charset="utf-8" />
-    <title>CHECKCLIK - User Login</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/nest/imgs/theme/favicon.svg" />
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="/nest/css/main.css?v=5.6" />
-
-    <script src="/nest/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="/nest/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="~/app-assets/vendors/js/extensions/toastr.min.js"></script>
-    <script src="~/app-assets/js/scripts/extensions/toastr.js"></script>
-
-    <!-- Vendor JS-->
-    <script src="/nest/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="/nest/js/plugins/slick.js"></script>
-    <script src="/nest/js/plugins/jquery.syotimer.min.js"></script>
-    <script src="/nest/js/plugins/wow.js"></script>
-    <script src="/nest/js/plugins/perfect-scrollbar.js"></script>
-    <script src="/nest/js/plugins/magnific-popup.js"></script>
-    <script src="/nest/js/plugins/select2.min.js"></script>
-    <script src="/nest/js/plugins/waypoints.js"></script>
-    <script src="/nest/js/plugins/counterup.js"></script>
-    <script src="/nest/js/plugins/jquery.countdown.min.js"></script>
-    <script src="/nest/js/plugins/images-loaded.js"></script>
-    <script src="/nest/js/plugins/isotope.js"></script>
-    <script src="/nest/js/plugins/scrollup.js"></script>
-    <script src="/nest/js/plugins/jquery.vticker-min.js"></script>
-    <script src="/nest/js/plugins/jquery.theia.sticky.js"></script>
-    <script src="/nest/js/plugins/jquery.elevatezoom.js"></script>
-    <!-- Template  JS -->
-    <script src="/nest/js/main.js?v=5.6"></script>
-    <script src="/nest/js/shop.js?v=5.6"></script>
-</head><body>*@
+} 
 @if (TempData["Error"] != null)
 {
     <text>
-        <script>
-            toastr.options = {
-                "closeButton": true,
-                "debug": true,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-            toastr['info']('@TempData["Error"]');
+        <script> 
+            MessageManager.ShowMessage("error", '@TempData["Error"]'); 
         </script>
     </text>
 }
@@ -257,22 +196,27 @@
     function ShowForgetPasswordModal() {
         $("#modalLoginForm").modal("show");
     }
+
     function chars(e) {
         var key = document.all ? key = e.keyCode : key = e.which;
         return ((key > 64 && key < 91) || (key > 96 && key < 123));
     }
+
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ((charCode < 47 || charCode > 57))
             return false;
         return true;
     }
+
     function validateEmail($email) {
         var emailReg = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         return emailReg.test($email);
     }
+
     function myFunction(event) {
     }
+
     function UserLogin() {
         // debugger
         var MobileEmailId = $('#MobileEmailId').val();
@@ -349,94 +293,38 @@
             }
         }
 
-
-        //if (MobileEmailId != '') {
-        //    $('#logMobNoErr').html('');
-        //}
-
-        //if (Password != '') {
-        //    $('#PasswordErr').html('');
-        //}
-
         var userDetails = { 'LoginName': MobileEmailId, 'Password': Password }
         $('#logMobNoErr').html('');
+
         $.ajax({
-            /**/
-            url: '@Url.Action("UserLoginValidation", "User")',
-            /**/
+            url: '/User/UserLoginValidation',
             data: { UserData: userDetails },
             datatype: 'json',
             type: 'Post',
             success: function (result) {
-                // debugger
                 var status = result.status;
-
-                //alert(countDownDate);
                 if (!status) {
-                    //alert(data.Message)
-                    //$('#loginErr').html(result.Message).addClass("text-danger");;
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": true,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                    toastr['info'](result.message);
-                    return
+                    MessageManager.ShowMessage("warning", result.message);
+                    return;
                 }
                 else {
                     if (result.returnUrl == null || result.returnUrl == '') {
-                        window.location.href = '@Url.Action("NIndex","Home")';
+                        window.location.href = '/Home/NIndex';
                     }
                     else {
                         window.location.href = result.returnUrl;
                     }
-                    //$('#loginErr').html(result.Message).css('color', 'green');
-
                 }
             },
             error: function () {
-                //$('#loginErr').html('Something went wrong').addClass("text-danger");;
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": true,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": true,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                toastr['info']('Something went wrong');
+                MessageManager.ShowMessage("error", 'Something is wrong. Please try after sometime');
             }
-
-
-        })
+        });
     }
 
     function verifyFogotMobile() {
-        // debugger;
         var mob = $("#fmobileNo").val();
         if (mob == '') {
-            //$('#mobileErr').html('Mobile No Required').css('color', 'red');
             $('#fmobileErr').text('Mobile Number Required').addClass("text-danger");
             return;
         }
@@ -455,21 +343,17 @@
         else {
             $.ajax({
                 type: "GET",
-                /**/
-                url: '@Url.Action("GetForgotVerifyMobile", "User")',
-                /**/
+                url: '/User/GetForgotVerifyMobile',
                 contentType: "application/json; charset=utf-8",
                 data: { "MobileNo": mob },
                 datatype: "json",
                 success: function (data) {
                     var countDownDate = data.status;
                     if (!countDownDate) {
-                        //alert(data.Message)
                         $('#fmobileErr').html(data.message).addClass("text-danger");
                         return
                     }
                     else {
-                        // debugger
                         var mno = $("#fmobileNo").val();
                         $('#fmobNo').html(mno);
                         $('#stepf1').hide();
@@ -482,82 +366,41 @@
                 }
             });
             $('#fmobileErr').html('');
-
         }
-
     }
 
     function VerifyOTP() {
         var mobileNo = $("#fmobileNo").val();
         var otpno = $("#fotpNo").val();
-        // debugger
-
         $.ajax({
-
-            /**/
-            url: '@Url.Action("GetForgotVerifyOtp")',
-            /**/
+            url: '/User/GetForgotVerifyOtp',
             type: 'get',
             datatype: 'json',
             data: { 'MobileNo': mobileNo, 'otp': otpno },
             success: function (data) {
-                // debugger;
                 var countDownDate = data.status;
                 if (!countDownDate) {
                     $('#fotpError').html(data.message).addClass("text-danger");
                     return
                 }
                 else {
-
                     $('#fotpError').html(data.message).css('color', 'green');
                     $('#stepf2').hide();
                     $('#stepf3').show();
 
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": true,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                    toastr['info']('OTP Verified !');
-
+                    MessageManager.ShowMessage("info", 'OTP Verified ');
                 }
             },
             error: function () {
-                alert("Error Submission")
+                MessageManager.ShowMessage("error", 'Something wrong. Please try with administrator.');
             }
         });
     }
 
     function UpdatePassword() {
-        //if ($("#fpswd").val() != '') {
-        //    $('#fpswrdErr').html('');
-        //}
-        //if ($("#fpassConf").val() == '') {
-        //    $('#fConpswrdErr').html('Confirm Password Required').addClass("text-danger");
-        //}
-        //if ($("#fpassConf").val() != '') {
-        //    $('#fConpswrdErr').html('');
-        //    //return;
-        //}
-        //if ($('#fpswd').val() == $('#fpassConf').val()) {
-        //    $('#fmessage').html('').css('color', 'green');
-        //}
         var pl = 0, cpl = 0;
         if ($("#fpswd").val() == '') {
             $('#fpswrdErr').html('Password Required').addClass("text-danger");
-            //return;
             pl = 1;
         }
         else {
@@ -582,8 +425,6 @@
                 $('#fConpswrdErr').html('');
         }
         if (pl != 0 || cpl != 0) {
-            //$('#step2').hide();
-            //$('#step1').show();
             return false;
         }
         if ($('#fpswd').val() != $('#fpassConf').val() && $("#fpassConf").val() != '') {
@@ -592,82 +433,36 @@
         }
 
 
-
-
-        // debugger;
         var mobileNo = $("#fmobileNo").val();
         var otpno = $("#fotpNo").val();
         var Password = $("#fpswd").val();
 
         if (otpno == "") {
             $('#fotpError').html("Enter OTP Is Required").addClass("text-danger");
-            return
+            return;
         }
         var userDetails = { 'MobileNo': mobileNo, 'OtpCode': otpno, 'Password': Password };
-        var stringData = JSON.stringify(userDetails)
-        // debugger
+        var stringData = JSON.stringify(userDetails);
 
         $.ajax({
-
-            /**/
-            url: '@Url.Action("UpdatePassword")',
-            /**/
+            url: '/User/UpdatePassword',
             type: 'Post',
             datatype: 'json',
             data: { UserData: stringData },
             success: function (data) {
-                // debugger;
                 var countDownDate = data.status;
                 if (!countDownDate) {
-                    //alert(data.Message)
                     $('#fotpError').html(data.message).addClass("text-danger");
-                    return
+                    return;
                 }
                 else {
                     $('#fotpError').html(data.message).css('color', 'green');
-
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": true,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                    toastr['info']('Password Updated Successfully !');
-                    window.location.href = '@Url.Action("NIndex","Home")';
-
+                    MessageManager.ShowMessage("info", 'Password Updated Successfully !');
+                    window.location.href = '/Home/NIndex';
                 }
             },
             error: function () {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": true,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": true,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                toastr['error']('Somethnig went wrong, try after sometime!');
-
+                MessageManager.ShowMessage("error", 'Somethnig went wrong, please try after sometime!');
             }
         });
     }
