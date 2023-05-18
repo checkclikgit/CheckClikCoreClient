@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+@{
+    IEnumerable<Customer.Models.CartDTO> cartlst = CheckClickClient.AppUtils.CartList;
+    Customer.Models.CartDTO url = new Customer.Models.CartDTO();
+    url.UrlPath = Configuration["apiurl"] + "" + Configuration["UploadLocation"] + "" + "/Products/";
+
+    Decimal totalVatL = 0;
+    Decimal totalAmtL = 0;
+}
+<head>
+    <meta charset="utf-8" />
+    <title>Checkclik - @ViewBag.Title</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/nest/imgs/theme/favicon.svg" />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/nest/css/plugins/slider-range.css" />
+    <link rel="stylesheet" href="~/nest/css/main.css?v=5.6" />
+</head>
+
+<body>
+  
+    <header class="header-area header-style-1 header-height-2">
+        <div class="mobile-promotion">
+            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
+        </div>
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info">
+                            <ul>
+                                <li><a href="page-about.htlm"><b><i class="fi-rs-arrow-left mr-5"></i> Go to Cart</b></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="text-center text-bold">
+                           <p><b>Secured Payment </b></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                                <li>
+                                    <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-fr.png" alt="" />Français</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-dt.png" alt="" />Deutsch</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-ru.png" alt="" />Pусский</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="language-dropdown-active" href="#">USD <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-fr.png" alt="" />INR</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-dt.png" alt="" />MBP</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/nest/imgs/theme/flag-ru.png" alt="" />EU</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End header-->
+    <main class="main" style="min-height: calc(100vh - 215px)">
+        @RenderBody()
+    </main>
+    <footer class="main" id="footer">
+        <div class="container pb-10 mt-auto">
+            <div class="row align-items-center">
+                <div class="col-12 mb-15">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 ">
+                    <p class="font-sm mb-0"><strong>Secured Payment Gateways</strong></p>
+                    <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:45%;" />
+                </div>
+                <div class="col-xl-4 col-lg-6  col-md-6 justify-content-center text-center d-none d-xl-block">
+                    <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
+                    <div class="header-info header-info-footer text-center">
+                        <ul>
+                            <li><a href="page-about.htlm">Sell with Us</a></li>
+                            <li><a href="/Home/TermsAndConditions" target="_blank">Terms & Conditions</a></li>
+                            <li><a href="shop-wishlist.html">Terms for Sale</a></li>
+                            <li><a href="shop-order.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                    <div class="mobile-social-icon">
+                        <h6>Follow Us</h6>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                    </div>
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+
+            </div>
+        </div>
+        </div>
+    </footer>
+    <!-- Preloader Start -->
+    @*<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+    <div class="preloader-inner position-relative">
+    <div class="text-center">
+    <img src="~/nest/imgs/theme/loading.gif" alt="" />
+    </div>
+    </div>
+    </div>
+    </div>*@
+    <input type="hidden" name="hdnnmlat" id="hdnidlat" />
+
+    <input type="hidden" name="hdnnmlong" id="hdnidlong" />
+
+    <input type="hidden" id="hdncity" />
+
+    <input type="hidden" id="hdndistrict" />
+
+    @*<input type="hidden" id="hdndistrict" value="@Session["DefaultDistrictListData"]" />*@
+
+    <input type="hidden" id="hdnisusrloc" value="0" />
+    <!-- Vendor JS-->
+    <script src="~/nest/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/nest/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/nest/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/nest/js/plugins/slick.js"></script>
+    <script src="~/nest/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="~/nest/js/plugins/wow.js"></script>
+    <script src="~/nest/js/plugins/slider-range.js"></script>
+    <script src="~/nest/js/plugins/perfect-scrollbar.js"></script>
+    <script src="~/nest/js/plugins/magnific-popup.js"></script>
+    <script src="~/nest/js/plugins/select2.min.js"></script>
+    <script src="~/nest/js/plugins/waypoints.js"></script>
+    <script src="~/nest/js/plugins/counterup.js"></script>
+    <script src="~/nest/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/nest/js/plugins/images-loaded.js"></script>
+    <script src="~/nest/js/plugins/isotope.js"></script>
+    <script src="~/nest/js/plugins/scrollup.js"></script>
+    <script src="~/nest/js/plugins/jquery.vticker-min.js"></script>
+    <script src="~/nest/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="~/nest/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="~/nest/js/main.js?v=5.6"></script>
+    <script src="~/nest/js/shop.js?v=5.6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.3/dist/typeahead.jquery.js" integrity="sha512-h6BgTelOAlxClugUkZwcBdOj4hzNi8+7DOMvQWuEmrUY0IO8XbAzSO22wfQSUSlFCBHy5kXfs/Cz1OiXr+LLNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom  JS -->
+    <partial name="_CustomScript" />
+</body>
+
+</html>

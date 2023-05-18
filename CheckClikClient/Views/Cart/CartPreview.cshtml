@@ -138,15 +138,14 @@ input.qty-val {
                 <a class="btn" href="/Home/NIndex"><i class="fi-rs-arrow-left mr-10"></i>Continue Shopping</a>
                 @*<a class="btn  mr-10 mb-sm-15"><i class="fi-rs-refresh mr-10"></i>Update Cart</a>*@
             </div>
-            <div class="row mt-50">
-                <div class="col-lg-7">
-                    <div class="calculate-shiping p-40 border-radius-15 border">
-                        <h4 class="mb-10">Additional Remarks</h4>
-                        <textarea id="txtremarks" rows="5" class="form-control" maxlength="300"></textarea>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="p-40">
+        </div>
+        <div class="col-lg-4">
+            <div class="border p-md-4 cart-totals ml-30">
+                <div class="table-responsive">
+                    <table class="table no-border">
+                        <tbody>
+                            <tr>
+                                <td>
                         <h4 class="mb-10">Apply Coupon</h4>
                         @*<p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>*@
                         <form action="#">
@@ -167,15 +166,8 @@ input.qty-val {
                                 @*<button class="btn"><i class="fi-rs-label mr-10"></i>Apply</button>*@
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="border p-md-4 cart-totals ml-30">
-                <div class="table-responsive">
-                    <table class="table no-border">
-                        <tbody>
+                        </td>
+                            </tr>
                             <tr>
                                 <td class="cart_total_label">
                                     <h6 class="text-muted">Total</h6>
@@ -271,6 +263,10 @@ input.qty-val {
                         // <p>CheckOut Amount Should not exceed @Model.CheckOutAmount.ToString("N2")</p>
                     }
                 }
+                <div class="calculate-shiping p-40 border-radius-15 border">
+                        <h4 class="mb-10">Additional Remarks</h4>
+                        <textarea id="txtremarks" rows="5" class="form-control" maxlength="300"></textarea>
+                    </div>
             </div>
         </div>
     </div>
