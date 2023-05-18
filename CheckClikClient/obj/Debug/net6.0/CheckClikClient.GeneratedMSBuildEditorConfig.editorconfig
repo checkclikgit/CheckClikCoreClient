@@ -72,8 +72,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/PrivacyPolicy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5UG9saWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/TermsAndConditions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/TermsOfSales.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mU2FsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/Index.cshtml]
@@ -256,6 +264,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGVOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/MyProfileNestNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGVOZXN0TmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -274,6 +286,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/Indexnew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXhuZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/PVProductWishlist.cshtml]

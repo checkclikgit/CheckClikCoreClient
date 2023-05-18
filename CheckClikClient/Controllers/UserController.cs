@@ -711,6 +711,12 @@ namespace CheckClikClient.Controllers
             }
             return View(user);
         }
+        public async Task<ActionResult> MyProfileNestNew()
+        {
+            CustomerRegistrationDTO user = new CustomerRegistrationDTO();
+             
+            return View(user);
+        }
 
         [HttpPost]
         //[ValidateAntiForgeryToken]

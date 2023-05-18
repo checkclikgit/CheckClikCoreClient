@@ -1,0 +1,884 @@
+﻿@using CheckClickClient
+@model Customer.Models.FavoritesDTO
+
+@{
+    ViewBag.Title = "CHECKCLIK | Wishlist";
+    Layout = "~/Views/Shared/_LayoutNew_Profile.cshtml";
+}
+<style>
+    .reject-msg {
+        position: relative;
+    }
+
+        .reject-msg span {
+            cursor: pointer;
+        }
+
+    .reason-msg {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        z-index: 6;
+        background-color: rgb(181, 0, 0);
+        color: #fff;
+        padding: 10px;
+    }
+
+    #reason-msg button {
+        color: #ffffff;
+        opacity: 1;
+    }
+
+    #loader {
+        background-color: rgba(255, 255, 255, 0.7);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+        justify-content: center;
+        z-index: 99;
+    }
+
+    svg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: #fff;
+        opacity: 1;
+    }
+
+    .side-nav-ug .cart-list .cart-item .btn-danger, .Product-cart-list .cart-update .btn-danger, .Product-cart-list .cart-pricing a {
+        background-color: #7F7F7F;
+        color: #fff;
+        margin-top: 15px;
+    }
+</style>
+<style>
+    .user-img, .user-menu, .user-details {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        -webkit-box-shadow: 0 0 10px #ccc;
+        box-shadow: 0 0 10px #ccc;
+    }
+
+        .user-img img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .user-img .image-upload > input {
+            display: none;
+        }
+
+        .user-menu ul li a {
+            display: block;
+            font-size: 15px;
+            padding: 10px 0 0;
+            font-weight: 500
+        }
+
+            .user-menu ul li a:hover {
+                color: #d06e67
+            }
+
+            .user-menu ul li a i {
+                width: 30px;
+                color: #666666;
+            }
+
+        .user-menu hr {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .user-details .form-wrapper {
+            max-width: none;
+            margin: inherit;
+            box-shadow: none;
+            background: #fff;
+        }
+
+            .user-details .form-wrapper a small {
+                font-size: 14px;
+                color: #666666;
+            }
+
+            .user-details .form-wrapper input {
+                background: #fff;
+            }
+
+    /*.user-details .form-wrapper .button-panel .button {
+                                    height: 45px;
+                                }*/
+</style>
+
+<style>
+    .tab-style3 .nav-tabs li.nav-item a {
+        padding: 13px 51px !important;
+    }
+
+    .banner-left-icon {
+        position: relative;
+        background: #F4F6FA;
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .page-item {
+        padding: 0px 1px;
+    }
+        /*.page-item .page-link {
+            border: 0 !important;
+            padding: 0 10px !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline: 0 !important;
+            width: 40px !important;
+            height: 40px !important;
+            display: block !important;
+            border-radius: 40px !important;
+            color: #7E7E7E !important;
+            line-height: 40px !important;
+            text-align: center !important;
+            font-weight: 700 !important;
+            font-family: "Quicksand", sans-serif !important;
+            font-size: 16px !important;
+            background-color: #F2F3F4 !important;
+        }*/
+        .page-item.active .page-link {
+            border: 0 !important;
+            padding: 0 10px !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline: 0 !important;
+            width: 40px !important;
+            height: 40px !important;
+            display: block !important;
+            border-radius: 40px !important;
+            color: #7E7E7E !important;
+            line-height: 40px !important;
+            text-align: center !important;
+            font-weight: 700 !important;
+            font-family: "Quicksand", sans-serif !important;
+            font-size: 16px !important;
+            background-color: #F2F3F4 !important;
+        }
+
+    .pagination {
+        display: flex !important;
+        padding-left: 0 !important;
+        list-style: none !important;
+    }
+
+    .pagination-area .page-item.active .page-link, .pagination-area .page-item:hover .page-link {
+        color: #fff !important;
+        background: #3BB77E !important;
+    }
+
+    .pagination-area .page-item {
+        margin: 0 5px !important;
+    }
+
+    .invoice-header {
+        border-bottom: 1px solid #ececec;
+    }
+
+    .invoice .invoice-header {
+        padding: 20px 50px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .invoice .invoice-top {
+        padding: 31px 0px 0px 100px;
+        font-size: 15px;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 10px;
+    }
+
+    .invoice .invoice-center {
+        padding: 0 20px 40px;
+    }
+
+    .invoice .invoice-bottom {
+        padding: 0 20px 25px;
+    }
+
+    .invoice {
+        padding: 50px 0;
+        background: #fff;
+    }
+</style>
+<style>
+    .bs-wizard > .bs-wizard-step.complete > .bs-wizard-dot {
+        background-color: #6FAC6B;
+        border: 2px solid #6FAC6B;
+    }
+
+    .bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: block;
+        background: #ccc;
+        border: 2px solid #ccc;
+        top: 24px;
+        left: 50%;
+        margin-top: -18px !important;
+        margin-left: -5px !important;
+        border-radius: 50%;
+    }
+
+    .bs-wizard > .bs-wizard-step + .bs-wizard-step {
+    }
+
+    .bs-wizard > .bs-wizard-step {
+        padding: 0;
+        position: relative;
+    }
+
+        .bs-wizard > .bs-wizard-step:first-child.complete > .progress > .progress-bar {
+            width: 100%;
+        }
+
+        .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+            width: 50%;
+        }
+
+        .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+            width: 100%;
+        }
+
+        .bs-wizard > .bs-wizard-step > .progress > .progress-bar {
+            width: 0px;
+            box-shadow: none;
+            background: #e8e8e8;
+        }
+
+    .progress-bar {
+        float: left;
+        width: 0;
+        height: 100%;
+        font-size: 12px;
+        line-height: 20px;
+        color: #fff;
+        text-align: center;
+        background-color: #337ab7;
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+        box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+        -webkit-transition: width .6s ease;
+        -o-transition: width .6s ease;
+        transition: width .6s ease;
+    }
+
+    .bs-wizard > .bs-wizard-step {
+        padding: 0;
+        position: relative;
+    }
+
+    .bs-wizard {
+        border-bottom: solid 1px #e0e0e0;
+        padding: 0 0 10px 0;
+    }
+
+    .bs-wizard {
+        margin-top: 5px;
+        background-color: #fff;
+    }
+
+        .bs-wizard > .bs-wizard-step .bs-wizard-info {
+            color: #333;
+            padding-top: 1em;
+            font-size: 16px;
+        }
+
+    .grey-color {
+        color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
+        content: "\f00c";
+        font-family: FontAwesome;
+        font-size: 18px;
+        color: #fff;
+        border-radius: 50px;
+        position: absolute;
+        top: 2px;
+        left: 4px;
+    }
+
+    .bs-wizard > .bs-wizard-step:first-child > .progress {
+        left: 50%;
+        width: 50%;
+    }
+
+    .bs-wizard > .bs-wizard-step > .progress {
+        position: relative;
+        border-radius: 0px;
+        height: 8px;
+        box-shadow: none;
+        margin: 20px 0;
+    }
+
+    .progress {
+        height: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    }
+
+    .bs-wizard > .bs-wizard-step:last-child > .progress {
+        width: 50%;
+    }
+
+    .hst {
+        height: 170px;
+        object-fit: contain;
+    }
+</style>
+
+<style>
+    .dashboard-menu {
+        border: 1px solid #ececec;
+        padding: 10px;
+    }
+
+    .display-2 {
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    .hero-slider-1 .single-hero-slider {
+        height: 260px;
+        border-radius: 30px;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .banner-img.style-2 {
+        border-radius: 15px;
+        overflow: hidden;
+        height: auto;
+        background: url(nest/imgs/banner/banner-4.png) no-repeat center bottom;
+        background-size: cover;
+        width: 100%;
+    }
+
+    /*.card-2{
+                        min-width:128px !important;
+                    }*/
+    .user-img, .user-menu, .user-details {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        -webkit-box-shadow: 0 0 10px #ccc;
+        box-shadow: 0 0 10px #ccc;
+    }
+
+        .user-img img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+    .image-upload span {
+        font-weight: bold;
+    }
+</style>
+@{
+    var user = AppUtils.UserLogin;
+}
+
+ <div class="page-content pt-50 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 m-auto">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="dashboard-menu">
+                                <div class="user-img">
+                                    <div class="image-upload">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-lg-4 col-md-6">
+                                                <label for="file-input">
+                                                    <img id="imgProfile" src="http://localhost:53112/Uploads/Stores//Untitled1.png">
+
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-8 col-md-6"> 
+                                                <div class="pl-8 pt-3 font-weight-bold">kamrul hasan</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <ul class="nav flex-column" role="tablist">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="dashboard-tab" href="/user/MyProfileNest" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " id="orders-tab" href="/myorders/indexnest" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>My Orders</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="track-orders-tab" href="/wishlist/index" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Wishlist</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="address-tab" href="~/user/manageAddressNest" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Manage Account</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="account-detail-tab" href="~/user/changePasswordNest" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Change Password</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("logout", "user")"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="tab-content account dashboard-content">
+
+                            <div class="product-info">
+                                <div class="tab-style3">
+                                    <ul class="nav nav-tabs text-uppercase">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="stores-tab" data-bs-toggle="tab" href="#stores1">STORES</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="productitems-tab" onclick="" data-bs-toggle="tab" href="#productitems1">PRODUCT ITEMS</a>
+                                        </li>
+                                        @*<li class="nav-item">
+                                        <a class="nav-link" id="serviceitems-tab" onclick="" data-bs-toggle="tab" href="#serviceitems">SERVICE ITEMS</a>
+                                        </li>*@
+                                    </ul>
+                                    <div class="tab-content shop_info_tab entry-main-content">
+                                        @*<div class="tab-pane fade show active" id="stores">
+                                        </div>
+                                        <div class="tab-pane fade" id="productitems">
+                                        </div>*@
+                                        <div class="tab-pane fade show active" id="stores1">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 m-auto">
+                                                    <div class="table-responsive shopping-summery">
+                                                        <table class="table table-wishlist">
+                                                            <thead>
+                                                                <tr class="main-heading"> 
+                                                                    <th class=" start pl-30" scope="col" colspan="2">Store Name</th>
+                                                                    <th scope="col">Reviews</th>
+                                                                    <th scope="col">Distance</th>
+                                                                    <th scope="col">Min Order</th>
+                                                                    <th scope="col">Payment Option</th>
+                                                                    <th scope="col" class="end">Remove</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="pt-30"> 
+                                                                    <td class="image product-thumbnail pt-40  pl-30"><img src="/nest/imgs/shop/product-1-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Nawader Amisk(Close)</a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$2.51</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm">Add to cart</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr> 
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="productitems1">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 m-auto">
+                                                    <div class="table-responsive shopping-summery">
+                                                        <table class="table table-wishlist">
+                                                            <thead>
+                                                                <tr class="main-heading">
+                                                                    <th class="custome-checkbox start pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox11"></label>
+                                                                    </th>
+                                                                    <th scope="col" colspan="2">Product Name</th>
+                                                                    <th scope="col">Discount</th>
+                                                                    <th scope="col">Current Price</th>
+                                                                    <th scope="col">Old Priec</th>
+                                                                    <th scope="col" class="end">Remove</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="pt-30">
+                                                                    <td class="custome-checkbox pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox1"></label>
+                                                                    </td>
+                                                                    <td class="image product-thumbnail pt-40"><img src="/nest/imgs/shop/product-1-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Field Roast Chao Cheese Creamy Original</a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$2.51</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm">Add to cart</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="custome-checkbox pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox2"></label>
+                                                                    </td>
+                                                                    <td class="image product-thumbnail"><img src="/nest/imgs/shop/product-2-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Blue Diamond Almonds Lightly Salted</a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$3.2</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm">Add to cart</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="custome-checkbox pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox3"></label>
+                                                                    </td>
+                                                                    <td class="image product-thumbnail"><img src="/nest/imgs/shop/product-3-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Fresh Organic Mustard Leaves Bell Pepper</a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$2.43</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm">Add to cart</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="custome-checkbox pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox4" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox4"></label>
+                                                                    </td>
+                                                                    <td class="image product-thumbnail"><img src="/nest/imgs/shop/product-4-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Angie’s Boomchickapop Sweet & Salty </a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$3.21</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status out-stock mb-0"> Out Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm btn-secondary">Contact Us</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="custome-checkbox pl-30">
+                                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox5" value="" />
+                                                                        <label class="form-check-label" for="exampleCheckbox5"></label>
+                                                                    </td>
+                                                                    <td class="image product-thumbnail"><img src="/nest/imgs/shop/product-5-1.jpg" alt="#" /></td>
+                                                                    <td class="product-des product-name">
+                                                                        <h6><a class="product-name mb-10" href="shop-product-right.html">Foster Farms Takeout Crispy Classic</a></h6>
+                                                                        <div class="product-rate-cover">
+                                                                            <div class="product-rate d-inline-block">
+                                                                                <div class="product-rating" style="width: 90%"></div>
+                                                                            </div>
+                                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="price" data-title="Price">
+                                                                        <h3 class="text-brand">$3.17</h3>
+                                                                    </td>
+                                                                    <td class="text-center detail-info" data-title="Stock">
+                                                                        <span class="stock-status in-stock mb-0"> In Stock </span>
+                                                                    </td>
+                                                                    <td class="text-right" data-title="Cart">
+                                                                        <button class="btn btn-sm">Add to cart</button>
+                                                                    </td>
+                                                                    <td class="action text-center" data-title="Remove">
+                                                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* <div class="tab-pane fade" id="serviceitems">
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+
+
+<script>
+    $(document).ready(function () {
+        var sortid = $('#hdnStoreSortId').val();
+        GetStore(1, 1);
+        GetProducts(1, 1);
+        GetServices(1, 1);
+    });
+
+    function Sorting(id) {
+        // debugger
+        $('#hdnStoreSortId').val(id);
+        GetStore(1, id);
+    }
+
+    function GetStore(pageNumber, sort) {
+        // debugger
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PVStoresWishlist")',
+            datatype: "json",
+            data: { pageNumber: pageNumber, SortId: sort },
+            success: function (data) {
+                // debugger;
+                if (data != "") {
+                    $('#stores').html('');
+                    $('#stores').html(data.result);
+                }
+                else {
+                    location.reload();
+                }
+            },
+            onerror: function (data) {
+                $('.loader').hide();
+            },
+            complete: function (data) {
+                var pagecount = $("#hdnToPagesCountForStorePagination").val();
+                if (pagecount == 1)
+                    $("#dvstorepaging").hide();
+
+            }
+        });
+    }
+    function GetProducts(pageNumber, sort) {
+        // debugger
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PVProductsWishlist")',
+            datatype: "json",
+            data: { pageNumber: pageNumber, SortId: sort },
+            success: function (data) {
+                // debugger;
+                if (data != "") {
+                    $('#productitems').html('');
+                    $('#productitems').html(data.result);
+                }
+                else {
+                    location.reload();
+                }
+            },
+            onerror: function (data) {
+                $('.loader').hide();
+            },
+            complete: function (data) {
+                var pagecount = $("#hdnToPagesCountForProductPagination").val();
+                if (pagecount == 1)
+                    $("#dvproductpaging").hide();
+
+            }
+        });
+    }
+    function GetServices(pageNumber, sort) {
+        // debugger
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PVServicesWishlist")',
+            datatype: "json",
+            data: { pageNumber: pageNumber, SortId: sort },
+            success: function (data) {
+                // debugger;
+                if (data != "") {
+                    $('#serviceitems').html('');
+                    $('#serviceitems').html(data.result);
+                }
+                else {
+                    location.reload();
+                }
+            },
+            onerror: function (data) {
+                $('.loader').hide();
+            },
+            complete: function (data) {
+                var pagecount = $("#hdnToPagesCountForServicePagination").val();
+                if (pagecount == 1)
+                    $("#dvservicepaging").hide();
+
+            }
+        });
+    }
+    function reloadItem(statusId) {
+        if (statusId == 1) {
+            GetProducts(1, 1);
+        }
+        else if (statusId == 2) {
+            GetServices(1, 1);
+        }
+        else if (statusId == 3) {
+            GetStore(1, 1);
+        }
+        //GetStore(1, 1);
+        //
+        //
+    }
+</script>
+<script type="text/javascript">
+    $('.adds').click(function add() {
+        var _qty = $(this).parent().children(".noOfQty");
+
+        var $rooms = $(_qty);
+        var a = $rooms.val();
+
+        a++;
+        $(".subs").prop("disabled", !a);
+        $rooms.val(a);
+    });
+    $(".subs").prop("disabled", !$(".noOfQty").val());
+
+    $('.subs').click(function subst() {
+
+        var _qty = $(this).parent().children(".noOfQty");
+
+        var $rooms = $(_qty);
+        var b = $rooms.val();
+        if (b >= 1) {
+            b--;
+            $rooms.val(b);
+        }
+        else {
+            $(".subs").prop("disabled", true);
+        }
+    });
+
+    function DeleteFavoriteItem(id, item, statusid) {
+        //var id = $('#hdnsubcategoryid').val();
+        // debugger;
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddDeleteFavorite")',
+            datatype: "json",
+            data: { Id: id, Type: 3, StatusId: statusid, ItemId: item, SubCategoryId: 0 },
+            success: function (data) {
+                // debugger;
+                if (data.success == "True") {
+                    swal({
+                        title: "Good job!",
+                        text: "User Favorite Deleted Successfully !",
+                        icon: "success",
+
+                        buttons: {
+                            button: "Ok!",
+                        },
+                    })
+                        .then((value) => {
+                            //location.reload();
+                            reloadItem(statusid);
+
+                        });
+                }
+                else {
+                    location.reload();
+    @*var url = $(location).attr("href");
+                        var redirection = '@Url.Action("Index","WishList" , new { returnurl = "_url_" })';
+                        var red2 = redirection.replace("_url_", url);
+                        window.location.href = red2;*@
+                        }
+            },
+            onerror: function (data) {
+                // debugger
+                //$('.loader').hide();
+            }
+        });
+    }
+</script>
+

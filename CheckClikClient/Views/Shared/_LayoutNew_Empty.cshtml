@@ -74,6 +74,9 @@
         .header-style-1 .header-middle-ptb-1 {
             padding: 10px 0;
         }
+        .header-info-footer {
+            margin-left: 2.5em;
+        }
     </style>
 </head> 
 <body> 
@@ -109,7 +112,7 @@
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="index.html"><img src="/nest/imgs/theme/icons/logo.svg" alt="logo"></a>
+                    <a href="index.html"><img src="/nest/imgs/theme/logo.svg" alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -291,39 +294,36 @@
     <main class="main">
         @RenderBody()
     </main>
-    <footer class="main">
-        
-        <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+    
+    <footer class="main" id="footer">
+        <div class="container pb-10 mt-auto">
             <div class="row align-items-center">
-                <div class="col-12 mb-30">
+                <div class="col-12 mb-15">
                     <div class="footer-bottom"></div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="col-xl-4 col-lg-6 col-md-6 ">
+                    <p class="font-sm mb-0"><strong>Secured Payment Gateways</strong></p>
+                    <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:45%;" />
+                </div>
+                <div class="col-xl-4 col-lg-6  col-md-6 justify-content-center text-center d-none d-xl-block">
+                    <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
+                    <div class="header-info header-info-footer text-center">
+                        <ul>
+                            <li><a href="page-about.htlm">Sell with Us</a></li>
+                            <li><a href="/Home/TermsAndConditions" target="_blank">Terms & Conditions</a></li>
+                            <li><a href="/Home/TermsOfSales" target="_blank">Terms for Sale</a></li>
+                            <li><a href="/Home/PrivacyPolicy" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                    <div class="mobile-social-icon">
+                        <h6>Follow Us</h6>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                    </div>
                     <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
-                    @*<a href="javascript:;"><img src="~/web-assets/images/icons/appstore.png" alt="Download CHECKCLIK APP from Appstore" class="mr-1" style="width: 70px" /></a>
-                    <a href="javascript:;"><img src="~/web-assets/images/icons/google_play.png" alt="Download CHECKCLIK APP from Play Store" class="mr-1" style="width: 70px" /></a>*@
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 text-left d-none d-md-block">
-                    <div class="footer-link-widget widget-install-app col">
-                        @*<h4 class="widget-title">Install App</h4>
-                        <p class="wow fadeIn animated">From App Store or Google Play</p>*@
-                        <h4 class="widget-title" hidden>Install App <span class="wow fadeIn animated" style="font-size:12px;">(From App Store or Google Play)</span></h4>
-                        
-                        <div class=" download-app">
-                            <a href="#" class="hover-up mb-sm-2 mb-lg-0"><img class="active" src="/nest/imgs/theme/app-store.jpg" alt="" /></a>
-                            <a href="#" class="hover-up mb-sm-2"><img src="/nest/imgs/theme/google-play.jpg" alt="" /></a>
-                        </div> 
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
-                    <div class="hotline d-lg-inline-flex mr-30">
-                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
-                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
-                    </div>
-                    <div class="hotline d-lg-inline-flex">
-                        <img src="/nest/imgs/theme/icons/phone-call.svg" alt="hotline">
-                        <p>1900 - 8888<span>24/7 Support Center</span></p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -333,7 +333,7 @@
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center">
-                    <img src="/nest/imgs/shop/loading.gif" alt>
+                    <img src="/nest/imgs/theme/loading.gif" alt>
                 </div>
             </div>
         </div>

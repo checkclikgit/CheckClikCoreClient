@@ -2,341 +2,280 @@
     Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
     ViewBag.Title = "Register new account";
 }
-@*<!DOCTYPE html>
-<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>CHECKCLIK - User Login</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/nest/imgs/theme/favicon.svg" />
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="/nest/css/main.css?v=5.6" />
-
-    <script src="/nest/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="/nest/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="/nest/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="~/app-assets/vendors/js/extensions/toastr.min.js"></script>
-    <script src="~/app-assets/js/scripts/extensions/toastr.js"></script>
-
-    <!-- Vendor JS-->
-    <script src="/nest/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="/nest/js/plugins/slick.js"></script>
-    <script src="/nest/js/plugins/jquery.syotimer.min.js"></script>
-    <script src="/nest/js/plugins/wow.js"></script>
-    <script src="/nest/js/plugins/perfect-scrollbar.js"></script>
-    <script src="/nest/js/plugins/magnific-popup.js"></script>
-    <script src="/nest/js/plugins/select2.min.js"></script>
-    <script src="/nest/js/plugins/waypoints.js"></script>
-    <script src="/nest/js/plugins/counterup.js"></script>
-    <script src="/nest/js/plugins/jquery.countdown.min.js"></script>
-    <script src="/nest/js/plugins/images-loaded.js"></script>
-    <script src="/nest/js/plugins/isotope.js"></script>
-    <script src="/nest/js/plugins/scrollup.js"></script>
-    <script src="/nest/js/plugins/jquery.vticker-min.js"></script>
-    <script src="/nest/js/plugins/jquery.theia.sticky.js"></script>
-    <script src="/nest/js/plugins/jquery.elevatezoom.js"></script>
-    <!-- Template  JS -->
-    <script src="/nest/js/main.js?v=5.6"></script>
-    <script src="/nest/js/shop.js?v=5.6"></script>
     <style>
-        .form-group input {
-    background: #fff;
-    border: 1px solid #ececec;
-    height: 50px;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    padding-left: 20px;
-    font-size: 16px;
-    width: 100%;
-}
+        #footer {
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
-<body> *@
+
 @if (TempData["Error"] != null)
 {
     <text>
-            <script>
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": true,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": true,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                toastr['info']('@TempData["Error"]');
-            </script>
+        <script>
+            MessageManager.ShowMessage("error", '@TempData["Error"]');
+        </script>
     </text>
 }
 
-    <!--End header-->
-    <div class="container mb-30">
-        <div class="page-header breadcrumb-wrap" hidden>
-            <div class="container">
-                <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Pages <span></span> My Account
+<!--End header-->
+<div class="container mb-30">
+    <div class="page-header breadcrumb-wrap" hidden>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> Pages <span></span> My Account
+            </div>
+        </div>
+    </div>
+    <div class="page-content pt-10 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
+                    <div class="row justify-content-center">
+                        <div class="login_wrap widget-taber-content background-white w-400">
+                            <div class="padding_eight_all bg-white">
+                                <div class="heading_s1">
+                                    <h1 class="mb-5">Sign Up</h1>
+                                    <p class="mb-30">Already have an account? <a href="/User/IndexNest">Sign In here</a></p>
+                                </div>
+                                <form method="post">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="step1">
+                                            <div class="form-group">
+                                                <label class="text-bold-600" for="exampleInputEmail1">First Name</label>
+                                                <input type="text" id="fnam" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="First Name" autocomplete="off" onkeypress="return chars(event);" />
+                                                <span id='fnameErr' class="text-danger"></span>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-bold-600" for="exampleInputEmail1">Last Name</label>
+                                                <input type="text" id="lnam" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="Last Name" autocomplete="off" onkeypress="return chars(event);" />
+                                                <span id='lnameErr' class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-bold-600" for="exampleInputEmail1">Enter Email</label>
+                                                <input type="text" id="eml" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="Email" autocomplete="off" />
+                                                <span id='emailErr' class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-bold-600" for="exampleInputPassword1">Enter Password</label>
+                                                <input type="password" id="pswd" name="pswd" class="form-control pb_height-50 reverse" autocomplete="off" required="required" placeholder="Password" />
+                                                <span id='pswrdErr' class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-bold-600" for="exampleInputPassword1">Confirm Password</label>
+                                                <input type="password" id="passConf" name="passConf" class="form-control pb_height-50 reverse" autocomplete="off" required="required" placeholder="Confirm Password" />
+                                                <span id='ConpswrdErr' class="text-danger"></span>
+                                            </div>
+                                            <div class="custome-radio">
+                                                <input class="form-check-input" onchange="CRNShowHide()" type="radio" value="1" name="CustomerType" id="exampleRadios3" checked="">
+                                                <label class="form-check-label" for="exampleRadios3">Business to customer</label>
+                                            </div>
+                                            <div class="custome-radio">
+                                                <input class="form-check-input" onchange="CRNShowHide()" value="2" type="radio" name="CustomerType" id="exampleRadios4">
+                                                <label class="form-check-label" for="exampleRadios4">Business to business</label>
+                                            </div>
+                                            <div class="form-group" id="crn">
+                                                <label class="text-bold-600" for="exampleInputEmail1">CRN <small>(Company registration number)</small></label>
+                                                <input type="text" id="crnNumber" required="required" maxlength="50" name="CRN" class="form-control pb_height-50 reverse" placeholder="Please enter CRN number" autocomplete="off" />
+                                                <span id='crnErr' class="text-danger"></span>
+                                            </div>
+
+                                            <button type="button" class="btn btn-primary glow w-100 position-relative" onclick="submitSign()">Sign Up<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="step2">
+                                            <div class="form-wrapper">
+                                                <form>
+                                                    <div class="form-group mb-50">
+                                                        <label class="text-bold-600" for="exampleInputEmail1">Enter Mobile Number</label>
+                                                        <input type="text" id="mobileNo" required="required" data-val-length-max="9" maxlength="9" class="form-control pb_height-50 reverse" placeholder="Enter Mobile Number" value="" />
+                                                    </div>
+                                                    <span id="mobileErr"></span>
+                                                    <div class="form-group mb-50">
+                                                        <a class="btn btn-primary glow w-100 position-relative" aria-controls="step1" onclick="verifyMobile()">Continue</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="step3">
+                                            <div class="form-wrapper">
+                                                <form>
+                                                    <span id="Timer"></span>
+                                                    <p>Enter the OTP Sent to the mobile number<br /><strong>+966 <span id="mobNo"></span></strong> for verification.  </p>
+                                                    <div class="form-item">
+                                                        <input id="otpNo" type="text" name="fname" required="required" placeholder="Enter OTP" maxlength="4" minlength="4" onkeypress="return isNumberKey(event);" />
+                                                        <span id="otpError"></span>
+                                                    </div>
+                                                    <span id="otpTimer"></span>
+                                                    <span id="otpTimer2">@ViewBag.Timer</span>
+                                                    <a id="ReSendOTP" onclick="verifyMobile()">Re-Send</a>
+                                                    <div class="button-panel mt-5">
+                                                        <a class="btn btn-primary glow w-100 position-relative" onclick="SubmitForm()">Done</a>
+                                                        @*<button type="button" class="button" title="Sign In" value="Sign Up">Sign Up</button>*@
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="page-content pt-10 pb-150">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
-                        <div class="row justify-content-center">
-                                <div class="login_wrap widget-taber-content background-white w-400">
-                                    <div class="padding_eight_all bg-white">
-                                        <div class="heading_s1">
-                                            <h1 class="mb-5">Sign Up</h1>
-                                            <p class="mb-30">Already have an account? <a href="/User/IndexNest">Sign In here</a></p>
-                                        </div>
-                                        <form method="post">
-                                            <div class="tab-content">
-                                                    <div role="tabpanel" class="tab-pane active" id="step1"> 
-                                                    <div class="form-group">
-                                                        <label class="text-bold-600" for="exampleInputEmail1">First Name</label>
-                                                        <input type="text" id="fnam" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="First Name" autocomplete="off" onkeypress="return chars(event);" />
-                                                        <span id='fnameErr' class="text-danger"></span>
+    </div>
+</div>
+<!-- Forgot Password Modal -->
+<div id="modalLoginForm1" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span id="spnForgotType">Vendor</span> Forgot Password?</h5>
+                <button type="button" class="close cursor" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="relative align-self-center">
+                    <div action="#" class="bg-white rounded pb_form_v1 no-box-shadow">
+                        <p>Verify yourself with:</p>
+                        <div class="form-group">
+                            <div class="input-group m-input-group">
+                                @*<span class="input-group-addon" id="faPhone">
+                                <i class="">+966</i>
+                                </span>*@
+                                <span class="input-group-addon" id="faEmail">
+                                    <i class="fa fa-envelope-o"></i>
+                                </span>
+                                <input type="text" id="txtEmailMobile" class="form-control pb_height-50 reverse" placeholder="Enter email to receive OTP" @*onblur="myFunction(event)"*@ @*onkeypress="myFunction(event)"*@ autocomplete="off">
+                            </div>
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="text-bold-600" for="exampleInputEmail1">Last Name</label>
-                                                        <input type="text" id="lnam" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="Last Name" autocomplete="off" onkeypress="return chars(event);" />
-                                                        <span id='lnameErr' class="text-danger"></span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="text-bold-600" for="exampleInputEmail1">Enter Email</label>
-                                                        <input type="text" id="eml" required="required" maxlength="50" class="form-control pb_height-50 reverse" placeholder="Email" autocomplete="off" />
-                                                        <span id='emailErr' class="text-danger"></span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="text-bold-600" for="exampleInputPassword1">Enter Password</label>
-                                                        <input type="password" id="pswd" name="pswd" class="form-control pb_height-50 reverse" autocomplete="off" required="required" placeholder="Password" />
-                                                        <span id='pswrdErr' class="text-danger"></span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="text-bold-600" for="exampleInputPassword1">Confirm Password</label>
-                                                        <input type="password" id="passConf" name="passConf" class="form-control pb_height-50 reverse" autocomplete="off" required="required" placeholder="Confirm Password" />
-                                                        <span id='ConpswrdErr' class="text-danger"></span>
-                                                    </div>
-                                                    <div class="custome-radio">
-                                                        <input class="form-check-input" onchange="CRNShowHide()" type="radio" value="1" name="CustomerType" id="exampleRadios3" checked="">
-                                                        <label class="form-check-label" for="exampleRadios3">Business to customer</label>
-                                                    </div>
-                                                    <div class="custome-radio">
-                                                        <input class="form-check-input" onchange="CRNShowHide()" value="2" type="radio" name="CustomerType" id="exampleRadios4">
-                                                        <label class="form-check-label" for="exampleRadios4">Business to business</label>
-                                                    </div>
-                                                    <div class="form-group" id="crn">
-                                                        <label class="text-bold-600" for="exampleInputEmail1">CRN <small>(Company registration number)</small></label>
-                                                        <input type="text" id="crnNumber" required="required" maxlength="50" name="CRN" class="form-control pb_height-50 reverse" placeholder="Please enter CRN number" autocomplete="off" />
-                                                        <span id='crnErr' class="text-danger"></span>
-                                                    </div>
-                                                    
-                                                    <button type="button" class="btn btn-primary glow w-100 position-relative" onclick="submitSign()">Sign Up<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="step2">
-                                                    <div class="form-wrapper">
-                                                        <form> 
-                                                            <div class="form-group mb-50">
-                                                                <label class="text-bold-600" for="exampleInputEmail1">Enter Mobile Number</label> 
-                                                                <input type="text" id="mobileNo" required="required" data-val-length-max="9" maxlength="9" class="form-control pb_height-50 reverse" placeholder="Enter Mobile Number" value="" />
-                                                            </div> 
-                                                            <span id="mobileErr"></span>
-                                                            <div class="form-group mb-50"> 
-                                                                <a class="btn btn-primary glow w-100 position-relative" aria-controls="step1" onclick="verifyMobile()">Continue</a>
-                                                            </div> 
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="step3">
-                                                    <div class="form-wrapper">
-                                                        <form>
-                                                            <span id="Timer"></span>
-                                                            <p>Enter the OTP Sent to the mobile number<br /><strong>+966 <span id="mobNo"></span></strong> for verification.  </p>
-                                                            <div class="form-item">
-                                                                <input id="otpNo" type="text" name="fname" required="required" placeholder="Enter OTP" maxlength="4" minlength="4" onkeypress="return isNumberKey(event);" />
-                                                                <span id="otpError"></span>
-                                                            </div>
-                                                            <span id="otpTimer"></span>
-                                                            <span id="otpTimer2">@ViewBag.Timer</span>
-                                                            <a id="ReSendOTP" onclick="verifyMobile()">Re-Send</a>
-                                                            <div class="button-panel mt-5">
-                                                                <a class="btn btn-primary glow w-100 position-relative" onclick="SubmitForm()">Done</a>
-                                                                @*<button type="button" class="button" title="Sign In" value="Sign Up">Sign Up</button>*@
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                        </form>
-                                    </div>
-                                </div>
+                            <p id="keyVal"></p>
+                            <p id="ValidationMessage" class="pb_text-red"></p>
+                            <input type="hidden" id="htnIpType" value="0" />
+                        </div>
+
+                        <div class="form-group">
+                            <a class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" id="btnSendOTP" style="color:#fff;">Send OTP</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span id="spnForgotType">User</span> Forgot Password?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="loginmodal-container">
+                    <div id="wizard">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="stepf1">
+                                <div class="form-wrapper no-shadow">
+                                    <form>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-default" @*style="background-color:#eaeaea !important;"*@>+966</span>
+                                            </span>
+                                            <div class="">
+                                                <input type="text" id="fmobileNo" autocomplete="off" class="form-control pb_height-50 reverse number" data-val-length-max="9" maxlength="9" minlength="9" name="MobileNo" placeholder="Enter Mobile Number" value="" onkeypress="return isNumberKey(event);" />
+                                            </div>
+                                        </div>
+                                        <span class="text-danger" id="fmobileErr"></span>
+                                        <div class="button-panel mt-2">
+                                            <a class="btn w-100 hover-up" aria-controls="step1" onclick="verifyFogotMobile()">Continue</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="stepf2">
+                                <div class="form-wrapper">
+                                    <form>
+                                        <span id="Timer"></span>
+                                        <p>Enter the OTP Sent to the mobile number<br /><strong>+966 <span id="fmobNo"></span></strong> for verification.  </p>
+                                        <div class="form-item">
+                                            <input id="fotpNo" class="form-control number" autocomplete="off" type="text" name="fname" maxlength="4" minlength="4" required="required" placeholder="Enter OTP" onkeypress="return isNumberKey(event);" />
+                                        </div>
+                                        <span id="fotpError" class="text-danger"></span>
+                                        <span id="otpTimer"></span>
+                                        <div class="button-panel mt-2">
+                                            <a class="btn w-100 hover-up" onclick="VerifyOTP()"> Verify OTP </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="stepf3">
+                                <div class="form-wrapper">
+                                    <form>
+                                        <div class="form-group" style="position:relative">
+                                            <label class="text-bold-600" for="exampleInputPassword1">Enter Password</label>
+                                            <input type="password" id="fpswd" class="form-control pb_height-50 reverse" autocomplete="off" required="required" maxlength="50" minlength="3" placeholder="Enter Password" />
+
+                                            <span id='fpswrdErr' class="text-danger"></span>
+                                        </div>
+                                        <div class="form-item">
+                                            <label class="text-bold-600" for="exampleInputPassword1">Forget Password</label>
+                                            <input type="password" id="fpassConf" class="form-control pb_height-50 reverse" required="required" autocomplete="off" maxlength="50" minlength="3" placeholder="Confirm Password" />
+                                            <span id='fConpswrdErr' class="text-danger"></span>
+                                        </div>
+
+                                        <div class="button-panel mt-2">
+                                            <a href="#" class="btn w-100 hover-up" aria-controls="step1" onclick="UpdatePassword()">Submit</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Forgot Password Modal -->
-                <div id="modalLoginForm1" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-modal="true">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"><span id="spnForgotType">Vendor</span> Forgot Password?</h5>
-                                <button type="button" class="close cursor" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="relative align-self-center">
-                                    <div action="#" class="bg-white rounded pb_form_v1 no-box-shadow">
-                                        <p>Verify yourself with:</p>
-                                        <div class="form-group">
-                                            <div class="input-group m-input-group">
-                                        @*<span class="input-group-addon" id="faPhone">
-                                                <i class="">+966</i>
-                                                </span>*@
-                                                <span class="input-group-addon" id="faEmail">
-                                                    <i class="fa fa-envelope-o"></i>
-                                                </span>
-                                                <input type="text" id="txtEmailMobile" class="form-control pb_height-50 reverse" placeholder="Enter email to receive OTP" @*onblur="myFunction(event)"*@ @*onkeypress="myFunction(event)"*@ autocomplete="off">
-                                            </div>
+    </div>
+</div>
 
-                                            <p id="keyVal"></p>
-                                            <p id="ValidationMessage" class="pb_text-red"></p>
-                                            <input type="hidden" id="htnIpType" value="0" />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <a class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" id="btnSendOTP" style="color:#fff;">Send OTP</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-modal="true">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"><span id="spnForgotType">User</span> Forgot Password?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="loginmodal-container"> 
-                                    <div id="wizard">
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active" id="stepf1">
-                                                <div class="form-wrapper no-shadow">
-                                                    <form>
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <span class="btn btn-default" @*style="background-color:#eaeaea !important;"*@>+966</span>
-                                                            </span>
-                                                            <div class="">
-                                                                <input type="text" id="fmobileNo" autocomplete="off" class="form-control pb_height-50 reverse number" data-val-length-max="9" maxlength="9" minlength="9" name="MobileNo" placeholder="Enter Mobile Number" value="" onkeypress="return isNumberKey(event);" />
-                                                            </div>
-                                                        </div>
-                                                        <span class="text-danger" id="fmobileErr"></span>
-                                                        <div class="button-panel mt-2">
-                                                            <a class="btn w-100 hover-up" aria-controls="step1" onclick="verifyFogotMobile()">Continue</a>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="stepf2">
-                                                <div class="form-wrapper">
-                                                    <form>
-                                                        <span id="Timer"></span>
-                                                        <p>Enter the OTP Sent to the mobile number<br /><strong>+966 <span id="fmobNo"></span></strong> for verification.  </p>
-                                                        <div class="form-item">
-                                                            <input id="fotpNo" class="form-control number" autocomplete="off" type="text" name="fname" maxlength="4" minlength="4" required="required" placeholder="Enter OTP" onkeypress="return isNumberKey(event);" />
-                                                        </div>
-                                                        <span id="fotpError" class="text-danger"></span>
-                                                        <span id="otpTimer"></span>
-                                                        <div class="button-panel mt-2">
-                                                            <a class="btn w-100 hover-up" onclick="VerifyOTP()"> Verify OTP </a>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="stepf3">
-                                                <div class="form-wrapper">
-                                                    <form>
-                                                        <div class="form-group" style="position:relative"> 
-                                                            <label class="text-bold-600" for="exampleInputPassword1">Enter Password</label>
-                                                            <input type="password" id="fpswd" class="form-control pb_height-50 reverse" autocomplete="off" required="required" maxlength="50" minlength="3" placeholder="Enter Password" />
-
-                                                            <span id='fpswrdErr' class="text-danger"></span>
-                                                        </div>
-                                                        <div class="form-item">
-                                                            <label class="text-bold-600" for="exampleInputPassword1">Forget Password</label>
-                                                            <input type="password" id="fpassConf" class="form-control pb_height-50 reverse" required="required" autocomplete="off" maxlength="50" minlength="3" placeholder="Confirm Password" />
-                                                            <span id='fConpswrdErr' class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="button-panel mt-2">
-                                                            <a href="#" class="btn w-100 hover-up" aria-controls="step1" onclick="UpdatePassword()">Submit</a>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-    <script>
-        $(document).ready(function(){
-            CRNShowHide();
-        })
+<script>
+    $(document).ready(function () {
+        CRNShowHide();
+         
         function CRNShowHide() {
-            var customerType=$('input[name="CustomerType"]:checked').val();
-            if(customerType==1){
+            var customerType = $('input[name="CustomerType"]:checked').val();
+            if (customerType == 1) {
                 $("#crn").hide();
             }
-            else{
+            else {
                 $("#crn").show();
             }
-            }
+        }
+
         function chars(e) {
-             var key = document.all ? key = e.keyCode : key = e.which;
-             return ((key > 64 && key < 91) || (key > 96 && key < 123));
-            }
+            var key = document.all ? key = e.keyCode : key = e.which;
+            return ((key > 64 && key < 91) || (key > 96 && key < 123));
+        }
+
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : evt.keyCode;
             if ((charCode < 47 || charCode > 57))
                 return false;
             return true;
         }
+
         function submitSign() {
-            // debugger
+
             var email = $("#eml").val();
 
             var valemail = 0;
@@ -347,30 +286,25 @@
 
                 if (res) {
                     $('#emailErr').html('')
-
                 }
                 if (!res) {
                     $('#emailErr').html('Invalid EmailId').addClass("text-danger");
                     $('#step1').show();
                     $('#step2').hide();
                     valemail = 1;
-                    //return;
                 }
             }
             if ($("#fnam").val() == '') {
                 $('#fnameErr').html('First Name Required').addClass("text-danger");
-                //return;
             }
             if ($("#fnam").val() != '') {
                 $('#fnameErr').html('');
             }
             if ($("#lnam").val() == '') {
                 $('#lnameErr').html('Last Name Required').addClass("text-danger");
-                // return;
             }
-            if ($("#crnNumber").val() == '' && $('input[name="CustomerType"]:checked').val()==2) {
+            if ($("#crnNumber").val() == '' && $('input[name="CustomerType"]:checked').val() == 2) {
                 $('#crnErr').html('CRN Required').addClass("text-danger");
-                // return;
             }
             if ($("#crnNumber").val() != '') {
                 $('#crnErr').html('');
@@ -380,15 +314,12 @@
             }
             if ($("#eml").val() == '') {
                 $('#emailErr').html('EmailId Required').addClass("text-danger");
-                //  return;
             }
-
             if ($("#eml").val() != '') {
                 $('#emailErr').html('');
             }
             if ($("#pswd").val() == '') {
                 $('#pswrdErr').html('Password Required').addClass("text-danger");
-                //return;
                 pl = 1;
             }
             else {
@@ -399,7 +330,6 @@
                 else
                     $('#pswrdErr').html('');
             }
-
             if ($("#passConf").val() == '') {
                 $('#ConpswrdErr').html('Confirm Password Required').addClass("text-danger");
                 cpl = 1;
@@ -432,39 +362,33 @@
                 $('#step2').hide();
                 $('#step1').show();
                 return false;
-
             }
-
 
             return true;
         };
+
         function verifyEmail() {
-            // debugger
-            var email = $("#eml").val(); //$(this).val();
+            var email = $("#eml").val();
             $("#emailErr").text(email == "" ? "EmailId Required" : "");
             if (email != '') {
                 var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 var res = regex.test(email);
                 if (res) {
                     $.ajax({
-                        url: '@Url.Action("GetVerifyEmail", "User")',
+                        url: '/User/GetVerifyEmail',
                         data: { 'Email': email },
                         datatype: 'json',
                         type: 'Get',
-                        success: function (result) {
-                            // debugger
+                        success: function (result) { 
                             var status = result.status;
                             if (!status) {
                                 $('#emailErr').html(email + ' ' + result.message).addClass("text-danger");;
-                                $("#eml").val("");
-
-                                return
+                                $("#eml").val(""); 
+                                return;
                             }
                             else {
                                 $('#emailErr').html('')
-        @*window.location.href = '@Url.Action("Index","Home")';
-                                    $('#emailErr').html(result.Message).css('color', 'green');*@
-                                }
+                            }
                         },
                         error: function () {
                             $('#emailErr').html('Something went wrong').addClass("text-danger");;
@@ -477,6 +401,7 @@
                 }
             }
         }
+
         function verifyMobile() {
             var mob = $("#mobileNo").val();
             if (mob == '') {
@@ -500,20 +425,17 @@
             else {
                 $.ajax({
                     type: "GET",
-                    url: '@Url.Action("GetOtp", "User")',
+                    url: '/User/GetOtp',
                     contentType: "application/json; charset=utf-8",
                     data: { "MobileNo": mob },
                     datatype: "json",
-                    success: function (data) {
-
-                        var countDownDate = data.status;
-
+                    success: function (data) { 
+                        var countDownDate = data.status; 
                         if (!countDownDate) {
                             $('#mobileErr').html(data.message).addClass("text-danger");
                             return
                         }
-                        else {
-                            // debugger
+                        else { 
                             var mno = $("#mobileNo").val();
                             $('#mobNo').html(mno);
                             $('#step2').hide();
@@ -549,8 +471,7 @@
                             }
 
                             timer = setInterval(showRemaining, 1000);
-
-
+                             
                         }
                     },
                     error: function () {
@@ -558,13 +479,11 @@
                         return;
                     }
                 });
-                $('#mobileErr').html('');
-
-            }
-
+                $('#mobileErr').html(''); 
+            } 
         }
-        function SubmitForm() {
 
+        function SubmitForm() { 
             var otpno = $("#otpNo").val();
             var mobileNo = $("#mobileNo").val();
             var firstName = $("#fnam").val();
@@ -576,71 +495,31 @@
             $('#step2').hide();
             $('#step3').show();
 
-            var userDetails = { 'FirstName': firstName, 'LastName': lastName, 'EmailId': EmailId, 'MobileNo': mobileNo, 'OtpCode': otpno, 'Password': Password,'CRN':CRN };
-            var stringData = JSON.stringify(userDetails)
+            var userDetails = { 'FirstName': firstName, 'LastName': lastName, 'EmailId': EmailId, 'MobileNo': mobileNo, 'OtpCode': otpno, 'Password': Password, 'CRN': CRN };
+            var stringData = JSON.stringify(userDetails);
 
-            $.ajax({
-
-                /**/
-                url: '@Url.Action("Registration", "User")',
-                /**/
+            $.ajax({ 
+                url: '/User/Registration', 
                 type: 'Post',
                 datatype: 'json',
                 data: { UserData: stringData },
-                success: function (data) {
-                    // debugger;
+                success: function (data) { 
                     var countDownDate = data.status;
                     if (!countDownDate) {
-                        $('#otpError').html(data.message).css('color', 'red');
-                        //return;
+                        $('#otpError').html(data.message).css('color', 'red'); 
                     }
-                    else {
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": true,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr['info']('Registered Successfully !');
-                        window.location.href = "/Home/NIndex"; 
+                    else { 
+                        MessageManager.ShowMessage("info", 'Registered Successfully !');
+                        window.location.href = "/Home/NIndex";
                     }
                 },
-                error: function () {
-                    //alert("Something went wrong, try after sometime.")
-                    toastr.options = {
-                            "closeButton": true,
-                            "debug": true,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                    toastr['error']('Something went wrong, try after sometime');
+                error: function () {  
+                    MessageManager.ShowMessage("error", 'Something went wrong, try after sometime');
                 }
 
-            })
-
+            }) 
         }
+
         $(function () {
             $('#fnam').keydown(function (e) {
                 if (e.ctrlKey || e.altKey) {
@@ -651,13 +530,13 @@
                         e.preventDefault();
                     }
                 }
-            }); 
+            });
         });
 
         $(document).ready(function () {
             $('#pswd , #Password ,passConf ').on("cut copy paste", function (e) {
                 e.preventDefault();
-            }); 
+            });
         });
 
         $('#mobileNo').keypress(function (event) {
@@ -666,43 +545,44 @@
                 event.preventDefault();
             }
         });
+
         $(document).ready(function () {
-            $("#eml").blur(function () {
-                // debugger;
-                verifyEmail();
-            });
-            $("#eml").change(function () {
-                // debugger;
+
+            $("#eml").blur(function () { 
                 verifyEmail();
             });
 
-            $("#fnam").blur(function () {
-                // debugger;
+            $("#eml").change(function () { 
+                verifyEmail();
+            });
+
+            $("#fnam").blur(function () { 
                 var val = $(this).val();
                 $("#fnameErr").text(val == "" ? "First Name Required" : "");
             });
-            $("#lnam").blur(function () {
-                // debugger;
+
+            $("#lnam").blur(function () { 
                 var val = $(this).val();
                 $("#lnameErr").text(val == "" ? "Last Name Required" : "");
             });
-            $("#pswd").blur(function () {
-                // debugger;
+
+            $("#pswd").blur(function () { 
                 var val = $(this).val();
                 $("#pswrdErr").text(val == "" ? "Password Required" : "");
             });
-            $("#passConf").blur(function () {
-                // debugger;
+
+            $("#passConf").blur(function () { 
                 var val = $(this).val();
                 $("#ConpswrdErr").text(val == "" ? "Confirm Password Required" : "");
                 if ($('#pswd').val() != $('#passConf').val() && $("#passConf").val() != '') {
                     $('#ConpswrdErr').html('Password Not Matching').addClass("text-danger");
-                    return
+                    return;
                 }
             });
-        });
-        $(window, document, undefined).ready(function () {
 
+        });
+
+        $(window, document, undefined).ready(function () { 
             $('#Signup input').blur(function () {
                 var $this = $(this);
                 if ($this.val())
@@ -710,9 +590,5 @@
                 else
                     $this.removeClass('used');
             });
-        });
-
-    </script>
-@*</body>
-
-</html>*@
+        }); 
+</script> 
