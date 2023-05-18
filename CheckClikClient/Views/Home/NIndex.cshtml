@@ -5,21 +5,18 @@
 }
 <style>
     button.input:hover, button[type='button']:hover {
-    background-color: #29A56C !important;
-    border-radius: 10px;
-}
-.header-info{
-    margin-left:2em;
-}
+        background-color: #29A56C !important;
+        border-radius: 10px;
+    }
+
+    .header-info {
+        margin-left: 2em;
+    }
 </style>
 
 @using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
 {
-    @Html.AntiForgeryToken()
-    @*<input id="txtSearchTerm" name="txtSearchTerm" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" autocomplete="off" style="background-image: url('') !important;" />*@
-
-    @*<input type="submit" class="btn btn-default btn-block btn-lg search-button" value="Search">*@
-
+    @Html.AntiForgeryToken() 
     <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" />
     <input type="hidden" name="hdnlocation" id="hdnlocation" />
     <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" />
@@ -27,8 +24,9 @@
     <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
     <input type="hidden" name="hdnStart" id="hdnStart" />
 }
+
 @if (Model == null)
-{ 
+{
     <div class="container mb-30">
         <div class="archive-header-2 text-center pt-90 pb-60">
             <h1 class="display-2 mb-50">
@@ -37,37 +35,19 @@
             <div class="row">
                 <div class="col-lg-5 mx-auto">
                     <div class="sidebar-widget-2 widget_search mb-50">
-                        <div class="search-form"> 
-                                <form action="#">
-                            <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
-                            <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
+                        <div class="search-form">
+                            <form action="#">
+                                <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
+                                <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
                             </form>
-                            
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    @*<section class="newsletter mt-15 mb-15 wow animate__animated animate__fadeIn">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="position-relative newsletter-inner">
-                        <div class="newsletter-content">
-                            <p class="mb-75">CHECKCLIK - Multi Vendor <br>Marketplace Platform & Online Shopping - Saudi Arabia</p>
-                        </div>
-                        <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>*@
-
-
+    </div> 
 }
 else
 {
@@ -80,7 +60,7 @@ else
                 }
                 else if (!string.IsNullOrEmpty(Model.ImagePath))
                 {
-                    <img id="logo" style="right: 150px;bottom: 20px;width:30%" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title"  />
+                    <img id="logo" style="right: 150px;bottom: 20px;width:30%" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" />
                 }
                 else
                 {
@@ -92,98 +72,14 @@ else
                     <div class="sidebar-widget-2 widget_search mb-30">
                         <div class="search-form">
                             <form action="#">
-                            <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
-                            <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
+                                <input id="txtSearch" name="txtSearch" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" />
+                                <button id="btnSearch" type="button"><i class="fi-rs-search"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @*<section class="featured section-padding pb-5">
-            <div class="container justify-content-center text-center">
-                <div class="row">
-                    <div class="footer-link-widget widget-install-app col">
-                        <p class="mb-20">Secured Payment Gateways</p>
-                        <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:15%;" />
-                    </div>
-                </div>
-            </div>
-        </section>*@
-    </div>
-    @*<section class="newsletter mt-15 mb-15 wow animate__animated animate__fadeIn">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="position-relative newsletter-inner">
-                        <div class="newsletter-content">
-                            <h2 class="mb-75">
-                                @Model.Title
-                            </h2>
-                        </div>
-                        @if (Model == null)
-                        {
-                            <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-                        }
-                        else if (!string.IsNullOrEmpty(Model.ImagePath))
-                        {
-                            <img id="logo" style="    right: 150px;bottom: 20px;" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" height="250" />
-                        }
-                        else
-                        {
-                            <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>*@
-}
-@*@if (Model == null)
-{
-    <section class="newsletter mt-15 mb-15 wow animate__animated animate__fadeIn">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="position-relative newsletter-inner">
-                    <div class="newsletter-content">
-                        <p class="mb-75">CHECKCLIK - Multi Vendor <br>Marketplace Platform & Online Shopping - Saudi Arabia</p>
-                    </div>
-                        <img id="logo" style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-}
-else{
-    <section class="newsletter mt-15 mb-15 wow animate__animated animate__fadeIn">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="position-relative newsletter-inner">
-                        <div class="newsletter-content">
-                            <h2 class="mb-75">
-                                @Model.Title
-                            </h2>
-                        </div>
-                        @if (Model == null)
-                        {
-                            <img id="logo"  style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-                        }
-                        else if (!string.IsNullOrEmpty(Model.ImagePath))
-                        {
-                            <img id="logo"  style="    right: 150px;bottom: 20px;" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" height="250" />
-                        }
-                        else
-                        {
-                            <img id="logo"  style="    right: 150px;bottom: 20px;" src="~/assetsold/EmailImages/checkclik.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" />
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-}*@
+        </div> 
+    </div> 
+} 
 
