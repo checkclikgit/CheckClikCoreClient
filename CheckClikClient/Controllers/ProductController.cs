@@ -75,6 +75,10 @@ namespace CheckClikClient.Controllers
         {
             return View();
         }
+        public async Task<ActionResult> NewCheckOutPage(int storeId, string q)
+        {
+            return View();
+        }
 
 
         [HttpPost]
