@@ -40,7 +40,7 @@ namespace Customer.Areas.Ar.Controllers
             _viewRenderService = viewRenderService;
         }
 
-        [Route("Home/Index")]
+        [Route("Home/NIndex")]
         public async Task<IActionResult> Index()
         {
             if (AppUtils.CityList.Count() == 0)
@@ -86,6 +86,7 @@ namespace Customer.Areas.Ar.Controllers
                 return View();
             }
         }
+        [Route("Home/Index")]
         public async Task<IActionResult> NIndex()
         {
             if (AppUtils.CityList.Count() == 0)

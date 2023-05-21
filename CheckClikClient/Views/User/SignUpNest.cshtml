@@ -2,15 +2,6 @@
     Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
     ViewBag.Title = "Register new account";
 }
-<head>
-    <style>
-        #footer {
-            position: static;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
 
 @if (TempData["Error"] != null)
 {
@@ -20,9 +11,9 @@
         </script>
     </text>
 }
-
+<section class="product-tabs section-padding position-relative mb-30">
 <!--End header-->
-<div class="container mb-30">
+<div class="container">
     <div class="page-header breadcrumb-wrap" hidden>
         <div class="container">
             <div class="breadcrumb">
@@ -247,7 +238,7 @@
         </div>
     </div>
 </div>
-
+</section>
 <script>
     $(document).ready(function () {
         CRNShowHide();

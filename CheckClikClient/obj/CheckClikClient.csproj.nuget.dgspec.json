@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {}
+    "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj": {}
   },
   "projects": {
-    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj": {
+    "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
+        "projectUniqueName": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj",
         "projectName": "CheckClikClient",
-        "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\CheckClikClient.csproj",
-        "packagesPath": "C:\\Users\\This pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\CheckClikClient\\obj\\",
+        "projectPath": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\CheckClikClient\\CheckClikClient.csproj",
+        "packagesPath": "C:\\Users\\fc\\.nuget\\packages\\",
+        "outputPath": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\CheckClikClient\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\This pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
-                "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj"
+              "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj": {
+                "projectPath": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj"
               }
             }
           }
@@ -76,21 +81,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj": {
+    "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
+        "projectUniqueName": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj",
         "projectName": "SearchLibrary",
-        "projectPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\SearchLibrary.csproj",
-        "packagesPath": "C:\\Users\\This pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\CheckClik\\Client\\Project\\CheckClikClient\\SearchLibrary\\obj\\",
+        "projectPath": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\SearchLibrary.csproj",
+        "packagesPath": "C:\\Users\\fc\\.nuget\\packages\\",
+        "outputPath": "D:\\CheckClik\\CheckClik_Production\\CheckClikMerge\\CustomerCore\\CheckClikCoreClient\\SearchLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\This pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,6 +107,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -149,7 +159,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

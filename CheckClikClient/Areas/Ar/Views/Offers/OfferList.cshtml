@@ -5,8 +5,8 @@
     ViewBag.Title = "CHECKCLIK | Offers ";
     //Layout = "~/Views/Shared/_StoreSubLayout.cshtml";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string SubCategoryEn = Model.SubCategoryEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
-    SubCategoryEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(SubCategoryEn.ToLower());
+    string SubCategoryAr = Model.SubCategoryEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    SubCategoryAr = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(SubCategoryAr.ToLower());
 }
 @section Styles{
 
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h4><strong>@SubCategoryEn</strong></h4>
+                <h4><strong>@SubCategoryAr</strong></h4>
             </div>
             <div class="col-sm-6 text-right">
                 <div class="filters-right">

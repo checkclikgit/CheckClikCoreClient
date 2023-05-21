@@ -348,6 +348,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/IndexN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xJbmRleE4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/CustomerProducts/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -406,6 +410,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/IndexN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4Ti5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/OfferList.cshtml]
