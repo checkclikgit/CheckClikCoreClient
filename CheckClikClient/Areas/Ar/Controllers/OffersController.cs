@@ -56,6 +56,7 @@ namespace Customer.Areas.Ar.Controllers
                 return View("Error");
             }
         }
+        [Route("offers/PVOffer")]
         public async Task<ActionResult> PVOffer(int CityId = 0, int DistrictId = 0, string Latitude = "", string Longitude = "")
         {
             try

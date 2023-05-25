@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
-<body data-cities="@Json.Serialize(AppUtils.CityList.ToList())" data-districts="@Json.Serialize(AppUtils.DistrictList.ToList())" data-selectedDist="@AppUtils.SelectedDistrict" data-selectedCity="@AppUtils.SelectedCity">
+<body>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -257,7 +257,7 @@
                                     <img alt="Nest" src="~/nest/imgs/theme/icons/icon-cart.svg" />
                                     <span class="pro-count blue">2</span>
                                 </a>
-                                <a href="shop-cart.html"><span class="lable">عربة التسوق</span></a>
+                                <a href="shop-cart.html"><span class="lable"> التسوق</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>

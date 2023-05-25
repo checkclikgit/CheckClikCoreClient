@@ -734,7 +734,7 @@
         var lat = $("#hdnidlat").val();
         var long = $('#hdnidlong').val();
         $.ajax({
-            url: '/Offers/PVOffer',
+            url: '/ar/Offers/PVOffer',
             data: { CityId: 0, DistrictId: 0, Latitude: lat, Longitude: long },
             success: function (result) {
                 $("#offerdiv").html(result.result);
@@ -748,7 +748,7 @@
         var type = type;
         $.ajax({
             type: 'POST',
-            url: '/offers/offerlistitem',
+            url: '/ar/offers/offerlist',
             data: { Id: mainCategoryId },
             success: function (data) {
                 $('#loader').hide();
@@ -816,7 +816,7 @@
     function GetCoupons(pageNumber) {
         $.ajax({
             type: 'POST',
-            url: '@Url.Action("CouponsofCustomers","Coupons")',
+            url: '/ar/Coupons/GetCoupons',
             datatype: "json",
             data: { pageNumber: pageNumber },
             success: function (data) {
@@ -1133,4 +1133,23 @@
             alert("a");
             SetDataInHiddenField();
         });
+
+         //var cpnBtn = document.getElementById("cpnBtn");
+         //   var cpnCode = document.getElementById("cpnCode");
+
+            //cpnBtn.onclick = function(){
+            //    navigator.clipboard.writeText(cpnCode.innerHTML);
+            //    cpnBtn.innerHTML ="نسخ";
+            //    setTimeout(function(){
+            //        cpnBtn.innerHTML=": نسخ الرمز";
+            //    }, 3000);
+            //}
+            function CopyCode(Id,code){
+                navigator.clipboard.writeText(code);
+                alert(Id);
+                $("#"+Id).html("نسخ");
+                setTimeout(function(){
+                    $("#"+Id).html(": نسخ الرمز");
+                }, 1000);
+            }
 </script>
