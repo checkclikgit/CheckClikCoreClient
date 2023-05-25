@@ -15,12 +15,15 @@
     width: 400px !important;
 }
 #footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
 .header-info-footer{
     margin-left:2.5em;
+}
+.rtl .header-info-footer{
+    margin-right:4.5em;
 }
 .tags-list li {
     display: inline-block;
@@ -29,4 +32,144 @@
 }
 .branch-timing-dd{
     z-index:99;
+}
+.brand_title {
+    font-weight: bold;
+    background-size: 100%;
+    text-transform: uppercase;
+    background-clip: text;
+    background-color: transparent;
+    background-color: red;
+    background-image: linear-gradient(to right, #5BBFBD,rgba(38,68,127,1),#D61A67,#F37022);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+.loading-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+    .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 51px;
+        height: 51px;
+        margin: 6px;
+        border: 6px solid #666666;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #666666 transparent transparent transparent;
+    }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+@@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.sub-footer {
+    background: #fff;
+    padding: 0;
+    border-top: 2px solid #eaeaea;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+.coupon-card {
+    background: linear-gradient(135deg, #7158fe, #9d4de6);
+    color: #fff;
+    text-align: center;
+    padding: 40px 80px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.15);
+    position: relative;
+    margin-bottom:25px;
+}
+
+.logo {
+    width: 80px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.coupon-card h3 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.coupon-card p {
+    font-size: 15px;
+}
+
+.coupon-row {
+    display: flex;
+    align-items: center;
+    margin: 25px auto;
+    width: fit-content;
+}
+
+.cpnCode {
+    border: 1px dashed #fff;
+    padding: 10px 20px;
+    border-right: 0;
+}
+.rtl .cpnCode {
+    border: 1px dashed #fff;
+    padding: 10px 20px;
+    border-left: 0;
+}
+
+.cpnBtn {
+    border: 1px solid #fff;
+    background: #fff;
+    padding: 10px 20px;
+    color: #7158fe;
+    cursor: pointer;
+}
+
+.circle1, .circle2 {
+    background: #f0fff3;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.circle1 {
+    left: -25px;
+}
+
+.circle2 {
+    right: -25px;
 }

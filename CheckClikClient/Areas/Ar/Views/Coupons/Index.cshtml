@@ -1,24 +1,102 @@
 ﻿@model Customer.Models.CouponsDTO
 @{
     ViewBag.Title = "Available Coupons";
-    Layout = "~/Views/Shared/Redesign/_MenuLayout.cshtml";
+    Layout = "~/Areas/Ar/Views/Shared/Redesign/_MenuLayout.cshtml";
 }
-
-<div class="container mb-30">
-    <section class="myorders-banner text-center">
-        <h2><strong>Coupons</strong></h2>
-        <div class="text-center">
-            <p><span id="strCount"></span> Coupons Available</p>
-
+<section class="home-slider position-relative mb-30">
+    <div class="container">
+        <div class="home-slide-cover mt-30">
+            <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                <div class="single-hero-slider single-animation-wrap" style="background-image: url(/nest-rtl/assets/imgs/slider/slider-1.png)">
+                    <div class="slider-content">
+                        <h1 class="display-2 mb-40">
+                            لا تفوت عروض<br />
+                            البقالة المذهلة
+                        </h1>
+                        <p class="mb-65">الاشتراك في النشرة الإخبارية اليومية</p>
+                    </div>
+                </div>
+                <div class="single-hero-slider single-animation-wrap" style="background-image: url(/nest-rtl/assets/imgs/slider/slider-2.png)">
+                    <div class="slider-content">
+                        <h1 class="display-2 mb-40">
+                            خصم كبير<br />
+                            على الخضار الطازجة
+                        </h1>
+                        <p class="mb-65">وفر حتى 50٪ على طلبك الأول</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-arrow hero-slider-1-arrow"></div>
         </div>
-    </section>
+    </div>
+</section>
+<div class="container mb-30">
+
 
     <section class="coupons-list mt-20">
         <div class="container">
             <div class="row">
-                <div id="div_Coupons"></div>
+                <div class="shop-product-fillter" style="display: -webkit-box">
+                    <div class="header-style-1" style="width:50%">
+                        <div class="search-style-2">
+                            <form action="#">
+                                <select class="select-active">
+                                    <option>All Categories</option>
+                                    <option>Milks and Dairies</option>
+                                    <option>Wines & Alcohol</option>
+                                    <option>Clothing & Beauty</option>
+                                    <option>Pet Foods & Toy</option>
+                                    <option>Fast food</option>
+                                    <option>Baking material</option>
+                                    <option>Vegetables</option>
+                                    <option>Fresh Seafood</option>
+                                    <option>Noodles & Rice</option>
+                                    <option>Ice cream</option>
+                                </select>
+                                <input type="text" placeholder="ابحث بأسم المتجر أو اسم المنتج" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sort-by-product-area">
+                        <div class="sort-by-cover mr-10">
+                            <div class="sort-by-product-wrap">
+                                <div class="sort-by">
+                                    <span><i class="fi-rs-apps"></i></span> عرض:
+                                </div>
+                                <div class="sort-by-dropdown-wrap">
+                                    <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="sort-by-dropdown">
+                                <ul>
+                                    <li><a class="active" href="#">50</a></li>
+                                    <li><a href="#">100</a></li>
+                                    <li><a href="#">150</a></li>
+                                    <li><a href="#">200</a></li>
+                                    <li><a href="#">All</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sort-by-cover">
+                            <button type="button" class="btn btn-primary btn-sm"><i class="fi-rs-filter"></i> الترتيب</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <section class="myorders-banner text-center">
+                    <h2><strong>الكوبونات</strong></h2>
+                    <div class="text-center">
+                        <p>  يوجد <span id="strCount"></span>  كوبون</p>
+
+                    </div>
+                </section>
+            </div>
+            <div class="row p-10">
+                <div id="div_Coupons">
+                </div>
+            </div>
+            </div>
     </section>
 </div>
 

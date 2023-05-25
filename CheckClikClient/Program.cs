@@ -11,7 +11,7 @@ builder.Services.AddSession();
 builder.Services.AddMvc();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 

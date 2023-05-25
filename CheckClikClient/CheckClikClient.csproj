@@ -32,6 +32,11 @@
 
   <ItemGroup>
     <Compile Include="Areas\Ar\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Ar\Controllers\CouponsController.cs" />
+    <Compile Include="Areas\Ar\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Ar\Controllers\OffersController.cs" />
+    <Compile Include="Areas\Ar\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Ar\Controllers\SearchController.cs" />
     <Compile Include="Areas\Ar\Controllers\UserController.cs" />
   </ItemGroup>
 
@@ -69,6 +74,10 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Areas\Ar\Views\Coupons\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Coupons\IndexN.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -132,6 +141,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="Areas\Ar\Views\Offers\IndexN.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Areas\Ar\Views\Offers\OfferList.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -148,11 +161,19 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="Areas\Ar\Views\Product\CategoryDetails.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Areas\Ar\Views\Product\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Areas\Ar\Views\Product\IndexNest.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\NewCheckOutPage.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -165,6 +186,10 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Areas\Ar\Views\Product\PVSideCategoryAndSubCategory.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Ar\Views\Product\StoreContactUs.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -268,6 +293,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="Areas\Ar\Views\Shared\_StoreHeaderLayout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Areas\Ar\Views\Shared\_ValidationScriptsPartial.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -353,6 +382,136 @@
     <None Include="Views\WishList\PVProductWishlist.cshtml" />
     <None Include="Views\WishList\PVServiceWishlist.cshtml" />
     <None Include="Views\WishList\PVStoreWishlist.cshtml" />
+    <None Include="wwwroot\nest-rtl\assets\css\main.css.map" />
+    <None Include="wwwroot\nest-rtl\assets\css\vendors\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\nest-rtl\assets\fonts\uicons\uicons-regular-straight.woff2" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\favicon.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-1.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-10.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-11.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-2.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-3.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-4.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-5.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-6.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-7.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-8.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\category-9.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-1.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-2.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-3.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-4.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-5.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-6.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-bookmark.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-cart.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-clock.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-compare.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-contact.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-download.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-dribbble.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-email-2.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-email.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-facebook-brand.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-facebook-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-facebook.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-headphone-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-headphone.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-heart-2.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-heart.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-hot-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-hot.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-instagram-brand.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-instagram-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-instagram.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-invoice.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-location.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-pinterest-brand.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-pinterest-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-pinterest.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-print.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-twitter-brand.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-twitter-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-twitter.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-user.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-youtube-brand.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-youtube-white.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\icon-youtube.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\logo-apple.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\logo-facebook.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\logo-google.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\payment-master.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\payment-paypal.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\payment-visa.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\payment-zapper.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\phone-call.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\social-fb.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\social-insta.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\social-pin.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\icons\social-tw.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\logo-2.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\logo-light.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\theme\logo.svg" />
+    <None Include="wwwroot\nest-rtl\assets\imgs\vendor\vendor-18.svg" />
+    <None Include="wwwroot\nest-rtl\assets\js\invoice\html2canvas.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\invoice\invoice.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\invoice\jspdf.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\main.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\counterup.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\custom-parallax.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\images-loaded.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\isotope.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery-ui.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery.countdown.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery.elevatezoom.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery.syotimer.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery.theia.sticky.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\jquery.vticker-min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\leaflet.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\magnific-popup.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\perfect-scrollbar.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\scrollup.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\select2.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\slick.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\slider-range.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\TweenMax.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\waypoints.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\plugins\wow.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\shop.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\vendor\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\vendor\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\nest-rtl\assets\js\vendor\jquery-3.6.0.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\vendor\jquery-migrate-3.3.0.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\js\vendor\modernizr-3.6.0.min.js" />
+    <None Include="wwwroot\nest-rtl\assets\sass\abstracts\_functions.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\abstracts\_mixins.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\abstracts\_variables.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\base\_animation.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\base\_common.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\base\_typography.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_banners.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_buttons.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_card.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_form.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_misc.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_slider.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\components\_tabs.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_footer.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_header.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_navigation.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_responsive.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_rtl.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_sidebar.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\layout\_spacing.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\main.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_blog.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_invoice.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_page.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_print.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_shop.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\pages\_vendors.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\themes\_default.scss" />
+    <None Include="wwwroot\nest-rtl\assets\sass\vendors\_vendors-import.scss" />
     <None Include="wwwroot\nest\document_files\bootstrap.bundle.min.js" />
     <None Include="wwwroot\nest\document_files\category-1.svg" />
     <None Include="wwwroot\nest\document_files\category-10.svg" />
@@ -804,6 +963,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>

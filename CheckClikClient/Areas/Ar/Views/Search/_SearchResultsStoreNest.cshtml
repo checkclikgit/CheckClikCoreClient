@@ -50,7 +50,8 @@
     string strApiURL = Configuration["apiurl"];
 }
 <div class="totall-product  ml-20">
-    <p>We found <strong class="text-brand">@Model.NGroups</strong> Stores for you!</p>
+    @*<p>We found <strong class="text-brand">@Model.NGroups</strong> Stores for you!</p>*@
+    <p>تم العثور على <strong class="text-brand">@Model.NGroups</strong> متاجر لك!</p>
 </div>
 
 <div class="row vendor-grid"> 
@@ -70,7 +71,7 @@
                             </a>
                         </div>
                         <div class="product-badges product-badges-position product-badges-mrg">
-                            <span class="best">@(Model.Results[i].ItemType == "1" ? "Single" : "Entity")</span>
+                            <span class="best">@(Model.Results[i].ItemType == "1" ? "فرد" : "منشأة")</span>
                         </div>
                     </div>
                     <div class="vendor-content-wrap">
@@ -79,7 +80,7 @@
                                 @*<div class="product-category">
                                     <span class="text-muted">Since 2012</span>
                                 </div>*@
-                                <h6 class="mb-5"><a href="#">@Model.Results[i].StoreNameEn</a></h6>
+                                <h6 class="mb-5"><a href="#">@Model.Results[i].StoreNameAr</a></h6>
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         @{
@@ -92,17 +93,17 @@
                                 </div>
                             </div>
                             <div class="mb-10">
-                                <span class="font-small total-product">@Model.Results[i].ReviewsCount Reviews</span>
+                                <span class="font-small total-product">التقييمات @Model.Results[i].ReviewsCount</span>
                             </div>
                         </div>
                         <div class="vendor-info mb-30">
 
                             <ul class="contact-infor text-muted">
-                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>@*@Model.Results[i].DescriptionEn*@ @city.NameEn, @district.NameEn, @Model.Results[i].StreetNo, @Model.Results[i].BuildingNo, @Model.Results[i].FloorNo</span></li>
-                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us: &nbsp;</strong><span> @Model.Results[i].ContactNo</span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>العنوان: </strong> <span>@*@Model.Results[i].DescriptionEn*@ @city.NameEn, @district.NameEn, @Model.Results[i].StreetNo, @Model.Results[i].BuildingNo, @Model.Results[i].FloorNo</span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>اتصل بنا: &nbsp;</strong><span> @Model.Results[i].ContactNo</span></li>
                             </ul>
                         </div>
-                        <a href="/Product/List?storeid=@Model.Results[i].StoreId" target="_blank" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+                        <a href="/Product/List?storeid=@Model.Results[i].StoreId" target="_blank" class="btn btn-xs"> اختر المتجر <i class="fi-rs-arrow-small-right"></i></a>
                     </div>
                 </div>
             </div>

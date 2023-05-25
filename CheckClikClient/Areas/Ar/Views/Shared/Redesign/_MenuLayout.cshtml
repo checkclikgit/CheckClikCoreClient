@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html  lang="ar" dir="rtl" class="rtl">
+<html class="rtl" dir="rtl" lang="ar">
 @using CheckClickClient;
 @inject IConfiguration Configuration;
 @{
@@ -23,29 +23,12 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="~/nest/imgs/theme/favicon.svg" />
     <!-- Template CSS -->
-    <link rel="stylesheet" href="~/nest/css/plugins/slider-range.css" />
-    <link rel="stylesheet" href="~/nest/css/main.css?v=5.6" />
+    <link href="~/nest-rtl/assets/css/plugins/slider-range.css" rel="stylesheet" />
+    <link href="~/nest-rtl/assets/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <style>
-        .brand_title {
-            font-weight: bold;
-            background-size: 100%;
-            text-transform: uppercase;
-            background-clip: text;
-            background-color: transparent;
-            background-color: red;
-            background-image: linear-gradient(to right, #5BBFBD,rgba(38,68,127,1),#D61A67,#F37022);
-            background-size: 100%;
-            background-repeat: repeat;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -moz-background-clip: text;
-            -moz-text-fill-color: transparent;
-        }
-    </style>
 </head>
 
-<body data-cities="@Json.Serialize(AppUtils.CityList.ToList())" data-districts="@Json.Serialize(AppUtils.DistrictList.ToList())" data-selectedDist="@AppUtils.SelectedDistrict" data-selectedCity="@AppUtils.SelectedCity">
+<body>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -148,22 +131,21 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <li><a href="page-about.htlm">About Us</a></li>
-                                <li><a href="page-account.html">My Account</a></li>
-                                <li><a href="shop-wishlist.html">Wishlist</a></li>
-                                <li><a href="shop-order.html">Order Tracking</a></li>
+                                <li><a href="page-account.html">حسابي</a></li>
+                                <li><a href="shop-wishlist.html"> قائمتي المفضلة</a></li>
+                                <li><a href="shop-order.html">تتبع الطلبات</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-4">
                         <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
+                            @*<div id="news-flash" class="d-inline-block">
                                 <ul>
                                     <li>100% Secure delivery without contacting the courier</li>
                                     <li>Supper Value Deals - Save more with coupons</li>
                                     <li>Trendy 25silver jewelry, save up 35% off today</li>
                                 </ul>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
@@ -184,7 +166,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a class="language-dropdown-active" href="#">USD <i class="fi-rs-angle-small-down"></i></a>
                                     <ul class="language-dropdown">
                                         <li>
@@ -197,7 +179,7 @@
                                             <a href="#"><img src="~/nest/imgs/theme/flag-ru.png" alt="" />EU</a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
                     </div>
@@ -207,9 +189,6 @@
         <div class="header-bottom header-bottom-bg-color sticky-bar">
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
-                    <div class="logo logo-width-1">
-                        <a asp-action="NIndex" asp-controller="Home"><img src="~/Images/Logo.png" alt="logo" /></a>
-                    </div>
                     @{
                         var cityList = new SelectList(AppUtils.CityList, "Id", "NameEn");
                         var districtList = new SelectList(AppUtils.DistrictList, "Id", "NameEn");
@@ -222,7 +201,7 @@
 
                                 <span class="fi-rs-location-alt"></span>
                                 @*<img src="/nest/imgs/theme/icons/icon-location.svg" alt="">*@
-                                <span class="et ml-2">تسوق في </span> <strong style="float:right;" id="spncity"></strong>
+                                <span class="et ml-2"> تسوق في  </span> <strong style="float:right;" id="spncity"></strong>
                                 <i class="fi-rs-angle-down"></i>
                             </a>
                             <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
@@ -250,15 +229,15 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                             <nav>
                                 <ul>
-                                    <li><a asp-action="NIndex" asp-controller="Home">الرئيسية</a></li>
+                                    <li><a asp-action="NIndex" asp-controller="Home" asp-area="Ar">الرئيسية</a></li>
                                     <li>
-                                        <a asp-action="NQuery" asp-controller="Search">المتاجر</a>
+                                        <a asp-action="NQuery" asp-controller="Search" asp-area="Ar">المتاجر</a>
                                     </li>
                                     <li>
-                                        <a asp-action="Index" asp-controller="Offers">العروض</a>
+                                        <a asp-action="Index" asp-controller="Offers" asp-area="Ar">العروض</a>
                                     </li>
                                     <li>
-                                        <a asp-action="Index" asp-controller="Coupons">الكوبونات</a>
+                                        <a asp-action="Index" asp-controller="Coupons" asp-area="Ar">الكوبونات</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -278,7 +257,7 @@
                                     <img alt="Nest" src="~/nest/imgs/theme/icons/icon-cart.svg" />
                                     <span class="pro-count blue">2</span>
                                 </a>
-                                <a href="shop-cart.html"><span class="lable">عربة التسوق</span></a>
+                                <a href="shop-cart.html"><span class="lable"> التسوق</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>
@@ -311,8 +290,8 @@
                                             <h4>Total <span>$4000.00</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
-                                            <a href="shop-checkout.html">Checkout</a>
+                                            <a href="shop-cart.html" class="outline">عربة التسوق</a>
+                                            <a href="shop-checkout.html">طريقة الدفع</a>
                                         </div>
                                     </div>
                                 </div>
@@ -324,12 +303,12 @@
                                 <a href="page-account.html"><span class="lable ml-0">حسابي</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                     <ul>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>My Voucher</a></li>
-                                        <li><a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
-                                        <li><a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
-                                        <li><a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
+                                        <li><a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>حسابي</a></li>
+                                        <li><a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>تتبع الطلبات</a></li>
+                                        <li><a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>قسائمي</a></li>
+                                        <li><a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>قائمتي المفضلة</a></li>
+                                        <li><a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>الإعدادات</a></li>
+                                        <li><a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>تسجيل الخروج</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -525,21 +504,20 @@
     <main class="main" style="min-height: calc(100vh - 243px)">
         @RenderBody()
     </main>
-    <footer class="main">
+    <footer class="main" id="footer">
         <div class="container pb-30 mt-auto">
             <div class="row align-items-center">
                 <div class="col-12 mb-15">
                     <div class="footer-bottom"></div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> جميع الحقوق محفوظة.</p>
+                    <p class="font-sm mb-0"><strong>بوابات الدفع الآمنة</strong></p>
+                    <img class="wow fadeIn animated" src="/nest/imgs/theme/paymentgateways.png" alt="" style="width:45%;" />
                 </div>
                 <div class="col-xl-4 col-lg-6 justify-content-center text-center d-none d-xl-block">
-                    <p class="text-center">
-                        جميع الحقوق محفوظة لدى شيك كلِك © 2023
-                        <div>س.ت. 4030571375 شركة كلِك للتجارة ذ.م.م</div>
-                    </p>
-                    <div class="header-info text-center">
+                    
+                        <p class="text-center">س.ت. 4030571375 شركة كلِك للتجارة ذ.م.م</p>
+                    <div class="header-info header-info-footer text-center">
                         <ul>
                             <li><a href="page-about.htlm">بيع معنا</a></li>
                             <li><a href="/Home/TermsAndConditions" target="_blank">الشروط و الاتفاقيات</a></li>
@@ -555,11 +533,43 @@
                         <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
                         <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
                     </div>
-                    <p class="font-sm">خصم يصل إلى 15٪ على اشتراكك الأول</p>
+                    <p class="font-sm mb-0">  جميع الحقوق محفوظة لدى <strong class="text-brand">شيك كلِك </strong> © @DateTime.Today.Year </p>
                 </div>
             </div>
         </div>
     </footer>
+    @*<footer class="main">
+        <div class="container pb-30 mt-auto">
+            <div class="row align-items-center">
+                <div class="col-12 mb-15">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <p class="font-sm mb-0">© @DateTime.Today.Year, <strong class="text-brand">CHECKCLIK.COM.</strong> All rights reserved.</p>
+                </div>
+                <div class="col-xl-4 col-lg-6 justify-content-center text-center d-none d-xl-block">
+                    <p class="text-center">CLIK LLC FOR TRADING, CR NO: 4030571375</p>
+                    <div class="header-info">
+                        <ul>
+                            <li><a href="page-about.htlm"  target="_blank">Sell with Us</a></li>
+                            <li><a href="/Home/TermsAndConditions" target="_blank">Terms & Conditions</a></li>
+                            <li><a href="/Home/TermsOfSales"  target="_blank">Terms for Sale</a></li>
+                            <li><a href="/Home/PrivacyPolicy" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                    <div class="mobile-social-icon">
+                        <h6>Follow Us</h6>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                        <a href="#"><img src="/nest/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                    </div>
+                    <p class="font-sm">Up to 15% discount on your first subscribe</p>
+                </div>
+            </div>
+        </div>
+    </footer>*@
     <!-- Preloader Start -->
     @*<div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">

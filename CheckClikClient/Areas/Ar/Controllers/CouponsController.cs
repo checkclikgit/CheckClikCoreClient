@@ -58,7 +58,7 @@ namespace Customer.Areas.Ar.Controllers
 
             }
         }
-
+        [Route("Coupons/GetCoupons")]
         [HttpPost]
         public async Task<ActionResult> CouponsofCustomers(int pageNumber)
         {
@@ -119,8 +119,9 @@ namespace Customer.Areas.Ar.Controllers
                     }
                     obj.PageNumber = pageNumber;
                     obj.UrlPath = api_url + upload_api + folder_name;
-
-                    var result = await _viewRenderService.RenderToStringAsync("Coupons/CouponsPV", obj);
+                    
+                    //var result = await _viewRenderService.RenderToStringAsync("Ar/Views/Coupons/CouponsPV", obj);
+                    var result = await _viewRenderService.RenderToStringARAsync("~/Areas/Ar/Views/Coupons/CouponsPV.cshtml", obj);
                     return Json(new { result = result });
                     //return PartialView("CouponsPV", obj);
                 }

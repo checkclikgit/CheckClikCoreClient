@@ -27,44 +27,23 @@
 <div class="row vendor-grid">
     @if (Model.LstCoupons != null)
     {
+        int count = 1;
         foreach (var item in Model.LstCoupons)
         {
-            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
-                <div class="vendor-wrap mb-40">
-                    <div class="vendor-img-action-wrap">
-                        <div class="vendor-img">
-                            <a href="#">
-                                <img class="default-img" style="height: 130px; border-radius: 10px;" src="@Model.UrlPath/@item.LogoCopy" alt="" />
-                            </a>
-                        </div>
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                            <span class="best">Offer</span>
-                        </div>
+            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="coupon-card">
+                        <img src="@Model.UrlPath/@item.LogoCopy" class="logo">
+                        <h3>@item.StoreNameAr</h3>
+                        <di class="coupon-row">
+                            <span class="cpnCode">@item.CouponCode</span>&nbsp;
+                            <span id="cpnBtn_@count" class="cpnBtn" onclick="CopyCode('Id_@count','@item.CouponCode')">: نسخ الرمز</span>
+                        </di>
+                        <p class="text-light">الصلاحية:  <strong>@item.EndDate.ToString("dd MMM yyyy")</strong></p>
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
                     </div>
-                    <div class="vendor-content-wrap">
-                        <div class="d-flex justify-content-between align-items-end mb-10">
-                            <div>
-                                <h6 class="mb-5"><a href="#">@item.StoreNameEn</a></h6>
-                                <div class="product-rate-cover">
-                                    <span class="ml-5" style="font-size:16px;"> <strong>@item.VoucherNameEn</strong></span>
-                                </div>
-                            </div>
-                            <div class="mb-10">
-                                <span class="font-small total-product">Validity: @item.EndDate.ToString("dd MMM yyyy")</span>
-                            </div>
-                        </div>
-                        <div class="vendor-info mb-10">
-                            <ul class="contact-infor">
-                                <li>
-                                    <img src="assets/imgs/theme/icons/icon-location.svg" alt="" />
-                                    <strong style="font-size:16px;">Code : </strong> 
-                                    <strong>@item.CouponCode</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
+            count++;
 
         }
     }
