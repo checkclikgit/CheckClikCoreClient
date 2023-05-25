@@ -253,6 +253,20 @@
                                 </ul>
                             </nav>
                         </div>
+                        @using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                                @*<input id="txtSearchTerm" name="txtSearchTerm" value="@TempData["query"]" type="text" placeholder="Search by Store Or Product Name" autocomplete="off" style="background-image: url('') !important;" />*@
+
+                                            @*<input type="submit" class="btn btn-default btn-block btn-lg search-button" value="Search">*@
+
+                                            <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" /> 
+                                            <input type="hidden" name="hdnlocation" id="hdnlocation" /> 
+                                            <input type="hidden" name="hdnIsLocationSet" id="hdnIsLocationSet" value="0" /> 
+                                            <input type="hidden" name="hdnSearchText" id="hdnSearchText" />
+                                            <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
+                                            <input type="hidden" name="hdnStart" id="hdnStart" />
+                                        }
                     </div>
                     <partial name="_LoggedInLayout" />
                 </div>
