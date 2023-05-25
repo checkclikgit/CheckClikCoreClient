@@ -5,684 +5,669 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CheckClikClient
 build_property.RootNamespace = CheckClikClient
-build_property.ProjectDir = D:\Project\CheckClik\Client\Project\CheckClikClient\CheckClikClient\
+build_property.ProjectDir = D:\CheckClik\CheckClik_Production\CheckClikMerge\CustomerCore\CheckClikCoreClient\CheckClikClient\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = D:\Project\CheckClik\Client\Project\CheckClikClient\CheckClikClient
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\CheckClik\CheckClik_Production\CheckClikMerge\CustomerCore\CheckClikCoreClient\CheckClikClient
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/B2B/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/B2B/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQjJCXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/CartPreview.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/CartPreview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDYXJ0UHJldmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/Checkout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/OrderConfirmed.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/OrderConfirmed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlckNvbmZpcm1lZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/PVManageAddress.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/PVManageAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQVk1hbmFnZUFkZHJlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/PVOrderPayment.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/PVOrderPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQVk9yZGVyUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Cart/_PVOrderPaymentOptions.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Cart/_PVOrderPaymentOptions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxfUFZPcmRlclBheW1lbnRPcHRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Coupons/CouponsPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Coupons/CouponsPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xDb3Vwb25zUFYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Coupons/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Coupons/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Coupons/IndexN.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Coupons/IndexN.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uc1xJbmRleE4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/CustomerProducts/ProductDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/CustomerProducts/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/NIndex.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/NIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/Privacy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/PrivacyPolicy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/PrivacyPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5UG9saWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/TermsAndConditions.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/TermsAndConditions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Home/TermsOfSales.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Home/TermsOfSales.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mU2FsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcSW5kZXhOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/OrderDetailsPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/OrderDetailsPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcT3JkZXJEZXRhaWxzUFYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/ProcessingOrdersPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/ProcessingOrdersPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUHJvY2Vzc2luZ09yZGVyc1BWLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/PVHistoryOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVHistoryOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZIaXN0b3J5T3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/PVPendingOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVPendingOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZQZW5kaW5nT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/MyOrders/PVProcessingOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/MyOrders/PVProcessingOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlPcmRlcnNcUFZQcm9jZXNzaW5nT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/AllCategories.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/AllCategories.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEFsbENhdGVnb3JpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4LTIwMTktMDItMjhfMTEtMDEtNDMtMTc0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/IndexN.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/IndexN.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXEluZGV4Ti5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/OfferList.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/OfferList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXE9mZmVyTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/OfferListItem.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/OfferListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXE9mZmVyTGlzdEl0ZW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/PVItems.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/PVItems.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXFBWSXRlbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Offers/PVOffer.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Offers/PVOffer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXFBWT2ZmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/CategoryDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/CategoryDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDYXRlZ29yeURldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/NewCheckOutPage.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/NewCheckOutPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxOZXdDaGVja091dFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/PVBranchTimings.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/PVBranchTimings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVkJyYW5jaFRpbWluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/PVProduct.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/PVProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVlByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/PVSideCategoryAndSubCategory.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/PVSideCategoryAndSubCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/StoreContactUs.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/StoreContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxTdG9yZUNvbnRhY3RVcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/_SearchResults - Copy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/_SearchResults - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cyAtIENvcHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Product/_SearchResults.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Product/_SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Search/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Search/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Search/NIndex.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Search/NIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXE5JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Search/_SearchResults.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Search/_SearchResultsStore.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResultsStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Search/_SearchResultsStoreNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Search/_SearchResultsStoreNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmVOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/Error.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_B2bLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_B2bLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CMmJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_CustomScript.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_CustomScript.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DdXN0b21TY3JpcHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNewStore.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNewStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LoggedInLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LoggedInLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dnZWRJbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_StoreHeaderLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_StoreHeaderLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdG9yZUhlYWRlckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/ChangePassword.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/ChangePasswordNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/ChangePasswordNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/ManageAddress.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/ManageAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/ManageAddressNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/ManageAddressNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzTmVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/MyProfile.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/MyProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/MyProfileNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/MyProfileNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGVOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/MyProfileNestNew.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/MyProfileNestNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGVOZXN0TmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/SignUp.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/SignUpNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/SignUpNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXBOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/_PVOffers.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/_PVOffers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUFZPZmZlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/User/_PVOffersNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/User/_PVOffersNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUFZPZmZlcnNOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/WishList/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/WishList/Indexnew.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/Indexnew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXhuZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/WishList/PVProductWishlist.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/PVProductWishlist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZQcm9kdWN0V2lzaGxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/WishList/PVServiceWishlist.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/PVServiceWishlist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTZXJ2aWNlV2lzaGxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/WishList/PVStoreWishlist.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/WishList/PVStoreWishlist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcUFZTdG9yZVdpc2hsaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/_ViewImports.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/_ViewStart.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/B2B/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/B2B/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQjJCXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/CartPreview.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/CartPreview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxDYXJ0UHJldmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/Checkout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/OrderConfirmed.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/OrderConfirmed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxPcmRlckNvbmZpcm1lZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/PVManageAddress.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/PVManageAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxQVk1hbmFnZUFkZHJlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/PVOrderPayment.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/PVOrderPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxQVk9yZGVyUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Cart/_PVOrderPaymentOptions.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Cart/_PVOrderPaymentOptions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ2FydFxfUFZPcmRlclBheW1lbnRPcHRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Coupons/CouponsPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/CouponsPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xDb3Vwb25zUFYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Coupons/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Coupons/IndexN.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Coupons/IndexN.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ291cG9uc1xJbmRleE4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/CustomerProducts/ProductDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/CustomerProducts/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcQ3VzdG9tZXJQcm9kdWN0c1xQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Home/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Home/NIndex.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/NIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxOSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Home/Privacy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Home/TermsAndConditions.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Home/TermsAndConditions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcSG9tZVxUZXJtc0FuZENvbmRpdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcSW5kZXhOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/OrderDetailsPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/OrderDetailsPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcT3JkZXJEZXRhaWxzUFYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/ProcessingOrdersPV.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/ProcessingOrdersPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUHJvY2Vzc2luZ09yZGVyc1BWLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVHistoryOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVHistoryOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZIaXN0b3J5T3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVPendingOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVPendingOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZQZW5kaW5nT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVProcessingOrders.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/MyOrders/PVProcessingOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcTXlPcmRlcnNcUFZQcm9jZXNzaW5nT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/AllCategories.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/AllCategories.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEFsbENhdGVnb3JpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/Index-2019-02-28_11-01-43-174.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4LTIwMTktMDItMjhfMTEtMDEtNDMtMTc0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/IndexN.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/IndexN.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXEluZGV4Ti5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/OfferList.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/OfferList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXE9mZmVyTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/OfferListItem.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/OfferListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXE9mZmVyTGlzdEl0ZW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/PVItems.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/PVItems.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXFBWSXRlbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Offers/PVOffer.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Offers/PVOffer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXFBWT2ZmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/CategoryDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxDYXRlZ29yeURldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/NewCheckOutPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxOZXdDaGVja091dFBhZ2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/PVBranchTimings.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVBranchTimings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVkJyYW5jaFRpbWluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/PVProduct.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVlByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/PVSideCategoryAndSubCategory.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVSideCategoryAndSubCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/StoreContactUs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxTdG9yZUNvbnRhY3RVcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults - Copy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cyAtIENvcHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxfU2VhcmNoUmVzdWx0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Search/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Search/NIndex.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/NIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXE5JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResults.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStore.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStoreNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Search/_SearchResultsStoreNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2VhcmNoXF9TZWFyY2hSZXN1bHRzU3RvcmVOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/Error.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_B2bLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_B2bLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9CMmJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_CustomScript.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_CustomScript.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9DdXN0b21TY3JpcHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNewStore.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNewStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_StoreHeaderLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9TdG9yZUhlYWRlckxheW91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/ChangePassword.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/ChangePasswordNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ChangePasswordNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/Index.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/IndexNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxJbmRleE5lc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/ManageAddress.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ManageAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/ManageAddressNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/ManageAddressNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNYW5hZ2VBZGRyZXNzTmVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/MyProfile.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/MyProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/MyProfileNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/MyProfileNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxNeVByb2ZpbGVOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/SignUp.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/SignUpNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/SignUpNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxTaWduVXBOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/_PVOffers.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/_PVOffers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxfUFZPZmZlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/User/_PVOffersNest.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/User/_PVOffersNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcVXNlclxfUFZPZmZlcnNOZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/_ViewImports.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/_ViewStart.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_CheckOutLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Redesign/_CheckOutLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9DaGVja091dExheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-ft6urn55i3
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_HomeLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Redesign/_HomeLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9Ib21lTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-395omepob4
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_MenuLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Redesign/_MenuLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9NZW51TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-82e8da16cr
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/Redesign/_StoreLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/Redesign/_StoreLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGVzaWduXF9TdG9yZUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-n83pwyczuw
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_Layout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cu00n5ocnz
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew - Copy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXcgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-96b66btm6a
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s3ngt62fsr
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_CartCheckout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_CartCheckout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydENoZWNrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-xd5c2ar3h4
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_CartDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_CartDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3cg1x1stkz
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_Empty.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_Empty.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfRW1wdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gn57c4cd57
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUGF5bWVudENvbmZpcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zw88upzxuj
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-svd3mdkhfw
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-6fu2j94ey3
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_Profile.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-qz6lj4i7zq
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Views/Shared/_LayoutNew_StoreDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Views/Shared/_LayoutNew_StoreDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-jbemnad9j2
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_HomeLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_HomeLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9Ib21lTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-jd8tfm57wl
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_MenuLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_MenuLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9NZW51TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-33wue69yy3
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_StoreLayout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/Redesign/_StoreLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXFJlZGVzaWduXF9TdG9yZUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-gl1r0gdbdx
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_Layout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-85b2x0vcv7
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew - Copy.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXcgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-fm2nsujqph
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-f6isnvif1j
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartCheckout.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartCheckout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydENoZWNrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-a730ke35jn
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_CartDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfQ2FydERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-mdg9idzemp
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Empty.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Empty.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfRW1wdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ju6bcpklzs
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_PaymentConfirm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUGF5bWVudENvbmZpcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-t9iphcf06r
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o65lj13lbt
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_ProductDetails1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZHVjdERldGFpbHMxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-620p5wxjzj
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Profile.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-eb9m1i5zpe
 
-[D:/Project/CheckClik/Client/Project/CheckClikClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_StoreDetails.cshtml]
+[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNew_StoreDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdfU3RvcmVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-rkzje4uo7u

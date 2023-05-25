@@ -70,19 +70,6 @@ namespace Customer.Areas.Ar.Controllers
              
             return View(lstBranchDTO);
         }
-        [Route("Product/CategoryDetails")]
-        public async Task<ActionResult> CategoryDetails(int storeId, string q)
-        {
-            return View();
-        }
-        public async Task<ActionResult> StoreContactUs(int storeId, string q)
-        {
-            return View();
-        }
-        public async Task<ActionResult> NewCheckOutPage(int storeId, string q)
-        {
-            return View();
-        }
 
 
         [HttpPost]
