@@ -64,7 +64,7 @@ var DatatableColumnRenderingDemo = function() {
             if (number > 8) {
               output = '<div class="m-card-user m-card-user--sm">\
 								<div class="m-card-user__pic">\
-									<img src="./assets/app/media/img/users/' + user_img + '" class="m--img-rounded m--marginless" alt="photo">\
+									<img src="./nest/app/media/img/users/' + user_img + '" class="m--img-rounded m--marginless" alt="photo">\
 								</div>\
 								<div class="m-card-user__details">\
 									<span class="m-card-user__name">' + data.CompanyAgent + '</span>\

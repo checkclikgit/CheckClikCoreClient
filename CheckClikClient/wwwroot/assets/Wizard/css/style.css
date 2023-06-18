@@ -628,9 +628,11 @@ fieldset {
     display: none; }
 
 .fieldset-content {
-  height: 465px;
+  height: auto;
   border-bottom: 1px solid #ebebeb;
-  padding-right: 110px; }
+  padding-right: 0px; 
+
+}
 
 .fieldset-footer {
   padding: 28px 0; }

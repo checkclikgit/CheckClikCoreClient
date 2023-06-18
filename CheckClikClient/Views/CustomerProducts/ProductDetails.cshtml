@@ -14,8 +14,8 @@
     </style>
 </head>
 @{
-    ViewBag.Title = "Search Results | CheckClik MarketPlace";
-    Layout = "~/Views/Shared/_LayoutNew_ProductDetails.cshtml";
+    ViewBag.Title = "Product Details | CheckClik MarketPlace";
+    Layout = "~/Views/Shared/Redesign/_StoreLayout.cshtml";
 
     string ProductNameEn = Model.ProductNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     ProductNameEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(ProductNameEn.ToLower());

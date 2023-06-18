@@ -24,7 +24,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="~/nest-rtl/assets/imgs/theme/favicon.svg" />
     <!-- Template CSS -->
-    <link rel="stylesheet" href="~/nest-rtl/assets/css/plugins/slider-range.css" />
+    @*<link rel="stylesheet" href="~/nest-rtl/assets/css/plugins/slider-range.css" />*@
+    <link rel="stylesheet" href="~/nest-rtl/assets/css/plugins/animate.min.css"/>
     <link rel="stylesheet" href="~/nest-rtl/assets/css/main.css?v=5.6" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -132,7 +133,7 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <li><a href="page-account.html">حسابي</a></li>
+                                <li><a asp-action="NIndex" asp-controller="Home" class="brand_title"><span class="fi-rs-home"> </span>&nbsp; الصفحة الرئيسية شيك كلِك</a></li>
                                 <li><a href="shop-wishlist.html"> قائمتي المفضلة</a></li>
                                 <li><a href="shop-order.html">تتبع الطلبات</a></li>
                             </ul>
@@ -604,6 +605,78 @@
         @RenderBody()
     </main>
     <footer class="main" id="footer">
+        <section class="featured section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay="0">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-1.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">أفضل الأسعار والعروض </h3>
+                                <p>الطلبات 50 دولار أو اكثر</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-2.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">توصيل مجاني</h3>
+                                <p>24/7 خدمة رائعة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-3.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Great daily deal</h3>
+                                <p>عند التسجيل</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-4.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Wide assortment</h3>
+                                <p>خصومات ضخمة </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-5.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">ترجيع سهل</h3>
+                                <p>خلال 30 يوم </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
+                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
+                            <div class="banner-icon">
+                                <img src="/nest/imgs/theme/icons/icon-6.svg" alt="" />
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Safe delivery</h3>
+                                <p>Within 30 days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="container pb-30 mt-auto">
             <div class="row align-items-center">
                 <div class="col-12 mb-15">
@@ -659,29 +732,29 @@
 
     <input type="hidden" id="hdnisusrloc" value="0" />
     <!-- Vendor JS-->
-    <script src="~/nest-rtl/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="~/nest-rtl/assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="~/nest-rtl/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="~/nest-rtl/assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/slick.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/jquery.syotimer.min.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/wow.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/slider-range.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/perfect-scrollbar.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/magnific-popup.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/select2.min.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/waypoints.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/counterup.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/jquery.countdown.min.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/images-loaded.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/isotope.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/scrollup.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/jquery.vticker-min.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/jquery.theia.sticky.js"></script>
-    <script src="~/nest-rtl/assets/js/plugins/jquery.elevatezoom.js"></script>
-    <!-- Template  JS -->
-    <script src="~/nest-rtl/assets/js/main.js?v=5.6"></script>
-    <script src="~/nest-rtl/assets/js/shop.js?v=5.6"></script>
+        <!-- Vendor JS-->
+        <script src="/nest-rtl/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="/nest-rtl/assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="/nest-rtl/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+        <script src="/nest-rtl/assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/slick.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/waypoints.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/wow.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/perfect-scrollbar.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/magnific-popup.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/select2.min.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/counterup.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/jquery.countdown.min.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/images-loaded.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/isotope.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/scrollup.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/jquery.vticker-min.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/jquery.theia.sticky.js"></script>
+        <script src="/nest-rtl/assets/js/plugins/jquery.elevatezoom.js"></script>
+        <!-- Template  JS -->
+        <script src="/nest-rtl/assets/js/main.js?v=5.6"></script>
+        <script src="/nest-rtl/assets/js/shop.js?v=5.6"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.3/dist/typeahead.jquery.js" integrity="sha512-h6BgTelOAlxClugUkZwcBdOj4hzNi8+7DOMvQWuEmrUY0IO8XbAzSO22wfQSUSlFCBHy5kXfs/Cz1OiXr+LLNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom  JS -->
      @*<partial name="_CustomScript" />*@

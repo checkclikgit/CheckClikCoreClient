@@ -323,7 +323,7 @@ The processor type of the how emojionearea saves icons to the source, also affec
 * shortname - save emojis as shortnames (e.g. `:smile:`, `:smiley:`, `:cat:`, etc);
 * image - save emojis as html images, example: 
 ```html
-<img alt="😀" class="emojioneemoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f600.png">
+<img alt="😀" class="emojioneemoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/nest/png/1f600.png">
 ```
 
 #### `hideSource`

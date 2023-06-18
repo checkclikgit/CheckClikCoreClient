@@ -14,11 +14,11 @@
     </style>
 </head>
 @{
-    ViewBag.Title = "Search Results | CheckClik MarketPlace";
-    Layout = "~/Views/Shared/_LayoutNew_ProductDetails.cshtml";
+    ViewBag.Title = "Product Details | CheckClik MarketPlace";
+    Layout = "~/Views/Shared/Redesign/_StoreLayout.cshtml";
 
-    string ProductNameEn = Model.ProductNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
-    ProductNameEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(ProductNameEn.ToLower());
+    string ProductName = Model.ProductNameAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    ProductName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(ProductName.ToLower());
     var imgmeta = Model.ProductDetailsLst.Count() > 0 ? Model.ProductDetailsLst.Where(x => x.ProductInventoryId == Model.ProductInventoryId).Distinct().FirstOrDefault().JImages.Select(x => x.Image).First() : "";
 
 
@@ -43,19 +43,19 @@
     subcat.BranchId = brac.Id;
 
 
-    string MainCategory = maincat.NameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    string MainCategory = maincat.NameAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     MainCategory = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(MainCategory.ToLower());
 
-    string SubCategory = subcat.NameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    string SubCategory = subcat.NameAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     SubCategory = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(SubCategory.ToLower());
 
-    string StoreName = obj.StoreEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    string StoreName = obj.StoreAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     StoreName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(StoreName.ToLower());
 
-    string BranchEn = brac.BranchNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    string BranchEn = brac.BranchNameAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     BranchEn = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BranchEn.ToLower());
 
-    string Product = Model.ProductNameEn.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
+    string Product = Model.ProductNameAr.Replace("_&_", " & ").Replace("_", " ").Replace("-", " ");
     Product = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Product.ToLower());
 
 }
@@ -65,7 +65,7 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>@StoreName</a>
-            <span></span> <a href="#">@MainCategory</a> <span></span> @SubCategory<span></span> @ProductNameEn
+            <span></span> <a href="#">@MainCategory</a> <span></span> @SubCategory<span></span> @ProductName
         </div>
     </div>
 </div>@if (Model.ProductDetailsLst != null)
@@ -163,16 +163,16 @@
                                             }
                                             else
                                             {
-                                                <span class="stock-status in-stock"> In Stock </span>
+                                                <span class="stock-status in-stock"> متوفر </span>
                                             }
-                                            <h2 class="title-detail">@item.ProductNameEn</h2>
-                                            <h4><strong>@item.ProductCountingNo @item.CountingNameEn</strong></h4>
+                                            <h2 class="title-detail">@item.ProductNameAr</h2>
+                                            <h4><strong>@item.ProductCountingNo @item.CountingNameAr</strong></h4>
                                             <div class="product-detail-rating">
                                                 <div class="product-rate-cover text-end">
                                                     <div class="product-rate d-inline-block">
                                                         <div class="product-rating" style="width: @(item.AvgUserReviews * 20)%"></div>
                                                     </div>
-                                                    <span class="font-small ml-5 text-muted"> (@(item.UserReviews == 0 ? "No Reviews" : item.UserReviews == 1 ? item.UserReviews.ToString() + " Review" : item.UserReviews.ToString() + " Review"))</span>
+                                                    <span class="font-small ml-5 text-muted"> (@(item.UserReviews == 0 ? "No Reviews" : item.UserReviews == 1 ? item.UserReviews.ToString() + " تقييمات " : item.UserReviews.ToString() + " تقييمات "))</span>
                                                 </div>
                                             </div>
                                             @if (item.IsVatApplicable == true)
@@ -181,12 +181,12 @@
                                             }
                                             @if (item.NotReturnable == true)
                                             { 
-                                                <h4><strong>Not Returnable</strong></h4>
+                                                <h4><strong>Non Returnable</strong></h4>
                                             }
                                             
                                             <div class="clearfix product-price-cover">
                                                 <div class="product-price primary-color float-left">
-                                                    <span class="current-price text-brand">SAR <span id="spnPrice">@item.Price.ToString("N2")</span></span>
+                                                    <span class="current-price text-brand">ر.س <span id="spnPrice">@item.Price.ToString("N2")</span></span>
                                                     @if (@item.Price != @item.SellingPrice)
                                                     { 
                                                         <span>
@@ -194,8 +194,8 @@
                                                                 decimal percentOff = (decimal)(( (@item.SellingPrice - @item.Price ) / @item.SellingPrice) * 100)  ;
 
                                                             }
-                                                            <span class="save-price font-md color3 ml-15">@percentOff% Off</span>
-                                                            <span class="old-price font-md ml-15">SAR @item.SellingPrice.ToString("N2")</span>
+                                                            <span class="save-price font-md color3 ml-15">@percentOff% خصم</span>
+                                                            <span class="old-price font-md ml-15">ر.س @item.SellingPrice.ToString("N2")</span>
                                                         </span>
                                                     }
                                                     @Html.HiddenFor(Model => item.Price, new { Id = "hdnPrice" })
@@ -251,21 +251,21 @@
                                                             if (item.LowStockActivity == 1)
                                                             {
                                                                 //Disable buy Button
-                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>إضافة إلى عربة التسوق </button>
                                                             }
                                                             else if (item.LowStockActivity == 2)
                                                             {
                                                                 //UnPublished
-                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>إضافة إلى عربة التسوق </button>
                                                             }
                                                             else if (item.LowStockActivity == 3)
                                                             {
-                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>ADD TO CART</button>
+                                                                <button id="btnAddtoCart" href="#" class="btn btn-default disabled" disabled>إضافة إلى عربة التسوق </button>
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            <button id="btnAddtoCart" class="button button-add-to-cart" onclick="AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems)">ADD TO CART</button>
+                                                            <button id="btnAddtoCart" class="button button-add-to-cart" onclick="AddToCart(@Model.loginval,@Model.ProductInventoryId,@Model.BranchId,@Model.CartBranchId,@Model.CartItems)">إضافة إلى عربة التسوق </button>
                                                         }
                                                     }
                                                     @{
@@ -312,7 +312,7 @@
                                                 <ul class="mr-50 float-start">
                                                     <div class="mobile-social-icon">
                                                         
-                                                    <h6><strong>Share:</strong></h6>
+                                                    <h6><strong>مشاركة :</strong></h6>
                                                     <a href="#" data-js="facebook-share" class="fab fa-facebook-f"><img src="/nest/imgs/theme/icons/icon-facebook-white.svg" alt=""></a>
                                                     @*<a href="#" data-js="twitter-share" class="fab fa-twitter"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt=""></a>*@
                                                         <a href="https://twitter.com/checkclik?s=11" target="_blank"><img src="/nest/imgs/theme/icons/icon-twitter-white.svg" alt></a>
@@ -329,22 +329,22 @@
                                     <div class="tab-style3">
                                         <ul class="nav nav-tabs text-uppercase">
                                             <li class="nav-item">
-                                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">تفاصيل المنتج</a>
                                             </li>  
                                             <li class="nav-item">
-                                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (@item.JReviews.Count())</a>
+                                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">تقييمات (@item.JReviews.Count())</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content shop_info_tab entry-main-content">
                                             <div class="tab-pane fade show active" id="Description">
-                                                @item.DescriptionEn
+                                                @item.DescriptionAr
                                             </div>  
                                             <div class="tab-pane fade" id="Reviews">
                                                 <!--Comments-->
                                                 <div class="comments-area">
                                                     <div class="row">
                                                         <div class="col-lg-8">
-                                                            <h4 class="mb-30"><strong>@item.JReviews.Count() reviews for @item.ProductNameEn</strong></h4>
+                                                            <h4 class="mb-30"><strong>@item.JReviews.Count() reviews for @item.ProductNameAr</strong></h4>
                                                             <div class="comment-list">
 
                                                                 @if (@item.JReviews.Count() > 0)
@@ -404,7 +404,7 @@
                                 </div>
                                 <div class="row mt-60">
                                     <div class="col-12">
-                                        <h2 class="section-title style-1 mb-30">Related products</h2>
+                                        <h2 class="section-title style-1 mb-30">منتجات مشابهة</h2>
                                     </div>
                                     <div class="col-12">
                                         <div class="row related-products">
@@ -417,7 +417,7 @@
                                                         <div class="product-cart-wrap hover-up">
                                                             <div class="product-img-action-wrap">
                                                                 <div class="product-img product-img-zoom">
-                                                                    <a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">
+                                                                    <a href="~/@StoreName.Replace(" ", "-").ToLower()/@item.MainCatAr.Replace(" ", "-").ToLower()/@item.SubCatAr.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameAr, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">
                                                                         <img class="default-img" src="@Model.UrlPath@relatedLst.Image" alt="" />
                                                                         <img class="hover-img" src="@Model.UrlPath@relatedLst.Image" alt="" />
                                                                     </a>
@@ -432,13 +432,13 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product-content-wrap">
-                                                                <h2><a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">@relatedLst.ProductNameEn</a></h2>
+                                                                <h2><a href="~/@StoreNameEn.Replace(" ", "-").ToLower()/@item.MainCatEn.Replace(" ", "-").ToLower()/@item.SubCatEn.Replace(" ", "-").ToLower()/p/@Customer.SlugUtil.GenerateSlug(relatedLst.Id, relatedLst.ProductNameEn, relatedLst.ProductSkuId, Convert.ToInt32(relatedLst.ProductId), relatedLst.UPCBarcode, relatedLst.BranchId)" tabindex="0">@relatedLst.ProductNameAr</a></h2>
                                                                 <div class="rating-result" title="90%">
                                                                     <span> </span>
                                                                 </div>
                                                                 <div class="product-price">
-                                                                    <span>SAR @item.SellingPrice.ToString("N2") </span>
-                                                                    <span class="old-price">SAR @item.Price.ToString("N2")</span>
+                                                                    <span>ر.س @item.SellingPrice.ToString("N2") </span>
+                                                                    <span class="old-price"> ر.س  @item.Price.ToString("N2")</span>
                                                                 </div>
                                                             </div>
                                                         </div>

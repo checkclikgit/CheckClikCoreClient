@@ -1,4 +1,4 @@
-import DropdownIcon from '../assets/icons/dropdown.svg';
+import DropdownIcon from '../nest/icons/dropdown.svg';
 
 
 class Picker {

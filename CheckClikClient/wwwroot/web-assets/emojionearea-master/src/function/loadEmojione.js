@@ -36,10 +36,10 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
                         emojioneSupportMode = getSupportMode(emojioneVersion);
                         var sprite;
                         if (emojioneSupportMode > 4) {
-                            cdn.base = cdn.defaultBase3 + "emojione/assets/" + emojioneVersion;
+                            cdn.base = cdn.defaultBase3 + "emojione/nest/" + emojioneVersion;
                             sprite = cdn.base + "/sprites/emojione-sprite-" + emojione.emojiSize + ".css";
                         } else {
-                            cdn.base = cdn.defaultBase + emojioneVersion + "/assets";
+                            cdn.base = cdn.defaultBase + emojioneVersion + "/nest";
                             sprite = cdn.base + "/sprites/emojione.sprites.css";
                         }
                         if (options.sprite) {
@@ -59,9 +59,9 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
                 emojioneVersion = detectVersion(emojione);
                 emojioneSupportMode = getSupportMode(emojioneVersion);
                 if (emojioneSupportMode > 4) {
-                    cdn.base = cdn.defaultBase3 + "emojione/assets/" + emojioneVersion;
+                    cdn.base = cdn.defaultBase3 + "emojione/nest/" + emojioneVersion;
                 } else {
-                    cdn.base = cdn.defaultBase + emojioneVersion + "/assets";
+                    cdn.base = cdn.defaultBase + emojioneVersion + "/nest";
                 }
             }
         }

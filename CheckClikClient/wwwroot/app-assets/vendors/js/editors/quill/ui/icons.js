@@ -1,48 +1,48 @@
 module.exports = {
   'align': {
-    ''        : require('../assets/icons/align-left.svg'),
-    'center'  : require('../assets/icons/align-center.svg'),
-    'right'   : require('../assets/icons/align-right.svg'),
-    'justify' : require('../assets/icons/align-justify.svg')
+    ''        : require('../nest/icons/align-left.svg'),
+    'center'  : require('../nest/icons/align-center.svg'),
+    'right'   : require('../nest/icons/align-right.svg'),
+    'justify' : require('../nest/icons/align-justify.svg')
   },
-  'background': require('../assets/icons/background.svg'),
-  'blockquote': require('../assets/icons/blockquote.svg'),
-  'bold'      : require('../assets/icons/bold.svg'),
-  'clean'     : require('../assets/icons/clean.svg'),
-  'code'      : require('../assets/icons/code.svg'),
-  'code-block': require('../assets/icons/code.svg'),
-  'color'     : require('../assets/icons/color.svg'),
+  'background': require('../nest/icons/background.svg'),
+  'blockquote': require('../nest/icons/blockquote.svg'),
+  'bold'      : require('../nest/icons/bold.svg'),
+  'clean'     : require('../nest/icons/clean.svg'),
+  'code'      : require('../nest/icons/code.svg'),
+  'code-block': require('../nest/icons/code.svg'),
+  'color'     : require('../nest/icons/color.svg'),
   'direction' : {
-    ''        : require('../assets/icons/direction-ltr.svg'),
-    'rtl'     : require('../assets/icons/direction-rtl.svg')
+    ''        : require('../nest/icons/direction-ltr.svg'),
+    'rtl'     : require('../nest/icons/direction-rtl.svg')
   },
   'float': {
-    'center'  : require('../assets/icons/float-center.svg'),
-    'full'    : require('../assets/icons/float-full.svg'),
-    'left'    : require('../assets/icons/float-left.svg'),
-    'right'   : require('../assets/icons/float-right.svg')
+    'center'  : require('../nest/icons/float-center.svg'),
+    'full'    : require('../nest/icons/float-full.svg'),
+    'left'    : require('../nest/icons/float-left.svg'),
+    'right'   : require('../nest/icons/float-right.svg')
   },
-  'formula'   : require('../assets/icons/formula.svg'),
+  'formula'   : require('../nest/icons/formula.svg'),
   'header': {
-    '1'       : require('../assets/icons/header.svg'),
-    '2'       : require('../assets/icons/header-2.svg')
+    '1'       : require('../nest/icons/header.svg'),
+    '2'       : require('../nest/icons/header-2.svg')
   },
-  'italic'    : require('../assets/icons/italic.svg'),
-  'image'     : require('../assets/icons/image.svg'),
+  'italic'    : require('../nest/icons/italic.svg'),
+  'image'     : require('../nest/icons/image.svg'),
   'indent': {
-    '+1'      : require('../assets/icons/indent.svg'),
-    '-1'      : require('../assets/icons/outdent.svg')
+    '+1'      : require('../nest/icons/indent.svg'),
+    '-1'      : require('../nest/icons/outdent.svg')
   },
-  'link'      : require('../assets/icons/link.svg'),
+  'link'      : require('../nest/icons/link.svg'),
   'list': {
-    'ordered' : require('../assets/icons/list-ordered.svg'),
-    'bullet'  : require('../assets/icons/list-bullet.svg')
+    'ordered' : require('../nest/icons/list-ordered.svg'),
+    'bullet'  : require('../nest/icons/list-bullet.svg')
   },
   'script': {
-    'sub'     : require('../assets/icons/subscript.svg'),
-    'super'   : require('../assets/icons/superscript.svg'),
+    'sub'     : require('../nest/icons/subscript.svg'),
+    'super'   : require('../nest/icons/superscript.svg'),
   },
-  'strike'    : require('../assets/icons/strike.svg'),
-  'underline' : require('../assets/icons/underline.svg'),
-  'video'     : require('../assets/icons/video.svg')
+  'strike'    : require('../nest/icons/strike.svg'),
+  'underline' : require('../nest/icons/underline.svg'),
+  'video'     : require('../nest/icons/video.svg')
 };
