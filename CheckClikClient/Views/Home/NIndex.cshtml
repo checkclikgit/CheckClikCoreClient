@@ -14,7 +14,7 @@
     }
 </style>
 
-@using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
+@*@using (Html.BeginForm("NSearchQ", "Home", FormMethod.Post, new { id = "search", @class = "" }))
 {
     @Html.AntiForgeryToken() 
     <input type="hidden" name="txtSearchTerm" id="txtSearchTerm" />
@@ -23,7 +23,7 @@
     <input type="hidden" name="hdnSearchText" id="hdnSearchText" />
     <input type="hidden" name="hdnSearchFilters" id="hdnSearchFilters" />
     <input type="hidden" name="hdnStart" id="hdnStart" />
-}
+}*@
 
 @if (Model == null)
 {

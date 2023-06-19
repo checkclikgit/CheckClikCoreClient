@@ -4,95 +4,93 @@
     var cat = Model.strBranchShift;
 }
 
-<div class="archive-header" >
+<div class="archive-header" style="padding: 35px 15px;">
     <div class="row align-items-center">
         <div class="col-xl-3">
-            <ul class="tags-list">
-            <li class="hover-up mr-0">
-                <div class="main-menu d-lg-block">
-                    <nav>
-                        <ul>
-                            <li>
-                                <a class="active" href="#">Branch Timing <i class="fi-rs-angle-down"></i></a>
-
-
-                                <ul class="sub-menu">
-
-                                    @{
-                                        string Day = "";
-                                    }
-                                    @if (Model.BranchShift != null && Model.BranchShift.Count() > 0)
-                                    {
-                                        <li>Today > @Model.BranchStatus > @Model.Shift</li>
-                                        @foreach (var items in Model.BranchShift)
-                                        {
-                                            switch (items.WeekDay)
-                                            {
-                                                case 1:
-                                                    Day = "Sunday";
-                                                    break;
-                                                case 2:
-                                                    Day = "Monday";
-                                                    break;
-                                                case 3:
-                                                    Day = "Tuesday";
-                                                    break;
-                                                case 4:
-                                                    Day = "Wednesday";
-                                                    break;
-                                                case 5:
-                                                    Day = "Thursday";
-                                                    break;
-                                                case 6:
-                                                    Day = "Friday";
-                                                    break;
-                                                case 7:
-                                                    Day = "Saturday";
-                                                    break;
-
-                                            };
-                                            if (items.IsClose == false)
-                                            {
-                                                <li>
-                                                    @Day:
-                                                    @if (items.IsOpen24Hrs == true)
-                                                    {
-                                                        @Html.Raw("Open 24 hours")
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.Raw(@items.StartTime +" to "+ @items.EndTime)
-
-                                                    }
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    @Day : Close
-                                                </li>
-                                            }
-
-                                        }
-
-                                    }
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                </li>
-            </ul>
+            <h3 class="mb-15"><i class="fi-rs-clock mr-5"></i>Branch Timing</h3>
         </div>
         <div class="col-xl-9 text-end d-none d-xl-block">
             <ul class="tags-list">
 
-                
+                <li class="hover-up mr-0">
+                    <div class="main-menu d-lg-block">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a class="active" href="#">Branch Timing <i class="fi-rs-angle-down"></i></a>
+
+
+                                    <ul class="sub-menu">
+
+                                        @{
+                                            string Day = "";
+                                        }
+                                        @if (Model.BranchShift != null && Model.BranchShift.Count() > 0)
+                                        {
+                                            <li>Today > @Model.BranchStatus > @Model.Shift</li>
+                                            @foreach (var items in Model.BranchShift)
+                                            {
+                                                switch (items.WeekDay)
+                                                {
+                                                    case 1:
+                                                        Day = "Sunday";
+                                                        break;
+                                                    case 2:
+                                                        Day = "Monday";
+                                                        break;
+                                                    case 3:
+                                                        Day = "Tuesday";
+                                                        break;
+                                                    case 4:
+                                                        Day = "Wednesday";
+                                                        break;
+                                                    case 5:
+                                                        Day = "Thursday";
+                                                        break;
+                                                    case 6:
+                                                        Day = "Friday";
+                                                        break;
+                                                    case 7:
+                                                        Day = "Saturday";
+                                                        break;
+
+                                                };
+                                                if (items.IsClose == false)
+                                                {
+                                                    <li>
+                                                        @Day:
+                                                        @if (items.IsOpen24Hrs == true)
+                                                        {
+                                                            @Html.Raw("Open 24 hours")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw(@items.StartTime +" to "+ @items.EndTime)
+
+                                                        }
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        @Day : Close
+                                                    </li>
+                                                }
+
+                                            }
+
+                                        }
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </li>
                 <li>
                     <i class="fa fa-truck" aria-hidden="true"></i>
                     <p>Delivery Time</p>
-                    <h5>@(Model.DeliveryTime==null?DateTime.Now:Model.DeliveryTime)</h5>
+                    <h5>@Model.DeliveryTime</h5>
                 </li>
                 <li class="hover-up">
                     <i class="fas fa-dollar-sign"></i>
@@ -110,7 +108,7 @@
                 <li class="hover-up">
                     <i class="far fa-check-square"></i>
                     <p>Orders Done</p>
-                    <h5>@(Model.OrderDone==null?0:Model.OrderDone)</h5>
+                    <h5>@Model.OrderDone</h5>
                 </li>
                 <li class="hover-up">
                     <i class="fas fa-city"></i>
@@ -142,10 +140,8 @@
                     }
                 </li>
             </ul>
-            </div>
         </div>
     </div>
-
-
+</div>
 
  

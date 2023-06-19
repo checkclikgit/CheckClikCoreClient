@@ -12,7 +12,7 @@ build_property.RootNamespace = CheckClikClient
 build_property.ProjectDir = D:\CheckClik\CheckClik_Production\CheckClikMerge\CustomerCore\CheckClikCoreClient\CheckClikClient\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = D:\CheckClik\CheckClik_Production\CheckClikMerge\CustomerCore\CheckClikCoreClient\CheckClikClient
 build_property._RazorSourceGeneratorDebug = 
 
@@ -432,20 +432,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcT2ZmZXJzXFBWT2ZmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/CategoryDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxDYXRlZ29yeURldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/IndexNest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxJbmRleE5lc3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/NewCheckOutPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxOZXdDaGVja091dFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVBranchTimings.cshtml]
@@ -458,10 +450,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/PVSideCategoryAndSubCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxQVlNpZGVDYXRlZ29yeUFuZFN1YkNhdGVnb3J5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/StoreContactUs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcUHJvZHVjdFxTdG9yZUNvbnRhY3RVcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Product/_SearchResults - Copy.cshtml]
@@ -506,10 +494,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_LayoutNewStore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9MYXlvdXROZXdTdG9yZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_StoreHeaderLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXJcVmlld3NcU2hhcmVkXF9TdG9yZUhlYWRlckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CheckClik/CheckClik_Production/CheckClikMerge/CustomerCore/CheckClikCoreClient/CheckClikClient/Areas/Ar/Views/Shared/_ValidationScriptsPartial.cshtml]
