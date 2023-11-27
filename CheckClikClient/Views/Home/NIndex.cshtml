@@ -30,7 +30,7 @@
     <div class="container mb-30">
         <div class="archive-header-2 text-center pt-90 pb-60">
             <h1 class="display-2 mb-50">
-                <img id="logo" style="right: 150px;bottom: 20px;" src="~/Images/checkclikwithoutlogo.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
+                <img id="logo" style="right: 150px;bottom: 20px;margin-bottom:-85px;" src="~/Images/checkclikwithoutlogo.png" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right" height="100" />
             </h1>
             <div class="row">
                 <div class="col-lg-5 mx-auto">
@@ -60,7 +60,7 @@ else
                 }
                 else if (!string.IsNullOrEmpty(Model.ImagePath))
                 {
-                    <img id="logo" style="right: 150px;bottom: 20px;width:30%" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" />
+                    <img id="logo" style="right: 150px;bottom: 20px;width:30%;margin-bottom:-95px;" src="/Images/HomeImages/@Model.ImagePath" data-bs-toggle="tooltip" data-bs-placement="right" title="@Model.Title" />
                 }
                 else
                 {

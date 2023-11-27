@@ -50,7 +50,8 @@ namespace CheckClikClient.Controllers
 
             List<BranchDTO> lstBranchDTO = new List<BranchDTO>(); 
             lstBranchDTO = await GetBranchListByStoreIdAsync(storeId);
-             
+            ViewBag.StoreId = storeId;
+            ViewBag.BranchId = lstBranchDTO.FirstOrDefault().Id;
             return View(lstBranchDTO);
         } 
         [HttpGet]
@@ -79,10 +80,15 @@ namespace CheckClikClient.Controllers
         {
             return View();
         }
+        //[HttpPost]
+        //public async Task<ActionResult> NewCheckOutPage(int storeId, string q)
+        //{
+        //    return View();
+        //}
 
 
         [HttpPost]
-        public async Task<JsonResult> GetCatSubCatTiming(int branchid, string search="", string branchName = "", string Latitude = "", string Longitude = "")
+        public async Task<JsonResult> GetCatSubCatTiming(int branchid, string search="", string branchName = "", string Latitude = "", string Longitude = "",int storeId=0)
         {
             BranchDTO branchDTO = new BranchDTO();
             BaseViewModel obj = new BaseViewModel();
@@ -132,13 +138,19 @@ namespace CheckClikClient.Controllers
             //{
             //    String suppGrp = AppUtils.SupportGroupId.ToString();
             //}
-
-
+List<BranchDTO> lstBranchDTO = new List<BranchDTO>();
+            if (storeId>0)
+            {
+                
+                lstBranchDTO = await GetBranchListByStoreIdAsync(storeId);
+            }
 
             var resultCatAndSubCat = await _viewRenderService.RenderToStringAsync("Product/PVSideCategoryAndSubCategory", branchDTO);
             //var resultCatAndSubCat = await _viewRenderService.RenderToStringAsync("Search/_SearchResults", new QueryResponse<ProductSearchResult>());
             var resultTiming = await _viewRenderService.RenderToStringAsync("Product/PVBranchTimings", obj);
-            return Json(new { resultCatAndSubCat = resultCatAndSubCat, resultTiming = resultTiming }); 
+            //var resultTiming = await _viewRenderService.RenderToStringAsync("Shared/_StoreMenuLayout", obj);
+            var resultHeader = await _viewRenderService.RenderToStringAsync("Shared/_StoreHeaderLayout", lstBranchDTO);
+            return Json(new {storeHeader=resultHeader, resultCatAndSubCat = resultCatAndSubCat, resultTiming = resultTiming }); 
         }
 
         [HttpPost]
@@ -191,7 +203,7 @@ namespace CheckClikClient.Controllers
             //solrSearchQuery.Rows = Customer.Utils.SearchUtil.PageSize;
             solrSearchQuery.Rows = showRows == 0 ? Customer.Utils.SearchUtil.PageSize : showRows;
             solrSearchQuery.Start = searchDto.hdnStart;
-
+            branchid = branchid == "NaN" ? "" : branchid;
             if (!string.IsNullOrEmpty(branchid))
             {
                 solrSearchQuery.BranchId = branchid;

@@ -1,4 +1,5 @@
-﻿<div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+﻿@model List<Customer.Models.BranchDTO>
+<div class="header-middle header-middle-ptb-1 d-none d-lg-block">
     <div class="container">
         <div class="header-wrap">
             <div class="logo logo-width-1">
@@ -27,21 +28,14 @@
                     <div class="header-action-2">
                         <div class="search-location">
                             <form action="#">
-                                <select class="select-active">
-                                    <option>Branches</option>
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>Arizona</option>
-                                    <option>Delaware</option>
-                                    <option>Florida</option>
-                                    <option>Georgia</option>
-                                    <option>Hawaii</option>
-                                    <option>Indiana</option>
-                                    <option>Maryland</option>
-                                    <option>Nevada</option>
-                                    <option>New Jersey</option>
-                                    <option>New Mexico</option>
-                                    <option>New York</option>
+                                <select class="select-active" id="ddlBranchList">
+                                    <option selected disabled>Branches</option>
+                                    @if(Model.Count>0){
+                                        foreach (var item in Model)
+                                        {
+                                            <option value="@item.Id">@item.BranchNameEn</option>
+                                        }
+                                    }
                                 </select>
                             </form>
                         </div>

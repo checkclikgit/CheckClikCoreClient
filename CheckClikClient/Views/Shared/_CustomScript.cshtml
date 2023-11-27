@@ -900,21 +900,24 @@
 
     function GetCategorySubCategoryTimingResults() {
         $("#divCatAndSubCat").html("");
-        $("#divTiming").html("");
-        var branchId = $("#ddlBranchList").val();
-
+        $("#storeMenu").html("");
+        $("#storeHeader").html("");
+        var branchId = $("#BranchId").val();
+        var storeId=$("#StoreId").val();
         $.ajax({
-            url: "@Url.Action("GetCatSubCatTiming", "Product")",
+             url: "@Url.Action("GetCatSubCatTiming", "Product")",
             type: "POST",
             data: {
                 ////partialViewForm relates to the form element in your partial view
                 //model: JSON.stringify($('#search').serializeObject()),
-                branchid: parseInt(branchId), branchName: "", Latitude: "", Longitude: ""
+                branchid: parseInt(branchId), branchName: "", Latitude: "", Longitude: "",storeId:parseInt(storeId)
             },
             success: function (data) {
-                $("#divCatAndSubCat").html(data.resultCatAndSubCat);
-                $("#divTiming").html(data.resultTiming);
-    @*GetProductSearchResults();*@
+                alert("Success");
+                //$("#divCatAndSubCat").html(data.resultCatAndSubCat);
+                $("#storeMenu").html(data.resultTiming);
+                $("#storeHeader").html(data.storeHeader);
+    // GetProductSearchResults();
                 },
             error: function (xhr) {
                 $("#divLoader").hide();
